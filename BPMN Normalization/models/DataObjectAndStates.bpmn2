@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" id="_aXEikOcyEeORjaaH4lhPVQ" targetNamespace="bpmn2">
+  <bpmn2:process id="_lR0Y4OcyEeORjaaH4lhPVQ" name="myprocess">
+    <bpmn2:startEvent id="_lR0Y4ecyEeORjaaH4lhPVQ">
+      <bpmn2:outgoing>_lR0Y4ucyEeORjaaH4lhPVQ</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:sequenceFlow id="_lR0Y4ucyEeORjaaH4lhPVQ" sourceRef="_lR0Y4ecyEeORjaaH4lhPVQ" targetRef="_lR0Y4-cyEeORjaaH4lhPVQ"/>
+    <bpmn2:endEvent id="_lR0Y4-cyEeORjaaH4lhPVQ">
+      <bpmn2:incoming>_lR0Y4ucyEeORjaaH4lhPVQ</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:dataObject id="_EW65sOglEeO8J7AYvdPi3w" name="1">
+      <bpmn2:dataState id="_EW65seglEeO8J7AYvdPi3w" name="state1"/>
+    </bpmn2:dataObject>
+    <bpmn2:dataObjectReference id="_EW65suglEeO8J7AYvdPi3w" name="" dataObjectRef="_EW65sOglEeO8J7AYvdPi3w">
+      <bpmn2:dataState id="_BbRLcOgmEeO8J7AYvdPi3w" name="state1"/>
+    </bpmn2:dataObjectReference>
+  </bpmn2:process>
+</bpmn2:definitions>

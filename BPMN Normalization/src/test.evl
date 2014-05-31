@@ -1,0 +1,126 @@
+--The process model should have exactly one data object, 
+--the one which the state chart is to be generated.
+context Process {
+	
+	constraint SingleDataObjectDefined {
+	
+		check: DataObject.all.size() = 1
+		
+		message: "Process Model " + self.id + " should have exactly one data object."
+	}
+
+--The process model should have at least two different data states for the data object.
+	constraint MultipleDataStatesDefined {
+	
+		guard: self.satisfies("SingleDataObjectDefined")
+	
+		check: DataState.all.size() > 1
+		
+		message: "Process Model " + self.id + " should have at least two data object states."
+	
+	}
+
+-- The data object and data object references must be referred to in the process
+-- IO specification
+
+
+}
+
+context Activity {
+
+	constraint SingleOutgoingSequenceFlow {
+			
+			check: self.outgoing.size() = 1
+			
+			message: "Activity " + self.name + " should have one outgoing sequence flow."
+			
+			fix {
+				title: "Change to (fork) parallel gateway."
+				do {
+					var sequenceFlow: new SequenceFlow;
+					var fork: new ParallelGateway;
+					fork.id = "_id123";
+					--fork.gatewayDirection = "Diverging";
+					fork.outgoing = self.outgoing;
+					sequenceFlow.sourceRef = self;
+					sequenceFlow.targetRef = fork;
+					
+				}
+			}
+	}
+	
+	constraint SingleIncomingSequenceFlow {
+			
+			check: self.incoming.size() = 1
+			
+			message: "Activity " + self.name + " should have one incoming sequence flow."
+	}
+}
+-- BPMN root element: Definitions
+-- UML State Machine root elemet: Model
+-- Set the attribute also!
+--rule Definitions2Model {
+--	from 
+--		d : BPMN2!Definitions
+--	to 
+--		m : UML2!Model(name <- 'State Machine Diagram')
+		
+--}
+
+--BPMN assumptions:
+	-- Input Model is a simple Process (not collaboration or Choreography)
+	-- Sub process , Call Activity , Globl Tasks , Lanes are not used.
+	-- Data items used in  the model are data Object and not data Input or data Output (Message??)
+	
+-- Transformation Logic
+	--1) Check there is at least one dataObject with a defined dataState (which one to choose if there is more than one?)
+	--2) Check there is at least one dataObjectReference to this dataObject and it has a defined dataState
+	--3) For Activities (tasks) check 
+			-- For data as Output:
+			-- if there is a dataOutputAssociation targetRef reference to these dataObject or dataObjectReference elements
+			-- & the source is a reference to a dataOutput which is referenced from a outputSet dataOutputRefs
+			
+			-- For data as Input:
+			-- if there is a dataInputAssociation SourceRef reference to these dataObject or dataObjectReference elements
+			-- & the target is a reference to a dataInput which is referenced from a InputSet dataInputRefs
+	--4) For Catch Events (ex: start or intermediate) check for data as Output (same as above)
+	--5) For Throw Events (ex: end or intermediate) check for data as Input (same as above)
+	
+	-- This means we have data that is referenced and we can create the stateMachine; 
+	
+--Mapping Rules:
+	--1) dataObject is mapped into a packagedElement with type ="stateMachine" with same name and with a (single??) region
+	--2) create an initial and final states
+	--3) dataState in dataObject & dataObjectReferences are mapped into subvertex with same name
+	--4) Gateways (Parallel converging & Diverging)
+	--			  (Inclusive converging & Diverging)
+	--			  (Exclusive converging & Diverging)
+	
+-- BPMN Process Element with a (one at a time!) dataObject element (id) with a defined dataState (id)
+-- and at least one dataObjectReference (id) with dataObjectRef = dataObject (id) and 
+-- a (different) defined dataState (id or name?)
+
+--BPMN Start Event: startEvent (outgoing child element; not required?)
+--BPMN End Event: endEvent (incoming child element)
+--BPMN Intermediate Event: ??
+--BPMN simple task: task (incoming & outgoing child elements)
+--BPMN task io spec: ioSpecification (inputSet=>dataInputRefs & outputSet=>dataOutputRefs & dataInput (id) & dataOutput (id) )
+--BPMN task data Output : dataOutputAssociation (sourceRef=> dataOutput (id) & targetRef=> dataObject (id) or dataObjectReference (id))
+--BPMN task data Input :  dataInputAssociation (sourceRef=> dataObject (id) or dataObjectReference (id) & targetRef=> dataInput(id))
+--BPMN catch event data: dataOutputAssociation (sourceRef=> dataOutput (id) & targetRef=> dataObject (id) or dataObjectReference (id))
+--BPMN throw event data:  dataInputAssociation (sourceRef=> dataObject (id) or dataObjectReference (id) & targetRef=> dataInput(id))
+--BPMN sequence flow: bpmn2:sequenceFlow (sourceRef & targetRef)
+--BPMN gateways: bpmn2:exclusiveGateway (direction="Converging/Diverging")
+--										(incoming & outgoing) (condition??)
+
+
+
+
+-- UML state Machine top element: packagedElement xmi:type="uml:StateMachine"
+-- UML state Machine region: xmi:type="uml:Region"                    how many regions??
+-- UML state Machine pseudostates: subvertex xmi:type="uml:Pseudostate" | kind="choice,.."
+-- UML state Machine states: subvertex xmi:type="uml:State"
+-- UML state Machine Final state: subvertex xmi:type="uml:FinalState"
+-- UML state Machine transition: ransition xmi:type="uml:Transition" source="" target="" guard="" kind="local/external/internal"
+-- UML SM trigger: trigger xmi:type="uml:Trigger"
+-- UML SM guard is defined as: ownedRule xmi:type="uml:Constraint"
