@@ -10,6 +10,7 @@ context Process {
 	}
 
 --The process model should have at least two different data states for the data object.
+-- The state names should be checked!?
 	constraint MultipleDataStatesDefined {
 	
 		guard: self.satisfies("SingleDataObjectDefined")
@@ -19,10 +20,25 @@ context Process {
 		message: "Process Model " + self.id + " should have at least two data object states."
 	
 	}
-
+}
 -- The data object and data object references must be referred to in the process
 -- IO specification
-
+context DataObject {
+	
+	constraint DataIOAssociationDefined {
+	
+		--guard: Process.satisfies("SingleDataObjectDefined") and Process.satisfies("MultipleDataStatesDefined")	
+	
+		check {
+			var	dataInputAssociations = DataInputAssociation.allInstances.select(s|s.sourceRef = self);
+			var	dataOutputAssociations = DataOutputAssociation.allInstances.select(s|s.targetRef = self);
+			dataInputAssociations.size().println();
+			dataOutputAssociations.size().println();
+			return dataInputAssociations.size() >= 1 or dataOutputAssociations.size() >=1;
+		}
+		
+		message: "Data object " + self.name + " should have at least one data input or output flow."
+	}
 
 }
 
@@ -35,7 +51,9 @@ context Activity {
 			message: "Activity " + self.name + " should have one outgoing sequence flow."
 			
 			fix {
+			
 				title: "Change to (fork) parallel gateway."
+			
 				do {
 					var sequenceFlow: new SequenceFlow;
 					var fork: new ParallelGateway;
