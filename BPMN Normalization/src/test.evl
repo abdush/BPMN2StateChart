@@ -23,23 +23,33 @@ context Process {
 }
 -- The data object and data object references must be referred to in the process
 -- IO specification
-context DataObject {
+context ItemAwareElement {
 	
 	constraint DataIOAssociationDefined {
 	
-		--guard: Process.satisfies("SingleDataObjectDefined") and Process.satisfies("MultipleDataStatesDefined")	
-	
+		guard: self.isTypeOf(DataObject) or self.isTypeOf(DataObjectReference)
+		and Process.all.select(p|p.flowElements.includes(self)).forAll(c|c.satisfies("SingleDataObjectDefined"))
+		--Process.satisfies("SingleDataObjectDefined") and Process.satisfies("MultipleDataStatesDefined")	
+		--Add SatisfiesAll!!??
+		
 		check {
-			var	dataInputAssociations = DataInputAssociation.allInstances.select(s|s.sourceRef = self);
-			var	dataOutputAssociations = DataOutputAssociation.allInstances.select(s|s.targetRef = self);
-			dataInputAssociations.size().println();
+			var dataOutputs = DataOutput.allInstances.select(o|o.outputSetRefs.isDefined());
+			var dataInputs = DataInput.allInstances.select(i|i.inputSetRefs.isDefined());
+			--dataOutputs.println();
+			var	dataInputAssociations = DataInputAssociation.all.select(s|s.sourceRef.includes(self) and dataInputs.includes(s.targetRef));
+			var	dataOutputAssociations = DataOutputAssociation.all.select(s|s.targetRef = self and s.sourceRef.exists(d| dataOutputs.includes(d)));
+			--s.sourceRef.exists(d| dataOutputs.includes(d));
+			--for (d in DataInputAssociation.all)
+			--	d.sourceRef.println();
+			for (d in DataOutputAssociation.all)
+				d.targetRef.println();
+			--dataInputAssociations.size().println();
 			dataOutputAssociations.size().println();
 			return dataInputAssociations.size() >= 1 or dataOutputAssociations.size() >=1;
 		}
 		
 		message: "Data object " + self.name + " should have at least one data input or output flow."
 	}
-
 }
 
 
