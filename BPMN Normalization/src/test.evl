@@ -42,8 +42,20 @@ context DataObject {
 
 }
 
+
+-- Each Activity (task) should have exactly one incoming and outgoing sequence flow.
 context Activity {
 
+
+/** 
+BPMN uses the term “fork” to refer to the dividing of a path into two or more parallel 
+paths (also known as an AND-Split). It is a place in the Process where activities can be 
+performed concurrently, rather than sequentially.
+There are two options: 
+•  Multiple Outgoing Sequence Flows can be used. This represents “uncontrolled” flow is the preferred method 
+for most situations.
+•  A Parallel Gateway can be used. This will be used rarely, usually in combination with other Gateways.
+**/
 	constraint SingleOutgoingSequenceFlow {
 			
 			check: self.outgoing.size() = 1
@@ -77,7 +89,14 @@ context Activity {
 				}
 			}
 	}
-	
+
+
+/** BPMN uses the term “merge” to refer to the exclusive combining of two or more paths into 
+one path (also known as an OR-Join).
+A Merging Exclusive Gateway is used to show the merging of multiple Sequence Flows.
+If all the incoming flow is alternative, then a Gateway is not needed. That is, uncontrolled 
+flow provides the same behavior 
+**/
 	constraint SingleIncomingSequenceFlow {
 			
 			check: self.incoming.size() = 1
@@ -112,6 +131,9 @@ context Activity {
 			}
 	}
 }
+
+
+
 -- BPMN root element: Definitions
 -- UML State Machine root elemet: Model
 -- Set the attribute also!
