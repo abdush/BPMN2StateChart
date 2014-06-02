@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn2:sequenceFlow xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" id="_dlSn0Og_EeO8J7AYvdPi3w"/><bpmn2:definitions id="_J84mQOneEeOgCMDZjxiKRQ" targetNamespace="bpmn2">
+<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" id="_J84mQOneEeOgCMDZjxiKRQ" targetNamespace="bpmn2">
   <bpmn2:process id="_J84mQeneEeOgCMDZjxiKRQ" name="process1">
     <bpmn2:startEvent id="_J84mQuneEeOgCMDZjxiKRQ">
       <bpmn2:outgoing>_J84mQ-neEeOgCMDZjxiKRQ</bpmn2:outgoing>

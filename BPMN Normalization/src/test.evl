@@ -58,10 +58,14 @@ context Activity {
 					var sequenceFlow: new SequenceFlow;
 					var fork: new ParallelGateway;
 					fork.id = "_id123";
-					--fork.gatewayDirection = "Diverging";
+					--var gwDirection: new GatewayDirection;
+					
+					fork.gatewayDirection = GatewayDirection.Diverging;
 					fork.outgoing = self.outgoing;
-					sequenceFlow.sourceRef = self;
-					sequenceFlow.targetRef = fork;
+					self.outgoing = sequenceFlow;
+					--sequenceFlow.sourceRef = self;
+					fork.incoming = sequenceFlow;
+					--sequenceFlow.targetRef = fork;
 					
 				}
 			}
