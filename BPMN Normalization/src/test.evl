@@ -52,20 +52,27 @@ context Activity {
 			
 			fix {
 			
-				title: "Change to (fork) parallel gateway."
+				title: "Change to (fork) parallel gateway." 
 			
 				do {
 					var sequenceFlow: new SequenceFlow;
 					var fork: new ParallelGateway;
-					fork.id = "_id123";
-					--var gwDirection: new GatewayDirection;
 					
-					fork.gatewayDirection = GatewayDirection.Diverging;
-					fork.outgoing = self.outgoing;
-					self.outgoing = sequenceFlow;
-					--sequenceFlow.sourceRef = self;
-					fork.incoming = sequenceFlow;
-					--sequenceFlow.targetRef = fork;
+					--Set a unique id for the gateway!!?? 
+					fork.id = "fork_id123";
+					
+					fork.gatewayDirection = GatewayDirection#Diverging;
+					var seqFlows = SequenceFlow.all.select(s|s.sourceRef = self);
+					seqFlows.println();
+					self.outgoing.println();
+					fork.outgoing.addAll(self.outgoing);
+					fork.outgoing.println();
+					sequenceFlow.sourceRef = self;
+					sequenceFlow.targetRef = fork;
+					
+					--get the process which contains the task (self))!??
+					Process.all.first().flowElements.add(sequenceFlow);
+					Process.all.first().flowElements.add(fork);
 					
 				}
 			}
@@ -76,6 +83,33 @@ context Activity {
 			check: self.incoming.size() = 1
 			
 			message: "Activity " + self.name + " should have one incoming sequence flow."
+			
+			fix {
+			
+				title: "Change to (merge) Exclusive gateway." 
+			
+				do {
+					var sequenceFlow: new SequenceFlow;
+					var merge: new ExclusiveGateway;
+					
+					--Set a unique id for the gateway!!?? 
+					merge.id = "merge_id123";
+					
+					merge.gatewayDirection = GatewayDirection#Converging;
+					var seqFlows = SequenceFlow.all.select(s|s.targetRef = self);
+					seqFlows.println();
+					self.incoming.println();
+					merge.incoming.addAll(self.incoming);
+					merge.incoming.println();
+					sequenceFlow.sourceRef = merge;
+					sequenceFlow.targetRef = self;
+					
+					--get the process which contains the task (self))!??
+					Process.all.first().flowElements.add(sequenceFlow);
+					Process.all.first().flowElements.add(merge);
+					
+				}
+			}
 	}
 }
 -- BPMN root element: Definitions

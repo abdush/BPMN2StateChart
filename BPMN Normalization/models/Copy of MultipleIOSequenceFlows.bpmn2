@@ -7,10 +7,11 @@
     <bpmn2:sequenceFlow id="_J84mQ-neEeOgCMDZjxiKRQ" sourceRef="_J84mQuneEeOgCMDZjxiKRQ" targetRef="_J84mROneEeOgCMDZjxiKRQ"/>
     <bpmn2:task id="_J84mROneEeOgCMDZjxiKRQ" name="task 1">
       <bpmn2:incoming>_J84mQ-neEeOgCMDZjxiKRQ</bpmn2:incoming>
-      <bpmn2:outgoing>_XwA98OnpEeOgCMDZjxiKRQ</bpmn2:outgoing>
+      <bpmn2:outgoing>_J84mReneEeOgCMDZjxiKRQ</bpmn2:outgoing>
+      <bpmn2:outgoing>_J84mRuneEeOgCMDZjxiKRQ</bpmn2:outgoing>
     </bpmn2:task>
-    <bpmn2:sequenceFlow id="_J84mReneEeOgCMDZjxiKRQ" sourceRef="_id123" targetRef="_J84mR-neEeOgCMDZjxiKRQ"/>
-    <bpmn2:sequenceFlow id="_J84mRuneEeOgCMDZjxiKRQ" sourceRef="_id123" targetRef="_J84mSOneEeOgCMDZjxiKRQ"/>
+    <bpmn2:sequenceFlow id="_J84mReneEeOgCMDZjxiKRQ" sourceRef="_J84mROneEeOgCMDZjxiKRQ" targetRef="_J84mR-neEeOgCMDZjxiKRQ"/>
+    <bpmn2:sequenceFlow id="_J84mRuneEeOgCMDZjxiKRQ" sourceRef="_J84mROneEeOgCMDZjxiKRQ" targetRef="_J84mSOneEeOgCMDZjxiKRQ"/>
     <bpmn2:task id="_J84mR-neEeOgCMDZjxiKRQ" name="task 2">
       <bpmn2:incoming>_J84mReneEeOgCMDZjxiKRQ</bpmn2:incoming>
       <bpmn2:outgoing>_J84mSeneEeOgCMDZjxiKRQ</bpmn2:outgoing>
@@ -30,11 +31,5 @@
     <bpmn2:endEvent id="_J84mTeneEeOgCMDZjxiKRQ">
       <bpmn2:incoming>_J84mTOneEeOgCMDZjxiKRQ</bpmn2:incoming>
     </bpmn2:endEvent>
-    <bpmn2:sequenceFlow id="_XwA98OnpEeOgCMDZjxiKRQ" sourceRef="_J84mROneEeOgCMDZjxiKRQ" targetRef="_id123"/>
-    <bpmn2:parallelGateway id="_id123" gatewayDirection="Diverging">
-      <bpmn2:incoming>_XwA98OnpEeOgCMDZjxiKRQ</bpmn2:incoming>
-      <bpmn2:outgoing>_J84mReneEeOgCMDZjxiKRQ</bpmn2:outgoing>
-      <bpmn2:outgoing>_J84mRuneEeOgCMDZjxiKRQ</bpmn2:outgoing>
-    </bpmn2:parallelGateway>
   </bpmn2:process>
 </bpmn2:definitions>
