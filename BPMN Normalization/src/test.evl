@@ -209,6 +209,6 @@ flow provides the same behavior
 -- UML state Machine pseudostates: subvertex xmi:type="uml:Pseudostate" | kind="choice,.."
 -- UML state Machine states: subvertex xmi:type="uml:State"
 -- UML state Machine Final state: subvertex xmi:type="uml:FinalState"
--- UML state Machine transition: ransition xmi:type="uml:Transition" source="" target="" guard="" kind="local/external/internal"
+-- UML state Machine transition: transition xmi:type="uml:Transition" source="" target="" guard="" kind="local/external/internal"
 -- UML SM trigger: trigger xmi:type="uml:Trigger"
 -- UML SM guard is defined as: ownedRule xmi:type="uml:Constraint"
