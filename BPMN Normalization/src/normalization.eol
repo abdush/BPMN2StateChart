@@ -1,14 +1,4 @@
-
-
-operation Process getDataObjectsWithNoOutgoingEdge() : ItemAwareElement {
-
-}
-
-operation Process getDataObjectsWithNoIncomingEdge() : ItemAwareElement {
-
-}
-
-var i := 0;
+/* var i := 0;
 for (leaf in Tree.all.select(t|t.children.isEmpty())) {
 	var child : new Tree;
 	i := i+1;
@@ -17,120 +7,148 @@ for (leaf in Tree.all.select(t|t.children.isEmpty())) {
 }
 
 Model.store(Model.modelFile + 'copy.model');
+*/
+for (process in Process.all) {
+	"Data Objects:".println();
+	process.getAllDataObjects().println();
+	"Data Objects References:".println();
+	process.getAllDataObjectReferences().println();
+	"All:".println();
+	process.getAllObjectNodes().println();
+	"Claim Object Nodes:".println();
+	process.getObjectNodes("Order").println();
+	"MultiState Objects:".println();
+	process.getDataObjectsWithMultipleStates().println();
+	"Stateful Object Nodes:".println();
+	process.getStatefulDataObjects().println();
+}
+/* Helper functions */
 
-		guard: self.isTypeOf(DataObject) or self.isTypeOf(DataObjectReference)
-		and Process.all.select(p|p.flowElements.includes(self)).forAll(c|c.satisfies("SingleDataObjectDefined"))
-		--Process.satisfies("SingleDataObjectDefined") and Process.satisfies("MultipleDataStatesDefined")	
-		--Add SatisfiesAll!!??
-		
-		check {
-			var dataOutputs = DataOutput.allInstances.select(o|o.outputSetRefs.isDefined());
-			var dataInputs = DataInput.allInstances.select(i|i.inputSetRefs.isDefined());
-			--dataOutputs.println();
-			var	dataInputAssociations = DataInputAssociation.all.select(s|s.sourceRef.includes(self) and dataInputs.includes(s.targetRef));
-			var	dataOutputAssociations = DataOutputAssociation.all.select(s|s.targetRef = self and s.sourceRef.exists(d| dataOutputs.includes(d)));
-			--s.sourceRef.exists(d| dataOutputs.includes(d));
-			--for (d in DataInputAssociation.all)
-			--	d.sourceRef.println();
-			for (d in DataOutputAssociation.all)
-				d.targetRef.println();
-			--dataInputAssociations.size().println();
-			dataOutputAssociations.size().println();
-			return dataInputAssociations.size() >= 1 or dataOutputAssociations.size() >=1;
+operation Process getAllDataObjects(): Sequence(DataObject) {
+	var dataObjects = DataObject.all.select(o| self.flowElements.includes(o));
+	return dataObjects;
+}
+
+operation Process getAllDataObjectReferences(): Sequence(DataObjectReference) {
+	var dataObjectReferences = DataObjectReference.all.select(o| self.flowElements.includes(o));
+	return dataObjectReferences;
+}
+
+operation Process getAllObjectNodes(): Sequence(ItemAwareElement) {
+	var dataObjects = self.getAllDataObjects();
+	var dataObjectRefs = self.getAllDataObjectReferences();
+	return dataObjects.includingAll(dataObjectRefs);
+}
+
+operation Process getDataObjectReferences(dataObject: DataObject): Sequence(DataObjectReference) {
+	var dataObjectReferences = DataObjectReference.all.select(o|  o.dataObjectRef = dataObject and self.flowElements.includes(o));
+	return dataObjectReferences;
+}
+
+operation Process getObjectNodes(objectName: String): Sequence(ItemAwareElement) {
+	var objectNodes: new Sequence;
+	var dataObject = DataObject.all.select(o| o.name = objectName and self.flowElements.includes(o)).first();
+	objectNodes.add(dataObject);
+	var dataObjectRefs = DataObjectReference.all.select(o| o.dataObjectRef = dataObject and self.flowElements.includes(o));
+	objectNodes.addAll(dataObjectRefs);
+	return objectNodes;
+}
+/*  
+operation Process getDataObjectsWithMultipleStates() : Sequence(Sequence(DataObject)) {
+	var result: new Sequence;
+	var dataObjects = self.getAllDataObjects();
+	for (dataObject in dataObjects) {
+		var objectNodes = self.getObjectNodes(dataObject.name).select(o| o.dataState.isDefined());
+		if (objectNodes.size >= 2) {
+			var seq: new Sequence;
+			seq.addAll(objectNodes);
+			result.add(seq);
 		}
-		
-		message: "Data object " + self.name + " should have at least one data input or output flow."
 	}
+	return result;
 }
 
+*/
 
--- Each Activity (task) should have exactly one incoming and outgoing sequence flow.
-context Activity {
-
-
-/** 
-BPMN uses the term “fork” to refer to the dividing of a path into two or more parallel 
-paths (also known as an AND-Split). It is a place in the Process where activities can be 
-performed concurrently, rather than sequentially.
-There are two options: 
-•  Multiple Outgoing Sequence Flows can be used. This represents “uncontrolled” flow is the preferred method 
-for most situations.
-•  A Parallel Gateway can be used. This will be used rarely, usually in combination with other Gateways.
-**/
-	constraint SingleOutgoingSequenceFlow {
-			
-			check: self.outgoing.size() = 1
-			
-			message: "Activity " + self.name + " should have one outgoing sequence flow."
-			
-			fix {
-			
-				title: "Change to (fork) parallel gateway." 
-			
-				do {
-					var sequenceFlow: new SequenceFlow;
-					var fork: new ParallelGateway;
-					
-					--Set a unique id for the gateway!!?? 
-					fork.id = "fork_id123";
-					
-					fork.gatewayDirection = GatewayDirection#Diverging;
-					var seqFlows = SequenceFlow.all.select(s|s.sourceRef = self);
-					seqFlows.println();
-					self.outgoing.println();
-					fork.outgoing.addAll(self.outgoing);
-					fork.outgoing.println();
-					sequenceFlow.sourceRef = self;
-					sequenceFlow.targetRef = fork;
-					
-					--get the process which contains the task (self))!??
-					Process.all.first().flowElements.add(sequenceFlow);
-					Process.all.first().flowElements.add(fork);
-					
-				}
-			}
+operation Process getDataObjectsWithMultipleStates() : Map {
+	var result: new Map;
+	var dataObjects = self.getAllDataObjects();
+	for (dataObject in dataObjects) {
+		var objectNodes = self.getObjectNodes(dataObject.name).select(o| o.dataState.isDefined());
+		if (objectNodes.size >= 2) {
+			var seq: new Sequence;
+			seq.addAll(objectNodes);
+			result.put(dataObject, seq);
+		}
 	}
-
-
-/** BPMN uses the term “merge” to refer to the exclusive combining of two or more paths into 
-one path (also known as an OR-Join).
-A Merging Exclusive Gateway is used to show the merging of multiple Sequence Flows.
-If all the incoming flow is alternative, then a Gateway is not needed. That is, uncontrolled 
-flow provides the same behavior 
-**/
-	constraint SingleIncomingSequenceFlow {
-			
-			check: self.incoming.size() = 1
-			
-			message: "Activity " + self.name + " should have one incoming sequence flow."
-			
-			fix {
-			
-				title: "Change to (merge) Exclusive gateway." 
-			
-				do {
-					var sequenceFlow: new SequenceFlow;
-					var merge: new ExclusiveGateway;
-					
-					--Set a unique id for the gateway!!?? 
-					merge.id = "merge_id123";
-					
-					merge.gatewayDirection = GatewayDirection#Converging;
-					var seqFlows = SequenceFlow.all.select(s|s.targetRef = self);
-					seqFlows.println();
-					self.incoming.println();
-					merge.incoming.addAll(self.incoming);
-					merge.incoming.println();
-					sequenceFlow.sourceRef = merge;
-					sequenceFlow.targetRef = self;
-					
-					--get the process which contains the task (self))!??
-					Process.all.first().flowElements.add(sequenceFlow);
-					Process.all.first().flowElements.add(merge);
-					
-				}
-			}
-	}
+	return result;
 }
 
+operation Process getStatefulDataObjects() : Map {
+	var result: new Map;
+	var dataObjectsMap = self.getDataObjectsWithMultipleStates();
+	for (dataObject in dataObjectsMap.keySet()) {
+		var objectNodes = dataObjectsMap.get(dataObject).select(o| o.isDataAssociationDefined());
+		if (objectNodes.size >= 2) {
+			var seq: new Sequence;
+			seq.addAll(objectNodes);
+			result.put(dataObject, seq);
+		}	
+	}
+	return result;
+}
 
+operation ItemAwareElement isDataAssociationDefined(): Boolean {
+	var dataOutputs = DataOutput.allInstances.select(o|o.outputSetRefs.isDefined());
+	var	dataOutputAssociations = DataOutputAssociation.all.select(s|s.targetRef = self and s.sourceRef.exists(d| dataOutputs.includes(d)));
+	var dataInputs = DataInput.allInstances.select(i|i.inputSetRefs.isDefined());
+	var	dataInputAssociations = DataInputAssociation.all.select(s|s.sourceRef.includes(self) and dataInputs.includes(s.targetRef));
+	return dataInputAssociations.size() >= 1 or dataOutputAssociations.size() >=1;
+}
+operation Process getDataInputs() : Sequence(DataObject) {
+	var result: new Sequence;
+	var dataObjects = self.getAllDataObjects();
+	for (dataObject in dataObjects) {
+		var objectNodes = self.getObjectNodes(dataObject.name).select(o| o.dataState.isDefined());
+		if (objectNodes.size >= 2)
+			result.addAll(objectNodes);	
+	}
+	return result;
+}
+
+operation Process getObjectNodesWithNoOutgoingEdge() : ItemAwareElement {
+
+}
+
+operation Process getObjectNodesWithNoIncomingEdge() : ItemAwareElement {
+
+}
+
+operation getActivitiesAssociatedWithObjectNode() : Sequence(FlowNode) {
+
+}
+
+operation getObjectNodesAssociatedWithActivity() : Sequence(ItemAwareElement) {
+
+}
+
+operation getActivitiesWithInputDataObjects() : Sequence(FlowNode) {
+}
+
+operation Process getActivitiesWithOutputDataObjects() : Sequence(FlowNode) {
+}
+
+operation Process getDataOutputsForObjectNode() : Sequence(DataOutput) {
+	
+	var dataOutputs = DataOutput.allInstances.select(o|o.outputSetRefs.isDefined());
+	dataOutputs.println();
+	var	dataOutputAssociations = DataOutputAssociation.all.select(s|s.targetRef = self and s.sourceRef.exists(d| dataOutputs.includes(d)));
+}
+
+operation process getDataOutputsForObjectNode() : Sequence(DataOutput) {
+
+	var dataInputs = DataInput.allInstances.select(i|i.inputSetRefs.isDefined());
+	dataInputs.println();
+	var	dataInputAssociations = DataInputAssociation.all.select(s|s.sourceRef.includes(self) and dataInputs.includes(s.targetRef));
+	
+}

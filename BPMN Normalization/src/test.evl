@@ -35,7 +35,7 @@ context ItemAwareElement {
 		check {
 			var dataOutputs = DataOutput.allInstances.select(o|o.outputSetRefs.isDefined());
 			var dataInputs = DataInput.allInstances.select(i|i.inputSetRefs.isDefined());
-			--dataOutputs.println();
+			dataOutputs.println();
 			var	dataInputAssociations = DataInputAssociation.all.select(s|s.sourceRef.includes(self) and dataInputs.includes(s.targetRef));
 			var	dataOutputAssociations = DataOutputAssociation.all.select(s|s.targetRef = self and s.sourceRef.exists(d| dataOutputs.includes(d)));
 			--s.sourceRef.exists(d| dataOutputs.includes(d));
