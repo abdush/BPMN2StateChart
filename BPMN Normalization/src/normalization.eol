@@ -32,11 +32,21 @@ for (process in Process.all) {
 	for (dataObject in statefulObjects.keySet()) 
 		for (itemAwareElement in statefulObjects.get(dataObject))
 			itemAwareElement.getActivitiesAssociatedWithObjectNode().println();
+	
+	"Flow Nodes object nodes:".println();
+	for( flownode in FlowNode.all) {
+		flownode._getAssociatedObjectNodes().println();
+		flownode._getIncomingObjectNodes().println();
+		flownode._getOutgoingObjectNodes().println();
+	}
+	/* 
 	"Object Nodes for activity:".println();
 	for(activity in Activity.all)
-		activity.getObjectNodesAssociatedWithActivity().println();
+		activity.getAssociatedObjectNodes().println();
+	"Object Nodes for Event:".println();
 	for(event in Event.all)
-		event.getObjectNodesAssociatedWithActivity().println();
+		event.getAssociatedObjectNodes().println();
+	*/
 }
 
 
@@ -149,14 +159,8 @@ operation ItemAwareElement getActivitiesAssociatedWithObjectNode() : Sequence(Fl
 	var	dataInputAssociations = DataInputAssociation.all.select(s|s.sourceRef.includes(self) and s.targetRef.isDefined()); //and s.targetRef.isTypeOf(DataInput)
 	var _dataInputs = DataInput.allInstances.select(i|i.inputSetRefs.isDefined() and dataInputAssociations.exists(d | d.targetRef = i));
 	
-	//dataInputAssociations.println();
-	//dataInputs.println();
-	
 	var	dataOutputAssociations = DataOutputAssociation.all.select(s|s.targetRef = self and s.sourceRef.isDefined()); //and s.sourceRef.isTypeOf(DataOutput)
 	var _dataOutputs = DataOutput.allInstances.select(o| o.outputSetRefs.isDefined() and dataOutputAssociations.exists(d | d.sourceRef.includes(o)));
-	
-	//dataOutputAssociations.println();
-	//dataOutputs.println();
 	
 	var activities = Activity.all.select(a | a.ioSpecification.isDefined() and (not a.ioSpecification.dataInputs.excludesAll(_dataInputs) or not a.ioSpecification.dataOutputs.excludesAll(_dataOutputs))); //dataInputs or dataInput ??
 	var throwEvents = ThrowEvent.all.select(e | e.dataInputs.isDefined() and not e.dataInputs.excludesAll(_dataInputs));
@@ -167,44 +171,87 @@ operation ItemAwareElement getActivitiesAssociatedWithObjectNode() : Sequence(Fl
 	return flowNodes;
 }
 
-operation Activity getObjectNodesAssociatedWithActivity() : Sequence(ItemAwareElement) {
+operation FlowNode _getAssociatedObjectNodes() : Sequence(ItemAwareElement) {
 	self.println();
+	if (self.isKindOf(Activity) or self.isKindOf(Event))
+		return self.getAssociatedObjectNodes();
+}
+
+operation FlowNode _getIncomingObjectNodes() : Sequence(ItemAwareElement) {
+	self.println();
+	if (self.isKindOf(Activity) or self.isKindOf(Event))
+		return self.getIncomingObjectNodes();
+}
+
+operation FlowNode _getOutgoingObjectNodes() : Sequence(ItemAwareElement) {
+	self.println();
+	if (self.isKindOf(Activity) or self.isKindOf(Event))
+		return self.getOutgoingObjectNodes();
+}
+
+operation Activity getIncomingObjectNodes() : Sequence(ItemAwareElement) {
+	
 	var objectNodes: new Sequence;
 	if (self.ioSpecification.isDefined() and self.ioSpecification.dataInputs.isDefined()) {
 	var _dataInputs = self.ioSpecification.dataInputs;
 	var	dataInputAssociations = DataInputAssociation.all.select(s| _dataInputs.includes(s.targetRef));
 	var inputObjects = dataInputAssociations.collect(i | i.sourceRef);
 	objectNodes.addAll(inputObjects);
-	//inputObjects.println();
+	
 	}
+	
+	return objectNodes;
+}
+
+operation Activity getOutgoingObjectNodes() : Sequence(ItemAwareElement) {
+	
+	var objectNodes: new Sequence;
 	if (self.ioSpecification.isDefined() and self.ioSpecification.dataOutputs.isDefined()) {
-	var _dataOutputs = self.ioSpecification.dataOutputs;
-	var	dataOutputAssociations = DataOutputAssociation.all.select(s| s.sourceRef.exists(d | _dataOutputs.includes(d)));
-	var outputObjects = dataOutputAssociations.collect(i | i.targetRef);
-	objectNodes.addAll(outputObjects);
-	//outputObjects.println();
+		var _dataOutputs = self.ioSpecification.dataOutputs;
+		var	dataOutputAssociations = DataOutputAssociation.all.select(s| s.sourceRef.exists(d | _dataOutputs.includes(d)));
+		var outputObjects = dataOutputAssociations.collect(i | i.targetRef);
+		objectNodes.addAll(outputObjects);
 	}
 	return objectNodes;
 }
 
-operation Event getObjectNodesAssociatedWithActivity() : Sequence(ItemAwareElement) {
-	//self.println();
-	var objectNodes: new Sequence;
+operation Activity getAssociatedObjectNodes() : Sequence(ItemAwareElement) {
 	
+	var objectNodes: new Sequence;
+	objectNodes.addAll(self.getIncomingObjectNodes());
+	objectNodes.addAll(self.getOutgoingObjectNodes());
+	return objectNodes;
+}
+
+operation Event getIncomingObjectNodes() : Sequence(ItemAwareElement) {
+	
+	var objectNodes: new Sequence;
 	if (self.isKindOf(ThrowEvent)) {
 		var _dataInputs = self.dataInputs;
 		var	dataInputAssociations = DataInputAssociation.all.select(s| _dataInputs.includes(s.targetRef));
 		var inputObjects = dataInputAssociations.collect(i | i.sourceRef);
 		objectNodes.addAll(inputObjects);
-		//inputObjects.println();
-	} else  {
+	} 
+	return objectNodes;
+}
+
+operation Event getOutgoingObjectNodes() : Sequence(ItemAwareElement) {
+	
+	var objectNodes: new Sequence;
+	if (self.isKindOf(CatchEvent)) {
 		var _dataOutputs = self.dataOutputs;
 		var	dataOutputAssociations = DataOutputAssociation.all.select(s| s.sourceRef.exists(d | _dataOutputs.includes(d)));
 		var outputObjects = dataOutputAssociations.collect(i | i.targetRef);
 		objectNodes.addAll(outputObjects);
-		//outputObjects.println();
 	}
-	
+	return objectNodes;
+}
+
+operation Event getAssociatedObjectNodes() : Sequence(ItemAwareElement) {
+
+	var objectNodes: new Sequence;
+	objectNodes.addAll(self.getIncomingObjectNodes());
+	objectNodes.addAll(self.getOutgoingObjectNodes());
 	return objectNodes;
 }
 
