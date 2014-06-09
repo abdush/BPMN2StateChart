@@ -1,3 +1,62 @@
+import "normalization.eol";
+
+for (process in Process.all) {
+	"Multi incoming/outgoing activities:".println();
+	process.getActivitiesWithMultipleOutgoingControlFlow().println();
+	process.getActivitiesWithMultipleIncomingControlFlow().println();
+	"Data Objects:".println();
+	process.getAllDataObjects().println();
+	"Data Objects References:".println();
+	process.getAllDataObjectReferences().println();
+	"All:".println();
+	process.getAllObjectNodes().println();
+	"Claim Object Nodes:".println();
+	process.getObjectNodes("Order").println();
+	"MultiState Objects:".println();
+	process.getDataObjectsWithMultipleStates().println();
+	"Stateful Object Nodes:".println();
+	var statefulObjects = process.getStatefulDataObjects(); 
+	statefulObjects.println();
+	"No Incoming Edge".println();
+	for (dataObject in statefulObjects.keySet())
+		process.getObjectNodesWithNoIncomingEdge(dataObject).println();
+	"No Outgoing Edge".println();
+	for (dataObject in statefulObjects.keySet()) 
+		process.getObjectNodesWithNoOutgoingEdge(dataObject).println();
+	"Activities:".println();
+	for (dataObject in statefulObjects.keySet()) 
+		for (itemAwareElement in statefulObjects.get(dataObject))
+			itemAwareElement.getActivitiesAssociatedWithObjectNode().println();
+	
+	"Flow Nodes object nodes:".println();
+	for( flownode in FlowNode.all) {
+		flownode._getAssociatedObjectNodes().println();
+		flownode._getIncomingObjectNodes().println();
+		flownode._getOutgoingObjectNodes().println();
+	}
+	/* 
+	"Object Nodes for activity:".println();
+	for(activity in Activity.all)
+		activity.getAssociatedObjectNodes().println();
+	"Object Nodes for Event:".println();
+	for(event in Event.all)
+		event.getAssociatedObjectNodes().println();
+	*/
+}
+
+
+/* var i := 0;
+for (leaf in Tree.all.select(t|t.children.isEmpty())) {
+	var child : new Tree;
+	i := i+1;
+	child.label := 'Added' + i;
+	leaf.children.add(child);
+}
+
+Model.store(Model.modelFile + 'copy.model');
+*/
+
+
 // In this script, we query Ecore to find out:
 
 // ... how many classes it has
@@ -19,8 +78,7 @@ for (c in EClass.all) {
 }
 
 
-
-for (n in BPMN2!Event.all) {
+for (n in BPMN!Event.all) {
 	n.id.println();
 }
 	
@@ -30,9 +88,3 @@ operation definitions_id () : String {
 	var id = bpmn2!bpmn2::SequenceFlow.allInstances();
 	id.println();
 }
-operation bpmn2!Definitions process_count() : String {
-	var id = self.id;
-	id.println();
-	return self.id;	
-}
-

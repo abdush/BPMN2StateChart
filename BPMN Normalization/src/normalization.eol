@@ -1,78 +1,59 @@
-/* var i := 0;
-for (leaf in Tree.all.select(t|t.children.isEmpty())) {
-	var child : new Tree;
-	i := i+1;
-	child.label := 'Added' + i;
-	leaf.children.add(child);
-}
-
-Model.store(Model.modelFile + 'copy.model');
-*/
-for (process in Process.all) {
-	"Data Objects:".println();
-	process.getAllDataObjects().println();
-	"Data Objects References:".println();
-	process.getAllDataObjectReferences().println();
-	"All:".println();
-	process.getAllObjectNodes().println();
-	"Claim Object Nodes:".println();
-	process.getObjectNodes("Order").println();
-	"MultiState Objects:".println();
-	process.getDataObjectsWithMultipleStates().println();
-	"Stateful Object Nodes:".println();
-	var statefulObjects = process.getStatefulDataObjects(); 
-	statefulObjects.println();
-	"No Incoming Edge".println();
-	for (dataObject in statefulObjects.keySet())
-		process.getObjectNodesWithNoIncomingEdge(dataObject).println();
-	"No Outgoing Edge".println();
-	for (dataObject in statefulObjects.keySet()) 
-		process.getObjectNodesWithNoOutgoingEdge(dataObject).println();
-	"Activities:".println();
-	for (dataObject in statefulObjects.keySet()) 
-		for (itemAwareElement in statefulObjects.get(dataObject))
-			itemAwareElement.getActivitiesAssociatedWithObjectNode().println();
-	
-	"Flow Nodes object nodes:".println();
-	for( flownode in FlowNode.all) {
-		flownode._getAssociatedObjectNodes().println();
-		flownode._getIncomingObjectNodes().println();
-		flownode._getOutgoingObjectNodes().println();
-	}
-	/* 
-	"Object Nodes for activity:".println();
-	for(activity in Activity.all)
-		activity.getAssociatedObjectNodes().println();
-	"Object Nodes for Event:".println();
-	for(event in Event.all)
-		event.getAssociatedObjectNodes().println();
-	*/
-}
-
-
 /* Helper functions */
 
+/* 
+	Return a sequence of Activity nodes with more than one outgoing sequence flows (uncondition).
+	Check no condition in the sequence flow??
+*/
+operation Process getActivitiesWithMultipleOutgoingControlFlow(): Sequence(Activity) {
+	var activities = Activity.all.select(a| self.flowElements.includes(a) and a.outgoing.size() > 1);
+	return activities;
+}
+
+/*
+	Return a sequence of Activity nodes with more than one incoming sequence flows (uncondition).
+	Check no condition in the sequence flow??
+*/
+operation Process getActivitiesWithMultipleIncomingControlFlow(): Sequence(Activity) {
+	var activities = Activity.all.select(a| self.flowElements.includes(a) and a.incoming.size() > 1);
+	return activities;
+}
+
+/*
+	Get all the DataObject elements defined in this process.
+*/
 operation Process getAllDataObjects(): Sequence(DataObject) {
 	var dataObjects = DataObject.all.select(o| self.flowElements.includes(o));
 	return dataObjects;
 }
 
+/* 
+	Get all the DataObjectReference elements defined in this process.
+*/
 operation Process getAllDataObjectReferences(): Sequence(DataObjectReference) {
 	var dataObjectReferences = DataObjectReference.all.select(o| self.flowElements.includes(o));
 	return dataObjectReferences;
 }
 
+/*
+	Get all the DataObject & DataObjectReference elements defined in this process.
+*/
 operation Process getAllObjectNodes(): Sequence(ItemAwareElement) {
 	var dataObjects = self.getAllDataObjects();
 	var dataObjectRefs = self.getAllDataObjectReferences();
 	return dataObjects.includingAll(dataObjectRefs);
 }
 
+/*
+	Get all the DataObjectReference elements for the given DataObject defined in this process.
+*/
 operation Process getDataObjectReferences(dataObject: DataObject): Sequence(DataObjectReference) {
 	var dataObjectReferences = DataObjectReference.all.select(o|  o.dataObjectRef = dataObject and self.flowElements.includes(o));
 	return dataObjectReferences;
 }
 
+/* 
+	Get the DataObject & DataObjectReference elements defined in this process for the given object name.
+*/
 operation Process getObjectNodes(objectName: String): Sequence(ItemAwareElement) {
 	var objectNodes: new Sequence;
 	var dataObject = DataObject.all.select(o| o.name = objectName and self.flowElements.includes(o)).first();
@@ -99,6 +80,10 @@ operation Process getDataObjectsWithMultipleStates() : Sequence(Sequence(DataObj
 
 */
 
+/* 
+	Get all the DataObject & their DataObjectReference elements defined in this process where there is at least two data states defined.
+	Return a Map of DataObject and a sequence of all object nodes for this data object.
+*/
 operation Process getDataObjectsWithMultipleStates() : Map {
 	var result: new Map;
 	var dataObjects = self.getAllDataObjects();
@@ -113,6 +98,10 @@ operation Process getDataObjectsWithMultipleStates() : Map {
 	return result;
 }
 
+/*
+	Get all the DataObject & their DataObjectReference elements defined in this process where there is at least two data states defined and the object node is connected to an Activity or Event.
+	Return a Map of DataObject and a sequence of all object nodes for this data object.
+*/
 operation Process getStatefulDataObjects() : Map {
 	var result: new Map;
 	var dataObjectsMap = self.getDataObjectsWithMultipleStates();
@@ -126,33 +115,50 @@ operation Process getStatefulDataObjects() : Map {
 	}
 	return result;
 }
-
+/* 
+	Check whether the DataObject/DataObjectReference node is connected to an Activity or Event.
+*/
 operation ItemAwareElement isDataAssociationDefined(): Boolean {
 	return self.isDataOutputAssociationDefined() or self.isDataInputAssociationDefined();
 }
 
+/*
+	Check whether the DataObject/DataObjectReference node is connected as data output to an Activity or Event.
+*/
 operation ItemAwareElement isDataOutputAssociationDefined(): Boolean {
 	var dataOutputs = DataOutput.allInstances.select(o|o.outputSetRefs.isDefined());
 	var	dataOutputAssociations = DataOutputAssociation.all.select(s|s.targetRef = self and s.sourceRef.exists(d| dataOutputs.includes(d)));
 	return dataOutputAssociations.size() >=1;
 }
 
+/* 
+	Check whether the DataObject/DataObjectReference node is connected as data input to an Activity or Event.
+*/
 operation ItemAwareElement isDataInputAssociationDefined(): Boolean {
 	var dataInputs = DataInput.allInstances.select(i|i.inputSetRefs.isDefined());
 	var	dataInputAssociations = DataInputAssociation.all.select(s|s.sourceRef.includes(self) and dataInputs.includes(s.targetRef));
 	return dataInputAssociations.size() >= 1;
 }
 
+/* 
+	Return a sequence of DataObject/DataObjectReference nodes with only incoming edges (connected as data output to an Activity or Event).
+*/
 operation Process getObjectNodesWithNoOutgoingEdge(dataObject: DataObject) : Sequence(ItemAwareElement) {
 	var objectNodes = self.getStatefulDataObjects().get(dataObject);
 	return objectNodes.select(o| not o.isDataInputAssociationDefined());
 }
 
+/*
+	Return a sequence of DataObject/DataObjectReference nodes with only outgoing edges (connected as data input to an Activity or Event).
+*/
 operation Process getObjectNodesWithNoIncomingEdge(dataObject: DataObject) : Sequence(ItemAwareElement) {
 	var objectNodes = self.getStatefulDataObjects().get(dataObject);
 	return objectNodes.select(o| not o.isDataOutputAssociationDefined());
 }
 
+/* 
+	Return a sequence of flow nodes (Activity & Event) that are associated as data input or output with the given object node.
+*/
 operation ItemAwareElement getActivitiesAssociatedWithObjectNode() : Sequence(FlowNode) {
 	var flowNodes: new Sequence;
 	
@@ -171,24 +177,36 @@ operation ItemAwareElement getActivitiesAssociatedWithObjectNode() : Sequence(Fl
 	return flowNodes;
 }
 
+/*
+	Return a sequence of object nodes that are associated as data input or output with the given flow node.
+*/
 operation FlowNode _getAssociatedObjectNodes() : Sequence(ItemAwareElement) {
 	self.println();
 	if (self.isKindOf(Activity) or self.isKindOf(Event))
 		return self.getAssociatedObjectNodes();
 }
 
+/* 
+	Return a sequence of object nodes that are associated as data input with the given flow node.
+*/
 operation FlowNode _getIncomingObjectNodes() : Sequence(ItemAwareElement) {
 	self.println();
 	if (self.isKindOf(Activity) or self.isKindOf(Event))
 		return self.getIncomingObjectNodes();
 }
 
+/*
+	Return a sequence of object nodes that are associated as data output with the given flow node.
+*/
 operation FlowNode _getOutgoingObjectNodes() : Sequence(ItemAwareElement) {
 	self.println();
 	if (self.isKindOf(Activity) or self.isKindOf(Event))
 		return self.getOutgoingObjectNodes();
 }
 
+/*
+	Return a sequence of object nodes that are associated as data input with the given Activity.
+*/
 operation Activity getIncomingObjectNodes() : Sequence(ItemAwareElement) {
 	
 	var objectNodes: new Sequence;
@@ -203,6 +221,9 @@ operation Activity getIncomingObjectNodes() : Sequence(ItemAwareElement) {
 	return objectNodes;
 }
 
+/*
+	Return a sequence of object nodes that are associated as data output with the given Activity.
+*/
 operation Activity getOutgoingObjectNodes() : Sequence(ItemAwareElement) {
 	
 	var objectNodes: new Sequence;
@@ -215,6 +236,9 @@ operation Activity getOutgoingObjectNodes() : Sequence(ItemAwareElement) {
 	return objectNodes;
 }
 
+/* 
+	Return a sequence of object nodes that are associated as data input or output with the given Activity.
+*/
 operation Activity getAssociatedObjectNodes() : Sequence(ItemAwareElement) {
 	
 	var objectNodes: new Sequence;
@@ -223,6 +247,9 @@ operation Activity getAssociatedObjectNodes() : Sequence(ItemAwareElement) {
 	return objectNodes;
 }
 
+/* 
+	Return a sequence of object nodes that are associated as data input with the given Event.
+*/
 operation Event getIncomingObjectNodes() : Sequence(ItemAwareElement) {
 	
 	var objectNodes: new Sequence;
@@ -235,6 +262,9 @@ operation Event getIncomingObjectNodes() : Sequence(ItemAwareElement) {
 	return objectNodes;
 }
 
+/* 
+	Return a sequence of object nodes that are associated as data output with the given Event.
+*/
 operation Event getOutgoingObjectNodes() : Sequence(ItemAwareElement) {
 	
 	var objectNodes: new Sequence;
@@ -247,6 +277,9 @@ operation Event getOutgoingObjectNodes() : Sequence(ItemAwareElement) {
 	return objectNodes;
 }
 
+/* 
+	Return a sequence of object nodes that are associated as data input or output with the given Event.
+*/
 operation Event getAssociatedObjectNodes() : Sequence(ItemAwareElement) {
 
 	var objectNodes: new Sequence;
