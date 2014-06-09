@@ -1,0 +1,61 @@
+import "normalization.eol";
+
+migrate Activity 
+	when {
+		--var process = Original!Process.all.first().equivalent();
+		--var activities = process.getActivitiesWithMultipleOutgoingControlFlow();
+		--return (activities.size > 0 and activities.includes(original));
+		return original.hasMultipleOutgoingControlFlows();
+	}
+{
+	
+	"Activity".println();
+	//activities.println();
+	original.println();
+	migrated.println();
+	
+	original.outgoing.println();
+	migrated.outgoing.println();
+	/*  
+	"Activities".println();
+	Original!Activity.all.println();
+	Migrated!Activity.all.println();
+	
+	"Seq flows".println();
+	Original!SequenceFlow.all.println();
+	Migrated!SequenceFlow.all.println();
+	*/ 
+	var sequenceFlow: new Migrated!SequenceFlow;
+	var fork: new Migrated!ParallelGateway;
+					
+	--Set a unique id for the gateway!!?? 
+	sequenceFlow.id = "sq_123";
+	fork.id = "fork_id123";
+					
+	fork.gatewayDirection = Migrated!GatewayDirection#Diverging;
+	var seqFlows = Original!SequenceFlow.all.select(s|s.sourceRef = original);
+	seqFlows.equivalent().println();
+	
+	fork.outgoing.addAll(original.outgoing.equivalent());
+	fork.outgoing.println();
+	sequenceFlow.sourceRef = migrated;
+	sequenceFlow.targetRef = fork;
+	//migrated.outgoing.clear();
+	//migrated.outgoing.add(sequenceFlow);
+	migrated.outgoing.println();	
+	sequenceFlow.println();		
+	--get the process which contains the task (self))!??
+	original.getContainingProcess().flowElements.size().println();
+	original.getContainingProcess().equivalent().flowElements.size().println();
+	original.getContainingProcess().equivalent().flowElements.add(sequenceFlow);
+	original.getContainingProcess().equivalent().flowElements.add(fork);
+	
+}
+
+operation Original!Activity hasMultipleOutgoingControlFlows() : Boolean {
+	return self.outgoing.size() > 1;
+}
+
+operation Original!FlowElement getContainingProcess() : Original!Process {
+	return Original!Process.all.select(p| p.flowElements.includes(self)).first();
+} 

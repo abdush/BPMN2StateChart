@@ -7,10 +7,11 @@
     <bpmn2:sequenceFlow id="_J84mQ-neEeOgCMDZjxiKRQ" sourceRef="_J84mQuneEeOgCMDZjxiKRQ" targetRef="_J84mROneEeOgCMDZjxiKRQ"/>
     <bpmn2:task id="_J84mROneEeOgCMDZjxiKRQ" name="task 1">
       <bpmn2:incoming>_J84mQ-neEeOgCMDZjxiKRQ</bpmn2:incoming>
-      <bpmn2:outgoing>_QkgUwOvyEeOVXPIeNq7wFw</bpmn2:outgoing>
+      <bpmn2:outgoing>_J84mReneEeOgCMDZjxiKRQ</bpmn2:outgoing>
+      <bpmn2:outgoing>_7unF4OouEeO7IP1X9T78Pg</bpmn2:outgoing>
     </bpmn2:task>
-    <bpmn2:sequenceFlow id="_J84mReneEeOgCMDZjxiKRQ" sourceRef="fork_id123" targetRef="_J84mR-neEeOgCMDZjxiKRQ"/>
-    <bpmn2:sequenceFlow id="_7unF4OouEeO7IP1X9T78Pg" sourceRef="fork_id123" targetRef="_J84mSOneEeOgCMDZjxiKRQ"/>
+    <bpmn2:sequenceFlow id="_J84mReneEeOgCMDZjxiKRQ" sourceRef="_J84mROneEeOgCMDZjxiKRQ" targetRef="_J84mR-neEeOgCMDZjxiKRQ"/>
+    <bpmn2:sequenceFlow id="_7unF4OouEeO7IP1X9T78Pg" sourceRef="_J84mROneEeOgCMDZjxiKRQ" targetRef="_J84mSOneEeOgCMDZjxiKRQ"/>
     <bpmn2:task id="_J84mR-neEeOgCMDZjxiKRQ" name="task 2">
       <bpmn2:incoming>_J84mReneEeOgCMDZjxiKRQ</bpmn2:incoming>
       <bpmn2:outgoing>_J84mSeneEeOgCMDZjxiKRQ</bpmn2:outgoing>
@@ -48,26 +49,15 @@
     <bpmn2:sequenceFlow id="_7EecY-oxEeO7IP1X9T78Pg" sourceRef="_7EecYuoxEeO7IP1X9T78Pg" targetRef="_7EecZeoxEeO7IP1X9T78Pg"/>
     <bpmn2:sequenceFlow id="_7EecZOoxEeO7IP1X9T78Pg" sourceRef="_7EecYuoxEeO7IP1X9T78Pg" targetRef="_7EecZ-oxEeO7IP1X9T78Pg"/>
     <bpmn2:task id="_7EecaeoxEeO7IP1X9T78Pg" name="task 7">
-      <bpmn2:incoming>_QkgUwevyEeOVXPIeNq7wFw</bpmn2:incoming>
+      <bpmn2:incoming>_7EecZuoxEeO7IP1X9T78Pg</bpmn2:incoming>
+      <bpmn2:incoming>_7EecaOoxEeO7IP1X9T78Pg</bpmn2:incoming>
       <bpmn2:outgoing>_7EecauoxEeO7IP1X9T78Pg</bpmn2:outgoing>
     </bpmn2:task>
-    <bpmn2:sequenceFlow id="_7EecZuoxEeO7IP1X9T78Pg" sourceRef="_7EecZeoxEeO7IP1X9T78Pg" targetRef="merge_id123"/>
-    <bpmn2:sequenceFlow id="_7EecaOoxEeO7IP1X9T78Pg" sourceRef="_7EecZ-oxEeO7IP1X9T78Pg" targetRef="merge_id123"/>
+    <bpmn2:sequenceFlow id="_7EecZuoxEeO7IP1X9T78Pg" sourceRef="_7EecZeoxEeO7IP1X9T78Pg" targetRef="_7EecaeoxEeO7IP1X9T78Pg"/>
+    <bpmn2:sequenceFlow id="_7EecaOoxEeO7IP1X9T78Pg" sourceRef="_7EecZ-oxEeO7IP1X9T78Pg" targetRef="_7EecaeoxEeO7IP1X9T78Pg"/>
     <bpmn2:endEvent id="_J84mTeneEeOgCMDZjxiKRQ">
       <bpmn2:incoming>_7EecauoxEeO7IP1X9T78Pg</bpmn2:incoming>
     </bpmn2:endEvent>
     <bpmn2:sequenceFlow id="_7EecauoxEeO7IP1X9T78Pg" sourceRef="_7EecaeoxEeO7IP1X9T78Pg" targetRef="_J84mTeneEeOgCMDZjxiKRQ"/>
-    <bpmn2:sequenceFlow id="_QkgUwOvyEeOVXPIeNq7wFw" sourceRef="_J84mROneEeOgCMDZjxiKRQ" targetRef="fork_id123"/>
-    <bpmn2:parallelGateway id="fork_id123" gatewayDirection="Diverging">
-      <bpmn2:incoming>_QkgUwOvyEeOVXPIeNq7wFw</bpmn2:incoming>
-      <bpmn2:outgoing>_J84mReneEeOgCMDZjxiKRQ</bpmn2:outgoing>
-      <bpmn2:outgoing>_7unF4OouEeO7IP1X9T78Pg</bpmn2:outgoing>
-    </bpmn2:parallelGateway>
-    <bpmn2:sequenceFlow id="_QkgUwevyEeOVXPIeNq7wFw" sourceRef="merge_id123" targetRef="_7EecaeoxEeO7IP1X9T78Pg"/>
-    <bpmn2:exclusiveGateway id="merge_id123" gatewayDirection="Converging">
-      <bpmn2:incoming>_7EecZuoxEeO7IP1X9T78Pg</bpmn2:incoming>
-      <bpmn2:incoming>_7EecaOoxEeO7IP1X9T78Pg</bpmn2:incoming>
-      <bpmn2:outgoing>_QkgUwevyEeOVXPIeNq7wFw</bpmn2:outgoing>
-    </bpmn2:exclusiveGateway>
   </bpmn2:process>
 </bpmn2:definitions>

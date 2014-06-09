@@ -1,5 +1,12 @@
 /* Helper functions */
 
+/*  
+	Return the process that contains the given flow element.
+
+operation FlowElement getContainingProcess() : Process {
+	return Process.all.select(p| p.flowElements.includes(self)).first();
+} 
+*/ 
 /* 
 	Return a sequence of Activity nodes with more than one outgoing sequence flows (uncondition).
 	Check no condition in the sequence flow??

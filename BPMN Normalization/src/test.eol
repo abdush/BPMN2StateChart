@@ -1,5 +1,9 @@
 import "normalization.eol";
 
+"Flow elements containing process:".println();
+--for (flowElement in FlowElement.all)
+--	flowElement.getContainingProcess().println();
+		
 for (process in Process.all) {
 	"Multi incoming/outgoing activities:".println();
 	process.getActivitiesWithMultipleOutgoingControlFlow().println();
