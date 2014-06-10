@@ -1,0 +1,1954 @@
+@namespace(uri="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI", prefix="bpmn2")
+package bpmn2;
+
+import "http://www.eclipse.org/emf/2003/XMLType";
+import "platform:/resource/BPMN Normalization/metamodels/BPMNDI.ecore";
+
+@ExtendedMetaData(name="", kind="mixed")
+class DocumentRoot {
+
+  @ExtendedMetaData(kind="elementWildcard", name=":mixed")
+  !unique attr ecore.EFeatureMapEntry[*] mixed;
+
+  @ExtendedMetaData(kind="attribute", name="xmlns:prefix")
+  transient !resolve val ecore.EStringToStringMapEntry[*] xMLNSPrefixMap;
+
+  @ExtendedMetaData(kind="attribute", name="xsi:schemaLocation")
+  transient !resolve val ecore.EStringToStringMapEntry[*] xSISchemaLocation;
+
+  @ExtendedMetaData(kind="element", name="activity", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val Activity[0..?] activity;
+
+  @ExtendedMetaData(kind="element", name="adHocSubProcess", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val AdHocSubProcess[0..?] adHocSubProcess;
+
+  @ExtendedMetaData(kind="element", name="flowElement", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val FlowElement[0..?] flowElement;
+
+  @ExtendedMetaData(kind="element", name="artifact", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val Artifact[0..?] artifact;
+
+  @ExtendedMetaData(kind="element", name="assignment", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val Assignment[0..?] assignment;
+
+  @ExtendedMetaData(kind="element", name="association", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#artifact")
+  volatile transient derived !resolve val Association[0..?] association;
+
+  @ExtendedMetaData(kind="element", name="auditing", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val Auditing[0..?] auditing;
+
+  @ExtendedMetaData(kind="element", name="baseElement", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val BaseElement[0..?] baseElement;
+
+  @ExtendedMetaData(kind="element", name="baseElementWithMixedContent", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val BaseElement[0..?] baseElementWithMixedContent;
+
+  @ExtendedMetaData(kind="element", name="boundaryEvent", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val BoundaryEvent[0..?] boundaryEvent;
+
+  @ExtendedMetaData(kind="element", name="businessRuleTask", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val BusinessRuleTask[0..?] businessRuleTask;
+
+  @ExtendedMetaData(kind="element", name="callableElement", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val CallableElement[0..?] callableElement;
+
+  @ExtendedMetaData(kind="element", name="callActivity", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val CallActivity[0..?] callActivity;
+
+  @ExtendedMetaData(kind="element", name="callChoreography", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val CallChoreography[0..?] callChoreography;
+
+  @ExtendedMetaData(kind="element", name="callConversation", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#conversationNode")
+  volatile transient derived !resolve val CallConversation[0..?] callConversation;
+
+  @ExtendedMetaData(kind="element", name="conversationNode", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val ConversationNode[0..?] conversationNode;
+
+  @ExtendedMetaData(kind="element", name="cancelEventDefinition", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#eventDefinition")
+  volatile transient derived !resolve val CancelEventDefinition[0..?] cancelEventDefinition;
+
+  @ExtendedMetaData(kind="element", name="eventDefinition", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#rootElement")
+  volatile transient derived !resolve val EventDefinition[0..?] eventDefinition;
+
+  @ExtendedMetaData(kind="element", name="rootElement", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val RootElement[0..?] rootElement;
+
+  @ExtendedMetaData(kind="element", name="catchEvent", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val CatchEvent[0..?] catchEvent;
+
+  @ExtendedMetaData(kind="element", name="category", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#rootElement")
+  volatile transient derived !resolve val Category[0..?] category;
+
+  @ExtendedMetaData(kind="element", name="categoryValue", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val CategoryValue[0..?] categoryValue;
+
+  @ExtendedMetaData(kind="element", name="choreography", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#collaboration")
+  volatile transient derived !resolve val Choreography[0..?] choreography;
+
+  @ExtendedMetaData(kind="element", name="collaboration", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#rootElement")
+  volatile transient derived !resolve val Collaboration[0..?] collaboration;
+
+  @ExtendedMetaData(kind="element", name="choreographyActivity", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val ChoreographyActivity[0..?] choreographyActivity;
+
+  @ExtendedMetaData(kind="element", name="choreographyTask", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val ChoreographyTask[0..?] choreographyTask;
+
+  @ExtendedMetaData(kind="element", name="compensateEventDefinition", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#eventDefinition")
+  volatile transient derived !resolve val CompensateEventDefinition[0..?] compensateEventDefinition;
+
+  @ExtendedMetaData(kind="element", name="complexBehaviorDefinition", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val ComplexBehaviorDefinition[0..?] complexBehaviorDefinition;
+
+  @ExtendedMetaData(kind="element", name="complexGateway", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val ComplexGateway[0..?] complexGateway;
+
+  @ExtendedMetaData(kind="element", name="conditionalEventDefinition", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#eventDefinition")
+  volatile transient derived !resolve val ConditionalEventDefinition[0..?] conditionalEventDefinition;
+
+  @ExtendedMetaData(kind="element", name="conversation", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#conversationNode")
+  volatile transient derived !resolve val Conversation[0..?] conversation;
+
+  @ExtendedMetaData(kind="element", name="conversationAssociation", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val ConversationAssociation[0..?] conversationAssociation;
+
+  @ExtendedMetaData(kind="element", name="conversationLink", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val ConversationLink[0..?] conversationLink;
+
+  @ExtendedMetaData(kind="element", name="correlationKey", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val CorrelationKey[0..?] correlationKey;
+
+  @ExtendedMetaData(kind="element", name="correlationProperty", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#rootElement")
+  volatile transient derived !resolve val CorrelationProperty[0..?] correlationProperty;
+
+  @ExtendedMetaData(kind="element", name="correlationPropertyBinding", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val CorrelationPropertyBinding[0..?] correlationPropertyBinding;
+
+  @ExtendedMetaData(kind="element", name="correlationPropertyRetrievalExpression", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val CorrelationPropertyRetrievalExpression[0..?] correlationPropertyRetrievalExpression;
+
+  @ExtendedMetaData(kind="element", name="correlationSubscription", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val CorrelationSubscription[0..?] correlationSubscription;
+
+  @ExtendedMetaData(kind="element", name="dataAssociation", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val DataAssociation[0..?] dataAssociation;
+
+  @ExtendedMetaData(kind="element", name="dataInput", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val DataInput[0..?] dataInput;
+
+  @ExtendedMetaData(kind="element", name="dataInputAssociation", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val DataInputAssociation[0..?] dataInputAssociation;
+
+  @ExtendedMetaData(kind="element", name="dataObject", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val DataObject[0..?] dataObject;
+
+  @ExtendedMetaData(kind="element", name="dataObjectReference", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val DataObjectReference[0..?] dataObjectReference;
+
+  @ExtendedMetaData(kind="element", name="dataOutput", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val DataOutput[0..?] dataOutput;
+
+  @ExtendedMetaData(kind="element", name="dataOutputAssociation", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val DataOutputAssociation[0..?] dataOutputAssociation;
+
+  @ExtendedMetaData(kind="element", name="dataState", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val DataState[0..?] dataState;
+
+  @ExtendedMetaData(kind="element", name="dataStore", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#rootElement")
+  volatile transient derived !resolve val DataStore[0..?] dataStore;
+
+  @ExtendedMetaData(kind="element", name="dataStoreReference", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val DataStoreReference[0..?] dataStoreReference;
+
+  @ExtendedMetaData(kind="element", name="definitions", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val Definitions[0..?] definitions;
+
+  @ExtendedMetaData(kind="element", name="documentation", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val Documentation[0..?] documentation;
+
+  @ExtendedMetaData(kind="element", name="endEvent", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val EndEvent[0..?] endEvent;
+
+  @ExtendedMetaData(kind="element", name="endPoint", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#rootElement")
+  volatile transient derived !resolve val EndPoint[0..?] endPoint;
+
+  @ExtendedMetaData(kind="element", name="error", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#rootElement")
+  volatile transient derived !resolve val Error[0..?] error;
+
+  @ExtendedMetaData(kind="element", name="errorEventDefinition", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#eventDefinition")
+  volatile transient derived !resolve val ErrorEventDefinition[0..?] errorEventDefinition;
+
+  @ExtendedMetaData(kind="element", name="escalation", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#rootElement")
+  volatile transient derived !resolve val Escalation[0..?] escalation;
+
+  @ExtendedMetaData(kind="element", name="escalationEventDefinition", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#eventDefinition")
+  volatile transient derived !resolve val EscalationEventDefinition[0..?] escalationEventDefinition;
+
+  @ExtendedMetaData(kind="element", name="event", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val Event[0..?] event;
+
+  @ExtendedMetaData(kind="element", name="eventBasedGateway", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val EventBasedGateway[0..?] eventBasedGateway;
+
+  @ExtendedMetaData(kind="element", name="exclusiveGateway", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val ExclusiveGateway[0..?] exclusiveGateway;
+
+  @ExtendedMetaData(kind="element", name="expression", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val Expression[0..?] expression;
+
+  @ExtendedMetaData(kind="element", name="extension", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val Extension[0..?] extension;
+
+  @ExtendedMetaData(kind="element", name="extensionElements", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val ExtensionAttributeValue[0..?] extensionElements;
+
+  @ExtendedMetaData(kind="element", name="flowNode", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val FlowNode[0..?] flowNode;
+
+  @ExtendedMetaData(kind="element", name="formalExpression", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#expression")
+  volatile transient derived !resolve val FormalExpression[0..?] formalExpression;
+
+  @ExtendedMetaData(kind="element", name="gateway", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  readonly volatile transient derived !resolve val Gateway[0..?] gateway;
+
+  @ExtendedMetaData(kind="element", name="globalBusinessRuleTask", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#rootElement")
+  volatile transient derived !resolve val GlobalBusinessRuleTask[0..?] globalBusinessRuleTask;
+
+  @ExtendedMetaData(kind="element", name="globalChoreographyTask", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#choreography")
+  volatile transient derived !resolve val GlobalChoreographyTask[0..?] globalChoreographyTask;
+
+  @ExtendedMetaData(kind="element", name="globalConversation", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#collaboration")
+  volatile transient derived !resolve val GlobalConversation[0..?] globalConversation;
+
+  @ExtendedMetaData(kind="element", name="globalManualTask", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#rootElement")
+  volatile transient derived !resolve val GlobalManualTask[0..?] globalManualTask;
+
+  @ExtendedMetaData(kind="element", name="globalScriptTask", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#rootElement")
+  volatile transient derived !resolve val GlobalScriptTask[0..?] globalScriptTask;
+
+  @ExtendedMetaData(kind="element", name="globalTask", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#rootElement")
+  volatile transient derived !resolve val GlobalTask[0..?] globalTask;
+
+  @ExtendedMetaData(kind="element", name="globalUserTask", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#rootElement")
+  volatile transient derived !resolve val GlobalUserTask[0..?] globalUserTask;
+
+  @ExtendedMetaData(kind="element", name="group", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#artifact")
+  volatile transient derived !resolve val Group[0..?] group;
+
+  @ExtendedMetaData(kind="element", name="humanPerformer", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#performer")
+  volatile transient derived !resolve val HumanPerformer[0..?] humanPerformer;
+
+  @ExtendedMetaData(kind="element", name="performer", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#resourceRole")
+  volatile transient derived !resolve val Performer[0..?] performer;
+
+  @ExtendedMetaData(kind="element", name="resourceRole", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val ResourceRole[0..?] resourceRole;
+
+  @ExtendedMetaData(kind="element", name="implicitThrowEvent", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val ImplicitThrowEvent[0..?] implicitThrowEvent;
+
+  @ExtendedMetaData(kind="element", name="import", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val Import[0..?] ~import;
+
+  @ExtendedMetaData(kind="element", name="inclusiveGateway", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val InclusiveGateway[0..?] inclusiveGateway;
+
+  @ExtendedMetaData(kind="element", name="inputSet", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val InputSet[0..?] inputSet;
+
+  @ExtendedMetaData(kind="element", name="interface", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#rootElement")
+  volatile transient derived !resolve val Interface[0..?] ~interface;
+
+  @ExtendedMetaData(kind="element", name="intermediateCatchEvent", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val IntermediateCatchEvent[0..?] intermediateCatchEvent;
+
+  @ExtendedMetaData(kind="element", name="intermediateThrowEvent", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val IntermediateThrowEvent[0..?] intermediateThrowEvent;
+
+  @ExtendedMetaData(kind="element", name="ioBinding", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val InputOutputBinding[0..?] ioBinding;
+
+  @ExtendedMetaData(kind="element", name="ioSpecification", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val InputOutputSpecification[0..?] ioSpecification;
+
+  @ExtendedMetaData(kind="element", name="itemDefinition", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#rootElement")
+  volatile transient derived !resolve val ItemDefinition[0..?] itemDefinition;
+
+  @ExtendedMetaData(kind="element", name="lane", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val Lane[0..?] lane;
+
+  @ExtendedMetaData(kind="element", name="laneSet", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val LaneSet[0..?] laneSet;
+
+  @ExtendedMetaData(kind="element", name="linkEventDefinition", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#eventDefinition")
+  volatile transient derived !resolve val LinkEventDefinition[0..?] linkEventDefinition;
+
+  @ExtendedMetaData(kind="element", name="loopCharacteristics", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val LoopCharacteristics[0..?] loopCharacteristics;
+
+  @ExtendedMetaData(kind="element", name="manualTask", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val ManualTask[0..?] manualTask;
+
+  @ExtendedMetaData(kind="element", name="message", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#rootElement")
+  volatile transient derived !resolve val Message[0..?] message;
+
+  @ExtendedMetaData(kind="element", name="messageEventDefinition", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#eventDefinition")
+  volatile transient derived !resolve val MessageEventDefinition[0..?] messageEventDefinition;
+
+  @ExtendedMetaData(kind="element", name="messageFlow", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val MessageFlow[0..?] messageFlow;
+
+  @ExtendedMetaData(kind="element", name="messageFlowAssociation", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val MessageFlowAssociation[0..?] messageFlowAssociation;
+
+  @ExtendedMetaData(kind="element", name="monitoring", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val Monitoring[0..?] monitoring;
+
+  @ExtendedMetaData(kind="element", name="multiInstanceLoopCharacteristics", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#loopCharacteristics")
+  volatile transient derived !resolve val MultiInstanceLoopCharacteristics[0..?] multiInstanceLoopCharacteristics;
+
+  @ExtendedMetaData(kind="element", name="operation", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val Operation[0..?] operation;
+
+  @ExtendedMetaData(kind="element", name="outputSet", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val OutputSet[0..?] outputSet;
+
+  @ExtendedMetaData(kind="element", name="parallelGateway", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val ParallelGateway[0..?] parallelGateway;
+
+  @ExtendedMetaData(kind="element", name="participant", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val Participant[0..?] participant;
+
+  @ExtendedMetaData(kind="element", name="participantAssociation", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val ParticipantAssociation[0..?] participantAssociation;
+
+  @ExtendedMetaData(kind="element", name="participantMultiplicity", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val ParticipantMultiplicity[0..?] participantMultiplicity;
+
+  @ExtendedMetaData(kind="element", name="partnerEntity", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#rootElement")
+  volatile transient derived !resolve val PartnerEntity[0..?] partnerEntity;
+
+  @ExtendedMetaData(kind="element", name="partnerRole", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#rootElement")
+  volatile transient derived !resolve val PartnerRole[0..?] partnerRole;
+
+  @ExtendedMetaData(kind="element", name="potentialOwner", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#performer")
+  volatile transient derived !resolve val PotentialOwner[0..?] potentialOwner;
+
+  @ExtendedMetaData(kind="element", name="process", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#rootElement")
+  volatile transient derived !resolve val Process[0..?] process;
+
+  @ExtendedMetaData(kind="element", name="property", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val Property[0..?] property;
+
+  @ExtendedMetaData(kind="element", name="receiveTask", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val ReceiveTask[0..?] receiveTask;
+
+  @ExtendedMetaData(kind="element", name="relationship", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val Relationship[0..?] relationship;
+
+  @ExtendedMetaData(kind="element", name="rendering", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val Rendering[0..?] rendering;
+
+  @ExtendedMetaData(kind="element", name="resource", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#rootElement")
+  volatile transient derived !resolve val Resource[0..?] resource;
+
+  @ExtendedMetaData(kind="element", name="resourceAssignmentExpression", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val ResourceAssignmentExpression[0..?] resourceAssignmentExpression;
+
+  @ExtendedMetaData(kind="element", name="resourceParameter", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val ResourceParameter[0..?] resourceParameter;
+
+  @ExtendedMetaData(kind="element", name="resourceParameterBinding", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val ResourceParameterBinding[0..?] resourceParameterBinding;
+
+  @ExtendedMetaData(kind="element", name="script", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val EObject[0..?] script;
+
+  @ExtendedMetaData(kind="element", name="scriptTask", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val ScriptTask[0..?] scriptTask;
+
+  @ExtendedMetaData(kind="element", name="sendTask", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val SendTask[0..?] sendTask;
+
+  @ExtendedMetaData(kind="element", name="sequenceFlow", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val SequenceFlow[0..?] sequenceFlow;
+
+  @ExtendedMetaData(kind="element", name="serviceTask", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val ServiceTask[0..?] serviceTask;
+
+  @ExtendedMetaData(kind="element", name="signal", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#rootElement")
+  volatile transient derived !resolve val Signal[0..?] signal;
+
+  @ExtendedMetaData(kind="element", name="signalEventDefinition", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#eventDefinition")
+  volatile transient derived !resolve val SignalEventDefinition[0..?] signalEventDefinition;
+
+  @ExtendedMetaData(kind="element", name="standardLoopCharacteristics", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#loopCharacteristics")
+  volatile transient derived !resolve val StandardLoopCharacteristics[0..?] standardLoopCharacteristics;
+
+  @ExtendedMetaData(kind="element", name="startEvent", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val StartEvent[0..?] startEvent;
+
+  @ExtendedMetaData(kind="element", name="subChoreography", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val SubChoreography[0..?] subChoreography;
+
+  @ExtendedMetaData(kind="element", name="subConversation", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#conversationNode")
+  volatile transient derived !resolve val SubConversation[0..?] subConversation;
+
+  @ExtendedMetaData(kind="element", name="subProcess", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val SubProcess[0..?] subProcess;
+
+  @ExtendedMetaData(kind="element", name="task", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val Task[0..?] task;
+
+  @ExtendedMetaData(kind="element", name="terminateEventDefinition", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#eventDefinition")
+  volatile transient derived !resolve val TerminateEventDefinition[0..?] terminateEventDefinition;
+
+  @ExtendedMetaData(kind="element", name="text", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val EObject[0..?] text;
+
+  @ExtendedMetaData(kind="element", name="textAnnotation", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#artifact")
+  volatile transient derived !resolve val TextAnnotation[0..?] textAnnotation;
+
+  @ExtendedMetaData(kind="element", name="throwEvent", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  volatile transient derived !resolve val ThrowEvent[0..?] throwEvent;
+
+  @ExtendedMetaData(kind="element", name="timerEventDefinition", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#eventDefinition")
+  volatile transient derived !resolve val TimerEventDefinition[0..?] timerEventDefinition;
+
+  @ExtendedMetaData(kind="element", name="transaction", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val Transaction[0..?] transaction;
+
+  @ExtendedMetaData(kind="element", name="userTask", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", affiliation="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  volatile transient derived !resolve val UserTask[0..?] userTask;
+}
+
+@ExtendedMetaData(name="tActivity", kind="elementOnly", "abstract"="true")
+class Activity extends FlowNode {
+
+  @ExtendedMetaData(kind="element", name="ioSpecification", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val InputOutputSpecification ioSpecification;
+  !ordered transient derived !resolve ref BoundaryEvent[*]#attachedToRef boundaryEventRefs;
+
+  @ExtendedMetaData(kind="element", name="property", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val Property[*] properties;
+
+  @ExtendedMetaData(kind="element", name="dataInputAssociation", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val DataInputAssociation[*] dataInputAssociations;
+
+  @ExtendedMetaData(kind="element", name="dataOutputAssociation", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val DataOutputAssociation[*] dataOutputAssociations;
+
+  @ExtendedMetaData(kind="element", name="resourceRole", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", group="http://www.omg.org/spec/BPMN/20100524/MODEL#resourceRole")
+  !ordered val ResourceRole[*] resources;
+
+  @ExtendedMetaData(kind="element", name="loopCharacteristics", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", group="http://www.omg.org/spec/BPMN/20100524/MODEL#loopCharacteristics")
+  !ordered val LoopCharacteristics loopCharacteristics;
+
+  @ExtendedMetaData(kind="attribute", name="completionQuantity")
+  !ordered attr int completionQuantity = 1;
+
+  @ExtendedMetaData(kind="attribute", name="default")
+  !ordered !resolve ref SequenceFlow default;
+
+  @ExtendedMetaData(kind="attribute", name="isForCompensation")
+  !ordered attr boolean isForCompensation = false;
+
+  @ExtendedMetaData(kind="attribute", name="startQuantity")
+  !ordered attr int startQuantity = 1;
+}
+
+@ExtendedMetaData(name="tAdHocOrdering")
+enum AdHocOrdering {
+  Parallel = 0;
+  Sequential = 1;
+}
+
+@ExtendedMetaData(name="tAdHocSubProcess", kind="elementOnly")
+class AdHocSubProcess extends SubProcess {
+
+  @ExtendedMetaData(kind="element", name="completionCondition", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val Expression[1] completionCondition;
+
+  @ExtendedMetaData(kind="attribute", name="cancelRemainingInstances")
+  !ordered attr boolean cancelRemainingInstances = true;
+
+  @ExtendedMetaData(kind="attribute", name="ordering")
+  !ordered attr AdHocOrdering ordering;
+}
+
+@ExtendedMetaData(name="tArtifact", kind="elementOnly", "abstract"="true")
+class Artifact extends BaseElement {
+}
+
+@ExtendedMetaData(name="tAssignment", kind="elementOnly")
+class Assignment extends BaseElement {
+
+  @ExtendedMetaData(kind="element", name="from", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val Expression[1] from;
+
+  @ExtendedMetaData(kind="element", name="to", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val Expression[1] to;
+}
+
+@ExtendedMetaData(name="tAssociation", kind="elementOnly")
+class Association extends Artifact {
+
+  @ExtendedMetaData(kind="attribute", name="associationDirection")
+  !ordered attr AssociationDirection associationDirection = "None";
+
+  @ExtendedMetaData(kind="attribute", name="sourceRef")
+  !ordered ref BaseElement[1] sourceRef;
+
+  @ExtendedMetaData(kind="attribute", name="targetRef")
+  !ordered ref BaseElement[1] targetRef;
+}
+
+@ExtendedMetaData(name="tAssociationDirection")
+enum AssociationDirection {
+  None = 0;
+  One = 1;
+  Both = 2;
+}
+
+@ExtendedMetaData(name="tAuditing", kind="elementOnly")
+class Auditing extends BaseElement {
+}
+
+@ExtendedMetaData(name="tBaseElement", kind="elementOnly", "abstract"="true")
+class BaseElement {
+
+  @ExtendedMetaData(kind="element", name="extensionElements", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val ExtensionAttributeValue[*] extensionValues;
+
+  @ExtendedMetaData(kind="element", name="documentation", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val Documentation[*] documentation;
+  !ordered ref ExtensionDefinition[*] extensionDefinitions;
+
+  @ExtendedMetaData(kind="attribute", name="id")
+  !ordered id attr String ~id;
+
+  @ExtendedMetaData(kind="attributeWildcard", wildcards="##other", name=":3", processing="lax")
+  !unique attr ecore.EFeatureMapEntry[*] anyAttribute;
+}
+
+@ExtendedMetaData(name="tBoundaryEvent", kind="elementOnly")
+class BoundaryEvent extends CatchEvent {
+
+  @ExtendedMetaData(kind="attribute", name="attachedToRef")
+  !ordered !resolve ref Activity[1]#boundaryEventRefs attachedToRef;
+
+  @ExtendedMetaData(kind="attribute", name="cancelActivity")
+  !ordered attr boolean cancelActivity = true;
+}
+
+@ExtendedMetaData(name="tBusinessRuleTask", kind="elementOnly")
+class BusinessRuleTask extends Task {
+
+  @ExtendedMetaData(kind="attribute", name="implementation")
+  !ordered attr String implementation;
+}
+
+@ExtendedMetaData(name="tCallActivity", kind="elementOnly")
+class CallActivity extends Activity {
+
+  @ExtendedMetaData(kind="attribute", name="calledElement")
+  !ordered ref CallableElement calledElementRef;
+}
+
+@ExtendedMetaData(name="tCallChoreography", kind="elementOnly")
+class CallChoreography extends ChoreographyActivity {
+
+  @ExtendedMetaData(kind="element", name="participantAssociation", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val ParticipantAssociation[*] participantAssociations;
+
+  @ExtendedMetaData(kind="attribute", name="calledChoreographyRef")
+  !ordered ref Choreography calledChoreographyRef;
+}
+
+@ExtendedMetaData(name="tCallConversation", kind="elementOnly")
+class CallConversation extends ConversationNode {
+
+  @ExtendedMetaData(kind="element", name="participantAssociation", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val ParticipantAssociation[*] participantAssociations;
+
+  @ExtendedMetaData(kind="attribute", name="calledCollaborationRef")
+  !ordered ref Collaboration calledCollaborationRef;
+}
+
+@ExtendedMetaData(name="tCallableElement", kind="elementOnly", "abstract"="true")
+class CallableElement extends RootElement {
+
+  @ExtendedMetaData(kind="element", name="supportedInterfaceRef", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered ref Interface[*] supportedInterfaceRefs;
+
+  @ExtendedMetaData(kind="element", name="ioSpecification", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val InputOutputSpecification ioSpecification;
+
+  @ExtendedMetaData(kind="element", name="ioBinding", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val InputOutputBinding[*] ioBinding;
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String name;
+}
+
+@ExtendedMetaData(name="tCancelEventDefinition", kind="elementOnly")
+class CancelEventDefinition extends EventDefinition {
+}
+
+@ExtendedMetaData(name="tCatchEvent", kind="elementOnly")
+abstract class CatchEvent extends Event {
+
+  @ExtendedMetaData(kind="element", name="dataOutput", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val DataOutput[*] dataOutputs;
+
+  @ExtendedMetaData(kind="element", name="dataOutputAssociation", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val DataOutputAssociation[*] dataOutputAssociation;
+
+  @ExtendedMetaData(kind="element", name="outputSet", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val OutputSet outputSet;
+
+  @ExtendedMetaData(kind="element", name="eventDefinition", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", group="http://www.omg.org/spec/BPMN/20100524/MODEL#eventDefinition")
+  !ordered val EventDefinition[*] eventDefinitions;
+
+  @ExtendedMetaData(kind="element", name="eventDefinitionRef", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered ref EventDefinition[*] eventDefinitionRefs;
+
+  @ExtendedMetaData(kind="attribute", name="parallelMultiple")
+  !ordered attr boolean parallelMultiple;
+}
+
+@ExtendedMetaData(name="tCategory", kind="elementOnly")
+class Category extends RootElement {
+
+  @ExtendedMetaData(kind="element", name="categoryValue", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val CategoryValue[*] categoryValue;
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String name;
+}
+
+@ExtendedMetaData(name="tCategoryValue", kind="elementOnly")
+class CategoryValue extends BaseElement {
+
+  @ExtendedMetaData(kind="attribute", name="value")
+  !ordered attr String value;
+  !ordered readonly volatile transient derived !resolve ref FlowElement[*] categorizedFlowElements;
+}
+
+@ExtendedMetaData(name="tChoreography", kind="elementOnly")
+class Choreography extends Collaboration, FlowElementsContainer {
+}
+
+@ExtendedMetaData(name="tChoreographyActivity", kind="elementOnly")
+abstract class ChoreographyActivity extends FlowNode {
+
+  @ExtendedMetaData(kind="element", name="participantRef", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered ref Participant[2..*] participantRefs;
+
+  @ExtendedMetaData(kind="element", name="correlationKey", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val CorrelationKey[*] correlationKeys;
+
+  @ExtendedMetaData(kind="attribute", name="initiatingParticipantRef")
+  !ordered ref Participant[1] initiatingParticipantRef;
+
+  @ExtendedMetaData(kind="attribute", name="loopType")
+  !ordered attr ChoreographyLoopType loopType = "None";
+}
+
+@ExtendedMetaData(name="tChoreographyLoopType")
+enum ChoreographyLoopType {
+  None = 0;
+  Standard = 1;
+  MultiInstanceSequential = 2;
+  MultiInstanceParallel = 3;
+}
+
+@ExtendedMetaData(name="tChoreographyTask", kind="elementOnly")
+class ChoreographyTask extends ChoreographyActivity {
+
+  @ExtendedMetaData(kind="element", name="messageFlowRef", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered ref MessageFlow[1..2] messageFlowRef;
+}
+
+@ExtendedMetaData(name="tCollaboration", kind="elementOnly")
+class Collaboration extends RootElement {
+
+  @ExtendedMetaData(kind="element", name="participant", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val Participant[*] participants;
+
+  @ExtendedMetaData(kind="element", name="messageFlow", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val MessageFlow[*] messageFlows;
+
+  @ExtendedMetaData(kind="element", name="artifact", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", group="http://www.omg.org/spec/BPMN/20100524/MODEL#artifact")
+  !ordered val Artifact[*] artifacts;
+
+  @ExtendedMetaData(kind="element", name="conversationNode", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", group="http://www.omg.org/spec/BPMN/20100524/MODEL#conversationNode")
+  !ordered val ConversationNode[*] conversations;
+
+  @ExtendedMetaData(kind="element", name="conversationAssociation", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val ConversationAssociation[*] conversationAssociations;
+
+  @ExtendedMetaData(kind="element", name="participantAssociation", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val ParticipantAssociation[*] participantAssociations;
+
+  @ExtendedMetaData(kind="element", name="messageFlowAssociation", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val MessageFlowAssociation[*] messageFlowAssociations;
+
+  @ExtendedMetaData(kind="element", name="correlationKey", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val CorrelationKey[*] correlationKeys;
+
+  @ExtendedMetaData(kind="element", name="choreographyRef", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered ref Choreography[*] choreographyRef;
+
+  @ExtendedMetaData(kind="element", name="conversationLink", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val ConversationLink[*] conversationLinks;
+
+  @ExtendedMetaData(kind="attribute", name="isClosed")
+  !ordered attr boolean isClosed;
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String name;
+}
+
+@ExtendedMetaData(name="tCompensateEventDefinition", kind="elementOnly")
+class CompensateEventDefinition extends EventDefinition {
+
+  @ExtendedMetaData(kind="attribute", name="activityRef")
+  !ordered ref Activity activityRef;
+
+  @ExtendedMetaData(kind="attribute", name="waitForCompletion")
+  !ordered attr boolean waitForCompletion;
+}
+
+@ExtendedMetaData(name="tComplexBehaviorDefinition", kind="elementOnly")
+class ComplexBehaviorDefinition extends BaseElement {
+
+  @ExtendedMetaData(kind="element", name="condition", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val FormalExpression[1] condition;
+
+  @ExtendedMetaData(kind="element", name="event", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val ImplicitThrowEvent event;
+}
+
+@ExtendedMetaData(name="tComplexGateway", kind="elementOnly")
+class ComplexGateway extends Gateway {
+
+  @ExtendedMetaData(kind="element", name="activationCondition", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val Expression activationCondition;
+
+  @ExtendedMetaData(kind="attribute", name="default")
+  !ordered !resolve ref SequenceFlow default;
+}
+
+@ExtendedMetaData(name="tConditionalEventDefinition", kind="elementOnly")
+class ConditionalEventDefinition extends EventDefinition {
+
+  @ExtendedMetaData(kind="element", name="condition", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val Expression[1] condition;
+}
+
+@ExtendedMetaData(name="tConversation", kind="elementOnly")
+class Conversation extends ConversationNode {
+}
+
+@ExtendedMetaData(name="tConversationAssociation", kind="elementOnly")
+class ConversationAssociation extends BaseElement {
+
+  @ExtendedMetaData(kind="attribute", name="innerConversationNodeRef")
+  !ordered ref ConversationNode[1] innerConversationNodeRef;
+
+  @ExtendedMetaData(kind="attribute", name="outerConversationNodeRef")
+  !ordered ref ConversationNode[1] outerConversationNodeRef;
+}
+
+@ExtendedMetaData(name="tConversationLink", kind="elementOnly")
+class ConversationLink extends BaseElement {
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String name;
+
+  @ExtendedMetaData(kind="attribute", name="sourceRef")
+  !ordered ref InteractionNode[1] sourceRef;
+
+  @ExtendedMetaData(kind="attribute", name="targetRef")
+  !ordered ref InteractionNode[1] targetRef;
+}
+
+@ExtendedMetaData(name="tConversationNode", kind="elementOnly", "abstract"="true")
+class ConversationNode extends BaseElement, InteractionNode {
+
+  @ExtendedMetaData(kind="element", name="participantRef", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered ref Participant[2..*] participantRefs;
+
+  @ExtendedMetaData(kind="element", name="messageFlowRef", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered ref MessageFlow[*] messageFlowRefs;
+
+  @ExtendedMetaData(kind="element", name="correlationKey", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val CorrelationKey[*] correlationKeys;
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String name;
+}
+
+@ExtendedMetaData(name="tCorrelationKey", kind="elementOnly")
+class CorrelationKey extends BaseElement {
+
+  @ExtendedMetaData(kind="element", name="correlationPropertyRef", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered ref CorrelationProperty[*] correlationPropertyRef;
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String name;
+}
+
+@ExtendedMetaData(name="tCorrelationProperty", kind="elementOnly")
+class CorrelationProperty extends RootElement {
+
+  @ExtendedMetaData(kind="element", name="correlationPropertyRetrievalExpression", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val CorrelationPropertyRetrievalExpression[+] correlationPropertyRetrievalExpression;
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String name;
+
+  @ExtendedMetaData(kind="attribute", name="type")
+  !ordered ref ItemDefinition type;
+}
+
+@ExtendedMetaData(name="tCorrelationPropertyBinding", kind="elementOnly")
+class CorrelationPropertyBinding extends BaseElement {
+
+  @ExtendedMetaData(kind="element", name="dataPath", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val FormalExpression[1] dataPath;
+
+  @ExtendedMetaData(kind="attribute", name="correlationPropertyRef")
+  !ordered ref CorrelationProperty[1] correlationPropertyRef;
+}
+
+@ExtendedMetaData(name="tCorrelationPropertyRetrievalExpression", kind="elementOnly")
+class CorrelationPropertyRetrievalExpression extends BaseElement {
+
+  @ExtendedMetaData(kind="element", name="messagePath", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val FormalExpression[1] messagePath;
+
+  @ExtendedMetaData(kind="attribute", name="messageRef")
+  !ordered ref Message[1] messageRef;
+}
+
+@ExtendedMetaData(name="tCorrelationSubscription", kind="elementOnly")
+class CorrelationSubscription extends BaseElement {
+
+  @ExtendedMetaData(kind="element", name="correlationPropertyBinding", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val CorrelationPropertyBinding[*] correlationPropertyBinding;
+
+  @ExtendedMetaData(kind="attribute", name="correlationKeyRef")
+  !ordered ref CorrelationKey[1] correlationKeyRef;
+}
+
+@ExtendedMetaData(name="tDataAssociation", kind="elementOnly")
+class DataAssociation extends BaseElement {
+
+  @ExtendedMetaData(kind="element", name="sourceRef", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered !resolve ref ItemAwareElement[*] sourceRef;
+
+  @ExtendedMetaData(kind="element", name="targetRef", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered !resolve ref ItemAwareElement[1] targetRef;
+
+  @ExtendedMetaData(kind="element", name="transformation", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val FormalExpression transformation;
+
+  @ExtendedMetaData(kind="element", name="assignment", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val Assignment[*] assignment;
+}
+
+@ExtendedMetaData(name="tDataInput", kind="elementOnly")
+class DataInput extends ItemAwareElement {
+  !ordered transient derived ref InputSet[*]#optionalInputRefs inputSetWithOptional;
+  !ordered transient derived ref InputSet[*]#whileExecutingInputRefs inputSetWithWhileExecuting;
+  !ordered transient derived ref InputSet[+]#dataInputRefs inputSetRefs;
+
+  @ExtendedMetaData(kind="attribute", name="isCollection")
+  !ordered attr boolean isCollection = false;
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String name;
+}
+
+@ExtendedMetaData(name="tDataInputAssociation", kind="elementOnly")
+class DataInputAssociation extends DataAssociation {
+}
+
+@ExtendedMetaData(name="tDataObject", kind="elementOnly")
+class DataObject extends ObjectNode, ItemAwareElement {
+
+  @ExtendedMetaData(kind="attribute", name="isCollection")
+  !ordered attr boolean isCollection = false;
+}
+
+@ExtendedMetaData(name="tDataObjectReference", kind="elementOnly")
+class DataObjectReference extends ObjectNode, ItemAwareElement {
+
+  @ExtendedMetaData(kind="attribute", name="dataObjectRef")
+  !ordered !resolve ref DataObject[1] dataObjectRef;
+}
+
+@ExtendedMetaData(name="tDataOutput", kind="elementOnly")
+class DataOutput extends ItemAwareElement {
+  !ordered transient derived ref OutputSet[*]#optionalOutputRefs outputSetWithOptional;
+  !ordered transient derived ref OutputSet[*]#whileExecutingOutputRefs outputSetWithWhileExecuting;
+  !ordered transient derived ref OutputSet[+]#dataOutputRefs outputSetRefs;
+
+  @ExtendedMetaData(kind="attribute", name="isCollection")
+  !ordered attr boolean isCollection = false;
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String name;
+}
+
+@ExtendedMetaData(name="tDataOutputAssociation", kind="elementOnly")
+class DataOutputAssociation extends DataAssociation {
+}
+
+@ExtendedMetaData(name="tDataState", kind="elementOnly")
+class DataState extends BaseElement {
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String name;
+}
+
+@ExtendedMetaData(name="tDataStore", kind="elementOnly")
+class DataStore extends ItemAwareElement, RootElement {
+
+  @ExtendedMetaData(kind="attribute", name="capacity")
+  !ordered attr int capacity;
+
+  @ExtendedMetaData(kind="attribute", name="isUnlimited")
+  !ordered attr boolean isUnlimited = true;
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String name;
+}
+
+@ExtendedMetaData(name="tDataStoreReference", kind="elementOnly")
+class DataStoreReference extends FlowElement, ItemAwareElement {
+
+  @ExtendedMetaData(kind="attribute", name="dataStoreRef")
+  !ordered ref DataStore dataStoreRef;
+}
+
+@ExtendedMetaData(name="tDefinitions", kind="elementOnly")
+class Definitions extends BaseElement {
+
+  @ExtendedMetaData(kind="element", name="import", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val Import[*] imports;
+
+  @ExtendedMetaData(kind="element", name="extension", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val Extension[*] extensions;
+
+  @ExtendedMetaData(kind="element", name="rootElement", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", group="http://www.omg.org/spec/BPMN/20100524/MODEL#rootElement")
+  !ordered val RootElement[*] rootElements;
+
+  @ExtendedMetaData(kind="element", name="BPMNDiagram", namespace="http://www.omg.org/spec/BPMN/20100524/DI")
+  !ordered val di.BPMNDiagram[*] diagrams;
+
+  @ExtendedMetaData(kind="element", name="relationship", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val Relationship[*] relationships;
+
+  @ExtendedMetaData(kind="attribute", name="exporter")
+  !ordered attr String exporter;
+
+  @ExtendedMetaData(kind="attribute", name="exporterVersion")
+  !ordered attr String exporterVersion;
+
+  @ExtendedMetaData(kind="attribute", name="expressionLanguage")
+  !ordered attr String expressionLanguage = "http://www.w3.org/1999/XPath";
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String name;
+
+  @ExtendedMetaData(kind="attribute", name="targetNamespace")
+  !ordered attr String[1] targetNamespace;
+
+  @ExtendedMetaData(kind="attribute", name="typeLanguage")
+  !ordered attr String typeLanguage = "http://www.w3.org/2001/XMLSchema";
+}
+
+@ExtendedMetaData(name="tDocumentation", kind="mixed")
+class Documentation extends BaseElement {
+
+  @ExtendedMetaData(kind="elementWildcard", name=":mixed")
+  !unique attr ecore.EFeatureMapEntry[*] mixed;
+  !ordered volatile derived attr String[1] text;
+
+  @ExtendedMetaData(kind="attribute", name="textFormat")
+  !ordered attr String textFormat = "text/plain";
+}
+
+@ExtendedMetaData(name="tEndEvent", kind="elementOnly")
+class EndEvent extends ThrowEvent {
+}
+
+@ExtendedMetaData(name="tEndPoint", kind="elementOnly")
+class EndPoint extends RootElement {
+}
+
+@ExtendedMetaData(name="tError", kind="elementOnly")
+class Error extends RootElement {
+
+  @ExtendedMetaData(kind="attribute", name="errorCode")
+  !ordered attr String errorCode;
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String name;
+
+  @ExtendedMetaData(kind="attribute", name="structureRef")
+  !ordered ref ItemDefinition structureRef;
+}
+
+@ExtendedMetaData(name="tErrorEventDefinition", kind="elementOnly")
+class ErrorEventDefinition extends EventDefinition {
+
+  @ExtendedMetaData(kind="attribute", name="errorRef")
+  !ordered ref Error errorRef;
+}
+
+@ExtendedMetaData(name="tEscalation", kind="elementOnly")
+class Escalation extends RootElement {
+
+  @ExtendedMetaData(kind="attribute", name="escalationCode")
+  !ordered attr String escalationCode;
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String name;
+
+  @ExtendedMetaData(kind="attribute", name="structureRef")
+  !ordered ref ItemDefinition structureRef;
+}
+
+@ExtendedMetaData(name="tEscalationEventDefinition", kind="elementOnly")
+class EscalationEventDefinition extends EventDefinition {
+
+  @ExtendedMetaData(kind="attribute", name="escalationRef")
+  !ordered ref Escalation escalationRef;
+}
+
+@ExtendedMetaData(name="tEvent", kind="elementOnly")
+abstract class Event extends FlowNode, InteractionNode {
+
+  @ExtendedMetaData(kind="element", name="property", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val Property[*] properties;
+}
+
+@ExtendedMetaData(name="tEventBasedGateway", kind="elementOnly")
+class EventBasedGateway extends Gateway {
+
+  @ExtendedMetaData(kind="attribute", name="eventGatewayType")
+  !ordered attr EventBasedGatewayType eventGatewayType = "Exclusive";
+
+  @ExtendedMetaData(kind="attribute", name="instantiate")
+  !ordered attr boolean instantiate = false;
+}
+
+@ExtendedMetaData(name="tEventBasedGatewayType")
+enum EventBasedGatewayType {
+  Parallel = 0;
+  Exclusive = 1;
+}
+
+@ExtendedMetaData(name="tEventDefinition", kind="elementOnly", "abstract"="true")
+class EventDefinition extends RootElement {
+}
+
+@ExtendedMetaData(name="tExclusiveGateway", kind="elementOnly")
+class ExclusiveGateway extends Gateway {
+
+  @ExtendedMetaData(kind="attribute", name="default")
+  !ordered !resolve ref SequenceFlow default;
+}
+
+@ExtendedMetaData(name="tExpression", kind="mixed")
+class Expression extends BaseElement {
+}
+
+@ExtendedMetaData(name="tExtension", kind="elementOnly")
+class Extension {
+  !ordered val ExtensionDefinition[1] definition;
+
+  @ExtendedMetaData(kind="attribute", name="mustUnderstand")
+  !ordered attr boolean mustUnderstand = false;
+
+  @ExtendedMetaData(kind="attribute", name="definition")
+  attr type.QName xsdDefinition;
+}
+
+class ExtensionAttributeDefinition {
+  !ordered attr String[1] name;
+  !ordered attr String[1] type;
+  !ordered attr boolean[1] isReference = false;
+  !ordered transient derived !resolve ref ExtensionDefinition[1]#extensionAttributeDefinitions extensionDefinition;
+}
+
+@ExtendedMetaData(name="tExtensionElements", kind="elementOnly")
+class ExtensionAttributeValue {
+  !ordered transient derived ref EObject valueRef;
+
+  @ExtendedMetaData(kind="elementWildcard", wildcards="##other", name=":0", processing="lax")
+  !unique attr ecore.EFeatureMapEntry[*] value;
+  !ordered transient derived ref ExtensionAttributeDefinition[1] extensionAttributeDefinition;
+}
+
+class ExtensionDefinition {
+  !ordered attr String[1] name;
+  !ordered transient derived !resolve val ExtensionAttributeDefinition[*]#extensionDefinition extensionAttributeDefinitions;
+}
+
+@ExtendedMetaData(name="tFlowElement", kind="elementOnly")
+abstract class FlowElement extends BaseElement {
+
+  @ExtendedMetaData(kind="element", name="auditing", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val Auditing auditing;
+
+  @ExtendedMetaData(kind="element", name="monitoring", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val Monitoring monitoring;
+
+  @ExtendedMetaData(kind="element", name="categoryValueRef", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered ref CategoryValue[*] categoryValueRef;
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String name;
+}
+
+abstract class FlowElementsContainer extends BaseElement {
+
+  @ExtendedMetaData(kind="element", name="laneSet", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val LaneSet[*] laneSets;
+
+  @ExtendedMetaData(kind="element", name="flowElement", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", group="http://www.omg.org/spec/BPMN/20100524/MODEL#flowElement")
+  !ordered val FlowElement[*] flowElements;
+}
+
+@ExtendedMetaData(name="tFlowNode", kind="elementOnly")
+abstract class FlowNode extends FlowElement {
+
+  @ExtendedMetaData(kind="element", name="incoming", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered !resolve ref Edge[*]#targetRef incoming;
+  !ordered transient derived ref Lane[*]#flowNodeRefs lanes;
+
+  @ExtendedMetaData(kind="element", name="outgoing", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !resolve ref Edge[*]#sourceRef outgoing;
+}
+
+@ExtendedMetaData(name="tFormalExpression", kind="mixed")
+class FormalExpression extends Expression {
+
+  @ExtendedMetaData(kind="elementWildcard", name=":mixed")
+  !unique attr ecore.EFeatureMapEntry[*] mixed;
+  !ordered volatile derived attr String[1] body;
+
+  @ExtendedMetaData(kind="attribute", name="evaluatesToTypeRef")
+  !ordered ref ItemDefinition[1] evaluatesToTypeRef;
+
+  @ExtendedMetaData(kind="attribute", name="language")
+  !ordered attr String language;
+}
+
+@ExtendedMetaData(name="tGateway", kind="elementOnly")
+abstract class Gateway extends FlowNode {
+
+  @ExtendedMetaData(kind="attribute", name="gatewayDirection")
+  !ordered attr GatewayDirection gatewayDirection = "Unspecified";
+}
+
+@ExtendedMetaData(name="tGatewayDirection")
+enum GatewayDirection {
+  Unspecified = 0;
+  Converging = 1;
+  Diverging = 2;
+  Mixed = 3;
+}
+
+@ExtendedMetaData(name="tGlobalBusinessRuleTask", kind="elementOnly")
+class GlobalBusinessRuleTask extends GlobalTask {
+
+  @ExtendedMetaData(kind="attribute", name="implementation")
+  !ordered attr String implementation;
+}
+
+@ExtendedMetaData(name="tGlobalChoreographyTask", kind="elementOnly")
+class GlobalChoreographyTask extends Choreography {
+
+  @ExtendedMetaData(kind="attribute", name="initiatingParticipantRef")
+  !ordered ref Participant[1] initiatingParticipantRef;
+}
+
+@ExtendedMetaData(name="tGlobalConversation", kind="elementOnly")
+class GlobalConversation extends Collaboration {
+}
+
+@ExtendedMetaData(name="tGlobalManualTask", kind="elementOnly")
+class GlobalManualTask extends GlobalTask {
+}
+
+@ExtendedMetaData(name="tGlobalScriptTask", kind="elementOnly")
+class GlobalScriptTask extends GlobalTask {
+
+  @ExtendedMetaData(kind="element", name="script", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered attr String[1] script;
+
+  @ExtendedMetaData(kind="attribute", name="scriptLanguage")
+  !ordered attr String scriptLanguage;
+}
+
+@ExtendedMetaData(name="tGlobalTask", kind="elementOnly")
+class GlobalTask extends CallableElement {
+
+  @ExtendedMetaData(kind="element", name="resourceRole", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", group="http://www.omg.org/spec/BPMN/20100524/MODEL#resourceRole")
+  !ordered val ResourceRole[*] resources;
+}
+
+@ExtendedMetaData(name="tGlobalUserTask", kind="elementOnly")
+class GlobalUserTask extends GlobalTask {
+
+  @ExtendedMetaData(kind="element", name="rendering", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val Rendering[*] renderings;
+
+  @ExtendedMetaData(kind="attribute", name="implementation")
+  !ordered attr String implementation;
+}
+
+@ExtendedMetaData(name="tGroup", kind="elementOnly")
+class Group extends Artifact {
+
+  @ExtendedMetaData(kind="attribute", name="categoryValueRef")
+  !ordered ref CategoryValue categoryValueRef;
+}
+
+@ExtendedMetaData(name="tHumanPerformer", kind="elementOnly")
+class HumanPerformer extends Performer {
+}
+
+@ExtendedMetaData(name="tImplicitThrowEvent", kind="elementOnly")
+class ImplicitThrowEvent extends ThrowEvent {
+}
+
+@ExtendedMetaData(name="tImport", kind="empty")
+class Import {
+
+  @ExtendedMetaData(kind="attribute", name="importType")
+  !ordered attr String[1] importType;
+
+  @ExtendedMetaData(kind="attribute", name="location")
+  !ordered attr String[1] location;
+
+  @ExtendedMetaData(kind="attribute", name="namespace")
+  !ordered attr String[1] namespace;
+}
+
+@ExtendedMetaData(name="tInclusiveGateway", kind="elementOnly")
+class InclusiveGateway extends Gateway {
+
+  @ExtendedMetaData(kind="attribute", name="default")
+  !ordered !resolve ref SequenceFlow default;
+}
+
+@ExtendedMetaData(name="tInputOutputBinding", kind="elementOnly")
+class InputOutputBinding extends BaseElement {
+
+  @ExtendedMetaData(kind="attribute", name="inputDataRef")
+  !ordered !resolve ref InputSet[1] inputDataRef;
+
+  @ExtendedMetaData(kind="attribute", name="operationRef")
+  !ordered ref Operation[1] operationRef;
+
+  @ExtendedMetaData(kind="attribute", name="outputDataRef")
+  !ordered !resolve ref OutputSet[1] outputDataRef;
+}
+
+@ExtendedMetaData(name="tInputOutputSpecification", kind="elementOnly")
+class InputOutputSpecification extends BaseElement {
+
+  @ExtendedMetaData(kind="element", name="dataInput", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val DataInput[*] dataInputs;
+
+  @ExtendedMetaData(kind="element", name="dataOutput", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val DataOutput[*] dataOutputs;
+
+  @ExtendedMetaData(kind="element", name="inputSet", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val InputSet[+] inputSets;
+
+  @ExtendedMetaData(kind="element", name="outputSet", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val OutputSet[+] outputSets;
+}
+
+@ExtendedMetaData(name="tInputSet", kind="elementOnly")
+class InputSet extends BaseElement {
+
+  @ExtendedMetaData(kind="element", name="dataInputRefs", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered !resolve ref DataInput[*]#inputSetRefs dataInputRefs;
+
+  @ExtendedMetaData(kind="element", name="optionalInputRefs", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered !resolve ref DataInput[*]#inputSetWithOptional optionalInputRefs;
+
+  @ExtendedMetaData(kind="element", name="whileExecutingInputRefs", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered !resolve ref DataInput[*]#inputSetWithWhileExecuting whileExecutingInputRefs;
+
+  @ExtendedMetaData(kind="element", name="outputSetRefs", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered !resolve ref OutputSet[*]#inputSetRefs outputSetRefs;
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String name;
+}
+
+@ExtendedMetaData("abstract"="true")
+class InteractionNode {
+  !ordered readonly volatile transient derived !resolve ref ConversationLink[*] incomingConversationLinks;
+  !ordered readonly volatile transient derived ref ConversationLink[*] outgoingConversationLinks;
+}
+
+@ExtendedMetaData(name="tInterface", kind="elementOnly")
+class Interface extends RootElement {
+
+  @ExtendedMetaData(kind="element", name="operation", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val Operation[+] operations;
+
+  @ExtendedMetaData(kind="attribute", name="implementationRef")
+  !ordered ref EObject implementationRef;
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String[1] name;
+}
+
+@ExtendedMetaData(name="tIntermediateCatchEvent", kind="elementOnly")
+class IntermediateCatchEvent extends CatchEvent {
+}
+
+@ExtendedMetaData(name="tIntermediateThrowEvent", kind="elementOnly")
+class IntermediateThrowEvent extends ThrowEvent {
+}
+
+class ItemAwareElement extends BaseElement {
+
+  @ExtendedMetaData(kind="element", name="dataState", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val DataState dataState;
+
+  @ExtendedMetaData(kind="attribute", name="itemSubjectRef")
+  !ordered ref ItemDefinition itemSubjectRef;
+}
+
+@ExtendedMetaData(name="tItemDefinition", kind="elementOnly")
+class ItemDefinition extends RootElement {
+
+  @ExtendedMetaData(kind="attribute", name="isCollection")
+  !ordered attr boolean isCollection = false;
+  !ordered transient derived ref Import ~import;
+
+  @ExtendedMetaData(kind="attribute", name="itemKind")
+  !ordered attr ItemKind itemKind = "Information";
+
+  @ExtendedMetaData(kind="attribute", name="structureRef")
+  !ordered ref EObject structureRef;
+}
+
+@ExtendedMetaData(name="tItemKind")
+enum ItemKind {
+  Physical = 0;
+  Information = 1;
+}
+
+@ExtendedMetaData(name="tLane", kind="elementOnly")
+class Lane extends BaseElement {
+
+  @ExtendedMetaData(kind="element", name="partitionElement", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val BaseElement partitionElement;
+
+  @ExtendedMetaData(kind="element", name="flowNodeRef", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered !resolve ref FlowNode[*]#lanes flowNodeRefs;
+
+  @ExtendedMetaData(kind="element", name="childLaneSet", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val LaneSet childLaneSet;
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String name;
+
+  @ExtendedMetaData(kind="attribute", name="partitionElementRef")
+  !ordered ref BaseElement partitionElementRef;
+}
+
+@ExtendedMetaData(name="tLaneSet", kind="elementOnly")
+class LaneSet extends BaseElement {
+
+  @ExtendedMetaData(kind="element", name="lane", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val Lane[*] lanes;
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String name;
+}
+
+@ExtendedMetaData(name="tLinkEventDefinition", kind="elementOnly")
+class LinkEventDefinition extends EventDefinition {
+
+  @ExtendedMetaData(kind="element", name="source", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered ref LinkEventDefinition[*]#target source;
+
+  @ExtendedMetaData(kind="element", name="target", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered ref LinkEventDefinition#source target;
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String[1] name;
+}
+
+@ExtendedMetaData(name="tLoopCharacteristics", kind="elementOnly")
+abstract class LoopCharacteristics extends BaseElement {
+}
+
+@ExtendedMetaData(name="tManualTask", kind="elementOnly")
+class ManualTask extends Task {
+}
+
+@ExtendedMetaData(name="tMessage", kind="elementOnly")
+class Message extends RootElement {
+
+  @ExtendedMetaData(kind="attribute", name="itemRef")
+  !ordered ref ItemDefinition itemRef;
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String name;
+}
+
+@ExtendedMetaData(name="tMessageEventDefinition", kind="elementOnly")
+class MessageEventDefinition extends EventDefinition {
+
+  @ExtendedMetaData(kind="element", name="operationRef", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered ref Operation operationRef;
+
+  @ExtendedMetaData(kind="attribute", name="messageRef")
+  !ordered ref Message messageRef;
+}
+
+@ExtendedMetaData(name="tMessageFlow", kind="elementOnly")
+class MessageFlow extends BaseElement {
+
+  @ExtendedMetaData(kind="attribute", name="messageRef")
+  !ordered ref Message messageRef;
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String name;
+
+  @ExtendedMetaData(kind="attribute", name="sourceRef")
+  !ordered ref InteractionNode[1] sourceRef;
+
+  @ExtendedMetaData(kind="attribute", name="targetRef")
+  !ordered ref InteractionNode[1] targetRef;
+}
+
+@ExtendedMetaData(name="tMessageFlowAssociation", kind="elementOnly")
+class MessageFlowAssociation extends BaseElement {
+
+  @ExtendedMetaData(kind="attribute", name="innerMessageFlowRef")
+  !ordered ref MessageFlow[1] innerMessageFlowRef;
+
+  @ExtendedMetaData(kind="attribute", name="outerMessageFlowRef")
+  !ordered ref MessageFlow[1] outerMessageFlowRef;
+}
+
+@ExtendedMetaData(name="tMonitoring", kind="elementOnly")
+class Monitoring extends BaseElement {
+}
+
+@ExtendedMetaData(name="tMultiInstanceFlowCondition")
+enum MultiInstanceBehavior {
+  None = 0;
+  One = 1;
+  All = 2;
+  Complex = 3;
+}
+
+@ExtendedMetaData(name="tMultiInstanceLoopCharacteristics", kind="elementOnly")
+class MultiInstanceLoopCharacteristics extends LoopCharacteristics {
+
+  @ExtendedMetaData(kind="element", name="loopCardinality", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val Expression loopCardinality;
+
+  @ExtendedMetaData(kind="element", name="loopDataInputRef", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered ref ItemAwareElement loopDataInputRef;
+
+  @ExtendedMetaData(kind="element", name="loopDataOutputRef", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered ref ItemAwareElement loopDataOutputRef;
+
+  @ExtendedMetaData(kind="element", name="inputDataItem", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val DataInput inputDataItem;
+
+  @ExtendedMetaData(kind="element", name="outputDataItem", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val DataOutput outputDataItem;
+
+  @ExtendedMetaData(kind="element", name="complexBehaviorDefinition", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val ComplexBehaviorDefinition[*] complexBehaviorDefinition;
+
+  @ExtendedMetaData(kind="element", name="completionCondition", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val Expression completionCondition;
+
+  @ExtendedMetaData(kind="attribute", name="behavior")
+  !ordered attr MultiInstanceBehavior behavior = "All";
+
+  @ExtendedMetaData(kind="attribute", name="isSequential")
+  !ordered attr boolean isSequential = false;
+
+  @ExtendedMetaData(kind="attribute", name="noneBehaviorEventRef")
+  !ordered ref EventDefinition noneBehaviorEventRef;
+
+  @ExtendedMetaData(kind="attribute", name="oneBehaviorEventRef")
+  !ordered ref EventDefinition oneBehaviorEventRef;
+}
+
+@ExtendedMetaData(name="tOperation", kind="elementOnly")
+class Operation extends BaseElement {
+
+  @ExtendedMetaData(kind="element", name="inMessageRef", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered ref Message[1] inMessageRef;
+
+  @ExtendedMetaData(kind="element", name="outMessageRef", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered ref Message outMessageRef;
+
+  @ExtendedMetaData(kind="element", name="errorRef", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered ref Error[*] errorRefs;
+
+  @ExtendedMetaData(kind="attribute", name="implementationRef")
+  !ordered ref EObject implementationRef;
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String[1] name;
+}
+
+@ExtendedMetaData(name="tOutputSet", kind="elementOnly")
+class OutputSet extends BaseElement {
+
+  @ExtendedMetaData(kind="element", name="dataOutputRefs", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered !resolve ref DataOutput[*]#outputSetRefs dataOutputRefs;
+
+  @ExtendedMetaData(kind="element", name="optionalOutputRefs", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered !resolve ref DataOutput[*]#outputSetWithOptional optionalOutputRefs;
+
+  @ExtendedMetaData(kind="element", name="whileExecutingOutputRefs", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered !resolve ref DataOutput[*]#outputSetWithWhileExecuting whileExecutingOutputRefs;
+
+  @ExtendedMetaData(kind="element", name="inputSetRefs", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered !resolve ref InputSet[*]#outputSetRefs inputSetRefs;
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String name;
+}
+
+@ExtendedMetaData(name="tParallelGateway", kind="elementOnly")
+class ParallelGateway extends Gateway {
+}
+
+@ExtendedMetaData(name="tParticipant", kind="elementOnly")
+class Participant extends BaseElement, InteractionNode {
+
+  @ExtendedMetaData(kind="element", name="interfaceRef", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered ref Interface[*] interfaceRefs;
+
+  @ExtendedMetaData(kind="element", name="endPointRef", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered ref EndPoint[*] endPointRefs;
+
+  @ExtendedMetaData(kind="element", name="participantMultiplicity", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val ParticipantMultiplicity participantMultiplicity;
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String name;
+
+  @ExtendedMetaData(kind="attribute", name="processRef")
+  !ordered ref Process processRef;
+}
+
+@ExtendedMetaData(name="tParticipantAssociation", kind="elementOnly")
+class ParticipantAssociation extends BaseElement {
+
+  @ExtendedMetaData(kind="element", name="innerParticipantRef", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered ref Participant[1] innerParticipantRef;
+
+  @ExtendedMetaData(kind="element", name="outerParticipantRef", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered ref Participant[1] outerParticipantRef;
+}
+
+@ExtendedMetaData(name="tParticipantMultiplicity", kind="elementOnly")
+class ParticipantMultiplicity extends BaseElement {
+
+  @ExtendedMetaData(kind="attribute", name="maximum")
+  !ordered attr int maximum = 1;
+
+  @ExtendedMetaData(kind="attribute", name="minimum")
+  !ordered attr int minimum = 0;
+}
+
+@ExtendedMetaData(name="tPartnerEntity", kind="elementOnly")
+class PartnerEntity extends RootElement {
+
+  @ExtendedMetaData(kind="element", name="participantRef", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered ref Participant[*] participantRef;
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String name;
+}
+
+@ExtendedMetaData(name="tPartnerRole", kind="elementOnly")
+class PartnerRole extends RootElement {
+
+  @ExtendedMetaData(kind="element", name="participantRef", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered ref Participant[*] participantRef;
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String name;
+}
+
+@ExtendedMetaData(name="tPerformer", kind="elementOnly")
+class Performer extends ResourceRole {
+}
+
+@ExtendedMetaData(name="tPotentialOwner", kind="elementOnly")
+class PotentialOwner extends HumanPerformer {
+}
+
+@ExtendedMetaData(name="tProcess", kind="elementOnly")
+class Process extends CallableElement, FlowElementsContainer {
+
+  @ExtendedMetaData(kind="element", name="auditing", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val Auditing auditing;
+
+  @ExtendedMetaData(kind="element", name="monitoring", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val Monitoring monitoring;
+
+  @ExtendedMetaData(kind="element", name="property", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val Property[*] properties;
+
+  @ExtendedMetaData(kind="element", name="artifact", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", group="http://www.omg.org/spec/BPMN/20100524/MODEL#artifact")
+  !ordered val Artifact[*] artifacts;
+
+  @ExtendedMetaData(kind="element", name="resourceRole", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", group="http://www.omg.org/spec/BPMN/20100524/MODEL#resourceRole")
+  !ordered val ResourceRole[*] resources;
+
+  @ExtendedMetaData(kind="element", name="correlationSubscription", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val CorrelationSubscription[*] correlationSubscriptions;
+
+  @ExtendedMetaData(kind="element", name="supports", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered ref Process[*] supports;
+
+  @ExtendedMetaData(kind="attribute", name="definitionalCollaborationRef")
+  !ordered ref Collaboration definitionalCollaborationRef;
+
+  @ExtendedMetaData(kind="attribute", name="isClosed")
+  !ordered attr boolean isClosed;
+
+  @ExtendedMetaData(kind="attribute", name="isExecutable")
+  !ordered attr boolean isExecutable;
+
+  @ExtendedMetaData(kind="attribute", name="processType")
+  !ordered attr ProcessType processType = "None";
+}
+
+@ExtendedMetaData(name="tProcessType")
+enum ProcessType {
+  None = 0;
+  Public = 1;
+  Private = 2;
+}
+
+@ExtendedMetaData(name="tProperty", kind="elementOnly")
+class Property extends ItemAwareElement {
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String name;
+}
+
+@ExtendedMetaData(name="tReceiveTask", kind="elementOnly")
+class ReceiveTask extends Task {
+
+  @ExtendedMetaData(kind="attribute", name="implementation")
+  !ordered attr String implementation;
+
+  @ExtendedMetaData(kind="attribute", name="instantiate")
+  !ordered attr boolean instantiate = false;
+
+  @ExtendedMetaData(kind="attribute", name="messageRef")
+  !ordered ref Message messageRef;
+
+  @ExtendedMetaData(kind="attribute", name="operationRef")
+  !ordered ref Operation operationRef;
+}
+
+@ExtendedMetaData(name="tRelationship", kind="elementOnly")
+class Relationship extends BaseElement {
+
+  @ExtendedMetaData(kind="element", name="source", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered ref EObject[+] sources;
+
+  @ExtendedMetaData(kind="element", name="target", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered ref EObject[+] targets;
+
+  @ExtendedMetaData(kind="attribute", name="direction")
+  !ordered attr RelationshipDirection direction;
+
+  @ExtendedMetaData(kind="attribute", name="type")
+  !ordered attr String[1] type;
+}
+
+@ExtendedMetaData(name="tRelationshipDirection")
+enum RelationshipDirection {
+  None = 0;
+  Forward = 1;
+  Backward = 2;
+  Both = 3;
+}
+
+@ExtendedMetaData(name="tRendering", kind="elementOnly")
+class Rendering extends BaseElement {
+}
+
+@ExtendedMetaData(name="tResource", kind="elementOnly")
+class Resource extends RootElement {
+
+  @ExtendedMetaData(kind="element", name="resourceParameter", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val ResourceParameter[*] resourceParameters;
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String[1] name;
+}
+
+@ExtendedMetaData(name="tResourceAssignmentExpression", kind="elementOnly")
+class ResourceAssignmentExpression extends BaseElement {
+
+  @ExtendedMetaData(kind="element", name="expression", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", group="http://www.omg.org/spec/BPMN/20100524/MODEL#expression")
+  !ordered val Expression[1] expression;
+}
+
+@ExtendedMetaData(name="tResourceParameter", kind="elementOnly")
+class ResourceParameter extends BaseElement {
+
+  @ExtendedMetaData(kind="attribute", name="isRequired")
+  !ordered attr boolean isRequired;
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String name;
+
+  @ExtendedMetaData(kind="attribute", name="type")
+  !ordered ref ItemDefinition type;
+}
+
+@ExtendedMetaData(name="tResourceParameterBinding", kind="elementOnly")
+class ResourceParameterBinding extends BaseElement {
+
+  @ExtendedMetaData(kind="element", name="expression", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", group="http://www.omg.org/spec/BPMN/20100524/MODEL#expression")
+  !ordered val Expression[1] expression;
+
+  @ExtendedMetaData(kind="attribute", name="parameterRef")
+  !ordered ref ResourceParameter[1] parameterRef;
+}
+
+@ExtendedMetaData(name="tResourceRole", kind="elementOnly")
+class ResourceRole extends BaseElement {
+
+  @ExtendedMetaData(kind="element", name="resourceRef", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered ref Resource resourceRef;
+
+  @ExtendedMetaData(kind="element", name="resourceParameterBinding", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val ResourceParameterBinding[*] resourceParameterBindings;
+
+  @ExtendedMetaData(kind="element", name="resourceAssignmentExpression", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val ResourceAssignmentExpression resourceAssignmentExpression;
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String name;
+}
+
+@ExtendedMetaData(name="tRootElement", kind="elementOnly", "abstract"="true")
+class RootElement extends BaseElement {
+}
+
+@ExtendedMetaData(name="tScriptTask", kind="elementOnly")
+class ScriptTask extends Task {
+
+  @ExtendedMetaData(kind="element", name="script", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered attr String[1] script;
+
+  @ExtendedMetaData(kind="attribute", name="scriptFormat")
+  !ordered attr String scriptFormat;
+}
+
+@ExtendedMetaData(name="tSendTask", kind="elementOnly")
+class SendTask extends Task {
+
+  @ExtendedMetaData(kind="attribute", name="implementation")
+  !ordered attr String implementation;
+
+  @ExtendedMetaData(kind="attribute", name="messageRef")
+  !ordered ref Message messageRef;
+
+  @ExtendedMetaData(kind="attribute", name="operationRef")
+  !ordered ref Operation operationRef;
+}
+
+@ExtendedMetaData(name="tSequenceFlow", kind="elementOnly")
+class SequenceFlow extends Edge {
+
+  @ExtendedMetaData(kind="element", name="conditionExpression", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val Expression conditionExpression;
+
+  @ExtendedMetaData(kind="attribute", name="isImmediate")
+  !ordered attr boolean isImmediate;
+
+}
+
+@ExtendedMetaData(name="tServiceTask", kind="elementOnly")
+class ServiceTask extends Task {
+
+  @ExtendedMetaData(kind="attribute", name="implementation")
+  !ordered attr String implementation;
+
+  @ExtendedMetaData(kind="attribute", name="operationRef")
+  !ordered ref Operation operationRef;
+}
+
+@ExtendedMetaData(name="tSignal", kind="elementOnly")
+class Signal extends RootElement {
+
+  @ExtendedMetaData(kind="attribute", name="name")
+  !ordered attr String name;
+
+  @ExtendedMetaData(kind="attribute", name="structureRef")
+  !ordered ref ItemDefinition structureRef;
+}
+
+@ExtendedMetaData(name="tSignalEventDefinition", kind="elementOnly")
+class SignalEventDefinition extends EventDefinition {
+
+  @ExtendedMetaData(kind="attribute", name="signalRef")
+  !ordered ref Signal signalRef;
+}
+
+@ExtendedMetaData(name="tStandardLoopCharacteristics", kind="elementOnly")
+class StandardLoopCharacteristics extends LoopCharacteristics {
+
+  @ExtendedMetaData(kind="element", name="loopCondition", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val Expression loopCondition;
+
+  @ExtendedMetaData(kind="attribute", name="loopMaximum")
+  attr type.Int loopMaximum;
+
+  @ExtendedMetaData(kind="attribute", name="testBefore")
+  !ordered attr boolean testBefore = false;
+}
+
+@ExtendedMetaData(name="tStartEvent", kind="elementOnly")
+class StartEvent extends CatchEvent {
+
+  @ExtendedMetaData(kind="attribute", name="isInterrupting")
+  !ordered attr boolean isInterrupting = true;
+}
+
+@ExtendedMetaData(name="tSubChoreography", kind="elementOnly")
+class SubChoreography extends ChoreographyActivity, FlowElementsContainer {
+
+  @ExtendedMetaData(kind="element", name="artifact", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", group="http://www.omg.org/spec/BPMN/20100524/MODEL#artifact")
+  !ordered val Artifact[*] artifacts;
+}
+
+@ExtendedMetaData(name="tSubConversation", kind="elementOnly")
+class SubConversation extends ConversationNode {
+
+  @ExtendedMetaData(kind="element", name="conversationNode", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", group="http://www.omg.org/spec/BPMN/20100524/MODEL#conversationNode")
+  !ordered val ConversationNode[*] conversationNodes;
+}
+
+@ExtendedMetaData(name="tSubProcess", kind="elementOnly")
+class SubProcess extends Activity, FlowElementsContainer {
+
+  @ExtendedMetaData(kind="element", name="artifact", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", group="http://www.omg.org/spec/BPMN/20100524/MODEL#artifact")
+  !ordered val Artifact[*] artifacts;
+
+  @ExtendedMetaData(kind="attribute", name="triggeredByEvent")
+  !ordered attr boolean triggeredByEvent = false;
+}
+
+@ExtendedMetaData(name="tTask", kind="elementOnly")
+class Task extends Activity, InteractionNode {
+}
+
+@ExtendedMetaData(name="tTerminateEventDefinition", kind="elementOnly")
+class TerminateEventDefinition extends EventDefinition {
+}
+
+@ExtendedMetaData(name="tTextAnnotation", kind="elementOnly")
+class TextAnnotation extends Artifact {
+
+  @ExtendedMetaData(kind="element", name="text", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered attr String[1] text;
+
+  @ExtendedMetaData(kind="attribute", name="textFormat")
+  !ordered attr String textFormat = "text/plain";
+}
+
+@ExtendedMetaData(name="tThrowEvent", kind="elementOnly")
+abstract class ThrowEvent extends Event {
+
+  @ExtendedMetaData(kind="element", name="dataInput", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val DataInput[*] dataInputs;
+
+  @ExtendedMetaData(kind="element", name="dataInputAssociation", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val DataInputAssociation[*] dataInputAssociation;
+
+  @ExtendedMetaData(kind="element", name="inputSet", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val InputSet inputSet;
+
+  @ExtendedMetaData(kind="element", name="eventDefinition", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL", group="http://www.omg.org/spec/BPMN/20100524/MODEL#eventDefinition")
+  !ordered val EventDefinition[*] eventDefinitions;
+
+  @ExtendedMetaData(kind="element", name="eventDefinitionRef", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered ref EventDefinition[*] eventDefinitionRefs;
+}
+
+@ExtendedMetaData(name="tTimerEventDefinition", kind="elementOnly")
+class TimerEventDefinition extends EventDefinition {
+
+  @ExtendedMetaData(kind="element", name="timeDate", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val Expression timeDate;
+
+  @ExtendedMetaData(kind="element", name="timeDuration", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val Expression timeDuration;
+
+  @ExtendedMetaData(kind="element", name="timeCycle", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val Expression timeCycle;
+}
+
+@ExtendedMetaData(name="tTransaction", kind="elementOnly")
+class Transaction extends SubProcess {
+  !ordered attr String protocol;
+
+  @ExtendedMetaData(kind="attribute", name="method")
+  !ordered attr String method;
+}
+
+@ExtendedMetaData(name="tUserTask", kind="elementOnly")
+class UserTask extends Task {
+
+  @ExtendedMetaData(kind="element", name="rendering", namespace="http://www.omg.org/spec/BPMN/20100524/MODEL")
+  !ordered val Rendering[*] renderings;
+
+  @ExtendedMetaData(kind="attribute", name="implementation")
+  !ordered attr String implementation;
+}
+
+@ExtendedMetaData(name="tObjectNode", kind="elementOnly", "abstract"="true")
+class ObjectNode extends FlowNode {
+}
+
+@ExtendedMetaData(name="tObjectFlow", kind="elementOnly")
+class ObjectFlow extends Edge {
+}
+
+@ExtendedMetaData(name="tEdge", kind="elementOnly", "abstract"="true")
+class Edge extends FlowElement {
+
+  @ExtendedMetaData(kind="attribute", name="sourceRef")
+  !ordered !resolve ref FlowNode[1]#outgoing sourceRef;
+
+  @ExtendedMetaData(kind="attribute", name="targetRef")
+  !ordered !resolve ref FlowNode[1]#incoming targetRef;
+}

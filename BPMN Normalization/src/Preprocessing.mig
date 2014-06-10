@@ -1,5 +1,67 @@
 import "normalization.eol";
 
+pre test {
+	Original!DataObject.all.size().println();
+	Migrated!ItemAwareElement.all.size().println();
+}
+
+//retype package bpmn2 to bpmn3
+//retype DataObject to DataObject
+migrate DataObject
+{
+	
+}
+//migrate DocumentRoot {
+	//migrated.
+//}
+retype DataObjectReference to DataObjectReference
+migrate DataObjectReference
+{
+
+}
+
+
+retype DataOutputAssociation to SequenceFlow
+migrate DataOutputAssociation
+{
+	original.println();
+	migrated.targetRef = original.targetRef.equivalent();
+	migrated.targetRef.println();
+	original.getAssociatedFlowNode().equivalent().println();
+	migrated.sourceRef = original.getAssociatedFlowNode().equivalent();
+	migrated.println();
+	//migrated.sourceRef.println();
+	original.targetRef.println();
+	original.targetRef.getContainingProcess().println();
+	original.targetRef.getContainingProcess().equivalent().println();
+	original.targetRef.getContainingProcess().equivalent().flowElements.println();//add(migrated);
+}
+
+
+retype DataInputAssociation to SequenceFlow
+migrate DataInputAssociation
+{
+	//original.println();
+	migrated.targetRef = original.getAssociatedFlowNode().equivalent();
+	migrated.sourceRef = original.sourceRef.first().equivalent();
+	migrated.println();
+	//migrated.sourceRef.println();
+	//migrated.targetRef.println();
+}
+
+migrate Activity 
+	ignoring ioSpecification, dataInputAssociations, dataOutputAssociations
+{
+	migrated.println();
+}
+
+migrate Event 
+	
+{
+	migrated.println();
+}
+
+/* 
 migrate Activity 
 	when {
 		--var process = Original!Process.all.first().equivalent();
@@ -16,7 +78,7 @@ migrate Activity
 	
 	original.outgoing.println();
 	migrated.outgoing.println();
-	/*  
+	/* 
 	"Activities".println();
 	Original!Activity.all.println();
 	Migrated!Activity.all.println();
@@ -24,7 +86,7 @@ migrate Activity
 	"Seq flows".println();
 	Original!SequenceFlow.all.println();
 	Migrated!SequenceFlow.all.println();
-	*/ 
+	 
 	var sequenceFlow: new Migrated!SequenceFlow;
 	var fork: new Migrated!ParallelGateway;
 					
@@ -38,9 +100,10 @@ migrate Activity
 	
 	fork.outgoing.addAll(original.outgoing.equivalent());
 	fork.outgoing.println();
+	migrated.outgoing.clear();
 	sequenceFlow.sourceRef = migrated;
 	sequenceFlow.targetRef = fork;
-	//migrated.outgoing.clear();
+	
 	//migrated.outgoing.add(sequenceFlow);
 	migrated.outgoing.println();	
 	sequenceFlow.println();		
@@ -51,11 +114,45 @@ migrate Activity
 	original.getContainingProcess().equivalent().flowElements.add(fork);
 	
 }
+*/
+
+post test {
+	Original!ItemAwareElement.all.size().println();
+	Migrated!ItemAwareElement.all.size().println();
+}
 
 operation Original!Activity hasMultipleOutgoingControlFlows() : Boolean {
 	return self.outgoing.size() > 1;
 }
 
 operation Original!FlowElement getContainingProcess() : Original!Process {
+	self.println();
+	//return Original!Process.all.first;
 	return Original!Process.all.select(p| p.flowElements.includes(self)).first();
 } 
+
+operation Original!DataOutputAssociation getAssociatedFlowNode() : Original!FlowNode {
+	var _dataOutput = self.sourceRef.first();
+	//_dataOutput.println();
+	var activity = Original!Activity.all.select(a | a.ioSpecification.isDefined() and a.ioSpecification.dataOutputs.includes(_dataOutput)).first();
+	var catchEvent = Original!CatchEvent.all.select(e | e.dataOutputs.isDefined() and e.dataOutputs.includes(_dataOutput)).first();
+	//activity.println();
+	//catchEvent.println();
+	if (activity.isDefined())
+		return activity;
+	else
+		return catchEvent;
+}
+
+operation Original!DataInputAssociation getAssociatedFlowNode() : Original!FlowNode {
+	var _dataInput = self.targetRef;
+	//_dataOutput.println();
+	var activity = Original!Activity.all.select(a | a.ioSpecification.isDefined() and a.ioSpecification.dataInputs.includes(_dataInput)).first();
+	var throwEvent = Original!ThrowEvent.all.select(e | e.dataInputs.isDefined() and e.dataInputs.includes(_dataInput)).first();
+	//activity.println();
+	//catchEvent.println();
+	if (activity.isDefined())
+		return activity;
+	else
+		return catchEvent;
+}

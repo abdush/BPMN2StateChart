@@ -1,0 +1,221 @@
+/* 
+	R1: If there is an activity or control Node (Not Object Node) with one incoming and outgoing edge, it can be deleted.
+*/
+pattern SingleInputOutputNonObjectNode
+	flowNode: FlowNode
+		guard: not flowNode.isTypeOf(ObjectNode), //and flowNode.incoming.size = 1 and flowNode.outgoing.size = 1),
+	inEdge: Edge[1]
+		from: flowNode.incoming,
+	outEdge: Edge[1]
+		from: flowNode.outgoing
+{
+	onmatch {
+		flowNode.println("R1 Matched..");
+	}
+	
+	do {
+		inEdge.targetRef = outEdge.targetRef;
+		delete flowNode;
+		delete outEdge;
+		inEdge.println("R1 applied..");
+	}
+}
+
+/* 
+	R2: If there is an XOR Gateway(Decision) with a single incoming Edge from another XOR Gateway(Decision) , the two can be merged (preserving the guards).
+*/
+pattern MergeDivergingExclusiveGateway
+	secondGateway: ExclusiveGateway
+		guard: secondGateway.incoming.size = 1,
+	edge: Edge
+		from: secondGateway.incoming
+		guard: edge.sourceRef.isTypeOf(ExclusiveGateway),
+	firstGateway: ExclusiveGateway
+		from: edge.sourceRef		
+{
+	onmatch {
+		edge.println("R2 Matched..");
+	}
+	
+	do {
+		
+		for (_edge in secondGateway.outgoing) {
+			_edge.sourceRef = firstGateway;
+			//_edge.guard += "& " + edge.guard; 
+		}
+		delete secondGateway;
+		delete edge;
+		firstGateway.println("R2 applied..");
+	}
+}
+
+/*
+	R3: If there is an XOR Gateway(Merge) with a single outgoing Edge to another XOR Gateway, the two can be merged (preserving the guards).
+*/
+pattern MergeConvergingExclusiveGateway
+	firstGateway: ExclusiveGateway
+		guard: firstGateway.outgoing.size = 1,
+	edge: Edge
+		from: firstGateway.outgoing
+		guard: edge.targetRef.isTypeOf(ExclusiveGateway),
+	secondGateway: ExclusiveGateway
+		from: edge.targetRef		
+{
+	onmatch {
+		edge.println("R3 Matched..");
+	}
+	
+	do {
+		
+		for (_edge in firstGateway.incoming) {
+			_edge.targetRef = secondGateway;
+			//_edge.guard += "& " + edge.guard; 
+		}
+		delete firstGateway;
+		delete edge;
+		secondGateway.println("R3 applied..");
+	}
+}
+
+/* 
+	R4: If there is an XOR Gateway with a self loop Edge, the edge can be deleted.
+*/
+pattern DeleteLoopEdgeExclusiveGateway
+	gateway: ExclusiveGateway,
+	edge: Edge
+		from: gateway.outgoing
+		guard: edge.targetRef = edge.sourceRef
+{
+	onmatch {
+		edge.println("R4 Matched..");
+	}
+	
+	do {
+		
+		delete edge;
+		gateway.println("R4 applied..");
+	}
+}
+
+
+/*
+	R5: If there is an AND Gateway (Parallel) connected directly  to another AND Gateway and also through a path of 2 or more nodes, the direct edge can be deleted.
+*/
+pattern DeleteLoopEdgeExclusiveGateway
+	gateway: ExclusiveGateway,
+	edge: Edge
+		from: gateway.outgoing
+		guard: edge.targetRef = edge.sourceRef
+{
+	onmatch {
+		edge.println("R5 Matched..");
+	}
+	
+	do {
+		
+		delete edge;
+		gateway.println("R5 applied..");
+	}
+}
+
+/* 
+	R6: If there is an AND Gateway with more than one outgoing edges and one is connected to an end Event (final node), the edge and final node can be deleted.
+*/
+pattern DeleteEndEventFromParallelGateway
+	gateway: ParallelGateway
+		guard: gateway.outgoing.size > 1,
+	edge: Edge
+		from: gateway.outgoing,
+	endEvent: EndEvent
+		from: edge.targetRef
+{
+	onmatch {
+		endEvent.println("R6 Matched..");
+	}
+	
+	do {
+		
+		delete edge;
+		delete endEvent;
+		gateway.println("R6 applied..");
+	}
+}
+
+/* 
+	R7: If there is an XOR Gateway(Decision) with a single incoming Edge from another XOR Gateway(Decision) , the two can be merged (preserving the guards).
+*/
+pattern MergeDivergingExclusiveGateway
+	secondGateway: ExclusiveGateway
+		guard: secondGateway.incoming.size = 1,
+	edge: Edge
+		from: secondGateway.incoming
+		guard: edge.sourceRef.isTypeOf(ExclusiveGateway),
+	firstGateway: ExclusiveGateway
+		from: edge.sourceRef		
+{
+	onmatch {
+		edge.println("R7 Matched..");
+	}
+	
+	do {
+		
+		for (_edge in secondGateway.outgoing) {
+			_edge.sourceRef = firstGateway;
+			//_edge.guard += "& " + edge.guard; 
+		}
+		delete secondGateway;
+		delete edge;
+		firstGateway.println("R7 applied..");
+	}
+}
+
+/*
+	R8: If there is an XOR Gateway(Merge) with a single outgoing Edge to another XOR Gateway, the two can be merged (preserving the guards).
+*/
+pattern MergeConvergingExclusiveGateway
+	firstGateway: ExclusiveGateway
+		guard: firstGateway.outgoing.size = 1,
+	edge: Edge
+		from: firstGateway.outgoing
+		guard: edge.targetRef.isTypeOf(ExclusiveGateway),
+	secondGateway: ExclusiveGateway
+		from: edge.targetRef		
+{
+	onmatch {
+		edge.println("R8 Matched..");
+	}
+	
+	do {
+		
+		for (_edge in firstGateway.incoming) {
+			_edge.targetRef = secondGateway;
+			//_edge.guard += "& " + edge.guard; 
+		}
+		delete firstGateway;
+		delete edge;
+		secondGateway.println("R8 applied..");
+	}
+}
+
+/***************** Helper Functions ***************/
+/* 
+	Get all the incoming nodes to the given node.
+	(All nodes which are sourceRef to Edges which have the given FlowNode as targetRef)
+*/
+operation FlowNode getIncomingNodes() : Sequence(FlowNode) {
+	_edges = Edge.all.select(e | e.targerRef = self);
+	return FlowNode.all.select(n | _edges.exists(e | e.sourceRef = n));
+}
+
+/*
+	Get all the outgoing nodes for the given node.
+	(All nodes which are targetRef to Edges which have the given FlowNode as sourceRef)
+*/
+operation FlowNode getOutgoingNodes() : Sequence(FlowNode) {
+	_edges = Edge.all.select(e | e.sourceRef = self);
+	return FlowNode.all.select(n | _edges.exists(e | e.targetRef = n));
+}
+
+operation Collection replaceAll(first: FlowNode, second: FlowNode) : Boolean {
+	//for (item in self)
+}

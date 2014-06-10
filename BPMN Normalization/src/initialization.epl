@@ -2,7 +2,8 @@ pattern ActivityWithMultipleOutgoingSequenceFlows
 	process: Process,
 	activity: Activity
 		from: process.flowElements
-		guard: activity.outgoing.size() > 1 {
+		guard: activity.outgoing.size() > 1 
+{
 	
 	match {
 		return activity.outgoing.forAll(s| s.conditionExpression.isUndefined());
@@ -53,47 +54,51 @@ pattern ActivityWithMultipleIncomingSequenceFlows
 }
 
 
+
+/*  
+	Helper Functions
+*/
 operation Process addFork(task: Activity) : Boolean {
-					var sequenceFlow: new SequenceFlow;
-					var fork: new ParallelGateway;
+	var sequenceFlow: new SequenceFlow;
+	var fork: new ParallelGateway;
 					
-					--Set a unique id for the gateway!!?? 
-					fork.id = "fork_id123";
+	--Set a unique id for the gateway!!?? 
+	fork.id = "fork_id123";
 					
-					fork.gatewayDirection = GatewayDirection#Diverging;
-					//var seqFlows = SequenceFlow.all.select(s|s.sourceRef = self);
-					//seqFlows.println();
-					//self.outgoing.println();
-					fork.outgoing.addAll(task.outgoing);
-					//fork.outgoing.println();
-					sequenceFlow.sourceRef = task;
-					sequenceFlow.targetRef = fork;
+	fork.gatewayDirection = GatewayDirection#Diverging;
+	//var seqFlows = SequenceFlow.all.select(s|s.sourceRef = self);
+	//seqFlows.println();
+	//self.outgoing.println();
+	fork.outgoing.addAll(task.outgoing);
+	//fork.outgoing.println();
+	sequenceFlow.sourceRef = task;
+	sequenceFlow.targetRef = fork;
 					
-					--get the process which contains the task (self))!??
-					//Process.all.first().flowElements.add(sequenceFlow);
-					//Process.all.first().flowElements.add(fork);
-					self.flowElements.add(sequenceFlow);
-					self.flowElements.add(fork);
+	--get the process which contains the task (self))!??
+	//Process.all.first().flowElements.add(sequenceFlow);
+	//Process.all.first().flowElements.add(fork);
+	self.flowElements.add(sequenceFlow);
+	self.flowElements.add(fork);
 	
 }
 
 operation Process addMerge(task: Activity) : Boolean {
 	var sequenceFlow: new SequenceFlow;
-					var merge: new ExclusiveGateway;
+	var merge: new ExclusiveGateway;
 					
-					--Set a unique id for the gateway!!?? 
-					merge.id = "merge_id123";
+	--Set a unique id for the gateway!!?? 
+	merge.id = "merge_id123";
 					
-					merge.gatewayDirection = GatewayDirection#Converging;
-					//var seqFlows = SequenceFlow.all.select(s|s.targetRef = self);
-					//seqFlows.println();
-					//self.incoming.println();
-					merge.incoming.addAll(task.incoming);
-					//merge.incoming.println();
-					sequenceFlow.sourceRef = merge;
-					sequenceFlow.targetRef = task;
+	merge.gatewayDirection = GatewayDirection#Converging;
+	//var seqFlows = SequenceFlow.all.select(s|s.targetRef = self);
+	//seqFlows.println();
+	//self.incoming.println();
+	merge.incoming.addAll(task.incoming);
+	//merge.incoming.println();
+	sequenceFlow.sourceRef = merge;
+	sequenceFlow.targetRef = task;
 					
-					--get the process which contains the task (self))!??
-					self.flowElements.add(sequenceFlow);
-					self.flowElements.add(merge);
+	--get the process which contains the task (self))!??
+	self.flowElements.add(sequenceFlow);
+	self.flowElements.add(merge);
 }
