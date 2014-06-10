@@ -3,7 +3,7 @@
 */
 pattern SingleInputOutputNonObjectNode
 	flowNode: FlowNode
-		guard: not flowNode.isTypeOf(ObjectNode), //and flowNode.incoming.size = 1 and flowNode.outgoing.size = 1),
+		guard: not flowNode.isTypeOf(ObjectNode), //and flowNode.incoming.size() = 1 and flowNode.outgoing.size() = 1),
 	inEdge: Edge[1]
 		from: flowNode.incoming,
 	outEdge: Edge[1]
@@ -26,7 +26,7 @@ pattern SingleInputOutputNonObjectNode
 */
 pattern MergeDivergingExclusiveGateway
 	secondGateway: ExclusiveGateway
-		guard: secondGateway.incoming.size = 1,
+		guard: secondGateway.incoming.size() = 1,
 	edge: Edge
 		from: secondGateway.incoming
 		guard: edge.sourceRef.isTypeOf(ExclusiveGateway),
@@ -54,7 +54,7 @@ pattern MergeDivergingExclusiveGateway
 */
 pattern MergeConvergingExclusiveGateway
 	firstGateway: ExclusiveGateway
-		guard: firstGateway.outgoing.size = 1,
+		guard: firstGateway.outgoing.size() = 1,
 	edge: Edge
 		from: firstGateway.outgoing
 		guard: edge.targetRef.isTypeOf(ExclusiveGateway),
@@ -98,14 +98,16 @@ pattern DeleteLoopEdgeExclusiveGateway
 }
 
 
-/*
-	R5: If there is an AND Gateway (Parallel) connected directly  to another AND Gateway and also through a path of 2 or more nodes, the direct edge can be deleted.
+/* 
+	R5: If there is an AND Gateway (Parallel) connected directly to another AND Gateway and also through a path of 2 or more nodes, the direct edge can be deleted.
 */
-pattern DeleteLoopEdgeExclusiveGateway
-	gateway: ExclusiveGateway,
+pattern DeleteRedundantEdgeParallelGateway
+	firstGateway: ParallelGateway,
 	edge: Edge
 		from: gateway.outgoing
-		guard: edge.targetRef = edge.sourceRef
+		guard: edge.targetRef = edge.sourceRef,
+	secondGateway: ParallelGateway
+		from: edge.targetRef
 {
 	onmatch {
 		edge.println("R5 Matched..");
@@ -123,7 +125,7 @@ pattern DeleteLoopEdgeExclusiveGateway
 */
 pattern DeleteEndEventFromParallelGateway
 	gateway: ParallelGateway
-		guard: gateway.outgoing.size > 1,
+		guard: gateway.outgoing.size() > 1,
 	edge: Edge
 		from: gateway.outgoing,
 	endEvent: EndEvent
@@ -142,16 +144,17 @@ pattern DeleteEndEventFromParallelGateway
 }
 
 /* 
-	R7: If there is an XOR Gateway(Decision) with a single incoming Edge from another XOR Gateway(Decision) , the two can be merged (preserving the guards).
+	R7: If there is an AND Gateway(Parallel) with a single incoming Edge from another AND Gateway(Fork) with multiple outgoing edges, the two can be merged.
 */
-pattern MergeDivergingExclusiveGateway
-	secondGateway: ExclusiveGateway
-		guard: secondGateway.incoming.size = 1,
+pattern MergeDivergingParallelGateway
+	secondGateway: ParallelGateway
+		guard: secondGateway.incoming.size() = 1,
 	edge: Edge
 		from: secondGateway.incoming
-		guard: edge.sourceRef.isTypeOf(ExclusiveGateway),
-	firstGateway: ExclusiveGateway
-		from: edge.sourceRef		
+		guard: edge.sourceRef.isTypeOf(ParallelGateway),
+	firstGateway: ParallelGateway
+		from: edge.sourceRef
+		guard: firstGateway.outgoing.size() > 1		
 {
 	onmatch {
 		edge.println("R7 Matched..");
@@ -160,8 +163,7 @@ pattern MergeDivergingExclusiveGateway
 	do {
 		
 		for (_edge in secondGateway.outgoing) {
-			_edge.sourceRef = firstGateway;
-			//_edge.guard += "& " + edge.guard; 
+			_edge.sourceRef = firstGateway; 
 		}
 		delete secondGateway;
 		delete edge;
@@ -169,17 +171,18 @@ pattern MergeDivergingExclusiveGateway
 	}
 }
 
-/*
-	R8: If there is an XOR Gateway(Merge) with a single outgoing Edge to another XOR Gateway, the two can be merged (preserving the guards).
+/* 
+	R8: If there is an AND Gateway(Join) with a single outgoing Edge to another AND Gateway with more than one incoming edge, the two can be merged.
 */
-pattern MergeConvergingExclusiveGateway
-	firstGateway: ExclusiveGateway
-		guard: firstGateway.outgoing.size = 1,
+pattern MergeConvergingParallelGateway
+	firstGateway: ParallelGateway
+		guard: firstGateway.outgoing.size() = 1,
 	edge: Edge
 		from: firstGateway.outgoing
-		guard: edge.targetRef.isTypeOf(ExclusiveGateway),
-	secondGateway: ExclusiveGateway
-		from: edge.targetRef		
+		guard: edge.targetRef.isTypeOf(ParallelGateway),
+	secondGateway: ParallelGateway
+		from: edge.targetRef
+		guard: secondGateway.incoming.size() > 1		
 {
 	onmatch {
 		edge.println("R8 Matched..");
@@ -188,12 +191,68 @@ pattern MergeConvergingExclusiveGateway
 	do {
 		
 		for (_edge in firstGateway.incoming) {
-			_edge.targetRef = secondGateway;
-			//_edge.guard += "& " + edge.guard; 
+			_edge.targetRef = secondGateway; 
 		}
 		delete firstGateway;
 		delete edge;
 		secondGateway.println("R8 applied..");
+	}
+}
+
+/*
+	R9: If there is an XOR Gateway(Decision) and an Object Node with same incoming Edge from a fork and same outgoing Edges to another AND Gateway(join), the XOR node can be deleted (preserving the guards).
+*/
+pattern DeleteRedundantDecisionExclusiveGateway
+	XORGateway: ExclusiveGateway
+		guard: XORGateway.incoming.size() = 1 and XORGateway.outgoing.forAll(o | o.isTypeOf(ParallelGateway)),
+	object: ObjectNode
+		guard: object.incoming.size() = 1 and object.outgoing = XORGateway.outgoing, //Collection equality
+	forkGateway: ParallelGateway[1]
+		from: XORGateway.incoming.sourceRef 
+		guard: forkGateway.gatewayDirection = GatewayDirection#Diverging and object.incoming.sourceRef = forkGateway,
+	parallelGateway: ParallelGateway
+		from: XORGateway.outgoing		
+{
+	onmatch {
+		XORGateway.println("R9 Matched..");
+	}
+	
+	do {
+		//not the best way!!
+		delete objetc.outgoing;
+		for (_edge in XORGateway.outgoing) {
+			_edge.sourceRef = object; 
+		}
+		delete XORGateway;
+		delete XORGateway.incoming;
+		object.println("R9 applied..");
+	}
+}
+
+/* 
+	R10: If there is an XOR Gateway(Mereg) and an Object Node with one outgoing Edge to a join and same incoming Edges from other AND Gateway(fork), the XOR node can be deleted.
+*/
+pattern DeleteRedundantMergeExclusiveGateway
+	XORGateway: ExclusiveGateway
+		guard: XORGateway.outgoing.size() = 1 and XORGateway.incoming.forAll(o | o.isTypeOf(ParallelGateway)),
+	object: ObjectNode
+		guard: object.outgoing.size() = 1 and object.incoming = XORGateway.incoming, //Collection equality
+	joinGateway: ParallelGateway[1]
+		from: XORGateway.outgoing.targetRef 
+		guard: forkGateway.gatewayDirection = GatewayDirection#Converging and object.outgoing.targetRef = joinGateway,
+	parallelGateway: ParallelGateway
+		from: XORGateway.incoming		
+{
+	onmatch {
+		XORGateway.println("R10 Matched..");
+	}
+	
+	do {
+		
+		delete XORGateway;
+		delete XORGateway.incoming;
+		delete XORGateway.outgoing;
+		object.println("R10 applied..");
 	}
 }
 
