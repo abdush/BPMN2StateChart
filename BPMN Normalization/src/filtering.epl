@@ -103,6 +103,7 @@ pattern DeleteLoopEdgeExclusiveGateway
 */
 pattern DeleteRedundantEdgeParallelGateway
 	firstGateway: ParallelGateway,
+	//simple path  from firstGateway to secondGateway??
 	edge: Edge
 		from: gateway.outgoing
 		guard: edge.targetRef = edge.sourceRef,
