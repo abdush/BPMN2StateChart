@@ -1,108 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn2:definitions xmlns="bpmn2" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="_J84mQOneEeOgCMDZjxiKRQ" targetNamespace="bpmn2">
-  <bpmn2:process id="_J84mQeneEeOgCMDZjxiKRQ" name="process1">
-    <bpmn2:sequenceFlow id="_J84mQ-neEeOgCMDZjxiKRQ" sourceRef="_J84mQuneEeOgCMDZjxiKRQ" targetRef="_J84mROneEeOgCMDZjxiKRQ"/>
-    <bpmn2:task id="_J84mROneEeOgCMDZjxiKRQ" name="task 1">
-      <bpmn2:incoming>_J84mQ-neEeOgCMDZjxiKRQ</bpmn2:incoming>
-      <bpmn2:outgoing>_J84mReneEeOgCMDZjxiKRQ</bpmn2:outgoing>
-      <bpmn2:outgoing>_7unF4OouEeO7IP1X9T78Pg</bpmn2:outgoing>
-      <bpmn2:ioSpecification id="InputOutputSpecification_1">
-        <bpmn2:dataInput id="DataInput_1" name="input1"/>
-        <bpmn2:dataOutput id="DataOutput_2" name="output1"/>
-        <bpmn2:dataOutput id="DataOutput_3" name="output2"/>
-        <bpmn2:inputSet id="InputSet_1">
-          <bpmn2:dataInputRefs>DataInput_1</bpmn2:dataInputRefs>
-        </bpmn2:inputSet>
-        <bpmn2:outputSet id="OutputSet_1">
-          <bpmn2:dataOutputRefs>DataOutput_2</bpmn2:dataOutputRefs>
-          <bpmn2:dataOutputRefs>DataOutput_3</bpmn2:dataOutputRefs>
-        </bpmn2:outputSet>
-      </bpmn2:ioSpecification>
-      <bpmn2:dataInputAssociation id="DataInputAssociation_1">
-        <bpmn2:sourceRef>DataObject_1</bpmn2:sourceRef>
-        <bpmn2:targetRef>DataInput_1</bpmn2:targetRef>
-      </bpmn2:dataInputAssociation>
-      <bpmn2:dataOutputAssociation id="DataOutputAssociation_2">
-        <bpmn2:sourceRef>DataOutput_2</bpmn2:sourceRef>
-        <bpmn2:targetRef>_DataObjectReference_3</bpmn2:targetRef>
-      </bpmn2:dataOutputAssociation>
-      <bpmn2:dataOutputAssociation id="DataOutputAssociation_3">
-        <bpmn2:sourceRef>DataOutput_3</bpmn2:sourceRef>
-        <bpmn2:targetRef>_DataObjectReference_4</bpmn2:targetRef>
-      </bpmn2:dataOutputAssociation>
-    </bpmn2:task>
-    <bpmn2:sequenceFlow id="_J84mReneEeOgCMDZjxiKRQ" sourceRef="_J84mROneEeOgCMDZjxiKRQ" targetRef="_J84mR-neEeOgCMDZjxiKRQ"/>
-    <bpmn2:sequenceFlow id="_7unF4OouEeO7IP1X9T78Pg" sourceRef="_J84mROneEeOgCMDZjxiKRQ" targetRef="_J84mSOneEeOgCMDZjxiKRQ"/>
-    <bpmn2:task id="_J84mR-neEeOgCMDZjxiKRQ" name="task 2">
-      <bpmn2:incoming>_J84mReneEeOgCMDZjxiKRQ</bpmn2:incoming>
-      <bpmn2:outgoing>_J84mSeneEeOgCMDZjxiKRQ</bpmn2:outgoing>
-      <bpmn2:ioSpecification id="InputOutputSpecification_3">
-        <bpmn2:dataInput id="DataInput_3" name="input1"/>
-        <bpmn2:inputSet id="InputSet_3">
-          <bpmn2:dataInputRefs>DataInput_3</bpmn2:dataInputRefs>
-        </bpmn2:inputSet>
-        <bpmn2:outputSet id="OutputSet_3"/>
-      </bpmn2:ioSpecification>
-      <bpmn2:dataInputAssociation id="DataInputAssociation_3">
-        <bpmn2:sourceRef>_DataObjectReference_4</bpmn2:sourceRef>
-        <bpmn2:targetRef>DataInput_3</bpmn2:targetRef>
-      </bpmn2:dataInputAssociation>
-    </bpmn2:task>
-    <bpmn2:sequenceFlow id="_J84mSeneEeOgCMDZjxiKRQ" sourceRef="_J84mR-neEeOgCMDZjxiKRQ" targetRef="_J84mS-neEeOgCMDZjxiKRQ"/>
-    <bpmn2:task id="_J84mSOneEeOgCMDZjxiKRQ" name="task 3">
-      <bpmn2:incoming>_7unF4OouEeO7IP1X9T78Pg</bpmn2:incoming>
-      <bpmn2:outgoing>_J84mSuneEeOgCMDZjxiKRQ</bpmn2:outgoing>
-      <bpmn2:ioSpecification id="InputOutputSpecification_2">
-        <bpmn2:dataInput id="DataInput_2" name="input1"/>
-        <bpmn2:inputSet id="InputSet_2">
-          <bpmn2:dataInputRefs>DataInput_2</bpmn2:dataInputRefs>
-        </bpmn2:inputSet>
-        <bpmn2:outputSet id="OutputSet_2"/>
-      </bpmn2:ioSpecification>
-      <bpmn2:dataInputAssociation id="DataInputAssociation_2">
-        <bpmn2:sourceRef>_DataObjectReference_3</bpmn2:sourceRef>
-        <bpmn2:targetRef>DataInput_2</bpmn2:targetRef>
-      </bpmn2:dataInputAssociation>
-    </bpmn2:task>
-    <bpmn2:sequenceFlow id="_J84mSuneEeOgCMDZjxiKRQ" sourceRef="_J84mSOneEeOgCMDZjxiKRQ" targetRef="_J84mS-neEeOgCMDZjxiKRQ"/>
-    <bpmn2:parallelGateway id="_J84mS-neEeOgCMDZjxiKRQ" gatewayDirection="Converging">
-      <bpmn2:incoming>_J84mSeneEeOgCMDZjxiKRQ</bpmn2:incoming>
-      <bpmn2:incoming>_J84mSuneEeOgCMDZjxiKRQ</bpmn2:incoming>
-      <bpmn2:outgoing>_J84mTOneEeOgCMDZjxiKRQ</bpmn2:outgoing>
-    </bpmn2:parallelGateway>
-    <bpmn2:sequenceFlow id="_J84mTOneEeOgCMDZjxiKRQ" sourceRef="_J84mS-neEeOgCMDZjxiKRQ" targetRef="_7EecYOoxEeO7IP1X9T78Pg"/>
-    <bpmn2:task id="_7EecYOoxEeO7IP1X9T78Pg" name="task 4">
-      <bpmn2:incoming>_J84mTOneEeOgCMDZjxiKRQ</bpmn2:incoming>
-      <bpmn2:outgoing>_7EecYeoxEeO7IP1X9T78Pg</bpmn2:outgoing>
-    </bpmn2:task>
-    <bpmn2:sequenceFlow id="_7EecYeoxEeO7IP1X9T78Pg" sourceRef="_7EecYOoxEeO7IP1X9T78Pg" targetRef="_7EecYuoxEeO7IP1X9T78Pg"/>
-    <bpmn2:exclusiveGateway id="_7EecYuoxEeO7IP1X9T78Pg" gatewayDirection="Diverging">
-      <bpmn2:incoming>_7EecYeoxEeO7IP1X9T78Pg</bpmn2:incoming>
-      <bpmn2:outgoing>_7EecY-oxEeO7IP1X9T78Pg</bpmn2:outgoing>
-      <bpmn2:outgoing>_7EecZOoxEeO7IP1X9T78Pg</bpmn2:outgoing>
-    </bpmn2:exclusiveGateway>
-    <bpmn2:sequenceFlow id="_7EecY-oxEeO7IP1X9T78Pg" sourceRef="_7EecYuoxEeO7IP1X9T78Pg" targetRef="_7EecZeoxEeO7IP1X9T78Pg"/>
-    <bpmn2:sequenceFlow id="_7EecZOoxEeO7IP1X9T78Pg" sourceRef="_7EecYuoxEeO7IP1X9T78Pg" targetRef="_7EecZ-oxEeO7IP1X9T78Pg"/>
-    <bpmn2:task id="_7EecZeoxEeO7IP1X9T78Pg" name="task 5">
-      <bpmn2:incoming>_7EecY-oxEeO7IP1X9T78Pg</bpmn2:incoming>
-      <bpmn2:outgoing>_7EecZuoxEeO7IP1X9T78Pg</bpmn2:outgoing>
-    </bpmn2:task>
-    <bpmn2:sequenceFlow id="_7EecZuoxEeO7IP1X9T78Pg" sourceRef="_7EecZeoxEeO7IP1X9T78Pg" targetRef="_7EecaeoxEeO7IP1X9T78Pg"/>
-    <bpmn2:task id="_7EecZ-oxEeO7IP1X9T78Pg" name="task 6">
-      <bpmn2:incoming>_7EecZOoxEeO7IP1X9T78Pg</bpmn2:incoming>
-      <bpmn2:outgoing>_7EecaOoxEeO7IP1X9T78Pg</bpmn2:outgoing>
-    </bpmn2:task>
-    <bpmn2:sequenceFlow id="_7EecaOoxEeO7IP1X9T78Pg" sourceRef="_7EecZ-oxEeO7IP1X9T78Pg" targetRef="_7EecaeoxEeO7IP1X9T78Pg"/>
-    <bpmn2:task id="_7EecaeoxEeO7IP1X9T78Pg" name="task 7">
-      <bpmn2:incoming>_7EecZuoxEeO7IP1X9T78Pg</bpmn2:incoming>
-      <bpmn2:incoming>_7EecaOoxEeO7IP1X9T78Pg</bpmn2:incoming>
-      <bpmn2:outgoing>_7EecauoxEeO7IP1X9T78Pg</bpmn2:outgoing>
-    </bpmn2:task>
-    <bpmn2:sequenceFlow id="_7EecauoxEeO7IP1X9T78Pg" sourceRef="_7EecaeoxEeO7IP1X9T78Pg" targetRef="_J84mTeneEeOgCMDZjxiKRQ"/>
-    <bpmn2:endEvent id="_J84mTeneEeOgCMDZjxiKRQ">
-      <bpmn2:incoming>_7EecauoxEeO7IP1X9T78Pg</bpmn2:incoming>
-    </bpmn2:endEvent>
-    <bpmn2:dataObjectReference id="_DataObjectReference_3" name="Reference to Data Object 2" dataObjectRef="DataObject_1"/>
-    <bpmn2:dataObjectReference id="_DataObjectReference_4" name="Reference to Data Object 2" dataObjectRef="DataObject_1"/>
-  </bpmn2:process>
-</bpmn2:definitions>
+<pm:Process xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pm="http://BPMN/Simplified" id="_J84mQeneEeOgCMDZjxiKRQ" name="process1">
+  <flowElements xsi:type="pm:StartEvent" id="_J84mQuneEeOgCMDZjxiKRQ" outgoing="#/0/@flowElements.1 #/1"/>
+  <flowElements xsi:type="pm:SequenceFlow" id="_J84mQ-neEeOgCMDZjxiKRQ" sourceRef="#/0/@flowElements.0" targetRef="#/0/@flowElements.2"/>
+  <flowElements xsi:type="pm:Activity" id="_J84mROneEeOgCMDZjxiKRQ" name="task 1" incoming="#/0/@flowElements.1 #/2" outgoing="#/0/@flowElements.3 #/0/@flowElements.4 #/3 #/4"/>
+  <flowElements xsi:type="pm:SequenceFlow" id="_J84mReneEeOgCMDZjxiKRQ" sourceRef="#/0/@flowElements.2" targetRef="#/0/@flowElements.5"/>
+  <flowElements xsi:type="pm:SequenceFlow" id="_7unF4OouEeO7IP1X9T78Pg" sourceRef="#/0/@flowElements.2" targetRef="#/0/@flowElements.7"/>
+  <flowElements xsi:type="pm:Activity" id="_J84mR-neEeOgCMDZjxiKRQ" name="task 2" incoming="#/0/@flowElements.3 #/5" outgoing="#/0/@flowElements.6"/>
+  <flowElements xsi:type="pm:SequenceFlow" id="_J84mSeneEeOgCMDZjxiKRQ" sourceRef="#/0/@flowElements.5" targetRef="#/0/@flowElements.9"/>
+  <flowElements xsi:type="pm:Activity" id="_J84mSOneEeOgCMDZjxiKRQ" name="task 3" incoming="#/0/@flowElements.4 #/6" outgoing="#/0/@flowElements.8"/>
+  <flowElements xsi:type="pm:SequenceFlow" id="_J84mSuneEeOgCMDZjxiKRQ" sourceRef="#/0/@flowElements.7" targetRef="#/0/@flowElements.9"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="_J84mS-neEeOgCMDZjxiKRQ" incoming="#/0/@flowElements.6 #/0/@flowElements.8" outgoing="#/0/@flowElements.10" gatewayDirection="Converging"/>
+  <flowElements xsi:type="pm:SequenceFlow" id="_J84mTOneEeOgCMDZjxiKRQ" sourceRef="#/0/@flowElements.9" targetRef="#/0/@flowElements.11"/>
+  <flowElements xsi:type="pm:Activity" id="_7EecYOoxEeO7IP1X9T78Pg" name="task 4" incoming="#/0/@flowElements.10" outgoing="#/0/@flowElements.12"/>
+  <flowElements xsi:type="pm:SequenceFlow" id="_7EecYeoxEeO7IP1X9T78Pg" sourceRef="#/0/@flowElements.11" targetRef="#/0/@flowElements.13"/>
+  <flowElements xsi:type="pm:ExclusiveGateway" id="_7EecYuoxEeO7IP1X9T78Pg" incoming="#/0/@flowElements.12" outgoing="#/0/@flowElements.14 #/0/@flowElements.15" gatewayDirection="Diverging"/>
+  <flowElements xsi:type="pm:SequenceFlow" id="_7EecY-oxEeO7IP1X9T78Pg" sourceRef="#/0/@flowElements.13" targetRef="#/0/@flowElements.16"/>
+  <flowElements xsi:type="pm:SequenceFlow" id="_7EecZOoxEeO7IP1X9T78Pg" sourceRef="#/0/@flowElements.13" targetRef="#/0/@flowElements.18"/>
+  <flowElements xsi:type="pm:Activity" id="_7EecZeoxEeO7IP1X9T78Pg" name="task 5" incoming="#/0/@flowElements.14" outgoing="#/0/@flowElements.17"/>
+  <flowElements xsi:type="pm:SequenceFlow" id="_7EecZuoxEeO7IP1X9T78Pg" sourceRef="#/0/@flowElements.16" targetRef="#/0/@flowElements.20"/>
+  <flowElements xsi:type="pm:Activity" id="_7EecZ-oxEeO7IP1X9T78Pg" name="task 6" incoming="#/0/@flowElements.15" outgoing="#/0/@flowElements.19"/>
+  <flowElements xsi:type="pm:SequenceFlow" id="_7EecaOoxEeO7IP1X9T78Pg" sourceRef="#/0/@flowElements.18" targetRef="#/0/@flowElements.20"/>
+  <flowElements xsi:type="pm:Activity" id="_7EecaeoxEeO7IP1X9T78Pg" name="task 7" incoming="#/0/@flowElements.17 #/0/@flowElements.19" outgoing="#/0/@flowElements.21"/>
+  <flowElements xsi:type="pm:SequenceFlow" id="_7EecauoxEeO7IP1X9T78Pg" sourceRef="#/0/@flowElements.20" targetRef="#/0/@flowElements.22"/>
+  <flowElements xsi:type="pm:EndEvent" id="_J84mTeneEeOgCMDZjxiKRQ" incoming="#/0/@flowElements.21"/>
+  <flowElements xsi:type="pm:ObjectNode" id="DataObject_1" name="Data Object 2" incoming="#/1" outgoing="#/2"/>
+  <flowElements xsi:type="pm:ObjectNode" id="_DataObjectReference_3" name="Reference to Data Object 2" incoming="#/3" outgoing="#/6"/>
+  <flowElements xsi:type="pm:ObjectNode" id="_DataObjectReference_4" name="Reference to Data Object 2" incoming="#/4" outgoing="#/5"/>
+</pm:Process>

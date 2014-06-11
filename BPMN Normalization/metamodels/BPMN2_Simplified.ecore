@@ -16,7 +16,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="outgoing" upperBound="-1"
         eType="#//Edge" resolveProxies="false" eOpposite="#//Edge/sourceRef"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ActivityNode" eSuperTypes="#//FlowNode"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Activity" eSuperTypes="#//FlowNode"/>
   <eClassifiers xsi:type="ecore:EClass" name="ObjectNode" eSuperTypes="#//FlowNode">
     <eStructuralFeatures xsi:type="ecore:EReference" name="dataState" ordered="false"
         eType="#//DataState"/>
