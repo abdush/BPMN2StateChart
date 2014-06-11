@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="bpmn2" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="_J84mQOneEeOgCMDZjxiKRQ" targetNamespace="bpmn2">
+<bpmn2:definitions xmlns="bpmn2" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="_J84mQOneEeOgCMDZjxiKRQ" targetNamespace="bpmn2">
   <bpmn2:process id="_J84mQeneEeOgCMDZjxiKRQ" name="process1">
     <bpmn2:startEvent id="_J84mQuneEeOgCMDZjxiKRQ">
       <bpmn2:outgoing>_J84mQ-neEeOgCMDZjxiKRQ</bpmn2:outgoing>
@@ -113,8 +113,14 @@
     <bpmn2:endEvent id="_J84mTeneEeOgCMDZjxiKRQ">
       <bpmn2:incoming>_7EecauoxEeO7IP1X9T78Pg</bpmn2:incoming>
     </bpmn2:endEvent>
-    <bpmn2:dataObject id="DataObject_1" name="Data Object 2"/>
-    <bpmn2:dataObjectReference id="_DataObjectReference_3" name="Reference to Data Object 2" dataObjectRef="DataObject_1"/>
-    <bpmn2:dataObjectReference id="_DataObjectReference_4" name="Reference to Data Object 2" dataObjectRef="DataObject_1"/>
+    <bpmn2:dataObject id="DataObject_1" name="Data Object 1">
+      <bpmn2:dataState id="" name="DataState 1"/>
+    </bpmn2:dataObject>
+    <bpmn2:dataObjectReference id="_DataObjectReference_3" name="Reference 1 to Data Object 1" dataObjectRef="DataObject_1">
+      <bpmn2:dataState id="_vlBPUPGsEeOb54kXqxMk0A" name="DataState 2"/>
+    </bpmn2:dataObjectReference>
+    <bpmn2:dataObjectReference id="_DataObjectReference_4" name="Reference 2 to Data Object 1" dataObjectRef="DataObject_1">
+      <bpmn2:dataState id="_vlBPUfGsEeOb54kXqxMk0A" name="DataState 3"/>
+    </bpmn2:dataObjectReference>
   </bpmn2:process>
 </bpmn2:definitions>

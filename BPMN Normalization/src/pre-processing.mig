@@ -11,6 +11,7 @@ migrate DataObject
 {
 	original.println("Org: DataObject");
 	migrated.println("Mig: ObjectNode");
+	migrated.dataState = original.dataState.equivalent();
 }
 //migrate DocumentRoot {
 	//migrated.
@@ -20,6 +21,7 @@ migrate DataObjectReference
 {
 	original.println("Org: DataObjectRef");
 	migrated.println("Mig: ObjectNode");
+	migrated.dataState = original.dataState.equivalent();
 }
 
 
@@ -40,6 +42,7 @@ migrate DataOutputAssociation
 	original.targetRef.getContainingProcess().println("Org: Process");
 	original.targetRef.getContainingProcess().equivalent().println("Org Eq: Process");
 	original.targetRef.getContainingProcess().equivalent().flowElements.println("Org Eq: flowElements");//add(migrated);
+	original.targetRef.getContainingProcess().equivalent().flowElements.add(migrated);
 }
 
 

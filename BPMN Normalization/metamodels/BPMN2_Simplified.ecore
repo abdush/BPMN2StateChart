@@ -19,7 +19,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Activity" eSuperTypes="#//FlowNode"/>
   <eClassifiers xsi:type="ecore:EClass" name="ObjectNode" eSuperTypes="#//FlowNode">
     <eStructuralFeatures xsi:type="ecore:EReference" name="dataState" ordered="false"
-        eType="#//DataState"/>
+        eType="#//DataState" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataState" eSuperTypes="#//BaseElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="Gateway" eSuperTypes="#//FlowNode">
