@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns="bpmn2" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="_J84mQOneEeOgCMDZjxiKRQ" targetNamespace="bpmn2">
+  <bpmn2:process id="_J84mQeneEeOgCMDZjxiKRQ" name="process1">
+    <bpmn2:startEvent id="_J84mQuneEeOgCMDZjxiKRQ">
+      <bpmn2:outgoing>_J84mQ-neEeOgCMDZjxiKRQ</bpmn2:outgoing>
+      <bpmn2:dataOutput id="DataOutput_1" name="output1"/>
+      <bpmn2:dataOutputAssociation id="DataOutputAssociation_1">
+        <bpmn2:sourceRef>DataOutput_1</bpmn2:sourceRef>
+        <bpmn2:targetRef>DataObject_1</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+      <bpmn2:outputSet id="_OutputSet_2" name="Output Set 2">
+        <bpmn2:dataOutputRefs>DataOutput_1</bpmn2:dataOutputRefs>
+      </bpmn2:outputSet>
+    </bpmn2:startEvent>
+    <bpmn2:sequenceFlow id="_J84mQ-neEeOgCMDZjxiKRQ" sourceRef="_J84mQuneEeOgCMDZjxiKRQ" targetRef="_J84mROneEeOgCMDZjxiKRQ"/>
+    <bpmn2:task id="_J84mROneEeOgCMDZjxiKRQ" name="task 1">
+      <bpmn2:incoming>_J84mQ-neEeOgCMDZjxiKRQ</bpmn2:incoming>
+      <bpmn2:outgoing>_J84mReneEeOgCMDZjxiKRQ</bpmn2:outgoing>
+      <bpmn2:outgoing>_7unF4OouEeO7IP1X9T78Pg</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="InputOutputSpecification_1">
+        <bpmn2:dataInput id="DataInput_1" name="input1"/>
+        <bpmn2:dataOutput id="DataOutput_2" name="output1"/>
+        <bpmn2:dataOutput id="DataOutput_3" name="output2"/>
+        <bpmn2:inputSet id="InputSet_1">
+          <bpmn2:dataInputRefs>DataInput_1</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet id="OutputSet_1">
+          <bpmn2:dataOutputRefs>DataOutput_2</bpmn2:dataOutputRefs>
+          <bpmn2:dataOutputRefs>DataOutput_3</bpmn2:dataOutputRefs>
+        </bpmn2:outputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_1">
+        <bpmn2:sourceRef>DataObject_1</bpmn2:sourceRef>
+        <bpmn2:targetRef>DataInput_1</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataOutputAssociation id="DataOutputAssociation_2">
+        <bpmn2:sourceRef>DataOutput_2</bpmn2:sourceRef>
+        <bpmn2:targetRef>_DataObjectReference_3</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+      <bpmn2:dataOutputAssociation id="DataOutputAssociation_3">
+        <bpmn2:sourceRef>DataOutput_3</bpmn2:sourceRef>
+        <bpmn2:targetRef>_DataObjectReference_4</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+    </bpmn2:task>
+    <bpmn2:sequenceFlow id="_J84mReneEeOgCMDZjxiKRQ" sourceRef="_J84mROneEeOgCMDZjxiKRQ" targetRef="_J84mR-neEeOgCMDZjxiKRQ"/>
+    <bpmn2:sequenceFlow id="_7unF4OouEeO7IP1X9T78Pg" sourceRef="_J84mROneEeOgCMDZjxiKRQ" targetRef="_J84mSOneEeOgCMDZjxiKRQ"/>
+    <bpmn2:task id="_J84mR-neEeOgCMDZjxiKRQ" name="task 2">
+      <bpmn2:incoming>_J84mReneEeOgCMDZjxiKRQ</bpmn2:incoming>
+      <bpmn2:outgoing>_J84mSeneEeOgCMDZjxiKRQ</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="InputOutputSpecification_3">
+        <bpmn2:dataInput id="DataInput_3" name="input1"/>
+        <bpmn2:inputSet id="InputSet_3">
+          <bpmn2:dataInputRefs>DataInput_3</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet id="OutputSet_3"/>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_3">
+        <bpmn2:sourceRef>_DataObjectReference_4</bpmn2:sourceRef>
+        <bpmn2:targetRef>DataInput_3</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+    </bpmn2:task>
+    <bpmn2:sequenceFlow id="_J84mSeneEeOgCMDZjxiKRQ" sourceRef="_J84mR-neEeOgCMDZjxiKRQ" targetRef="_J84mS-neEeOgCMDZjxiKRQ"/>
+    <bpmn2:task id="_J84mSOneEeOgCMDZjxiKRQ" name="task 3">
+      <bpmn2:incoming>_7unF4OouEeO7IP1X9T78Pg</bpmn2:incoming>
+      <bpmn2:outgoing>_J84mSuneEeOgCMDZjxiKRQ</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="InputOutputSpecification_2">
+        <bpmn2:dataInput id="DataInput_2" name="input1"/>
+        <bpmn2:inputSet id="InputSet_2">
+          <bpmn2:dataInputRefs>DataInput_2</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet id="OutputSet_2"/>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_2">
+        <bpmn2:sourceRef>_DataObjectReference_3</bpmn2:sourceRef>
+        <bpmn2:targetRef>DataInput_2</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+    </bpmn2:task>
+    <bpmn2:sequenceFlow id="_J84mSuneEeOgCMDZjxiKRQ" sourceRef="_J84mSOneEeOgCMDZjxiKRQ" targetRef="_J84mS-neEeOgCMDZjxiKRQ"/>
+    <bpmn2:parallelGateway id="_J84mS-neEeOgCMDZjxiKRQ" gatewayDirection="Converging">
+      <bpmn2:incoming>_J84mSeneEeOgCMDZjxiKRQ</bpmn2:incoming>
+      <bpmn2:incoming>_J84mSuneEeOgCMDZjxiKRQ</bpmn2:incoming>
+      <bpmn2:outgoing>_J84mTOneEeOgCMDZjxiKRQ</bpmn2:outgoing>
+    </bpmn2:parallelGateway>
+    <bpmn2:sequenceFlow id="_J84mTOneEeOgCMDZjxiKRQ" sourceRef="_J84mS-neEeOgCMDZjxiKRQ" targetRef="_7EecYOoxEeO7IP1X9T78Pg"/>
+    <bpmn2:task id="_7EecYOoxEeO7IP1X9T78Pg" name="task 4">
+      <bpmn2:incoming>_J84mTOneEeOgCMDZjxiKRQ</bpmn2:incoming>
+      <bpmn2:outgoing>_7EecYeoxEeO7IP1X9T78Pg</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:sequenceFlow id="_7EecYeoxEeO7IP1X9T78Pg" sourceRef="_7EecYOoxEeO7IP1X9T78Pg" targetRef="_7EecYuoxEeO7IP1X9T78Pg"/>
+    <bpmn2:exclusiveGateway id="_7EecYuoxEeO7IP1X9T78Pg" gatewayDirection="Diverging">
+      <bpmn2:incoming>_7EecYeoxEeO7IP1X9T78Pg</bpmn2:incoming>
+      <bpmn2:outgoing>_7EecY-oxEeO7IP1X9T78Pg</bpmn2:outgoing>
+      <bpmn2:outgoing>_7EecZOoxEeO7IP1X9T78Pg</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:sequenceFlow id="_7EecY-oxEeO7IP1X9T78Pg" sourceRef="_7EecYuoxEeO7IP1X9T78Pg" targetRef="_7EecZeoxEeO7IP1X9T78Pg"/>
+    <bpmn2:sequenceFlow id="_7EecZOoxEeO7IP1X9T78Pg" sourceRef="_7EecYuoxEeO7IP1X9T78Pg" targetRef="_7EecZ-oxEeO7IP1X9T78Pg"/>
+    <bpmn2:task id="_7EecZeoxEeO7IP1X9T78Pg" name="task 5">
+      <bpmn2:incoming>_7EecY-oxEeO7IP1X9T78Pg</bpmn2:incoming>
+      <bpmn2:outgoing>_7EecZuoxEeO7IP1X9T78Pg</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:sequenceFlow id="_7EecZuoxEeO7IP1X9T78Pg" sourceRef="_7EecZeoxEeO7IP1X9T78Pg" targetRef="_7EecaeoxEeO7IP1X9T78Pg"/>
+    <bpmn2:task id="_7EecZ-oxEeO7IP1X9T78Pg" name="task 6">
+      <bpmn2:incoming>_7EecZOoxEeO7IP1X9T78Pg</bpmn2:incoming>
+      <bpmn2:outgoing>_7EecaOoxEeO7IP1X9T78Pg</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:sequenceFlow id="_7EecaOoxEeO7IP1X9T78Pg" sourceRef="_7EecZ-oxEeO7IP1X9T78Pg" targetRef="_7EecaeoxEeO7IP1X9T78Pg"/>
+    <bpmn2:task id="_7EecaeoxEeO7IP1X9T78Pg" name="task 7">
+      <bpmn2:incoming>_7EecZuoxEeO7IP1X9T78Pg</bpmn2:incoming>
+      <bpmn2:incoming>_7EecaOoxEeO7IP1X9T78Pg</bpmn2:incoming>
+      <bpmn2:outgoing>Seq_7EecaeoxEeO7IP1X9T78Pg</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="_KipkUPG2EeOb54kXqxMk0A">
+        <bpmn2:dataOutput id="_KiqLYPG2EeOb54kXqxMk0A" name="Data Output 7"/>
+        <bpmn2:inputSet id="_KiqLYfG2EeOb54kXqxMk0A"/>
+        <bpmn2:outputSet id="_KiqLYvG2EeOb54kXqxMk0A"/>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataOutputAssociation id="DataOutputAssociation_4">
+        <bpmn2:sourceRef>_KiqLYPG2EeOb54kXqxMk0A</bpmn2:sourceRef>
+        <bpmn2:targetRef>_Var6UPG1EeOb54kXqxMk0A</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+    </bpmn2:task>
+    <bpmn2:sequenceFlow id="Seq_7EecaeoxEeO7IP1X9T78Pg" sourceRef="_7EecaeoxEeO7IP1X9T78Pg" targetRef="_J84mTeneEeOgCMDZjxiKRQ"/>
+    <bpmn2:endEvent id="_J84mTeneEeOgCMDZjxiKRQ">
+      <bpmn2:incoming>Seq_7EecaeoxEeO7IP1X9T78Pg</bpmn2:incoming>
+      <bpmn2:dataInput id="dataInput_end" name="Data input end_event"/>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_4">
+        <bpmn2:sourceRef>_Var6UvG1EeOb54kXqxMk0A</bpmn2:sourceRef>
+        <bpmn2:targetRef>dataInput_end</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:inputSet id="_8ZpCQvG1EeOb54kXqxMk0A"/>
+    </bpmn2:endEvent>
+    <bpmn2:dataObject id="DataObject_1" name="Data Object 1">
+      <bpmn2:dataState id="_vlBPUPGsEeOb54kXqxMk0A_2" name="DataState 1"/>
+    </bpmn2:dataObject>
+    <bpmn2:dataObjectReference id="_DataObjectReference_3" name="Reference 1 to Data Object 1" dataObjectRef="DataObject_1">
+      <bpmn2:dataState id="_vlBPUPGsEeOb54kXqxMk0A" name="DataState 2"/>
+    </bpmn2:dataObjectReference>
+    <bpmn2:dataObjectReference id="_DataObjectReference_4" name="Reference 2 to Data Object 1" dataObjectRef="DataObject_1">
+      <bpmn2:dataState id="_vlBPUfGsEeOb54kXqxMk0A" name="DataState 3"/>
+    </bpmn2:dataObjectReference>
+    <bpmn2:dataObjectReference id="_Var6UPG1EeOb54kXqxMk0A" name="Reference 3 to Data Object 1" dataObjectRef="DataObject_1">
+      <bpmn2:dataState id="_Var6UfG1EeOb54kXqxMk0A" name="DataState 4"/>
+    </bpmn2:dataObjectReference>
+    <bpmn2:dataObjectReference id="_Var6UvG1EeOb54kXqxMk0A" name="Reference 4 to Data Object 1" dataObjectRef="DataObject_1">
+      <bpmn2:dataState id="_Var6U_G1EeOb54kXqxMk0A" name="DataState 5"/>
+    </bpmn2:dataObjectReference>
+  </bpmn2:process>
+</bpmn2:definitions>

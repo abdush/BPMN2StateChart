@@ -5,7 +5,12 @@ pre test {
 	Migrated!ObjectNode.all.size().println();
 }
 
-//retype package bpmn2 to bpmn3
+retype ParallelGateway to ParallelGateway
+retype ExclusiveGateway to ExclusiveGateway
+retype DataState to DataState
+retype SequenceFlow to SequenceFlow
+retype Process to Process
+
 retype DataObject to ObjectNode
 migrate DataObject
 {
@@ -13,9 +18,7 @@ migrate DataObject
 	migrated.println("Mig: ObjectNode");
 	migrated.dataState = original.dataState.equivalent();
 }
-//migrate DocumentRoot {
-	//migrated.
-//}
+
 retype DataObjectReference to ObjectNode
 migrate DataObjectReference
 {
@@ -23,7 +26,6 @@ migrate DataObjectReference
 	migrated.println("Mig: ObjectNode");
 	migrated.dataState = original.dataState.equivalent();
 }
-
 
 retype DataOutputAssociation to ObjectFlow
 migrate DataOutputAssociation
@@ -54,7 +56,7 @@ migrate DataInputAssociation
 	
 	migrated.targetRef = original.getAssociatedFlowNode().equivalent();
 	migrated.sourceRef = original.sourceRef.first().equivalent();
-	
+	original.sourceRef.first().getContainingProcess().equivalent().flowElements.add(migrated);
 	//migrated.sourceRef.println();
 	//migrated.targetRef.println();
 }
@@ -73,88 +75,53 @@ migrate Event
 	original.println("Org: Event");
 	migrated.println("Mig: Event");
 }
-retype ParallelGateway to ParallelGateway
-retype ExclusiveGateway to ExclusiveGateway
-retype DataState to DataState
-retype SequenceFlow to SequenceFlow
-retype Process to Process
-/* 
-migrate Activity 
-	when {
-		--var process = Original!Process.all.first().equivalent();
-		--var activities = process.getActivitiesWithMultipleOutgoingControlFlow();
-		--return (activities.size > 0 and activities.includes(original));
-		return original.hasMultipleOutgoingControlFlows();
-	}
-{
-	
-	"Activity".println();
-	//activities.println();
-	original.println();
-	migrated.println();
-	
-	original.outgoing.println();
-	migrated.outgoing.println();
-	/* 
-	"Activities".println();
-	Original!Activity.all.println();
-	Migrated!Activity.all.println();
-	
-	"Seq flows".println();
-	Original!SequenceFlow.all.println();
-	Migrated!SequenceFlow.all.println();
-	 
-	var sequenceFlow: new Migrated!SequenceFlow;
-	var fork: new Migrated!ParallelGateway;
-					
-	--Set a unique id for the gateway!!?? 
-	sequenceFlow.id = "sq_123";
-	fork.id = "fork_id123";
-					
-	fork.gatewayDirection = Migrated!GatewayDirection#Diverging;
-	var seqFlows = Original!SequenceFlow.all.select(s|s.sourceRef = original);
-	seqFlows.equivalent().println();
-	
-	fork.outgoing.addAll(original.outgoing.equivalent());
-	fork.outgoing.println();
-	migrated.outgoing.clear();
-	sequenceFlow.sourceRef = migrated;
-	sequenceFlow.targetRef = fork;
-	
-	//migrated.outgoing.add(sequenceFlow);
-	migrated.outgoing.println();	
-	sequenceFlow.println();		
-	--get the process which contains the task (self))!??
-	original.getContainingProcess().flowElements.size().println();
-	original.getContainingProcess().equivalent().flowElements.size().println();
-	original.getContainingProcess().equivalent().flowElements.add(sequenceFlow);
-	original.getContainingProcess().equivalent().flowElements.add(fork);
-	
-}
-*/
 
 post test {
 	Original!Process.all.first.flowElements.size().println();
 	Migrated!Process.all.first.flowElements.size().println();
 }
 
+post addOutputObjectFlow {
+	for (objectNode in Migrated!ObjectNode.all.select(o | o.outgoing.isUndefined() or o.outgoing.size() = 0)) {
+		var actionNode = objectNode.incoming.first().sourceRef; //The unique activity node a to which o is output and a has no multiple object nodes, otherwise fail
+		var outgoingControlEdge = actionNode.outgoing.first();  //There is a unique control flow from a
+		outgoingControlEdge.sourceRef = objectNode;
+	}
+}
+
+post addInputObjectFlow {
+	for (objectNode in Migrated!ObjectNode.all.select(o | o.incoming.isUndefined() or o.incoming.size() = 0)) {
+		var actionNode = objectNode.outgoing.first().targetRef; //The unique activity node a to which o is input and a has no multiple object nodes, otherwise fail
+		var incomingControlEdge = actionNode.incoming.first();  //There is a unique control flow to a
+		incomingControlEdge.targetRef = objectNode;
+	}
+}
+
+post addJoinGateway {
+ 	for(activityNode in Migrated!FlowNode.all.select(n | (n.isTypeOf(Migrated!Activity) or n.isTypeOf(Migrated!Event)) and n.incoming.size > 1)) {
+ 		activityNode.addJoin();
+ 	}
+}
+
+post addForkGateway {
+	for(activityNode in Migrated!FlowNode.all.select(n | (n.isTypeOf(Migrated!Activity) or n.isTypeOf(Migrated!Event)) and n.outgoing.size > 1)) {
+ 		activityNode.addFork();
+ 	}	
+} 
+/*************** Helper Functions ***********************/
 operation Original!Activity hasMultipleOutgoingControlFlows() : Boolean {
 	return self.outgoing.size() > 1;
 }
 
 operation Original!FlowElement getContainingProcess() : Original!Process {
 	self.println();
-	//return Original!Process.all.first;
 	return Original!Process.all.select(p| p.flowElements.includes(self)).first();
 } 
 
 operation Original!DataOutputAssociation getAssociatedFlowNode() : Original!FlowNode {
 	var _dataOutput = self.sourceRef.first();
-	//_dataOutput.println();
 	var activity = Original!Activity.all.select(a | a.ioSpecification.isDefined() and a.ioSpecification.dataOutputs.includes(_dataOutput)).first();
 	var catchEvent = Original!CatchEvent.all.select(e | e.dataOutputs.isDefined() and e.dataOutputs.includes(_dataOutput)).first();
-	//activity.println();
-	//catchEvent.println();
 	if (activity.isDefined())
 		return activity;
 	else
@@ -163,13 +130,45 @@ operation Original!DataOutputAssociation getAssociatedFlowNode() : Original!Flow
 
 operation Original!DataInputAssociation getAssociatedFlowNode() : Original!FlowNode {
 	var _dataInput = self.targetRef;
-	//_dataOutput.println();
 	var activity = Original!Activity.all.select(a | a.ioSpecification.isDefined() and a.ioSpecification.dataInputs.includes(_dataInput)).first();
 	var throwEvent = Original!ThrowEvent.all.select(e | e.dataInputs.isDefined() and e.dataInputs.includes(_dataInput)).first();
-	//activity.println();
-	//catchEvent.println();
 	if (activity.isDefined())
 		return activity;
 	else
-		return catchEvent;
+		return throwEvent;
+}
+
+operation Migrated!FlowNode addFork() : Boolean {
+	
+	var sequenceFlow: new Migrated!SequenceFlow;
+	var fork: new Migrated!ParallelGateway;
+					
+	--Set a unique id for the gateway!!?? 
+	//fork.id = "fork_id123";
+					
+	fork.gatewayDirection = Migrated!GatewayDirection#Diverging;
+	fork.outgoing.addAll(self.outgoing);
+	sequenceFlow.sourceRef = self;
+	sequenceFlow.targetRef = fork;
+
+	Migrated!Process.all.first.flowElements.add(sequenceFlow);
+	Migrated!Process.all.first.flowElements.add(fork);
+	
+}
+
+operation Migrated!FlowNode addJoin() : Boolean {
+	var sequenceFlow: new Migrated!SequenceFlow;
+	var join: new Migrated!ParallelGateway;
+					
+	--Set a unique id for the gateway!!?? 
+	//join.id = "join_id123";
+					
+	join.gatewayDirection = Migrated!GatewayDirection#Converging;
+	join.incoming.addAll(self.incoming);
+	sequenceFlow.sourceRef = join;
+	sequenceFlow.targetRef = self;
+
+	Migrated!Process.all.first.flowElements.add(sequenceFlow);
+	Migrated!Process.all.first.flowElements.add(join);
+	
 }
