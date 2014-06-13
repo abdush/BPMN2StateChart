@@ -1,5 +1,5 @@
-/* Helper functions */
-
+/***************** Helper functions ****************/
+var id : Integer = 0;
 /*  
 	Return the process that contains the given flow element.
 
@@ -314,4 +314,8 @@ operation process getDataOutputsForObjectNode() : Sequence(DataOutput) {
 	dataInputs.println();
 	var	dataInputAssociations = DataInputAssociation.all.select(s|s.sourceRef.includes(self) and dataInputs.includes(s.targetRef));
 	
+}
+
+operation getNextElementSequenceId() : String {
+	return "#FlowElement#".concat(id + 1);
 }

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pm:Process xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pm="http://BPMN/Simplified" id="_J84mQeneEeOgCMDZjxiKRQ" name="process1">
-  <flowElements xsi:type="pm:StartEvent" id="_J84mQuneEeOgCMDZjxiKRQ" outgoing="#/0/@flowElements.1 #/0/@flowElements.28"/>
-  <flowElements xsi:type="pm:SequenceFlow" id="_J84mQ-neEeOgCMDZjxiKRQ" sourceRef="#/0/@flowElements.0" targetRef="#/0/@flowElements.37"/>
-  <flowElements xsi:type="pm:Activity" id="_J84mROneEeOgCMDZjxiKRQ" name="task 1" incoming="#/0/@flowElements.36" outgoing="#/0/@flowElements.44"/>
-  <flowElements xsi:type="pm:SequenceFlow" id="_J84mReneEeOgCMDZjxiKRQ" sourceRef="#/0/@flowElements.45" targetRef="#/0/@flowElements.39"/>
-  <flowElements xsi:type="pm:SequenceFlow" id="_7unF4OouEeO7IP1X9T78Pg" sourceRef="#/0/@flowElements.45" targetRef="#/0/@flowElements.41"/>
-  <flowElements xsi:type="pm:Activity" id="_J84mR-neEeOgCMDZjxiKRQ" name="task 2" incoming="#/0/@flowElements.38" outgoing="#/0/@flowElements.6"/>
+  <flowElements xsi:type="pm:StartEvent" id="_J84mQuneEeOgCMDZjxiKRQ" outgoing="#/0/@flowElements.46"/>
+  <flowElements xsi:type="pm:SequenceFlow" id="_J84mQ-neEeOgCMDZjxiKRQ" sourceRef="#/0/@flowElements.47" targetRef="#/0/@flowElements.41"/>
+  <flowElements xsi:type="pm:Activity" id="_J84mROneEeOgCMDZjxiKRQ" name="task 1" incoming="#/0/@flowElements.40" outgoing="#/0/@flowElements.48"/>
+  <flowElements xsi:type="pm:SequenceFlow" id="_J84mReneEeOgCMDZjxiKRQ" sourceRef="#/0/@flowElements.37" targetRef="#/0/@flowElements.43"/>
+  <flowElements xsi:type="pm:SequenceFlow" id="_7unF4OouEeO7IP1X9T78Pg" sourceRef="#/0/@flowElements.37" targetRef="#/0/@flowElements.45"/>
+  <flowElements xsi:type="pm:Activity" id="_J84mR-neEeOgCMDZjxiKRQ" name="task 2" incoming="#/0/@flowElements.42" outgoing="#/0/@flowElements.6"/>
   <flowElements xsi:type="pm:SequenceFlow" id="_J84mSeneEeOgCMDZjxiKRQ" sourceRef="#/0/@flowElements.5" targetRef="#/0/@flowElements.9"/>
-  <flowElements xsi:type="pm:Activity" id="_J84mSOneEeOgCMDZjxiKRQ" name="task 3" incoming="#/0/@flowElements.40" outgoing="#/0/@flowElements.8"/>
+  <flowElements xsi:type="pm:Activity" id="_J84mSOneEeOgCMDZjxiKRQ" name="task 3" incoming="#/0/@flowElements.44" outgoing="#/0/@flowElements.8"/>
   <flowElements xsi:type="pm:SequenceFlow" id="_J84mSuneEeOgCMDZjxiKRQ" sourceRef="#/0/@flowElements.7" targetRef="#/0/@flowElements.9"/>
   <flowElements xsi:type="pm:ParallelGateway" id="_J84mS-neEeOgCMDZjxiKRQ" incoming="#/0/@flowElements.6 #/0/@flowElements.8" outgoing="#/0/@flowElements.10" gatewayDirection="Converging"/>
   <flowElements xsi:type="pm:SequenceFlow" id="_J84mTOneEeOgCMDZjxiKRQ" sourceRef="#/0/@flowElements.9" targetRef="#/0/@flowElements.11"/>
@@ -17,10 +17,10 @@
   <flowElements xsi:type="pm:SequenceFlow" id="_7EecY-oxEeO7IP1X9T78Pg" sourceRef="#/0/@flowElements.13" targetRef="#/0/@flowElements.16"/>
   <flowElements xsi:type="pm:SequenceFlow" id="_7EecZOoxEeO7IP1X9T78Pg" sourceRef="#/0/@flowElements.13" targetRef="#/0/@flowElements.18"/>
   <flowElements xsi:type="pm:Activity" id="_7EecZeoxEeO7IP1X9T78Pg" name="task 5" incoming="#/0/@flowElements.14" outgoing="#/0/@flowElements.17"/>
-  <flowElements xsi:type="pm:SequenceFlow" id="_7EecZuoxEeO7IP1X9T78Pg" sourceRef="#/0/@flowElements.16" targetRef="#/0/@flowElements.43"/>
+  <flowElements xsi:type="pm:SequenceFlow" id="_7EecZuoxEeO7IP1X9T78Pg" sourceRef="#/0/@flowElements.16" targetRef="#/0/@flowElements.39"/>
   <flowElements xsi:type="pm:Activity" id="_7EecZ-oxEeO7IP1X9T78Pg" name="task 6" incoming="#/0/@flowElements.15" outgoing="#/0/@flowElements.19"/>
-  <flowElements xsi:type="pm:SequenceFlow" id="_7EecaOoxEeO7IP1X9T78Pg" sourceRef="#/0/@flowElements.18" targetRef="#/0/@flowElements.43"/>
-  <flowElements xsi:type="pm:Activity" id="_7EecaeoxEeO7IP1X9T78Pg" name="task 7" incoming="#/0/@flowElements.42" outgoing="#/0/@flowElements.34"/>
+  <flowElements xsi:type="pm:SequenceFlow" id="_7EecaOoxEeO7IP1X9T78Pg" sourceRef="#/0/@flowElements.18" targetRef="#/0/@flowElements.39"/>
+  <flowElements xsi:type="pm:Activity" id="_7EecaeoxEeO7IP1X9T78Pg" name="task 7" incoming="#/0/@flowElements.38" outgoing="#/0/@flowElements.34"/>
   <flowElements xsi:type="pm:SequenceFlow" id="Seq_7EecaeoxEeO7IP1X9T78Pg" sourceRef="#/0/@flowElements.26" targetRef="#/0/@flowElements.27"/>
   <flowElements xsi:type="pm:EndEvent" id="_J84mTeneEeOgCMDZjxiKRQ" incoming="#/0/@flowElements.35"/>
   <flowElements xsi:type="pm:ObjectNode" id="DataObject_1" name="Data Object 1" incoming="#/0/@flowElements.28" outgoing="#/0/@flowElements.29">
@@ -38,22 +38,26 @@
   <flowElements xsi:type="pm:ObjectNode" id="_Var6UvG1EeOb54kXqxMk0A" name="Reference 4 to Data Object 1" incoming="#/0/@flowElements.21" outgoing="#/0/@flowElements.35">
     <dataState xsi:type="pm:DataState" id="_Var6U_G1EeOb54kXqxMk0A" name="DataState 5"/>
   </flowElements>
-  <flowElements xsi:type="pm:ObjectFlow" id="DataOutputAssociation_1" sourceRef="#/0/@flowElements.0" targetRef="#/0/@flowElements.23"/>
-  <flowElements xsi:type="pm:ObjectFlow" id="DataInputAssociation_1" sourceRef="#/0/@flowElements.23" targetRef="#/0/@flowElements.37"/>
-  <flowElements xsi:type="pm:ObjectFlow" id="DataOutputAssociation_2" sourceRef="#/0/@flowElements.45" targetRef="#/0/@flowElements.24"/>
-  <flowElements xsi:type="pm:ObjectFlow" id="DataOutputAssociation_3" sourceRef="#/0/@flowElements.45" targetRef="#/0/@flowElements.25"/>
-  <flowElements xsi:type="pm:ObjectFlow" id="DataInputAssociation_3" sourceRef="#/0/@flowElements.25" targetRef="#/0/@flowElements.39"/>
-  <flowElements xsi:type="pm:ObjectFlow" id="DataInputAssociation_2" sourceRef="#/0/@flowElements.24" targetRef="#/0/@flowElements.41"/>
+  <flowElements xsi:type="pm:ObjectFlow" id="DataOutputAssociation_1" sourceRef="#/0/@flowElements.47" targetRef="#/0/@flowElements.23"/>
+  <flowElements xsi:type="pm:ObjectFlow" id="DataInputAssociation_1" sourceRef="#/0/@flowElements.23" targetRef="#/0/@flowElements.41"/>
+  <flowElements xsi:type="pm:ObjectFlow" id="DataOutputAssociation_2" sourceRef="#/0/@flowElements.49" targetRef="#/0/@flowElements.24"/>
+  <flowElements xsi:type="pm:ObjectFlow" id="DataOutputAssociation_3" sourceRef="#/0/@flowElements.49" targetRef="#/0/@flowElements.25"/>
+  <flowElements xsi:type="pm:ObjectFlow" id="DataInputAssociation_3" sourceRef="#/0/@flowElements.25" targetRef="#/0/@flowElements.43"/>
+  <flowElements xsi:type="pm:ObjectFlow" id="DataInputAssociation_2" sourceRef="#/0/@flowElements.24" targetRef="#/0/@flowElements.45"/>
   <flowElements xsi:type="pm:ObjectFlow" id="DataOutputAssociation_4" sourceRef="#/0/@flowElements.20" targetRef="#/0/@flowElements.26"/>
   <flowElements xsi:type="pm:ObjectFlow" id="DataInputAssociation_4" sourceRef="#/0/@flowElements.27" targetRef="#/0/@flowElements.22"/>
-  <flowElements xsi:type="pm:SequenceFlow" sourceRef="#/0/@flowElements.37" targetRef="#/0/@flowElements.2"/>
-  <flowElements xsi:type="pm:ParallelGateway" incoming="#/0/@flowElements.1 #/0/@flowElements.29" outgoing="#/0/@flowElements.36" gatewayDirection="Converging"/>
-  <flowElements xsi:type="pm:SequenceFlow" sourceRef="#/0/@flowElements.39" targetRef="#/0/@flowElements.5"/>
-  <flowElements xsi:type="pm:ParallelGateway" incoming="#/0/@flowElements.3 #/0/@flowElements.32" outgoing="#/0/@flowElements.38" gatewayDirection="Converging"/>
-  <flowElements xsi:type="pm:SequenceFlow" sourceRef="#/0/@flowElements.41" targetRef="#/0/@flowElements.7"/>
-  <flowElements xsi:type="pm:ParallelGateway" incoming="#/0/@flowElements.4 #/0/@flowElements.33" outgoing="#/0/@flowElements.40" gatewayDirection="Converging"/>
-  <flowElements xsi:type="pm:SequenceFlow" sourceRef="#/0/@flowElements.43" targetRef="#/0/@flowElements.20"/>
-  <flowElements xsi:type="pm:ParallelGateway" incoming="#/0/@flowElements.17 #/0/@flowElements.19" outgoing="#/0/@flowElements.42" gatewayDirection="Converging"/>
-  <flowElements xsi:type="pm:SequenceFlow" sourceRef="#/0/@flowElements.2" targetRef="#/0/@flowElements.45"/>
-  <flowElements xsi:type="pm:ParallelGateway" incoming="#/0/@flowElements.44" outgoing="#/0/@flowElements.3 #/0/@flowElements.4 #/0/@flowElements.30 #/0/@flowElements.31" gatewayDirection="Diverging"/>
+  <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#37" sourceRef="#/0/@flowElements.49" targetRef="#/0/@flowElements.37"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#38" incoming="#/0/@flowElements.36" outgoing="#/0/@flowElements.3 #/0/@flowElements.4" gatewayDirection="Diverging"/>
+  <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#39" sourceRef="#/0/@flowElements.39" targetRef="#/0/@flowElements.20"/>
+  <flowElements xsi:type="pm:ExclusiveGateway" id="merge#FlowElement#40" incoming="#/0/@flowElements.19 #/0/@flowElements.17" outgoing="#/0/@flowElements.38" gatewayDirection="Converging"/>
+  <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#41" sourceRef="#/0/@flowElements.41" targetRef="#/0/@flowElements.2"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#42" incoming="#/0/@flowElements.1 #/0/@flowElements.29" outgoing="#/0/@flowElements.40" gatewayDirection="Converging"/>
+  <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#43" sourceRef="#/0/@flowElements.43" targetRef="#/0/@flowElements.5"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#44" incoming="#/0/@flowElements.3 #/0/@flowElements.32" outgoing="#/0/@flowElements.42" gatewayDirection="Converging"/>
+  <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#45" sourceRef="#/0/@flowElements.45" targetRef="#/0/@flowElements.7"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#46" incoming="#/0/@flowElements.4 #/0/@flowElements.33" outgoing="#/0/@flowElements.44" gatewayDirection="Converging"/>
+  <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#47" sourceRef="#/0/@flowElements.0" targetRef="#/0/@flowElements.47"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#48" incoming="#/0/@flowElements.46" outgoing="#/0/@flowElements.1 #/0/@flowElements.28" gatewayDirection="Diverging"/>
+  <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#49" sourceRef="#/0/@flowElements.2" targetRef="#/0/@flowElements.49"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#50" incoming="#/0/@flowElements.48" outgoing="#/0/@flowElements.30 #/0/@flowElements.31 #/0/@flowElements.36" gatewayDirection="Diverging"/>
 </pm:Process>

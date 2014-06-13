@@ -32,8 +32,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParallelGateway" eSuperTypes="#//Gateway"/>
   <eClassifiers xsi:type="ecore:EClass" name="Edge" eSuperTypes="#//FlowElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceRef" lowerBound="1"
-        eType="#//FlowNode" eOpposite="#//FlowNode/outgoing"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceRef" ordered="false"
+        lowerBound="1" eType="#//FlowNode" resolveProxies="false" eOpposite="#//FlowNode/outgoing"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="targetRef" ordered="false"
         lowerBound="1" eType="#//FlowNode" resolveProxies="false" eOpposite="#//FlowNode/incoming"/>
   </eClassifiers>

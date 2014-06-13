@@ -81,6 +81,18 @@ post test {
 	Migrated!Process.all.first.flowElements.size().println();
 }
 
+post _addForkGateway {
+	for(activityNode in Migrated!Activity.all.select(a | a.outgoing.select(e | e.isTypeOf(Migrated!SequenceFlow)).size() > 1)) {
+ 		activityNode._addFork();
+ 	}
+}
+
+post addMergeGateway {
+	for(activityNode in Migrated!Activity.all.select(a | a.incoming.select(e | e.isTypeOf(Migrated!SequenceFlow)).size() > 1)) {
+ 		activityNode.addMerge();
+ 	}
+}
+
 post addOutputObjectFlow {
 	for (objectNode in Migrated!ObjectNode.all.select(o | o.outgoing.isUndefined() or o.outgoing.size() = 0)) {
 		var actionNode = objectNode.incoming.first().sourceRef; //The unique activity node a to which o is output and a has no multiple object nodes, otherwise fail
@@ -98,13 +110,13 @@ post addInputObjectFlow {
 }
 
 post addJoinGateway {
- 	for(activityNode in Migrated!FlowNode.all.select(n | (n.isTypeOf(Migrated!Activity) or n.isTypeOf(Migrated!Event)) and n.incoming.size > 1)) {
+ 	for(activityNode in Migrated!FlowNode.all.select(n | (n.isTypeOf(Migrated!Activity) or n.isKindOf(Migrated!Event)) and n.incoming.size > 1)) {
  		activityNode.addJoin();
  	}
 }
 
 post addForkGateway {
-	for(activityNode in Migrated!FlowNode.all.select(n | (n.isTypeOf(Migrated!Activity) or n.isTypeOf(Migrated!Event)) and n.outgoing.size > 1)) {
+	for(activityNode in Migrated!FlowNode.all.select(n | (n.isTypeOf(Migrated!Activity) or n.isKindOf(Migrated!Event)) and n.outgoing.size > 1)) {
  		activityNode.addFork();
  	}	
 } 
@@ -138,21 +150,59 @@ operation Original!DataInputAssociation getAssociatedFlowNode() : Original!FlowN
 		return throwEvent;
 }
 
+operation Migrated!FlowNode _addFork() : Boolean {
+	
+	var sequenceFlow: new Migrated!SequenceFlow;
+	var fork: new Migrated!ParallelGateway;
+						
+	--Set a unique id for the gateway!!?? 
+	sequenceFlow.id = "sequenceFlow".concat(getNextElementSequenceId());
+	Migrated!Process.all.first.flowElements.add(sequenceFlow);
+	fork.id = "fork".concat(getNextElementSequenceId());
+	Migrated!Process.all.first.flowElements.add(fork);
+					
+	fork.gatewayDirection = Migrated!GatewayDirection#Diverging;
+	fork.outgoing.addAll(self.outgoing.select(e| e.isTypeOf(Migrated!SequenceFlow)));
+	sequenceFlow.sourceRef = self;
+	sequenceFlow.targetRef = fork;
+
+	
+	
+	
+}
+
+operation Migrated!FlowNode addMerge() : Boolean {
+	var sequenceFlow: new Migrated!SequenceFlow;
+	var merge: new Migrated!ExclusiveGateway;
+					
+	--Set a unique id for the gateway!!?? 
+	sequenceFlow.id = "sequenceFlow".concat(getNextElementSequenceId());
+	Migrated!Process.all.first.flowElements.add(sequenceFlow);
+	merge.id = "merge".concat(getNextElementSequenceId());
+	Migrated!Process.all.first.flowElements.add(merge);
+					
+	merge.gatewayDirection = Migrated!GatewayDirection#Converging;
+	merge.incoming.addAll(self.incoming.select(e | e.isTypeOf(Migrated!SequenceFlow)));
+	sequenceFlow.sourceRef = merge;
+	sequenceFlow.targetRef = self;
+	
+}
+
 operation Migrated!FlowNode addFork() : Boolean {
 	
 	var sequenceFlow: new Migrated!SequenceFlow;
 	var fork: new Migrated!ParallelGateway;
 					
 	--Set a unique id for the gateway!!?? 
-	//fork.id = "fork_id123";
+	sequenceFlow.id = "sequenceFlow".concat(getNextElementSequenceId());
+	Migrated!Process.all.first.flowElements.add(sequenceFlow);
+	fork.id = "fork".concat(getNextElementSequenceId());
+	Migrated!Process.all.first.flowElements.add(fork);
 					
 	fork.gatewayDirection = Migrated!GatewayDirection#Diverging;
 	fork.outgoing.addAll(self.outgoing);
 	sequenceFlow.sourceRef = self;
 	sequenceFlow.targetRef = fork;
-
-	Migrated!Process.all.first.flowElements.add(sequenceFlow);
-	Migrated!Process.all.first.flowElements.add(fork);
 	
 }
 
@@ -161,14 +211,19 @@ operation Migrated!FlowNode addJoin() : Boolean {
 	var join: new Migrated!ParallelGateway;
 					
 	--Set a unique id for the gateway!!?? 
-	//join.id = "join_id123";
+	sequenceFlow.id = "sequenceFlow".concat(getNextElementSequenceId());
+	Migrated!Process.all.first.flowElements.add(sequenceFlow);
+	join.id = "join".concat(getNextElementSequenceId());
+	Migrated!Process.all.first.flowElements.add(join);
 					
 	join.gatewayDirection = Migrated!GatewayDirection#Converging;
 	join.incoming.addAll(self.incoming);
 	sequenceFlow.sourceRef = join;
 	sequenceFlow.targetRef = self;
-
-	Migrated!Process.all.first.flowElements.add(sequenceFlow);
-	Migrated!Process.all.first.flowElements.add(join);
 	
+}
+
+operation getNextElementSequenceId() : String {
+	var id = (Migrated!Process.all.first.flowElements.size() + 1).asString();
+	return "#FlowElement#".concat(id);
 }

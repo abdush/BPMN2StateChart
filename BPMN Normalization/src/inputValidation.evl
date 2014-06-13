@@ -1,5 +1,8 @@
---The process model should have exactly one data object, 
---the one which the state chart is to be generated.
+-- The input model should be a valid BPMN2 model (how to check?)
+-- The bpmn model should have only the following elements:
+-- 1. There should be exactly one process element.
+-- 2. The process model should have at least one stateful data object (For each stateful dataobject, a statechart is to be generated.)
+-- 3. The process model should contain only Normal Tasks, Events, Exclusive and Parallel Gateways.
 context Process {
 	
 	constraint SingleDataObjectDefined {
