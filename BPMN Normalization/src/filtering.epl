@@ -1,10 +1,10 @@
-pre test {
-	"test".println();
+pre beginFiltering {
+	"Filtering Rules Start:-----".println();
 }
 /* 
 	R1: If there is an activity or control Node (Not Object Node) with one incoming and outgoing edge, it can be deleted.
 */
-/* pattern SingleInputOutputNonObjectNode
+pattern SingleInputOutputNonObjectNode
 	flowNode: FlowNode
 		guard: not flowNode.isTypeOf(ObjectNode) and flowNode.incoming.size() = 1 and flowNode.outgoing.size() = 1,
 	inEdge: Edge[1]
@@ -21,11 +21,11 @@ pre test {
 	}
 	
 }
-*/
+
 /* 
 	R2: If there is an XOR Gateway(Decision) with a single incoming Edge from another XOR Gateway(Decision) , the two can be merged (preserving the guards).
 */
-/* pattern MergeDivergingExclusiveGateway
+pattern MergeDivergingExclusiveGateway
 	secondGateway: ExclusiveGateway
 		guard: secondGateway.incoming.size() = 1,
 	edge: Edge
@@ -47,12 +47,8 @@ pre test {
 		firstGateway.println("R2 applied..");
 	}
 	
-	do {
-		
-		
-	}
 }
-*/
+
 /*
 	R3: If there is an XOR Gateway(Merge) with a single outgoing Edge to another XOR Gateway, the two can be merged (preserving the guards).
 */
@@ -76,10 +72,6 @@ pattern MergeConvergingExclusiveGateway
 		secondGateway.println("R3 applied..");
 	}
 	
-	do {
-		
-		
-	}
 }
 
 /* 
@@ -97,39 +89,32 @@ pattern DeleteLoopEdgeExclusiveGateway
 		gateway.println("R4 applied..");
 	}
 	
-	do {
-		
-		
-	}
 }
 
 
 /* 
 	R5: If there is an AND Gateway (Parallel) connected directly to another AND Gateway and also through a path of 2 or more nodes, the direct edge can be deleted.
 */
-/*  pattern DeleteRedundantEdgeParallelGateway
+pattern DeleteRedundantEdgeParallelGateway
 	firstGateway: ParallelGateway,
 	//simple path  from firstGateway to secondGateway??
 	edge: Edge
 		from: firstGateway.outgoing,
 	secondGateway: ParallelGateway
 		from: edge.targetRef
+		guard: SimplePathBetweenNodes?(firstGateway, secondGateway)
 {
 	onmatch {
 		edge.println("R5 Matched..");
-	}
-	
-	do {
-		
 		delete edge;
 		firstGateway.println("R5 applied..");
 	}
 }
-*/ 
+ 
 /* 
 	R6: If there is an AND Gateway with more than one outgoing edges and one is connected to an end Event (final node), the edge and final node can be deleted.
 */
-/*pattern DeleteEndEventFromParallelGateway
+pattern DeleteEndEventFromParallelGateway
 	gateway: ParallelGateway
 		guard: gateway.outgoing.size() > 1,
 	edge: Edge
@@ -144,16 +129,12 @@ pattern DeleteLoopEdgeExclusiveGateway
 		gateway.println("R6 applied..");
 	}
 	
-	do {
-		
-		
-	}
 }
-*/
+
 /* 
 	R7: If there is an AND Gateway(Parallel) with a single incoming Edge from another AND Gateway(Fork) with multiple outgoing edges, the two can be merged.
 */
-/* pattern MergeDivergingParallelGateway
+pattern MergeDivergingParallelGateway
 	secondGateway: ParallelGateway
 		guard: secondGateway.incoming.size() = 1,
 	edge: Edge
@@ -172,17 +153,12 @@ pattern DeleteLoopEdgeExclusiveGateway
 		delete edge;
 		firstGateway.println("R7 applied..");
 	}
-	
-	do {
-		
-		
-	}
 }
-*/
+
 /* 
 	R8: If there is an AND Gateway(Join) with a single outgoing Edge to another AND Gateway with more than one incoming edge, the two can be merged.
 */
-/*pattern MergeConvergingParallelGateway
+pattern MergeConvergingParallelGateway
 	firstGateway: ParallelGateway
 		guard: firstGateway.outgoing.size() = 1,
 	edge: Edge
@@ -202,12 +178,8 @@ pattern DeleteLoopEdgeExclusiveGateway
 		secondGateway.println("R8 applied..");
 	}
 	
-	do {
-		
-		
-	}
 }
-*/
+
 /*
 	R9: If there is an XOR Gateway(Decision) and an Object Node with same incoming Edge from a fork and same outgoing Edges to another AND Gateway(join), the XOR node can be deleted (preserving the guards).
 */
@@ -222,7 +194,7 @@ pattern DeleteRedundantDecisionExclusiveGateway
 {
 	onmatch {
 		XORGateway.println("R9 Matched..");
-				
+		//not the best way!!		
 		delete object.outgoing;
 		for (_edge in XORGateway.outgoing.clone()) {
 			_edge.sourceRef = object; 
@@ -231,11 +203,6 @@ pattern DeleteRedundantDecisionExclusiveGateway
 		delete XORGateway.incoming;
 		delete XORGateway;
 		object.println("R9 applied..");
-	}
-	
-	do {
-		//not the best way!!
-		
 	}
 }
 
@@ -260,17 +227,13 @@ pattern DeleteRedundantMergeExclusiveGateway
 		object.println("R10 applied..");
 	}
 	
-	do {
-		
-		
-	}
 }
 
-post test {
-	"testPost".println();
+post endFiltering {
+	"Filtering Rules End:-----".println();
 }
 
-/***************** Helper Functions ***************/
+/********************************* Helper Functions ************************/
 /* 
 	Get all the incoming nodes to the given node.
 	(All nodes which are sourceRef to Edges which have the given FlowNode as targetRef)
@@ -287,6 +250,25 @@ operation FlowNode getIncomingNodes() : Sequence(FlowNode) {
 operation FlowNode getOutgoingNodes() : Sequence(FlowNode) {
 	_edges = Edge.all.select(e | e.sourceRef = self);
 	return FlowNode.all.select(n | _edges.exists(e | e.targetRef = n));
+}
+
+/* 
+	Simple Path of length 2between first and second gateway
+*/
+operation SimplePathBetweenNodes?(first: ParallelGateway, second: ParallelGateway) : Boolean {
+	var queue = first.outgoing.collect(e | e.targetRef);
+	queue.remove(second);
+	while (queue.size() > 0) {
+		var node = queue.first();
+		var outgoingNodes = node.outgoing.collect(e | e.targetRef);
+		if (outgoingNodes.includes(second))
+			return true;
+		else {
+			queue.removeAt(0);
+			queue.addAll(outgoingNodes);
+		}
+	} 
+	return false;
 }
 
 operation Collection replaceAll(first: FlowNode, second: FlowNode) : Boolean {

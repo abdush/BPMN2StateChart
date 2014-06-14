@@ -1,15 +1,21 @@
 import "normalization.eol";
 
-pre test {
+pre preprocessingStart {
+	"Preprocessing phase start:-------".println();
 	Original!DataObject.all.size().println();
 	Migrated!ObjectNode.all.size().println();
 }
 
+retype Process to Process
 retype ParallelGateway to ParallelGateway
 retype ExclusiveGateway to ExclusiveGateway
 retype DataState to DataState
+
 retype SequenceFlow to SequenceFlow
-retype Process to Process
+migrate SequenceFlow
+{
+	//migrated.guard = original.conditionExpression.body;
+}
 
 retype DataObject to ObjectNode
 migrate DataObject
@@ -120,6 +126,10 @@ post addForkGateway {
  		activityNode.addFork();
  	}	
 } 
+
+post preprocessingEnd {
+	"Preprocessing phase End:-------".println();
+}
 /*************** Helper Functions ***********************/
 operation Original!Activity hasMultipleOutgoingControlFlows() : Boolean {
 	return self.outgoing.size() > 1;
