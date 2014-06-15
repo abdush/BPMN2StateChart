@@ -1,0 +1,147 @@
+pre transformationStart {
+	"transformation Rules Start:----------".println();
+}
+
+/* 
+	Transformation Rule T1a
+*/
+pattern MergeORNodes
+	OR1: ORNode
+		guard: OR1.outgoing.size() = 1 and OR1.outgoing.targetRef = OR2,
+	OR2: ORNode
+		from: OR1.outgoing.targetRef
+		guard: OR2.incoming.size() = 1,
+	no parallelGateway: ParallelGateway
+		//not include both OR nodes!!??
+		guard: parallelGateway.incoming.collect(e | e.sourceRef).includesAll(Sequence{OR1,OR2}) or 
+			   parallelGateway.outgoing.collect(e | e.targetRef).includesAll(Sequence{OR1,OR2})
+{			
+	onmatch {
+		var newOR = new ORNode;
+		for (node in OR1.childs)
+			node.parent = newOR;
+		for (node in OR2.childs)
+			node.parent = newOR;
+			
+		delete OR1.outgoing;
+		delete OR1;
+		delete OR2;	
+	}
+}
+
+/*
+	Transformation Rule T1b
+*/
+pattern MergeORNodesParallelGateway
+	OR1: ORNode
+		guard: OR1.outgoing.size() = 1 and OR1.outgoing.targetRef = PG,
+	PG: ParallelGateway
+		from: OR1.outgoing.targetRef,
+	OR2: ORNode
+		from: PG.outgoing.targetRef
+		guard: OR2.incoming.size() = 1 and OR2.incoming.sourceRef = PG,
+	no parallelGateway: ParallelGateway
+		//no other PG exists which includes both OR nodes!!??
+		guard: parallelGateway.incoming.collect(e | e.sourceRef).includesAll(Sequence{OR1,OR2}) or 
+			   parallelGateway.outgoing.collect(e | e.targetRef).includesAll(Sequence{OR1,OR2})
+{			
+	onmatch {
+		var newOR = new ORNode;
+		//add the Node
+		Process.all.first().flowElements.add(newOR);
+		
+		for (node in OR1.childs)
+			node.parent = newOR;
+		for (node in OR2.childs)
+			node.parent = newOR;
+			
+		delete OR1.outgoing;
+		delete OR2.incoming;
+		delete OR1;
+		delete OR2;
+		delete PG; //Change incoming outgoing or there is only one!!??	
+	}
+}
+
+/*
+	Transformation Rule T2a
+*/
+pattern AddANDNode
+	PG: ParallelGateway
+		guard: PG.outgoing.collect( e | e.targetRef) = ORNodes or PG.incoming.collect( e | e.sourceRef) = ORNodes,
+	ORNodes: ORNode[2 .. *] //set of OR nodes!!?? is it possible like this?
+		guard: ORNodes.forAll(o1 , o2 | (o1.outgoing.collect( e| e.targetRef) = o2.outgoing.collect( e| e.targetRef)) and (o1.incoming.collect(e | e.sourceRef) = o2.incoming.collect(e |e.sourceRef)))
+{			
+	onmatch {
+		var newOR = new ORNode;
+		var newAND = new ANDNode;
+		//add the Node
+		Process.all.first().flowElements.add(newOR);
+		Process.all.first().flowElements.add(newAND);
+		
+		for (node in ORNodess) {
+			for (edge in node.outgoing)
+				edge.sourceRef = newOR;
+			for (_edge in node.outgoing)
+				_edge.targetRef = newOR;
+			
+			node.parent = newAND;
+		}
+		
+		newAND.parent = newOR;	
+	}
+}
+
+/* 
+	Transformation Rule T2b
+*/
+pattern AddANDNode
+	ORNodes: ORNode[2 .. *] //set of OR nodes!!?? is it possible like this?
+		guard: ORNodes.forAll(o | o.parent.isUndefined()) 
+				and ORNode.all.excludingAll(ORNodes).forAll(o | o.parent.isDefined())
+				and Edge.all.size() = 0
+{			
+	onmatch {
+		var newOR = new ORNode;
+		var newAND = new ANDNode;
+		//add the Node
+		Process.all.first().flowElements.add(newOR);
+		Process.all.first().flowElements.add(newAND);
+		
+		for (node in ORNodess) {
+			node.parent = newAND;
+		}
+		
+		newAND.parent = newOR;	
+	}
+}
+
+/*
+	Transformation Rule T3
+*/
+pattern RemoveEdgesORNodes
+	fork: ParallelGateway
+		guard: fork.gatewayDirection = GatewayDirection#Diverging and fork.outgoing.size() > 1,
+	join: ParallelGateway
+		guard: join.gatewayDirection = GatewayDirection#Converging and join.incoming.size() > 1,	
+	O: ORNode
+		guard: OR1.outgoing.size() = 1 and OR1.outgoing.targetRef = OR2,
+	edge1: Edge
+		from: fork.outgoing
+		guard: edge1.targetRef = O,
+	edge2: Edge
+		from: join.incoming
+		guard: edge2.sourceRef = O
+	//no AddANDNode
+		//Rules T1 & T2 not applicable, cannot say that no pattern!!??
+{			
+	onmatch {
+			
+		delete O.outgoing;
+		delete O.incoming;
+	}
+}
+
+post transformationEnd {
+	"transformation Rules End:----------".println();
+}

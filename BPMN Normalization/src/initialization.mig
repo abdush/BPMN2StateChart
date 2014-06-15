@@ -1,0 +1,66 @@
+pre initializationStart {
+	"Synthesizing phase (initialization) start:-------".println();
+}
+
+retype Process to Process
+retype ParallelGateway to ParallelGateway
+retype ExclusiveGateway to ExclusiveGateway
+retype DataState to DataState
+
+retype SequenceFlow to SequenceFlow
+migrate SequenceFlow
+{
+	//migrated.guard = original.conditionExpression.body;
+}
+
+retype ObjectNode to ObjectNode
+migrate ObjectNode
+{
+	original.println("Org: DataObject");
+	migrated.println("Mig: ObjectNode");
+	migrated.dataState = original.dataState.equivalent();
+}
+
+retype ObjectFlow to ObjectFlow
+migrate ObjectFlow
+{
+	original.println("Org: DOA");
+	migrated.println("Mig: ObjectFlow");
+	
+	migrated.targetRef = original.targetRef.equivalent();
+	original.targetRef.println("Org: trgRef");
+	migrated.targetRef.println("Mig: trgRef");
+	
+	original.getAssociatedFlowNode().equivalent().println("Org Eq: FlowNode");
+	migrated.sourceRef = original.getAssociatedFlowNode().equivalent();
+	migrated.sourceRef.println("Mig: SrcRef");
+	
+	original.targetRef.getContainingProcess().println("Org: Process");
+	original.targetRef.getContainingProcess().equivalent().println("Org Eq: Process");
+	original.targetRef.getContainingProcess().equivalent().flowElements.println("Org Eq: flowElements");//add(migrated);
+	original.targetRef.getContainingProcess().equivalent().flowElements.add(migrated);
+}
+
+retype Activity to Activity
+migrate Activity 
+{
+	original.println("Org: Activity");
+	migrated.println("Mig: Activity");
+}
+
+retype StartEvent to StartEvent
+retype EndEvent to EndEvent
+migrate Event 
+{
+	original.println("Org: Event");
+	migrated.println("Mig: Event");
+}
+
+post test {
+	Original!Process.all.first.flowElements.size().println();
+	Migrated!Process.all.first.flowElements.size().println();
+}
+
+post initializationEnd {
+	"initialization phase End:-------".println();
+}
