@@ -1,143 +1,161 @@
-import "normalization.eol";
+import "Normalization_Helper.eol";
 
-pre test {
-	Original!DataObject.all.size().println();
-	Migrated!ItemAwareElement.all.size().println();
+pre preprocessingStart {
+	"Preprocessing phase start:-------".println();
 }
 
-//retype package bpmn2 to bpmn3
-//retype DataObject to DataObject
+retype Process to Process
+retype ParallelGateway to ParallelGateway
+retype ExclusiveGateway to ExclusiveGateway
+retype DataState to DataState
+
+retype DataObject to ObjectNode
 migrate DataObject
 {
-	
+	original.println("Org: DataObject ");
+	migrated.println("Mig: ObjectNode ");
+	migrated.dataState = original.dataState.equivalent();
 }
-//migrate DocumentRoot {
-	//migrated.
-//}
-retype DataObjectReference to DataObjectReference
+
+retype DataObjectReference to ObjectNode
 migrate DataObjectReference
 {
-
+	original.println("Org: DataObjectRef ");
+	migrated.println("Mig: ObjectNode ");
+	migrated.dataState = original.dataState.equivalent();
 }
 
-
-retype DataOutputAssociation to SequenceFlow
+retype DataOutputAssociation to ObjectFlow
 migrate DataOutputAssociation
 {
-	original.println();
+	original.println("Org: DOA ");
+	migrated.println("Mig: ObjectFlow ");
+	
 	migrated.targetRef = original.targetRef.equivalent();
-	migrated.targetRef.println();
-	original.getAssociatedFlowNode().equivalent().println();
+	original.targetRef.println("Org: trgRef ");
+	migrated.targetRef.println("Mig: trgRef ");
+	
+	--original.getAssociatedFlowNode().equivalent().println("Org Eq: FlowNode");
 	migrated.sourceRef = original.getAssociatedFlowNode().equivalent();
-	migrated.println();
-	//migrated.sourceRef.println();
-	original.targetRef.println();
-	original.targetRef.getContainingProcess().println();
-	original.targetRef.getContainingProcess().equivalent().println();
-	original.targetRef.getContainingProcess().equivalent().flowElements.println();//add(migrated);
+	migrated.sourceRef.println("Mig: SrcRef ");
+	
+	--original.targetRef.getContainingProcess().println("Org: Process ");
+	--original.targetRef.getContainingProcess().equivalent().println("Org Eq: Process");
+	--original.targetRef.getContainingProcess().equivalent().flowElements.println("Org Eq: flowElements");//add(migrated);
+	
+	-- Do We need to add this? Why not others!!??
+	original.targetRef.getContainingProcess().equivalent().flowElements.add(migrated);
 }
 
 
-retype DataInputAssociation to SequenceFlow
+retype DataInputAssociation to ObjectFlow
 migrate DataInputAssociation
 {
-	//original.println();
+	original.println("Org: DIO ");
+	migrated.println("Mig: ObjectFlow ");
+	
 	migrated.targetRef = original.getAssociatedFlowNode().equivalent();
 	migrated.sourceRef = original.sourceRef.first().equivalent();
-	migrated.println();
-	//migrated.sourceRef.println();
-	//migrated.targetRef.println();
+	original.sourceRef.first().getContainingProcess().equivalent().flowElements.add(migrated);
 }
 
-migrate Activity 
-	ignoring ioSpecification, dataInputAssociations, dataOutputAssociations
+retype SequenceFlow to SequenceFlow
+migrate SequenceFlow 
 {
-	migrated.println();
+	-- Why cannot use the below line!!??
+	--migrated.guard = original.conditionExpression.body;
 }
 
+retype Activity to Activity
+migrate Activity 
+{
+	original.println("Org: Activity ");
+	migrated.println("Mig: Activity ");
+}
+
+retype StartEvent to StartEvent
+retype EndEvent to EndEvent
 migrate Event 
-	
 {
-	migrated.println();
+	original.println("Org: Event ");
+	migrated.println("Mig: Event ");
 }
-
-/* 
-migrate Activity 
-	when {
-		--var process = Original!Process.all.first().equivalent();
-		--var activities = process.getActivitiesWithMultipleOutgoingControlFlow();
-		--return (activities.size > 0 and activities.includes(original));
-		return original.hasMultipleOutgoingControlFlows();
-	}
-{
-	
-	"Activity".println();
-	//activities.println();
-	original.println();
-	migrated.println();
-	
-	original.outgoing.println();
-	migrated.outgoing.println();
-	/* 
-	"Activities".println();
-	Original!Activity.all.println();
-	Migrated!Activity.all.println();
-	
-	"Seq flows".println();
-	Original!SequenceFlow.all.println();
-	Migrated!SequenceFlow.all.println();
-	 
-	var sequenceFlow: new Migrated!SequenceFlow;
-	var fork: new Migrated!ParallelGateway;
-					
-	--Set a unique id for the gateway!!?? 
-	sequenceFlow.id = "sq_123";
-	fork.id = "fork_id123";
-					
-	fork.gatewayDirection = Migrated!GatewayDirection#Diverging;
-	var seqFlows = Original!SequenceFlow.all.select(s|s.sourceRef = original);
-	seqFlows.equivalent().println();
-	
-	fork.outgoing.addAll(original.outgoing.equivalent());
-	fork.outgoing.println();
-	migrated.outgoing.clear();
-	sequenceFlow.sourceRef = migrated;
-	sequenceFlow.targetRef = fork;
-	
-	//migrated.outgoing.add(sequenceFlow);
-	migrated.outgoing.println();	
-	sequenceFlow.println();		
-	--get the process which contains the task (self))!??
-	original.getContainingProcess().flowElements.size().println();
-	original.getContainingProcess().equivalent().flowElements.size().println();
-	original.getContainingProcess().equivalent().flowElements.add(sequenceFlow);
-	original.getContainingProcess().equivalent().flowElements.add(fork);
-	
-}
-*/
 
 post test {
-	Original!ItemAwareElement.all.size().println();
-	Migrated!ItemAwareElement.all.size().println();
+	Original!Process.all.first.flowElements.size().println("Original Num of flow elements: ");
+	Migrated!Process.all.first.flowElements.size().println("Migrated Num of flow elements: ");
 }
 
+-- For Activities with multiple outgoing sequence flows
+post _addForkGateway {
+	for(activityNode in Migrated!Activity.all.select(a | a.outgoing.select(e | e.isTypeOf(Migrated!SequenceFlow)).size() > 1)) {
+ 		activityNode._addFork();
+ 	}
+}
+
+-- For Activities with multiple incoming sequence flows
+post addMergeGateway {
+	for(activityNode in Migrated!Activity.all.select(a | a.incoming.select(e | e.isTypeOf(Migrated!SequenceFlow)).size() > 1)) {
+ 		activityNode.addMerge();
+ 	}
+}
+
+post addOutputObjectFlow {
+	for (objectNode in Migrated!ObjectNode.all.select(o | o.outgoing.isUndefined() or o.outgoing.size() = 0)) {
+		var actionNode = objectNode.incoming.first().sourceRef; //The unique activity node a to which o is output and a has no multiple object nodes, otherwise fail
+		if ((objectNode.incoming.size() > 1) or (actionNode.hasMultipleObjectFlows()))
+			" The object Node need to be fixed".println(objectNode); //exit
+		var outgoingControlEdge = actionNode.outgoing.first();  //There is a unique control flow from a
+		outgoingControlEdge.sourceRef = objectNode;
+	}
+}
+
+post addInputObjectFlow {
+	for (objectNode in Migrated!ObjectNode.all.select(o | o.incoming.isUndefined() or o.incoming.size() = 0)) {
+		var actionNode = objectNode.outgoing.first().targetRef; //The unique activity node a to which o is input and a has no multiple object nodes, otherwise fail
+		if ((objectNode.outgoing.size() > 1) or (actionNode.hasMultipleObjectFlows()))
+			" The object Node need to be fixed".println(objectNode); //exit
+		var incomingControlEdge = actionNode.incoming.first();  //There is a unique control flow to a
+		incomingControlEdge.targetRef = objectNode;
+	}
+}
+
+post addJoinGateway {
+ 	for(activityNode in Migrated!FlowNode.all.select(n | (n.isTypeOf(Migrated!Activity) or n.isKindOf(Migrated!Event)) and n.incoming.size > 1)) {
+ 		activityNode.addJoin();
+ 	}
+}
+
+post addForkGateway {
+	for(activityNode in Migrated!FlowNode.all.select(n | (n.isTypeOf(Migrated!Activity) or n.isKindOf(Migrated!Event)) and n.outgoing.size > 1)) {
+ 		activityNode.addFork();
+ 	}	
+} 
+
+post preprocessingEnd {
+	"Preprocessing phase End:-------".println();
+}
+
+/******************************************** Helper Functions ******************************************/
 operation Original!Activity hasMultipleOutgoingControlFlows() : Boolean {
 	return self.outgoing.size() > 1;
 }
 
+operation Migrated!FlowNode hasMultipleObjectFlows() : Boolean {
+	var numOfOutgoingObjectFlows = self.outgoing.select(e | e.isTypeOf(Migrated!ObjectFlow)).size();
+	var numOfIncomingObjectFlows = self.incoming.select(e | e.isTypeOf(Migrated!ObjectFlow)).size(); 
+	return  (numOfOutgoingObjectFlows + numOfIncomingObjectFlows ) > 1;
+}
+
 operation Original!FlowElement getContainingProcess() : Original!Process {
-	self.println();
-	//return Original!Process.all.first;
 	return Original!Process.all.select(p| p.flowElements.includes(self)).first();
 } 
 
 operation Original!DataOutputAssociation getAssociatedFlowNode() : Original!FlowNode {
+	-- Is this correct? choosing the first item!!??s
 	var _dataOutput = self.sourceRef.first();
-	//_dataOutput.println();
 	var activity = Original!Activity.all.select(a | a.ioSpecification.isDefined() and a.ioSpecification.dataOutputs.includes(_dataOutput)).first();
 	var catchEvent = Original!CatchEvent.all.select(e | e.dataOutputs.isDefined() and e.dataOutputs.includes(_dataOutput)).first();
-	//activity.println();
-	//catchEvent.println();
 	if (activity.isDefined())
 		return activity;
 	else
@@ -146,13 +164,81 @@ operation Original!DataOutputAssociation getAssociatedFlowNode() : Original!Flow
 
 operation Original!DataInputAssociation getAssociatedFlowNode() : Original!FlowNode {
 	var _dataInput = self.targetRef;
-	//_dataOutput.println();
 	var activity = Original!Activity.all.select(a | a.ioSpecification.isDefined() and a.ioSpecification.dataInputs.includes(_dataInput)).first();
 	var throwEvent = Original!ThrowEvent.all.select(e | e.dataInputs.isDefined() and e.dataInputs.includes(_dataInput)).first();
-	//activity.println();
-	//catchEvent.println();
 	if (activity.isDefined())
 		return activity;
 	else
-		return catchEvent;
+		return throwEvent;
+}
+
+operation Migrated!FlowNode _addFork() : Boolean {
+	
+	var sequenceFlow: new Migrated!SequenceFlow;
+	var fork: new Migrated!ParallelGateway;
+						
+	--Set a unique id for the gateway!!?? 
+	sequenceFlow.id = "sequenceFlow".concat(getNextElementSequenceId());
+	Migrated!Process.all.first.flowElements.add(sequenceFlow);
+	fork.id = "fork".concat(getNextElementSequenceId());
+	Migrated!Process.all.first.flowElements.add(fork);
+					
+	fork.gatewayDirection = Migrated!GatewayDirection#Diverging;
+	fork.outgoing.addAll(self.outgoing.select(e| e.isTypeOf(Migrated!SequenceFlow)));
+	sequenceFlow.sourceRef = self;
+	sequenceFlow.targetRef = fork;
+}
+
+operation Migrated!FlowNode addMerge() : Boolean {
+	var sequenceFlow: new Migrated!SequenceFlow;
+	var merge: new Migrated!ExclusiveGateway;
+					
+	--Set a unique id for the gateway!!?? 
+	sequenceFlow.id = "sequenceFlow".concat(getNextElementSequenceId());
+	Migrated!Process.all.first.flowElements.add(sequenceFlow);
+	merge.id = "merge".concat(getNextElementSequenceId());
+	Migrated!Process.all.first.flowElements.add(merge);
+					
+	merge.gatewayDirection = Migrated!GatewayDirection#Converging;
+	merge.incoming.addAll(self.incoming.select(e | e.isTypeOf(Migrated!SequenceFlow)));
+	sequenceFlow.sourceRef = merge;
+	sequenceFlow.targetRef = self;
+}
+
+operation Migrated!FlowNode addFork() : Boolean {
+	
+	var sequenceFlow: new Migrated!SequenceFlow;
+	var fork: new Migrated!ParallelGateway;
+					
+	--Set a unique id for the gateway!!?? 
+	sequenceFlow.id = "sequenceFlow".concat(getNextElementSequenceId());
+	Migrated!Process.all.first.flowElements.add(sequenceFlow);
+	fork.id = "fork".concat(getNextElementSequenceId());
+	Migrated!Process.all.first.flowElements.add(fork);
+					
+	fork.gatewayDirection = Migrated!GatewayDirection#Diverging;
+	fork.outgoing.addAll(self.outgoing);
+	sequenceFlow.sourceRef = self;
+	sequenceFlow.targetRef = fork;
+}
+
+operation Migrated!FlowNode addJoin() : Boolean {
+	var sequenceFlow: new Migrated!SequenceFlow;
+	var join: new Migrated!ParallelGateway;
+					
+	--Set a unique id for the gateway!!?? 
+	sequenceFlow.id = "sequenceFlow".concat(getNextElementSequenceId());
+	Migrated!Process.all.first.flowElements.add(sequenceFlow);
+	join.id = "join".concat(getNextElementSequenceId());
+	Migrated!Process.all.first.flowElements.add(join);
+					
+	join.gatewayDirection = Migrated!GatewayDirection#Converging;
+	join.incoming.addAll(self.incoming);
+	sequenceFlow.sourceRef = join;
+	sequenceFlow.targetRef = self;
+}
+
+operation getNextElementSequenceId() : String {
+	var id = (Migrated!Process.all.first.flowElements.size() + 1).asString();
+	return "#FlowElement#".concat(id);
 }

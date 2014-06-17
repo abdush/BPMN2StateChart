@@ -1,0 +1,80 @@
+@gmf
+@namespace(uri="http://BPMN/Simplified", prefix="pm")
+package pm;
+
+class BaseElement {
+  attr String ~id;
+  attr String name;
+}
+
+@gmf.diagram
+class Process extends BaseElement {
+  !ordered val FlowElement[*] flowElements;
+}
+
+class FlowElement extends BaseElement {
+}
+
+class FlowNode extends FlowElement {
+  !ordered !resolve ref Edge[*]#targetRef incoming;
+  !resolve ref Edge[*]#sourceRef outgoing;
+}
+
+@gmf.node(figure="rectangle", label="name", label.placement="internal")
+class Activity extends FlowNode {
+}
+
+@gmf.node(figure="ellipse", label="name", label.placement="internal")
+class ObjectNode extends FlowNode {
+  !ordered val DataState dataState;
+}
+
+class DataState extends BaseElement {
+}
+
+
+class Gateway extends FlowNode {
+  !ordered attr GatewayDirection gatewayDirection = "Unspecified";
+}
+
+@gmf.node(figure="rounded", label.placement="none", color="255,255,0", size="15,15")
+class ExclusiveGateway extends Gateway {
+  !ordered !resolve ref SequenceFlow default;
+}
+
+@gmf.node(figure="rounded", label.placement="none", color="255,255,1", size="15,15")
+class ParallelGateway extends Gateway {
+}
+
+class Edge extends FlowElement {
+  !ordered !resolve ref FlowNode[1]#outgoing sourceRef;
+  !ordered !resolve ref FlowNode[1]#incoming targetRef;
+}
+
+@gmf.link(source="sourceRef", target="targetRef", target.decoration="arrow", label="guard")
+class SequenceFlow extends Edge {
+  !ordered attr String guard;
+}
+
+@gmf.link(source="sourceRef", target="targetRef", source.constraint="self.oclIsTypeOf(ObjectNode) or oppositeEnd.oclIsTypeOf(ObjectNode)", target.decoration="arrow", style="dash")
+class ObjectFlow extends Edge {
+}
+
+class Event extends FlowNode {
+}
+
+@gmf.node(figure="rounded", label.placement="none", color="255,0,0", size="15,15")
+class StartEvent extends Event {
+}
+
+@gmf.node(figure="rounded", label.placement="none", color="0,0,0", size="15,15")
+class EndEvent extends Event {
+}
+
+enum GatewayDirection {
+  Unspecified = 0;
+  Converging = 1;
+  Diverging = 2;
+  Mixed = 3;
+}
+

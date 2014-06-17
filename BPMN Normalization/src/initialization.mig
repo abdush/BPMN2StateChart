@@ -2,50 +2,67 @@ pre initializationStart {
 	"Synthesizing phase (initialization) start:-------".println();
 }
 
+pre NoForkJoinEdge {
+	Activity.all.size().println("Activity nodes set should be empty!");
+	var edges = Edge.all.select(e | e.sourceRef.isTypeOf(ParallelGateway) and e.targetRef.isTypeOf(ParallelGateway));
+	edges.size().println("Edges connecting forks/joins should be empty!");
+	//add dummy object if not:
+	
+}
 retype Process to Process
 retype ParallelGateway to ParallelGateway
-retype ExclusiveGateway to ExclusiveGateway
-retype DataState to DataState
 
-retype SequenceFlow to SequenceFlow
-migrate SequenceFlow
-{
-	//migrated.guard = original.conditionExpression.body;
-}
+retype DataState to DataState
 
 retype ObjectNode to ObjectNode
 migrate ObjectNode
 {
 	original.println("Org: DataObject");
 	migrated.println("Mig: ObjectNode");
+	var newOR = new Migrated!ORNode;
+	migrated.parent = newOR;
 	migrated.dataState = original.dataState.equivalent();
 }
 
-retype ObjectFlow to ObjectFlow
+retype ExclusiveGateway to ExclusiveGateway
+migrate ExclusiveGateway
+{
+	original.println("Org: XOR");
+	migrated.println("Mig: XOR");
+	var newOR = new Migrated!ORNode;
+	migrated.parent = newOR;
+}
+
+retype ObjectFlow to Edge
 migrate ObjectFlow
 {
 	original.println("Org: DOA");
 	migrated.println("Mig: ObjectFlow");
 	
-	migrated.targetRef = original.targetRef.equivalent();
+	migrated.targetRef = original.targetRef.equivalent().getParent();
 	original.targetRef.println("Org: trgRef");
 	migrated.targetRef.println("Mig: trgRef");
 	
-	original.getAssociatedFlowNode().equivalent().println("Org Eq: FlowNode");
-	migrated.sourceRef = original.getAssociatedFlowNode().equivalent();
+	migrated.sourceRef = original.sourceRef.equivalent().getParent();
 	migrated.sourceRef.println("Mig: SrcRef");
 	
-	original.targetRef.getContainingProcess().println("Org: Process");
-	original.targetRef.getContainingProcess().equivalent().println("Org Eq: Process");
-	original.targetRef.getContainingProcess().equivalent().flowElements.println("Org Eq: flowElements");//add(migrated);
 	original.targetRef.getContainingProcess().equivalent().flowElements.add(migrated);
 }
 
-retype Activity to Activity
-migrate Activity 
+retype SequenceFlow to Edge
+migrate SequenceFlow
 {
-	original.println("Org: Activity");
-	migrated.println("Mig: Activity");
+	original.println("Org: DOA");
+	migrated.println("Mig: ObjectFlow");
+	
+	migrated.targetRef = original.targetRef.equivalent().getParent();
+	original.targetRef.println("Org: trgRef");
+	migrated.targetRef.println("Mig: trgRef");
+	
+	migrated.sourceRef = original.sourceRef.equivalent().getParent();
+	migrated.sourceRef.println("Mig: SrcRef");
+	
+	original.targetRef.getContainingProcess().equivalent().flowElements.add(migrated);
 }
 
 retype StartEvent to StartEvent
@@ -63,4 +80,11 @@ post test {
 
 post initializationEnd {
 	"initialization phase End:-------".println();
+}
+
+operation Migrated!Node getParent() : Migrated!Node {
+	if (self.isTypeOf(Migrated!ParallelGateway))
+		return self;
+	else
+		return self.parent;
 }

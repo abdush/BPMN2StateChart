@@ -145,3 +145,10 @@ pattern RemoveEdgesORNodes
 post transformationEnd {
 	"transformation Rules End:----------".println();
 }
+
+post finalization {
+	//Set of Edges & ParallelGateways should be empty
+	Edge.all.size().println("Edges:---");
+	ParallelGateway.all.size().println("ParallelGateway:---");
+	
+}

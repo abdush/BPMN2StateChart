@@ -1,10 +1,57 @@
--- The input model should be a valid BPMN2 model (how to check?)
+import "Normalization_Helper.eol";
+
+-- The input model should be a valid BPMN2 model (how to check!!??)
 -- The bpmn model should have only the following elements:
 -- 1. There should be exactly one process element.
 -- 2. The process model should have at least one stateful data object (For each stateful dataobject, a statechart is to be generated.)
 -- 3. The process model should contain only Normal Tasks, Events, Exclusive and Parallel Gateways.
 context Process {
 	
+	constraint MustExistOneProcess {
+		check {
+			var numberOfProcesses = Process.all.size();
+			return numberOfProcesses == 1;
+		}
+		message: "There must be precisely 1 process element, but there are " + numberOfProcesses
+	}
+	
+	constraint MustHaveOneStartEvent {
+		guard: self.satisfies("mustExistOneProcess")
+		check  {
+			var numberOfStartEvents = self.flowElements.select(n|n.isTypeOf(StartEvent)).size(); 
+			return numberOfStartEvents == 1;
+		}
+		message : "There must be precisely 1 starting event, but there are " + numberOfStartEvents
+	}
+	
+	constraint MustHaveAtLeastOneEndEvent {
+		check  {
+			var numberOfEndEvents = self.flowElements.select(n|n.isTypeOf(EndEvent)).size(); 
+			return numberOfEndEvents >= 1;
+		}
+		message : "There must be at least 1 end event, but there are " + numberOfEndEvents
+	}
+	
+	-- What kind of Events and tasks are allowed!!??
+	constraint MustHaveOnlyAllowedNodes {
+		check  {
+			var nonAllowedElements = self.flowElements.reject(n|n.isKindOf(Event) or n.isTypeOf(ExclusiveGateway)
+			or n.isTypeOf(ParallelGateway) or n.isTypeOf(Task) or n.isTypeOf(SequenceFlow) or n.isTypeOf(DataObject) or n.isTypeOf(DataObjectReference)); 
+			return nonAllowedElements.size = 0;
+		}
+		message : "There must be only elements of type [Event, Task, Exclusive Gateway, Parallel Gateway, SequenceFlow, Data Object, Data Object Reference] but found " + nonAllowedElements
+	}
+	
+	constraint MustHaveAtleastOneStatefulDataObject {
+		check {
+			var numberOfStatefulData = self.getStatefulDataObjects().size();
+			return numberOfStatefulData >=1;
+		}
+		message : "There must be at least one stateful data object but there are " + numberOfStatefulData
+	}
+}
+
+/**
 	constraint SingleDataObjectDefined {
 	
 		check: DataObject.all.size() = 1
@@ -24,6 +71,7 @@ context Process {
 	
 	}
 }
+
 -- The data object and data object references must be referred to in the process
 -- IO specification
 context ItemAwareElement {
@@ -55,9 +103,9 @@ context ItemAwareElement {
 	}
 }
 
-
+*/
 -- Each Activity (task) should have exactly one incoming and outgoing sequence flow.
-context Activity {
+--context Activity {
 
 
 /** 
@@ -69,7 +117,7 @@ There are two options:
 for most situations.
 •  A Parallel Gateway can be used. This will be used rarely, usually in combination with other Gateways.
 **/
-	constraint SingleOutgoingSequenceFlow {
+/*	constraint SingleOutgoingSequenceFlow {
 			
 			check: self.outgoing.size() = 1
 			
@@ -103,14 +151,14 @@ for most situations.
 			}
 	}
 
-
+*/
 /** BPMN uses the term “merge” to refer to the exclusive combining of two or more paths into 
 one path (also known as an OR-Join).
 A Merging Exclusive Gateway is used to show the merging of multiple Sequence Flows.
 If all the incoming flow is alternative, then a Gateway is not needed. That is, uncontrolled 
 flow provides the same behavior 
 **/
-	constraint SingleIncomingSequenceFlow {
+/*	constraint SingleIncomingSequenceFlow {
 			
 			check: self.incoming.size() = 1
 			
@@ -144,8 +192,8 @@ flow provides the same behavior
 			}
 	}
 }
-
-
+*/
+/*******************************************************************************************/
 
 -- BPMN root element: Definitions
 -- UML State Machine root elemet: Model
@@ -203,9 +251,6 @@ flow provides the same behavior
 --BPMN sequence flow: bpmn2:sequenceFlow (sourceRef & targetRef)
 --BPMN gateways: bpmn2:exclusiveGateway (direction="Converging/Diverging")
 --										(incoming & outgoing) (condition??)
-
-
-
 
 -- UML state Machine top element: packagedElement xmi:type="uml:StateMachine"
 -- UML state Machine region: xmi:type="uml:Region"                    how many regions??

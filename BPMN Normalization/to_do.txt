@@ -1,0 +1,17 @@
+A. BPMN_Validation:
+1. How to check the input is valid BPMN2 model?
+2. How to check for non-allowed elements in the model? What elements are not allowed?
+3. If there are more than one stateful data object, how to create a copy of the model for each data object? 
+using flock migration?
+4. How to break or exit from the execution of the program when certain conditions happens? 
+(flock when an object has no incoming/outgoing and no unique activity/event node, exit and show information for user)
+5. How to generate unique ID for created elements?
+6. How to migrate the guard condition in the sequence flow?
+7. Do I need to add the new migrated elements (ObjectNode, ObjectFlow, SequenceFlow, ..) if the element is new or no?
+8. Do we need the empty migrate for Event and activity?
+9. Does BPMN allow multiple incoming/outgoing sequence flows for events as well?
+10. Filtering rules how to preserve the guards (R2 & R9)?
+11. Filtering rules needs to clone (for loop) to modify elements in the loop?
+12. Rule R5 simple path between AND gateways?
+13. Collection equality (Bag, Sequence)? R9, R10?
+

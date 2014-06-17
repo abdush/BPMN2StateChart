@@ -1,4 +1,4 @@
-/***************** Helper functions ****************/
+/************************************ Helper functions *****************************************/
 var id : Integer = 0;
 /*  
 	Return the process that contains the given flow element.

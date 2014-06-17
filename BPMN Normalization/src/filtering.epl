@@ -64,8 +64,7 @@ pattern MergeConvergingExclusiveGateway
 	onmatch {
 		edge.println("R3 Matched..");
 		for (_edge in firstGateway.incoming.clone()) {
-			_edge.targetRef = secondGateway;
-			loopCount.println(); 
+			_edge.targetRef = secondGateway; 
 		}
 		delete firstGateway;
 		delete edge;
@@ -233,7 +232,7 @@ post endFiltering {
 	"Filtering Rules End:-----".println();
 }
 
-/********************************* Helper Functions ************************/
+/***************************************************** Helper Functions ***********************************/
 /* 
 	Get all the incoming nodes to the given node.
 	(All nodes which are sourceRef to Edges which have the given FlowNode as targetRef)
