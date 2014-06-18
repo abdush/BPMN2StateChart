@@ -2,22 +2,21 @@
 	
 	<!-- Prepare our BPMN model for processing with Epsilon --> 
 	<target name="loadBPMNModel">
-		<epsilon.emf.register file="metamodel/BPMN20.ecore" />
+		<!-- epsilon.emf.register file="metamodels/BPMN20.ecore" /-->
 		<epsilon.emf.loadModel
 			name="bpmn_input"
 			read="true"
 			store="false"
 			metamodeluri="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI"
-			modelfile="models/SequenceFlows_fork_merge_WithDataObjects.bpmn2"
+			
+			modelfile="models/Preprocessing_with_DataObjects_WithNoIO.bpmn2"
 		/>
+		<!-- metamodelfile="metamodels/BPMN20.ecore" -->
 	</target>
 	
 	<!-- First check that our BPMN is well-formed -->
 	<target name="validate" depends="loadBPMNModel">
-		<!-- Note that this task will fail if the model is not valid due to the failonerrors=true
-		     attribute. To see how an invalid model causes a failure, try changing 
-		     modelfile="models/wakeup.model" to modelfile="models/invalid.model" on line 11
-		  -->
+		<!-- Note that this task will fail if the model is not valid due to the failonerrors=true attribute. -->
 		<epsilon.evl src="src/BPMN_Validation.evl" failonerrors="true">
 			<model ref="bpmn_input" />
 		</epsilon.evl>
@@ -25,25 +24,31 @@
 	
 	<!-- Next prepare a new and empty preprocessed model for use in the Flock and EPL scripts -->
 	<target name="loadMigrationModel">
-		<epsilon.emf.register file="metamodel/BPMN2_Simplified.ecore" />
+		<epsilon.emf.register file="metamodels/BPMN2_Simplified.ecore" />
 		<epsilon.emf.loadModel
 			name="preprocessed"
 			read="false"
 			store="true"
 			metamodeluri="http://BPMN/Simplified"
-			modelfile="models/output_pre-processed.pm"
+			modelfile="models/output_filtered.pm"
 		/>
 	</target>
 	
+		
 	<!-- Invoke Flock to migrate and normalize the input bpmn, and then
 	     invoke EPL to filter the process model -->
 	<target name="normalization" depends="validate,loadMigrationModel">
-		<epsilon.flock src="src/Preprocessing.mig" originalModel="bpmn_input" targetModel="preprocessed">
+		<epsilon.flock src="src/Preprocessing.mig" originalModel="Original" migratedModel="Migrated">
+			<model ref="bpmn_input" as="Original"/>
+			<model ref="preprocessed" as="Migrated"/>
 		</epsilon.flock>
+		
+		<!-- Copy the preprocessed file, just for checking -->
+		<!-- copy tofile="models/output_preprocessed.pm" file="models/output_filtered.pm"/-->
 		
 		<!-- Apply the Filtering rules -->
 		<epsilon.epl src="src/filtering.epl" repeatWhileMatches="true">
-			<model ref="preprocessed" />
+			<model ref="preprocessed"/>
 		</epsilon.epl>
 		
 		<!-- Force Eclipse to refresh our project so we can see the newly generated path.html file -->
@@ -51,12 +56,12 @@
 	</target>
 	
 	<!-- Next store the filtered output model -->
-	<target name="StoreFilteredModel">
+	<!-- target name="StoreFilteredModel">
 		<epsilon.emf.storeModel
-				name="preprocessed"
-				read="false"
+				name="filtered"
+				read="true"
 				store="true"
 				target="models/output_filtered.pm"
 		/>
-	</target>
+	</target-->
 </project>

@@ -2,6 +2,7 @@ import "Normalization_Helper.eol";
 
 pre preprocessingStart {
 	"Preprocessing phase start:-------".println();
+	Process.all.size().println();
 }
 
 retype Process to Process

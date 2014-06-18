@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn2:definitions xmlns="bpmn2" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="_J84mQOneEeOgCMDZjxiKRQ" targetNamespace="bpmn2">
-  <bpmn2:process id="_J84mQeneEeOgCMDZjxiKRQ" name="process1">
+  <bpmn2:process id="_J84mQeneEeOgCMDZjxiKRQ" name="process_sample">
     <bpmn2:startEvent id="_J84mQuneEeOgCMDZjxiKRQ">
       <bpmn2:outgoing>_J84mQ-neEeOgCMDZjxiKRQ</bpmn2:outgoing>
       <bpmn2:dataOutput id="DataOutput_1" name="output1"/>

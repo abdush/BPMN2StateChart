@@ -1,6 +1,7 @@
 A. BPMN_Validation:
 1. How to check the input is valid BPMN2 model?
 2. How to check for non-allowed elements in the model? What elements are not allowed?
+2.2 How to check satisfies all constraints?
 3. If there are more than one stateful data object, how to create a copy of the model for each data object? 
 using flock migration?
 4. How to break or exit from the execution of the program when certain conditions happens? 
@@ -14,4 +15,13 @@ using flock migration?
 11. Filtering rules needs to clone (for loop) to modify elements in the loop?
 12. Rule R5 simple path between AND gateways?
 13. Collection equality (Bag, Sequence)? R9, R10?
+14. If in ANT workflow tasks: metamodelfile="metamodels/BPMN20.ecore" is used without
+metamodeluri="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI"
+The validation EVL model will not parse the input (no error but no data); opposite is fine.
+15. Problem when registering the file BPMN20.ecore??? only after closing and opening eclipse again it works? 
+Issue with EPackage registery or what??
+16. What is this generated after flock migration and saving output as .pm file:
+<ecore:EStringToStringMapEntry key="" value="bpmn2"> ...
+17. Pass input file to the workflow task: GUI, cmd ??
+
 

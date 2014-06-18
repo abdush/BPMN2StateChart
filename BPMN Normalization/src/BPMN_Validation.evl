@@ -1,4 +1,12 @@
 import "Normalization_Helper.eol";
+pre validationStart {
+	"BPMN input model validation start:------".println();
+	Process.all.size().println();
+}
+
+post validationEnd {
+	"BPMN input model validation End:------".println();
+}
 
 -- The input model should be a valid BPMN2 model (how to check!!??)
 -- The bpmn model should have only the following elements:
@@ -16,17 +24,20 @@ context Process {
 	}
 	
 	constraint MustHaveOneStartEvent {
-		guard: self.satisfies("mustExistOneProcess")
+		guard: self.satisfies("MustExistOneProcess")
 		check  {
-			var numberOfStartEvents = self.flowElements.select(n|n.isTypeOf(StartEvent)).size(); 
+			var numberOfStartEvents = self.flowElements.select(n|n.isTypeOf(StartEvent)).size();
+			numberOfStartEvents.println(self); 
 			return numberOfStartEvents == 1;
 		}
 		message : "There must be precisely 1 starting event, but there are " + numberOfStartEvents
 	}
 	
 	constraint MustHaveAtLeastOneEndEvent {
+		guard: self.satisfies("MustExistOneProcess")
 		check  {
-			var numberOfEndEvents = self.flowElements.select(n|n.isTypeOf(EndEvent)).size(); 
+			var numberOfEndEvents = self.flowElements.select(n|n.isTypeOf(EndEvent)).size();
+			numberOfEndEvents.println(); 
 			return numberOfEndEvents >= 1;
 		}
 		message : "There must be at least 1 end event, but there are " + numberOfEndEvents
@@ -34,6 +45,7 @@ context Process {
 	
 	-- What kind of Events and tasks are allowed!!??
 	constraint MustHaveOnlyAllowedNodes {
+		guard: self.satisfies("MustExistOneProcess")
 		check  {
 			var nonAllowedElements = self.flowElements.reject(n|n.isKindOf(Event) or n.isTypeOf(ExclusiveGateway)
 			or n.isTypeOf(ParallelGateway) or n.isTypeOf(Task) or n.isTypeOf(SequenceFlow) or n.isTypeOf(DataObject) or n.isTypeOf(DataObjectReference)); 
@@ -43,6 +55,7 @@ context Process {
 	}
 	
 	constraint MustHaveAtleastOneStatefulDataObject {
+		guard: self.satisfies("MustExistOneProcess")
 		check {
 			var numberOfStatefulData = self.getStatefulDataObjects().size();
 			return numberOfStatefulData >=1;

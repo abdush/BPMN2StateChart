@@ -1,36 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pm:Process xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pm="http://BPMN/Simplified" id="_J84mQeneEeOgCMDZjxiKRQ" name="process1">
-  <flowElements xsi:type="pm:StartEvent" id="_J84mQuneEeOgCMDZjxiKRQ" outgoing="#//@flowElements.21"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="_J84mS-neEeOgCMDZjxiKRQ" incoming="#//@flowElements.16 #//@flowElements.17" outgoing="#//@flowElements.2" gatewayDirection="Converging"/>
+<pm:Process xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pm="http://BPMN/Simplified" id="_J84mQeneEeOgCMDZjxiKRQ" name="process_example">
+  <flowElements xsi:type="pm:StartEvent" id="_J84mQuneEeOgCMDZjxiKRQ" outgoing="#//@flowElements.17"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="_J84mS-neEeOgCMDZjxiKRQ" incoming="#//@flowElements.13 #//@flowElements.14" outgoing="#//@flowElements.2" gatewayDirection="Converging"/>
   <flowElements xsi:type="pm:SequenceFlow" id="_J84mTOneEeOgCMDZjxiKRQ" sourceRef="#//@flowElements.1" targetRef="#//@flowElements.3"/>
   <flowElements xsi:type="pm:ExclusiveGateway" id="_7EecYuoxEeO7IP1X9T78Pg" incoming="#//@flowElements.2" outgoing="#//@flowElements.4 #//@flowElements.5" gatewayDirection="Diverging"/>
-  <flowElements xsi:type="pm:SequenceFlow" id="_7EecY-oxEeO7IP1X9T78Pg" sourceRef="#//@flowElements.3" targetRef="#//@flowElements.20"/>
-  <flowElements xsi:type="pm:SequenceFlow" id="_7EecZOoxEeO7IP1X9T78Pg" sourceRef="#//@flowElements.3" targetRef="#//@flowElements.20"/>
-  <flowElements xsi:type="pm:SequenceFlow" id="Seq_7EecaeoxEeO7IP1X9T78Pg" sourceRef="#//@flowElements.11" targetRef="#//@flowElements.12"/>
-  <flowElements xsi:type="pm:EndEvent" id="_J84mTeneEeOgCMDZjxiKRQ" incoming="#//@flowElements.18"/>
-  <flowElements xsi:type="pm:ObjectNode" id="DataObject_1" name="Data Object 1" incoming="#//@flowElements.21" outgoing="#//@flowElements.13">
-    <dataState xsi:type="pm:DataState" id="_vlBPUPGsEeOb54kXqxMk0A_2" name="DataState 1"/>
+  <flowElements xsi:type="pm:SequenceFlow" id="_7EecY-oxEeO7IP1X9T78Pg" sourceRef="#//@flowElements.3" targetRef="#//@flowElements.16"/>
+  <flowElements xsi:type="pm:SequenceFlow" id="_7EecZOoxEeO7IP1X9T78Pg" sourceRef="#//@flowElements.3" targetRef="#//@flowElements.16"/>
+  <flowElements xsi:type="pm:EndEvent" id="_J84mTeneEeOgCMDZjxiKRQ" incoming="#//@flowElements.15"/>
+  <flowElements xsi:type="pm:ObjectNode" id="DataObject_1" name="Data Object 1" incoming="#//@flowElements.17" outgoing="#//@flowElements.10">
+    <dataState xsi:type="pm:DataState" id="" name="DataState 1"/>
   </flowElements>
-  <flowElements xsi:type="pm:ObjectNode" id="_DataObjectReference_3" name="Reference 1 to Data Object 1" incoming="#//@flowElements.14" outgoing="#//@flowElements.17">
+  <flowElements xsi:type="pm:ObjectNode" id="_DataObjectReference_3" name="Reference 1 to Data Object 1" incoming="#//@flowElements.11" outgoing="#//@flowElements.14">
     <dataState xsi:type="pm:DataState" id="_vlBPUPGsEeOb54kXqxMk0A" name="DataState 2"/>
   </flowElements>
-  <flowElements xsi:type="pm:ObjectNode" id="_DataObjectReference_4" name="Reference 2 to Data Object 1" incoming="#//@flowElements.15" outgoing="#//@flowElements.16">
+  <flowElements xsi:type="pm:ObjectNode" id="_DataObjectReference_4" name="Reference 2 to Data Object 1" incoming="#//@flowElements.12" outgoing="#//@flowElements.13">
     <dataState xsi:type="pm:DataState" id="_vlBPUfGsEeOb54kXqxMk0A" name="DataState 3"/>
   </flowElements>
-  <flowElements xsi:type="pm:ObjectNode" id="_Var6UPG1EeOb54kXqxMk0A" name="Reference 3 to Data Object 1" incoming="#//@flowElements.19" outgoing="#//@flowElements.6">
-    <dataState xsi:type="pm:DataState" id="_Var6UfG1EeOb54kXqxMk0A" name="DataState 4"/>
-  </flowElements>
-  <flowElements xsi:type="pm:ObjectNode" id="_Var6UvG1EeOb54kXqxMk0A" name="Reference 4 to Data Object 1" incoming="#//@flowElements.6" outgoing="#//@flowElements.18">
-    <dataState xsi:type="pm:DataState" id="_Var6U_G1EeOb54kXqxMk0A" name="DataState 5"/>
-  </flowElements>
-  <flowElements xsi:type="pm:ObjectFlow" id="DataInputAssociation_1" sourceRef="#//@flowElements.8" targetRef="#//@flowElements.22"/>
-  <flowElements xsi:type="pm:ObjectFlow" id="DataOutputAssociation_2" sourceRef="#//@flowElements.22" targetRef="#//@flowElements.9"/>
-  <flowElements xsi:type="pm:ObjectFlow" id="DataOutputAssociation_3" sourceRef="#//@flowElements.22" targetRef="#//@flowElements.10"/>
-  <flowElements xsi:type="pm:ObjectFlow" id="DataInputAssociation_3" sourceRef="#//@flowElements.10" targetRef="#//@flowElements.1"/>
-  <flowElements xsi:type="pm:ObjectFlow" id="DataInputAssociation_2" sourceRef="#//@flowElements.9" targetRef="#//@flowElements.1"/>
-  <flowElements xsi:type="pm:ObjectFlow" id="DataInputAssociation_4" sourceRef="#//@flowElements.12" targetRef="#//@flowElements.7"/>
-  <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#39" sourceRef="#//@flowElements.20" targetRef="#//@flowElements.11"/>
-  <flowElements xsi:type="pm:ExclusiveGateway" id="merge#FlowElement#40" incoming="#//@flowElements.4 #//@flowElements.5" outgoing="#//@flowElements.19" gatewayDirection="Converging"/>
-  <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#47" sourceRef="#//@flowElements.0" targetRef="#//@flowElements.8"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#50" incoming="#//@flowElements.13" outgoing="#//@flowElements.14 #//@flowElements.15" gatewayDirection="Diverging"/>
+  <flowElements xsi:type="pm:ObjectFlow" id="DataInputAssociation_1" sourceRef="#//@flowElements.7" targetRef="#//@flowElements.18"/>
+  <flowElements xsi:type="pm:ObjectFlow" id="DataOutputAssociation_2" sourceRef="#//@flowElements.18" targetRef="#//@flowElements.8"/>
+  <flowElements xsi:type="pm:ObjectFlow" id="DataOutputAssociation_3" sourceRef="#//@flowElements.18" targetRef="#//@flowElements.9"/>
+  <flowElements xsi:type="pm:ObjectFlow" id="DataInputAssociation_3" sourceRef="#//@flowElements.9" targetRef="#//@flowElements.1"/>
+  <flowElements xsi:type="pm:ObjectFlow" id="DataInputAssociation_2" sourceRef="#//@flowElements.8" targetRef="#//@flowElements.1"/>
+  <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#35" sourceRef="#//@flowElements.16" targetRef="#//@flowElements.6"/>
+  <flowElements xsi:type="pm:ExclusiveGateway" id="merge#FlowElement#36" incoming="#//@flowElements.4 #//@flowElements.5" outgoing="#//@flowElements.15" gatewayDirection="Converging"/>
+  <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#43" sourceRef="#//@flowElements.0" targetRef="#//@flowElements.7"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#46" incoming="#//@flowElements.10" outgoing="#//@flowElements.11 #//@flowElements.12" gatewayDirection="Diverging"/>
 </pm:Process>
