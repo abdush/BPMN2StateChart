@@ -63,8 +63,15 @@ migrate DataInputAssociation
 retype SequenceFlow to SequenceFlow
 migrate SequenceFlow 
 {
+	original.println();
 	-- Why cannot use the below line!!??
-	--migrated.guard = original.conditionExpression.body;
+	if (original.conditionExpression.isDefined() and original.conditionExpression.isTypeOf(FormalExpression)) 
+	{	
+		original.println("inside");
+		var formal : FormalExpression =  original.conditionExpression;
+		formal.println();
+		migrated.`guard` =  formal.body;
+	}	
 }
 
 retype Activity to Activity

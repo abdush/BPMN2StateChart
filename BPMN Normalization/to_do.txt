@@ -23,5 +23,7 @@ Issue with EPackage registery or what??
 16. What is this generated after flock migration and saving output as .pm file:
 <ecore:EStringToStringMapEntry key="" value="bpmn2"> ...
 17. Pass input file to the workflow task: GUI, cmd ??
-
+18. Copy output files during phases execution, for checking and testing
+19. Graphical editor for the new simplified metamodels.
+ 
 

@@ -1,6 +1,6 @@
-<project default="normalization">
+<project default="filtering">
 	
-	<!-- Prepare our BPMN model for processing with Epsilon --> 
+	<!-- Prepare the BPMN model for processing with Epsilon --> 
 	<target name="loadBPMNModel">
 		<!-- epsilon.emf.register file="metamodels/BPMN20.ecore" /-->
 		<epsilon.emf.loadModel
@@ -43,17 +43,22 @@
 			<model ref="preprocessed" as="Migrated"/>
 		</epsilon.flock>
 		
+		<epsilon.storeModel model="preprocessed" target="models/output_preprocessed.pm"	/>
 		<!-- Copy the preprocessed file, just for checking -->
 		<!-- copy tofile="models/output_preprocessed.pm" file="models/output_filtered.pm"/-->
+	</target>	
 		
+	<target name="filtering" depends="normalization">
 		<!-- Apply the Filtering rules -->
 		<epsilon.epl src="src/filtering.epl" repeatWhileMatches="true">
 			<model ref="preprocessed"/>
 		</epsilon.epl>
+	</target>	
+		
 		
 		<!-- Force Eclipse to refresh our project so we can see the newly generated path.html file -->
 		<!-- eclipse.refreshLocal resource="org.eclipse.epsilon.examples.workflow.flowchart" depth="-1" /-->
-	</target>
+	
 	
 	<!-- Next store the filtered output model -->
 	<!-- target name="StoreFilteredModel">
