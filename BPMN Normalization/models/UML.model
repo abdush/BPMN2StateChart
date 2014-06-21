@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="ASCII"?>
-<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_cRJ5gOWZEeOTpM9TCD0Kkw">
-  <packagedElement xsi:type="uml:StateMachine" xmi:id="_nILtcOWZEeOTpM9TCD0Kkw">
-    <region xmi:id="_uI3h8OWZEeOTpM9TCD0Kkw"/>
-  </packagedElement>
-</uml:Model>

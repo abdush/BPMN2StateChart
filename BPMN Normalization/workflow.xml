@@ -1,23 +1,35 @@
-<project default="filtering">
+<project default="filtering" basedir=".">
+	
+	<property name="input.dir" value="models/input"/>
+	<property name="normalization.dir" value="models/normalization"/>
+	<property name="filtering.dir" value="models/filtering"/>
+	<property name="petrinet.dir" value="models/filtered2pn"/>
+		
+	<property name="bpmn_inputfile" value="${input.dir}/Preprocessing_with_DataObjects_WithNoIO.bpmn2"/>
+	<basename file="${bpmn_inputfile}" property="input_filename" suffix="bpmn2"/>			
+	<property name="outputfile_normalized" value="${normalization.dir}/${input_filename}_normalized.pm"/>
+	<property name="outputfile_filtered" value="${filtering.dir}/${input_filename}_filtered.pm"/>
+	<property name="outputfile_petrinet" value="${petrinet.dir}/${input_filename}_2petrinet.pn"/>
 	
 	<!-- Prepare the BPMN model for processing with Epsilon --> 
 	<target name="loadBPMNModel">
+			
 		<!-- epsilon.emf.register file="metamodels/BPMN20.ecore" /-->
 		<epsilon.emf.loadModel
 			name="bpmn_input"
 			read="true"
 			store="false"
 			metamodeluri="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI"
-			
-			modelfile="models/Preprocessing_with_DataObjects_WithNoIO.bpmn2"
+			modelfile="${bpmn_inputfile}"
 		/>
 		<!-- metamodelfile="metamodels/BPMN20.ecore" -->
+
 	</target>
 	
-	<!-- First check that our BPMN is well-formed -->
+	<!-- First check that the BPMN is well-formed -->
 	<target name="validate" depends="loadBPMNModel">
 		<!-- Note that this task will fail if the model is not valid due to the failonerrors=true attribute. -->
-		<epsilon.evl src="src/BPMN_Validation.evl" failonerrors="true">
+		<epsilon.evl src="src/normalization/BPMN_Validation.evl" failonerrors="true">
 			<model ref="bpmn_input" />
 		</epsilon.evl>
 	</target>
@@ -30,7 +42,7 @@
 			read="false"
 			store="true"
 			metamodeluri="http://BPMN/Simplified"
-			modelfile="models/output_filtered.pm"
+			modelfile="${outputfile_filtered}"
 		/>
 	</target>
 	
@@ -38,35 +50,24 @@
 	<!-- Invoke Flock to migrate and normalize the input bpmn, and then
 	     invoke EPL to filter the process model -->
 	<target name="normalization" depends="validate,loadMigrationModel">
-		<epsilon.flock src="src/Preprocessing.mig" originalModel="Original" migratedModel="Migrated">
+		<epsilon.flock src="src/normalization/Preprocessing.mig" originalModel="Original" migratedModel="Migrated">
 			<model ref="bpmn_input" as="Original"/>
 			<model ref="preprocessed" as="Migrated"/>
 		</epsilon.flock>
 		
-		<epsilon.storeModel model="preprocessed" target="models/output_preprocessed.pm"	/>
-		<!-- Copy the preprocessed file, just for checking -->
+		<!-- Store the preprocessed file, just for checking -->
+		<epsilon.storeModel model="preprocessed" target="${outputfile_normalized}"	/>
 		<!-- copy tofile="models/output_preprocessed.pm" file="models/output_filtered.pm"/-->
 	</target>	
 		
 	<target name="filtering" depends="normalization">
 		<!-- Apply the Filtering rules -->
-		<epsilon.epl src="src/filtering.epl" repeatWhileMatches="true">
+		<epsilon.epl src="src/filtering/filtering.epl" repeatWhileMatches="true">
 			<model ref="preprocessed"/>
 		</epsilon.epl>
 	</target>	
 		
 		
-		<!-- Force Eclipse to refresh our project so we can see the newly generated path.html file -->
-		<!-- eclipse.refreshLocal resource="org.eclipse.epsilon.examples.workflow.flowchart" depth="-1" /-->
-	
-	
-	<!-- Next store the filtered output model -->
-	<!-- target name="StoreFilteredModel">
-		<epsilon.emf.storeModel
-				name="filtered"
-				read="true"
-				store="true"
-				target="models/output_filtered.pm"
-		/>
-	</target-->
+	<!-- Force Eclipse to refresh our project so we can see the newly generated files -->
+	<eclipse.refreshLocal resource="${basedir}" depth="infinite" />
 </project>

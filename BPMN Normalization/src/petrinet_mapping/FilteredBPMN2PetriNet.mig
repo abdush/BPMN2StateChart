@@ -3,6 +3,16 @@
 	Therefore, it should only contain object nodes, gateways and start & end events.
 **/
 
+pre PM2PNStart {
+	"Mapping Filtered BPMN to Petri Net phase start:-------".println();
+	Process.all.size().println();
+}
+
+pre PM2PNEnd {
+	"Mapping Filtered BPMN to Petri Net phase End:-------".println();
+	Process.all.size().println();
+}
+
 retype Process to Net
 
 retype ObjectNode to Place
