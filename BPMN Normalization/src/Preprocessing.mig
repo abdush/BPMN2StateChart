@@ -80,7 +80,7 @@ migrate Activity
 	original.println("Org: Activity ");
 	migrated.println("Mig: Activity ");
 }
-
+-- Intermediate Events !!??
 retype StartEvent to StartEvent
 retype EndEvent to EndEvent
 migrate Event 

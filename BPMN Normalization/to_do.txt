@@ -1,6 +1,7 @@
 A. BPMN_Validation:
 1. How to check the input is valid BPMN2 model?
 2. How to check for non-allowed elements in the model? What elements are not allowed?
+2.1 Intermediate Events !!??
 2.2 How to check satisfies all constraints?
 3. If there are more than one stateful data object, how to create a copy of the model for each data object? 
 using flock migration?
@@ -25,5 +26,7 @@ Issue with EPackage registery or what??
 17. Pass input file to the workflow task: GUI, cmd ??
 18. Copy output files during phases execution, for checking and testing
 19. Graphical editor for the new simplified metamodels.
+20. What if the same state name is used again in the process?
+21. What about loops? if an element is migrated?
  
 

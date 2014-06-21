@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ASCII"?>
+<pm:Process xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pm="http://BPMN/Simplified" xmi:id="_alJlwPiUEeOt65RHX0eZVA">
+  <flowElements xsi:type="pm:StartEvent" xmi:id="_2coC8PiUEeOt65RHX0eZVA" name="StartEvent" outgoing="_5HJIcPiUEeOt65RHX0eZVA"/>
+  <flowElements xsi:type="pm:ObjectFlow" xmi:id="_5HJIcPiUEeOt65RHX0eZVA" sourceRef="_2coC8PiUEeOt65RHX0eZVA" targetRef="_6BLHwPiUEeOt65RHX0eZVA"/>
+  <flowElements xsi:type="pm:ObjectNode" xmi:id="_6BLHwPiUEeOt65RHX0eZVA" name="Claim" incoming="_5HJIcPiUEeOt65RHX0eZVA" outgoing="_Ds8pgPiVEeOt65RHX0eZVA">
+    <dataState xmi:id="_8jsH0PiUEeOt65RHX0eZVA" name="Received"/>
+  </flowElements>
+  <flowElements xsi:type="pm:SequenceFlow" xmi:id="_Ds8pgPiVEeOt65RHX0eZVA" sourceRef="_6BLHwPiUEeOt65RHX0eZVA" targetRef="_ET4tsPiVEeOt65RHX0eZVA"/>
+  <flowElements xsi:type="pm:ParallelGateway" xmi:id="_ET4tsPiVEeOt65RHX0eZVA" name="fork" incoming="_Ds8pgPiVEeOt65RHX0eZVA" outgoing="_GcgAAPiVEeOt65RHX0eZVA _HOWTsPiVEeOt65RHX0eZVA"/>
+  <flowElements xsi:type="pm:SequenceFlow" xmi:id="_GcgAAPiVEeOt65RHX0eZVA" sourceRef="_ET4tsPiVEeOt65RHX0eZVA" targetRef="_FxBaEPiVEeOt65RHX0eZVA"/>
+  <flowElements xsi:type="pm:SequenceFlow" xmi:id="_HOWTsPiVEeOt65RHX0eZVA" sourceRef="_ET4tsPiVEeOt65RHX0eZVA" targetRef="_ImfLUPiVEeOt65RHX0eZVA"/>
+  <flowElements xsi:type="pm:ObjectNode" xmi:id="_FxBaEPiVEeOt65RHX0eZVA" name="claim[policy checked]" incoming="_GcgAAPiVEeOt65RHX0eZVA" outgoing="_JelQ8PiVEeOt65RHX0eZVA">
+    <dataState xmi:id="_nqvGgPiVEeOt65RHX0eZVA" name="policy checked"/>
+  </flowElements>
+  <flowElements xsi:type="pm:ObjectNode" xmi:id="_ImfLUPiVEeOt65RHX0eZVA" name="claim [damage checked]" incoming="_HOWTsPiVEeOt65RHX0eZVA" outgoing="_KG4nEPiVEeOt65RHX0eZVA">
+    <dataState xmi:id="_oy1XAPiVEeOt65RHX0eZVA" name="damage checked"/>
+  </flowElements>
+  <flowElements xsi:type="pm:SequenceFlow" xmi:id="_JelQ8PiVEeOt65RHX0eZVA" sourceRef="_FxBaEPiVEeOt65RHX0eZVA" targetRef="_LbwIQPiVEeOt65RHX0eZVA"/>
+  <flowElements xsi:type="pm:SequenceFlow" xmi:id="_KG4nEPiVEeOt65RHX0eZVA" sourceRef="_ImfLUPiVEeOt65RHX0eZVA" targetRef="_LbwIQPiVEeOt65RHX0eZVA"/>
+  <flowElements xsi:type="pm:ParallelGateway" xmi:id="_LbwIQPiVEeOt65RHX0eZVA" name="join" incoming="_JelQ8PiVEeOt65RHX0eZVA _KG4nEPiVEeOt65RHX0eZVA" outgoing="_M5bnMPiVEeOt65RHX0eZVA"/>
+  <flowElements xsi:type="pm:SequenceFlow" xmi:id="_M5bnMPiVEeOt65RHX0eZVA" sourceRef="_LbwIQPiVEeOt65RHX0eZVA" targetRef="_Nuj4YPiVEeOt65RHX0eZVA"/>
+  <flowElements xsi:type="pm:ExclusiveGateway" xmi:id="_Nuj4YPiVEeOt65RHX0eZVA" name="descision" incoming="_M5bnMPiVEeOt65RHX0eZVA" outgoing="_O1lx4PiVEeOt65RHX0eZVA _QPFUYPiVEeOt65RHX0eZVA"/>
+  <flowElements xsi:type="pm:SequenceFlow" xmi:id="_O1lx4PiVEeOt65RHX0eZVA" sourceRef="_Nuj4YPiVEeOt65RHX0eZVA" targetRef="_T-QU0PiVEeOt65RHX0eZVA"/>
+  <flowElements xsi:type="pm:SequenceFlow" xmi:id="_QPFUYPiVEeOt65RHX0eZVA" sourceRef="_Nuj4YPiVEeOt65RHX0eZVA" targetRef="_Pb2goPiVEeOt65RHX0eZVA"/>
+  <flowElements xsi:type="pm:ObjectNode" xmi:id="_Pb2goPiVEeOt65RHX0eZVA" name="claim [assessed]" incoming="_QPFUYPiVEeOt65RHX0eZVA" outgoing="_S-8M4PiVEeOt65RHX0eZVA">
+    <dataState xmi:id="_Fj-VMPiYEeOt65RHX0eZVA" name="assessed"/>
+  </flowElements>
+  <flowElements xsi:type="pm:ObjectNode" xmi:id="_R7t1UPiVEeOt65RHX0eZVA" name="claim [settled]" incoming="_S-8M4PiVEeOt65RHX0eZVA" outgoing="_V_vrcPiVEeOt65RHX0eZVA">
+    <dataState xmi:id="_IhQlsPiYEeOt65RHX0eZVA" name="settled"/>
+  </flowElements>
+  <flowElements xsi:type="pm:SequenceFlow" xmi:id="_S-8M4PiVEeOt65RHX0eZVA" sourceRef="_Pb2goPiVEeOt65RHX0eZVA" targetRef="_R7t1UPiVEeOt65RHX0eZVA"/>
+  <flowElements xsi:type="pm:ObjectNode" xmi:id="_T-QU0PiVEeOt65RHX0eZVA" name="claim [rejected]" incoming="_O1lx4PiVEeOt65RHX0eZVA" outgoing="_VSfj4PiVEeOt65RHX0eZVA">
+    <dataState xmi:id="_MT04YPiYEeOt65RHX0eZVA" name="rejected"/>
+  </flowElements>
+  <flowElements xsi:type="pm:SequenceFlow" xmi:id="_VSfj4PiVEeOt65RHX0eZVA" sourceRef="_T-QU0PiVEeOt65RHX0eZVA" targetRef="_W666QPiVEeOt65RHX0eZVA"/>
+  <flowElements xsi:type="pm:SequenceFlow" xmi:id="_V_vrcPiVEeOt65RHX0eZVA" sourceRef="_R7t1UPiVEeOt65RHX0eZVA" targetRef="_W666QPiVEeOt65RHX0eZVA"/>
+  <flowElements xsi:type="pm:ExclusiveGateway" xmi:id="_W666QPiVEeOt65RHX0eZVA" name="merge" incoming="_VSfj4PiVEeOt65RHX0eZVA _V_vrcPiVEeOt65RHX0eZVA" outgoing="_X7p-gPiVEeOt65RHX0eZVA"/>
+  <flowElements xsi:type="pm:ObjectFlow" xmi:id="_X7p-gPiVEeOt65RHX0eZVA" sourceRef="_W666QPiVEeOt65RHX0eZVA" targetRef="_Ypk0cPiVEeOt65RHX0eZVA"/>
+  <flowElements xsi:type="pm:ObjectNode" xmi:id="_Ypk0cPiVEeOt65RHX0eZVA" name="claim [archived]" incoming="_X7p-gPiVEeOt65RHX0eZVA" outgoing="_jzPJIPiYEeOt65RHX0eZVA">
+    <dataState xmi:id="_QMoV8PiYEeOt65RHX0eZVA" name="archived"/>
+  </flowElements>
+  <flowElements xsi:type="pm:SequenceFlow" xmi:id="_jzPJIPiYEeOt65RHX0eZVA" sourceRef="_Ypk0cPiVEeOt65RHX0eZVA" targetRef="_ZmmdYPiVEeOt65RHX0eZVA"/>
+  <flowElements xsi:type="pm:EndEvent" xmi:id="_ZmmdYPiVEeOt65RHX0eZVA" name="EndEvent" incoming="_jzPJIPiYEeOt65RHX0eZVA"/>
+</pm:Process>

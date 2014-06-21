@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ASCII"?>
+<pnet:Net xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pnet="http://uam.es/PetriNets" xmi:id="_alJlwPiUEeOt65RHX0eZVA">
+  <places name="StartEvent" postt="//@transitions.0"/>
+  <places name="Received" postt="//@transitions.1" pret="//@transitions.0"/>
+  <places name="policy checked" postt="//@transitions.2" pret="//@transitions.1"/>
+  <places name="damage checked" postt="//@transitions.2" pret="//@transitions.1"/>
+  <places name="descision" postt="//@transitions.3 //@transitions.4" pret="//@transitions.2"/>
+  <places name="assessed" postt="//@transitions.5" pret="//@transitions.4"/>
+  <places name="settled" postt="//@transitions.7" pret="//@transitions.5"/>
+  <places name="rejected" postt="//@transitions.6" pret="//@transitions.3"/>
+  <places name="merge" postt="//@transitions.8" pret="//@transitions.6 //@transitions.7"/>
+  <places name="archived" postt="//@transitions.9" pret="//@transitions.8"/>
+  <places name="EndEvent" pret="//@transitions.9"/>
+  <transitions prep="//@places.0" postp="//@places.1"/>
+  <transitions name="fork" prep="//@places.1" postp="//@places.2 //@places.3"/>
+  <transitions name="join" prep="//@places.2 //@places.3" postp="//@places.4"/>
+  <transitions prep="//@places.4" postp="//@places.7"/>
+  <transitions prep="//@places.4" postp="//@places.5"/>
+  <transitions prep="//@places.5" postp="//@places.6"/>
+  <transitions prep="//@places.7" postp="//@places.8"/>
+  <transitions prep="//@places.6" postp="//@places.8"/>
+  <transitions prep="//@places.8" postp="//@places.9"/>
+  <transitions prep="//@places.9" postp="//@places.10"/>
+</pnet:Net>
