@@ -67,7 +67,26 @@
 		</epsilon.epl>
 	</target>	
 		
+	<target name="mapping2petrinet" depends="filtering">
 		
+		<epsilon.emf.register file="metamodels/PetriNets.ecore" />
+		<epsilon.emf.loadModel
+			name="petrinet"
+			read="false"
+			store="true"
+			metamodeluri="http://uam.es/PetriNets"
+			modelfile="${outputfile_petrinet}"
+		/>
+
+		<epsilon.flock src="src/petrinet_mapping/FilteredBPMN2PetriNet.mig" originalModel="Original" migratedModel="Migrated">
+			<model ref="preprocessed" as="Original"/>
+			<model ref="petrinet" as="Migrated"/>
+		</epsilon.flock>
+		
+		<!-- Store the preprocessed file, just for checking -->
+		<epsilon.storeModel model="preprocessed" target="${outputfile_petrinet}"	/>
+		<!-- copy tofile="models/output_preprocessed.pm" file="models/output_filtered.pm"/-->
+	</target>	
 	<!-- Force Eclipse to refresh our project so we can see the newly generated files -->
-	<eclipse.refreshLocal resource="${basedir}" depth="infinite" />
+	<!-- eclipse.refreshLocal resource="${basedir}" depth="infinite" /-->
 </project>

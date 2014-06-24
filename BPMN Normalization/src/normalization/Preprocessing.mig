@@ -15,6 +15,7 @@ migrate DataObject
 {
 	original.println("Org: DataObject ");
 	migrated.println("Mig: ObjectNode ");
+	--migrated.name = migrated.name.concat(migrated.dataState.name);
 	migrated.dataState = original.dataState.equivalent();
 }
 
@@ -23,6 +24,7 @@ migrate DataObjectReference
 {
 	original.println("Org: DataObjectRef ");
 	migrated.println("Mig: ObjectNode ");
+	--migrated.name = migrated.name.concat(migrated.dataState.name);
 	migrated.dataState = original.dataState.equivalent();
 }
 
@@ -110,9 +112,19 @@ post addMergeGateway {
 
 post addOutputObjectFlow {
 	for (objectNode in Migrated!ObjectNode.all.select(o | o.outgoing.isUndefined() or o.outgoing.size() = 0)) {
+		objectNode.name.println();
 		var actionNode = objectNode.incoming.first().sourceRef; //The unique activity node a to which o is output and a has no multiple object nodes, otherwise fail
-		if ((objectNode.incoming.size() > 1) or (actionNode.hasMultipleObjectFlows()))
-			" The object Node need to be fixed".println(objectNode); //exit
+		if (objectNode.incoming.size() > 1) {
+			" : The object Node need to be fixed (Multiple incoming)".println(objectNode.name); 
+			//exit
+		} else {
+			
+			if (actionNode.hasMultipleObjectFlows())
+			{
+				" : The object Node need to be fixed (Multiple object flows)".println(objectNode.name); 
+				//exit
+			}
+		}
 		var outgoingControlEdge = actionNode.outgoing.first();  //There is a unique control flow from a
 		outgoingControlEdge.sourceRef = objectNode;
 	}
@@ -121,8 +133,11 @@ post addOutputObjectFlow {
 post addInputObjectFlow {
 	for (objectNode in Migrated!ObjectNode.all.select(o | o.incoming.isUndefined() or o.incoming.size() = 0)) {
 		var actionNode = objectNode.outgoing.first().targetRef; //The unique activity node a to which o is input and a has no multiple object nodes, otherwise fail
-		if ((objectNode.outgoing.size() > 1) or (actionNode.hasMultipleObjectFlows()))
-			" The object Node need to be fixed".println(objectNode); //exit
+		if ((objectNode.outgoing.size() > 1) or (actionNode.hasMultipleObjectFlows())) 
+		{
+			" : The object Node need to be fixed".println(objectNode.name); 
+			//exit
+		}
 		var incomingControlEdge = actionNode.incoming.first();  //There is a unique control flow to a
 		incomingControlEdge.targetRef = objectNode;
 	}

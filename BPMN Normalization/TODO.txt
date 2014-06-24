@@ -5,7 +5,7 @@ A. BPMN_Validation:
 2.2 How to check satisfies all constraints?
 3. If there are more than one stateful data object, how to create a copy of the model for each data object? 
 using flock migration?
-4. How to break or exit from the execution of the program when certain conditions happens? 
+4. How to break or exit from the execution of the program when certain conditions happens? (claim example)
 (flock when an object has no incoming/outgoing and no unique activity/event node, exit and show information for user)
 5. How to generate unique ID for created elements?
 6. How to migrate the guard condition in the sequence flow?
@@ -28,5 +28,7 @@ Issue with EPackage registery or what??
 19. Graphical editor for the new simplified metamodels.
 20. What if the same state name is used again in the process?
 21. What about loops? if an element is migrated?
- 
-
+22. Validation: if data object is not connected!! 
+23. Preprocessing: if unique node has multiple object flows: fail??!!
+24. Why match, do, match, do (EPL execution semantics)
+25. Rule for redundant direct connections (2, more) between XOR gateways.

@@ -8,7 +8,7 @@ pre PM2PNStart {
 	Process.all.size().println();
 }
 
-pre PM2PNEnd {
+post PM2PNEnd {
 	"Mapping Filtered BPMN to Petri Net phase End:-------".println();
 	Process.all.size().println();
 }
