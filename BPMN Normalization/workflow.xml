@@ -4,12 +4,14 @@
 	<property name="normalization.dir" value="models/normalization"/>
 	<property name="filtering.dir" value="models/filtering"/>
 	<property name="petrinet.dir" value="models/filtered2pn"/>
+	<property name="sc.dir" value="models/pn2sc"/>
 		
 	<property name="bpmn_inputfile" value="${input.dir}/Preprocessing_with_DataObjects_WithNoIO.bpmn2"/>
 	<basename file="${bpmn_inputfile}" property="input_filename" suffix="bpmn2"/>			
 	<property name="outputfile_normalized" value="${normalization.dir}/${input_filename}_normalized.pm"/>
 	<property name="outputfile_filtered" value="${filtering.dir}/${input_filename}_filtered.pm"/>
 	<property name="outputfile_petrinet" value="${petrinet.dir}/${input_filename}_2petrinet.pn"/>
+	<property name="outputfile_sc" value="${sc.dir}/${input_filename}_2sc_hierarchy.sc"/>
 	
 	<!-- Prepare the BPMN model for processing with Epsilon --> 
 	<target name="loadBPMNModel">
@@ -87,6 +89,23 @@
 		<epsilon.storeModel model="preprocessed" target="${outputfile_petrinet}"	/>
 		<!-- copy tofile="models/output_preprocessed.pm" file="models/output_filtered.pm"/-->
 	</target>	
+	
+	<target name="pn2sc_initialization">
+		<epsilon.emf.loadModel
+					name="sc_initialization"
+					read="false"
+					store="true"
+					metamodeluri="http://uam.es/StateCharts"
+					modelfile="${outputfile_sc}"
+				/>
+
+				<epsilon.flock src="/ttc_pn2sc-master/example_solution/initialisation/PetriNet2StateChart.mig" originalModel="Original" migratedModel="Migrated">
+					<model ref="preprocessed" as="Original"/>
+					<model ref="sc_initialization" as="Migrated"/>
+				</epsilon.flock>
+
+	</target>
+	
 	<!-- Force Eclipse to refresh our project so we can see the newly generated files -->
 	<!-- eclipse.refreshLocal resource="${basedir}" depth="infinite" /-->
 </project>

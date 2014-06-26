@@ -32,3 +32,6 @@ Issue with EPackage registery or what??
 23. Preprocessing: if unique node has multiple object flows: fail??!!
 24. Why match, do, match, do (EPL execution semantics)
 25. Rule for redundant direct connections (2, more) between XOR gateways.
+26. traceability links from the filtered pm (elements) to the state chart (initial) elements.
+27. unsafe petri nets??
+28. transition labels.

@@ -3,6 +3,7 @@
 	<name>BPMN2StateChart</name>
 	<comment></comment>
 	<projects>
+		<project>ttc_pn2sc-master</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

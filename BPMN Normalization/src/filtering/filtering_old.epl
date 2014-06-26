@@ -6,28 +6,25 @@ pre beginFiltering {
 */
 pattern SingleInputOutputNonObjectNode
 	flowNode: FlowNode
-		guard: not flowNode.isTypeOf(ObjectNode) and flowNode.incoming.size() = 1 and flowNode.outgoing.size() = 1
-	--inEdge: Edge[1]
-	--	from: flowNode.incoming,
-	--outEdge: Edge[1]
-	--	from: flowNode.outgoing
+		guard: not flowNode.isTypeOf(ObjectNode) and flowNode.incoming.size() = 1 and flowNode.outgoing.size() = 1,
+	inEdge: Edge[1]
+		from: flowNode.incoming,
+	outEdge: Edge[1]
+		from: flowNode.outgoing
 {
-	/* match {
+	match {
 		"".println("R1 match..");
 		return true;
-	}*/
+	}
 	onmatch {
 		flowNode.println("R1 Matched..");
-		
+		inEdge.targetRef = outEdge.targetRef;
+		delete flowNode;
+		delete outEdge;
+		inEdge.println("R1 applied..");
 	}
 	do {
 		"".println("R1 do..");
-		--inEdge.targetRef = outEdge.targetRef;
-		flowNode.incoming.first().targetRef = flowNode.outgoing.first().targetRef;
-		--delete outEdge;
-		delete flowNode.outgoing;
-		delete flowNode;
-		"".println("R1 applied..");
 	}
 }
 
@@ -36,20 +33,15 @@ pattern SingleInputOutputNonObjectNode
 */
 pattern MergeDivergingExclusiveGateway
 	secondGateway: ExclusiveGateway
-		guard: secondGateway.incoming.size() = 1 and secondGateway.outgoing.size() > 1, //added for conlict with R1
+		guard: secondGateway.incoming.size() = 1,
 	edge: Edge
 		from: secondGateway.incoming
 		guard: edge.sourceRef.isTypeOf(ExclusiveGateway),
 	firstGateway: ExclusiveGateway
-		from: edge.sourceRef
-		guard: firstGateway.outgoing.size() > 1		//added + changed again so to be different from R3 for many -->  one --> many
+		from: edge.sourceRef		
 {
 	onmatch {
 		edge.println("R2 Matched..");
-		
-	}
-	do {
-		"".println("R2 do..");
 		for (_edge in secondGateway.outgoing.clone()) {
 			//_edge.id = loopCount.asString();
 			//need to use clone() for below, but not above!!??
@@ -60,6 +52,9 @@ pattern MergeDivergingExclusiveGateway
 		delete edge;
 		firstGateway.println("R2 applied..");
 	}
+	do {
+		"".println("R2 do..");
+	}
 }
 
 /*
@@ -67,26 +62,24 @@ pattern MergeDivergingExclusiveGateway
 */
 pattern MergeConvergingExclusiveGateway
 	firstGateway: ExclusiveGateway
-		guard: firstGateway.outgoing.size() = 1 and firstGateway.incoming.size() > 1, //added to avoid conflict with R1
+		guard: firstGateway.outgoing.size() = 1,
 	edge: Edge
 		from: firstGateway.outgoing
 		guard: edge.targetRef.isTypeOf(ExclusiveGateway),
 	secondGateway: ExclusiveGateway
-		from: edge.targetRef
-		guard: secondGateway.incoming.size() > 1 or secondGateway.outgoing.size() > 1	//added	
+		from: edge.targetRef		
 {
 	onmatch {
 		edge.println("R3 Matched..");
-		
-	}
-	do {
-		"".println("R3 do..");
 		for (_edge in firstGateway.incoming.clone()) {
 			_edge.targetRef = secondGateway; 
 		}
 		delete firstGateway;
 		delete edge;
 		secondGateway.println("R3 applied..");
+	}
+	do {
+		"".println("R3 do..");
 	}
 }
 
@@ -101,12 +94,11 @@ pattern DeleteLoopEdgeExclusiveGateway
 {
 	onmatch {
 		edge.println("R4 Matched..");
-		
+		delete edge;
+		gateway.println("R4 applied..");
 	}
 	do {
 		"".println("R4 do..");
-		delete edge;
-		gateway.println("R4 applied..");
 	}
 }
 
@@ -125,12 +117,11 @@ pattern DeleteRedundantEdgeParallelGateway
 {
 	onmatch {
 		edge.println("R5 Matched..");
-		
+		delete edge;
+		firstGateway.println("R5 applied..");
 	}
 	do {
 		"".println("R5 do..");
-		delete edge;
-		firstGateway.println("R5 applied..");
 	}
 }
  
@@ -147,59 +138,39 @@ pattern DeleteEndEventFromParallelGateway
 {
 	onmatch {
 		endEvent.println("R6 Matched..");
-		
-	}
-	do {
-		"".println("R6 do..");
 		delete edge;
 		delete endEvent;
 		gateway.println("R6 applied..");
 	}
+	do {
+		"".println("R6 do..");
+	}
 }
-
-/***
-	need to check for this situation:
-1) 
-	 --->|       |-----> 
-	     |------>|
-	 --->|       |----->
-
-2)
-	 	 |------>| 
-	 --->|		 |----->
-	 	 |------>|
-
-3)
-	---> /\	______ /\---->		 		  		
-	---> \/	       \/---->
-	 	
-***/
 
 /* 
 	R7: If there is an AND Gateway(Parallel) with a single incoming Edge from another AND Gateway(Fork) with multiple outgoing edges, the two can be merged.
 */
 pattern MergeDivergingParallelGateway
 	secondGateway: ParallelGateway
-		guard: secondGateway.incoming.size() = 1 and secondGateway.outgoing.size() > 1, //added outgoing so not to match with R1,
+		guard: secondGateway.incoming.size() = 1,
 	edge: Edge
 		from: secondGateway.incoming
 		guard: edge.sourceRef.isTypeOf(ParallelGateway),
 	firstGateway: ParallelGateway
 		from: edge.sourceRef
-		guard: firstGateway.outgoing.size() > 1 //no need!!  needed again		
+		--guard: firstGateway.outgoing.size() > 1 //no need!!		
 {
 	onmatch {
 		edge.println("R7 Matched..");
-		
-	}
-	do {
-		"".println("R7 do..");
 		for (_edge in secondGateway.outgoing.clone()) {
 			_edge.sourceRef = firstGateway; 
 		}
 		delete secondGateway;
 		delete edge;
 		firstGateway.println("R7 applied..");
+	}
+	do {
+		"".println("R7 do..");
 	}
 }
 
@@ -208,26 +179,25 @@ pattern MergeDivergingParallelGateway
 */
 pattern MergeConvergingParallelGateway
 	firstGateway: ParallelGateway
-		guard: firstGateway.outgoing.size() = 1 and firstGateway.incoming.size() > 1, //added incoming so not to match with R1 
+		guard: firstGateway.outgoing.size() = 1,
 	edge: Edge
 		from: firstGateway.outgoing
 		guard: edge.targetRef.isTypeOf(ParallelGateway),
 	secondGateway: ParallelGateway
 		from: edge.targetRef
-		guard: secondGateway.incoming.size() > 1		//no need!! -- needed again 
+		--guard: secondGateway.incoming.size() > 1		//no need!!
 {
 	onmatch {
 		edge.println("R8 Matched..");
-		
-	}
-	do {
-		"".println("R8 do..");
 		for (_edge in firstGateway.incoming.clone()) {
 			_edge.targetRef = secondGateway; 
 		}
 		delete firstGateway;
 		delete edge;
 		secondGateway.println("R8 applied..");
+	}
+	do {
+		"".println("R8 do..");
 	}
 }
 
@@ -255,24 +225,23 @@ pattern DeleteRedundantDecisionExclusiveGateway
 	
 	onmatch {
 		XORGateway.println("R9 Matched..");
-		--object.outgoing.println();
-		--object.outgoing.collect(o1 | o1.targetRef).println();
-		--XORGateway.outgoing.println();
-		--XORGateway.outgoing.collect(o1 | o1.targetRef).println();
+		object.outgoing.println();
+		object.outgoing.collect(o1 | o1.targetRef).println();
+		XORGateway.outgoing.println();
+		XORGateway.outgoing.collect(o1 | o1.targetRef).println();
 		//not the best way!!		
-		
-	}
-	do {
-		"".println("R9 do..");
 		delete object.outgoing;
 		for (_edge in XORGateway.outgoing.clone()) {
 			_edge.sourceRef = object;
-			--_edge.println(); 
+			_edge.println(); 
 		}
 		
 		delete XORGateway.incoming;
 		delete XORGateway;
 		object.println("R9 applied..");
+	}
+	do {
+		"".println("R9 do..");
 	}
 }
 
@@ -292,44 +261,16 @@ pattern DeleteRedundantMergeExclusiveGateway
 	onmatch {
 		XORGateway.println("R10 Matched..");
 		//object.incoming.collect(o1 | o1.sourceRef).println(); XORGateway.incoming.collect(o2 | o2.sourceRef).println();
-		
-	}
-	do {
-		"".println("R10 do..");
 		delete XORGateway.incoming;
 		delete XORGateway.outgoing;
 		delete XORGateway;
 		object.println("R10 applied..");
 	}
+	do {
+		"".println("R10 do..");
+	}
 }
 
-/*
-	Delete Redundant edges where there is another edge connecting same nodes. (check if Object Nodes!!??)
-*/
-pattern RemoveRedundantEdges
-	flowNode1: FlowNode
-		guard: flowNode1.outgoing.size() > 1,
-	flowNode2: FlowNode,
-	redundant_edge : Edge [2 .. *]
-		from: flowNode1.outgoing 
-		guard: redundant_edge.targetRef = flowNode2
-	
-{	
-	onmatch {
-		redundant_edge.println("R11 matched..");
-	}
-	
-	do {
-		"".println("R11 do..");
-		--var edge = redundant_edge.at(0);
-		--edge.println();
-		var edge = redundant_edge.removeAt(0);
-		edge.println();
-		delete redundant_edge;
-		flowNode1.outgoing.println();
-		edge.println("R11 applied..");
-	}
-}
 post endFiltering {
 	"Filtering Rules End:-----".println();
 }
