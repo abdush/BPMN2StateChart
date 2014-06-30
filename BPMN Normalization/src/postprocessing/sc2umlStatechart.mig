@@ -1,0 +1,182 @@
+import "../pn2sc/reduction/statechart_navigation.eol";
+--import "../petrinet_mapping/src_tgt_traceability.eol";
+
+pre sc2umlsc_start {
+	"Post-processing start: Mapping to UML state chart syntx:......".println();
+}
+
+post sc2umlsc_end {
+	"Post-processing Finish: Mapping to UML state chart syntx:......".println();
+}
+
+retype Statechart to StateMachine
+migrate Statechart {
+	var _model = new UML!Model;
+	_model.packagedElement.add(migrated);
+	original.println("Orig SC: ");
+	migrated.println("Mig SC: ");
+}
+
+retype OR to Region
+migrate OR
+when: original.parent_is_topState?()
+{
+	migrated.stateMachine = SC!Statechart.all.first.equivalent();
+	original.println("Orig OR: ");
+	migrated.println("Mig Region: ");
+}
+
+migrate OR
+when: not original.parent_is_topState?()
+{
+	migrated.state = original.rcontains.equivalent();
+	original.println("Orig OR: ");
+	migrated.println("Mig Region: ");
+}
+
+retype AND to State
+when: not original.has_no_parent?()
+
+migrate AND
+when: not original.has_no_parent?()
+{	
+	
+	migrated.container = original.rcontains.equivalent();
+	original.println("Orig AND: ");
+	migrated.println("Mig State: ");
+}
+
+retype Basic to Pseudostate
+when: original.pm_equivalent().isTypeOf(PM!StartEvent)
+
+-- Other nodes can have no next states??
+retype Basic to FinalState
+when: original.pm_equivalent().isTypeOf(PM!EndEvent)
+
+retype Basic to Pseudostate
+when: original.pm_equivalent().isTypeOf(PM!ExclusiveGateway)
+
+retype Basic to State
+when: not (original.pm_equivalent().isTypeOf(PM!ExclusiveGateway) or original.pm_equivalent().isTypeOf(PM!StartEvent) or original.pm_equivalent().isTypeOf(PM!EndEvent))
+-- Change later to ObjectNode!!
+
+migrate Basic
+when: original.pm_equivalent().isTypeOf(PM!StartEvent)
+{
+	original.pm_equivalent().println();
+	original.println("Orig Basic: ");
+	migrated.println("Mig Start: ");
+	migrated.container = original.rcontains.equivalent();
+	
+}
+
+migrate Basic
+when: original.pm_equivalent().isTypeOf(PM!EndEvent)
+{
+	original.pm_equivalent().println();
+	original.println("Orig Basic: ");
+	migrated.println("Mig End: ");
+	migrated.container = original.rcontains.equivalent();
+	
+}
+
+migrate Basic
+when: original.pm_equivalent().isTypeOf(PM!ExclusiveGateway)
+{
+	original.pm_equivalent().println();
+	original.println("Orig Basic: ");
+	migrated.println("Mig Choice: ");
+	migrated.container = original.rcontains.equivalent();
+	migrated.kind = UML!PseudostateKind#choice;
+} 
+
+migrate Basic
+when: not (original.pm_equivalent().isTypeOf(PM!ExclusiveGateway) or original.pm_equivalent().isTypeOf(PM!StartEvent) or original.pm_equivalent().isTypeOf(PM!EndEvent))
+{
+	original.pm_equivalent().println();
+	original.println("Orig Basic: ");
+	migrated.println("Mig State: ");
+	migrated.container = original.rcontains.equivalent();
+	
+}
+
+retype HyperEdge to Transition
+when: original.next.size() = 1 and original.rnext.size() = 1
+
+migrate  HyperEdge
+when: original.next.size() = 1 and original.rnext.size() = 1 
+{
+	migrated.container = original.rcontains.equivalent();
+	migrated.source = original.rnext.first.equivalent();
+	migrated.target = original.next.first.equivalent();
+	original.println("Orig HE: ");
+	migrated.println("Mig Trans: ");
+}
+
+retype HyperEdge to Pseudostate
+when: original.next.size() > 1 or original.rnext.size() > 1 and (original.pm_equivalent().isTypeOf(PM!ParallelGateway))
+
+migrate  HyperEdge
+when: original.next.size() > 1 or original.rnext.size() > 1 and (original.pm_equivalent().isTypeOf(PM!ParallelGateway))
+{
+	if (original.next.size() > 1)
+		migrated.kind = UML!PseudostateKind#fork;
+	else
+		migrated.kind = UML!PseudostateKind#join;
+	
+	var container = original.rcontains.equivalent();
+	migrated.container = container;	
+	for(e in original.next) {
+		var transition = new UML!Transition;
+		transition.source = migrated;
+		transition.target = e.equivalent();
+		transition.container = container;
+	}
+	for(e in original.rnext) {
+		var transition = new UML!Transition;
+		transition.source = e.equivalent();
+		transition.target = migrated;
+		transition.container = container;
+	}
+	--migrated.source = original.next.equivalent();
+	--migrated.target = original.rnext.equivalent();
+	original.println("Orig HE: ");
+	migrated.println("Mig F/J: ");
+}
+
+/************************* Helper Functions ********************************/
+@cached
+operation PM!FlowNode sc_equivalent() : SC!State {
+	return self.get_tgt_map();
+	--return SC!Basic.all.selectOne(s|s.name == self.name);
+}
+
+@cached
+operation SC!State pm_equivalent() : PM!FlowNode {
+	return self.get_src_map();
+	--return PM!FlowNode.all.selectOne(s|s.name == self.name);
+}
+
+@cached
+operation SC!State get_src_map() : PM!FlowNode {
+	self.println();
+	--var pn_sc_map = pn_link_sc();
+	--var pm_pn_map = pm_link_pn();
+	var pn;
+	for (key in pn_sc_map.keySet())
+		if (pn_sc_map.get(key) == self)
+			pn = key;
+	for (key in pm_pn_map.keySet())
+		if (pm_pn_map.get(key) == pn)
+			return key;
+	return null;
+}
+
+@cached
+operation PM!FlowNode get_tgt_map() :  SC!State {
+	self.println();
+	--var pn_sc_map = pn_link_sc();
+	--var pm_pn_map = pm_link_pn();
+	var pn = pm_pn_map.get(self);
+	return pn_sc_map.get(pn);
+}

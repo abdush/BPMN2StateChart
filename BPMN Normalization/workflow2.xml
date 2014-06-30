@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="uml_statechart_mapping" basedir=".">
+	
+	<property name="filtering.dir" value="models/filtering"></property>
+	<property name="petrinet.dir" value="models/filtered2pn"></property>
+	<property name="sc.dir" value="models/pn2sc"></property>
+	<property name="output.dir" value="models/output"></property>
+		
+	<property name="bpmn_inputfile" value="${filtering.dir}/claim.pm"></property>
+	<basename file="${bpmn_inputfile}" property="input_filename" suffix=".pm"></basename>			
+	<property name="outputfile_filtered" value="${filtering.dir}/${input_filename}.pm"></property>
+	<property name="outputfile_petrinet" value="${petrinet.dir}/${input_filename}.petrinet"></property>
+	<property name="outputfile_sc" value="${sc.dir}/${input_filename}.statechart"></property>
+	<property name="outputfile_umlsc" value="${output.dir}/${input_filename}.uml"></property>
+	
+	<!-- Prepare the Filtered model for processing with Epsilon --> 
+	<target name="loadFilteredModel">
+		<epsilon.emf.loadModel name="bpmn_filtered" read="true" store="false" metamodeluri="http://BPMN/Simplified" modelfile="${outputfile_filtered}"></epsilon.emf.loadModel>
+		<!-- metamodelfile="metamodels/BPMN20.ecore" -->
+
+	</target>
+	
+		
+	<!-- Next prepare a new and empty preprocessed model for use in the Flock script -->
+	<target name="loadPetriNetModel">
+	    <epsilon.emf.register file="metamodels/PetriNets.ecore"></epsilon.emf.register>
+		<epsilon.emf.loadModel name="petrinet" read="false" store="true" metamodeluri="http://uam.es/PetriNets" modelfile="${outputfile_petrinet}"></epsilon.emf.loadModel>
+	</target>
+	
+		
+	<!-- Invoke Flock to migrate filtered model into Petri net -->
+	<target name="mapping2petrinet" depends="loadFilteredModel,loadPetriNetModel">
+		<epsilon.flock src="src/petrinet_mapping/FilteredBPMN2PetriNet.mig" originalModel="PM" migratedModel="PN">
+			<model ref="bpmn_filtered" as="PM"></model>
+			<model ref="petrinet" as="PN"></model>
+			<exports ref="pm_pn_map" optional="false"/>
+		</epsilon.flock>
+		
+		<!-- Store the preprocessed file, just for checking -->
+		<epsilon.storeModel model="petrinet" target="${outputfile_petrinet}"></epsilon.storeModel>
+		<!-- copy tofile="models/output_preprocessed.pm" file="models/output_filtered.pm"/-->
+	</target>	
+		
+	<!-- Invoke Flock to migrate petri net into state chart hierarchy, and then apply reduction rules -->	
+	<target name="pn2sc_initialization" depends="mapping2petrinet">
+		<epsilon.emf.loadModel name="sc_initialization" read="false" store="true" metamodelfile="metamodels/StateCharts.ecore" modelfile="${outputfile_sc}"></epsilon.emf.loadModel>
+
+				<epsilon.flock src="src/pn2sc/initialisation/PetriNet2StateChart.mig" originalModel="PN" migratedModel="SC">
+					<model ref="petrinet" as="PN"></model>
+					<model ref="sc_initialization" as="SC"></model>
+					<model ref="bpmn_filtered" as="PM"></model>
+					<exports ref="pn_sc_map" optional="false"/>
+				</epsilon.flock>
+
+	</target>
+	
+	<target name="statechart_reduction" depends="pn2sc_initialization">
+		<epsilon.eol src="src/pn2sc/reduction/reduce_state_chart.eol">
+			<model ref="petrinet" as="PN"></model>
+			<model ref="sc_initialization" as="SC"></model>
+		</epsilon.eol>
+	</target>
+	
+	<target name="uml_statechart_mapping" depends="statechart_reduction">
+		<epsilon.emf.loadModel name="uml_statechart" read="false" store="true" metamodeluri="http://www.eclipse.org/uml2/4.0.0/UML" modelfile="${outputfile_umlsc}"></epsilon.emf.loadModel>
+
+		<epsilon.flock src="src/postprocessing/sc2umlStatechart.mig" originalModel="SC" migratedModel="UML">
+			<model ref="sc_initialization" as="SC"></model>
+			<model ref="uml_statechart" as="UML"></model>
+			<model ref="petrinet" as="PN"></model>
+			<model ref="bpmn_filtered" as="PM"></model>
+			<uses ref="pm_pn_map" optional="false"/>
+			<uses ref="pn_sc_map" optional="false"/>
+		</epsilon.flock>
+
+	</target>
+	
+	<!-- Force Eclipse to refresh our project so we can see the newly generated files -->
+	<!-- eclipse.refreshLocal resource="${basedir}" depth="infinite" /-->
+</project>
