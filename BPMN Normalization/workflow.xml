@@ -1,29 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project default="filtering" basedir=".">
 	
-	<property name="input.dir" value="models/input"/>
-	<property name="normalization.dir" value="models/normalization"/>
-	<property name="filtering.dir" value="models/filtering"/>
-	<property name="petrinet.dir" value="models/filtered2pn"/>
-	<property name="sc.dir" value="models/pn2sc"/>
+	<property name="input.dir" value="models/input"></property>
+	<property name="normalization.dir" value="models/normalization"></property>
+	<property name="filtering.dir" value="models/filtering"></property>
+	<property name="petrinet.dir" value="models/filtered2pn"></property>
+	<property name="sc.dir" value="models/pn2sc"></property>
 		
-	<property name="bpmn_inputfile" value="${input.dir}/Preprocessing_with_DataObjects_WithNoIO.bpmn2"/>
-	<basename file="${bpmn_inputfile}" property="input_filename" suffix="bpmn2"/>			
-	<property name="outputfile_normalized" value="${normalization.dir}/${input_filename}_normalized.pm"/>
-	<property name="outputfile_filtered" value="${filtering.dir}/${input_filename}_filtered.pm"/>
-	<property name="outputfile_petrinet" value="${petrinet.dir}/${input_filename}_2petrinet.pn"/>
-	<property name="outputfile_sc" value="${sc.dir}/${input_filename}_2sc_hierarchy.sc"/>
+	<property name="bpmn_inputfile" value="${input.dir}/Preprocessing_with_DataObjects_WithNoIO.bpmn2"></property>
+	<basename file="${bpmn_inputfile}" property="input_filename" suffix="bpmn2"></basename>			
+	<property name="outputfile_normalized" value="${normalization.dir}/${input_filename}_normalized.pm"></property>
+	<property name="outputfile_filtered" value="${filtering.dir}/${input_filename}_filtered.pm"></property>
+	<property name="outputfile_petrinet" value="${petrinet.dir}/${input_filename}_2petrinet.pn"></property>
+	<property name="outputfile_sc" value="${sc.dir}/${input_filename}_2sc_hierarchy.sc"></property>
 	
 	<!-- Prepare the BPMN model for processing with Epsilon --> 
 	<target name="loadBPMNModel">
 			
 		<!-- epsilon.emf.register file="metamodels/BPMN20.ecore" /-->
-		<epsilon.emf.loadModel
-			name="bpmn_input"
-			read="true"
-			store="false"
-			metamodeluri="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI"
-			modelfile="${bpmn_inputfile}"
-		/>
+		<epsilon.emf.loadModel name="bpmn_input" read="true" store="false" metamodeluri="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" modelfile="${bpmn_inputfile}"></epsilon.emf.loadModel>
 		<!-- metamodelfile="metamodels/BPMN20.ecore" -->
 
 	</target>
@@ -32,20 +27,14 @@
 	<target name="validate" depends="loadBPMNModel">
 		<!-- Note that this task will fail if the model is not valid due to the failonerrors=true attribute. -->
 		<epsilon.evl src="src/normalization/BPMN_Validation.evl" failonerrors="true">
-			<model ref="bpmn_input" />
+			<model ref="bpmn_input"></model>
 		</epsilon.evl>
 	</target>
 	
 	<!-- Next prepare a new and empty preprocessed model for use in the Flock and EPL scripts -->
 	<target name="loadMigrationModel">
-		<epsilon.emf.register file="metamodels/BPMN2_Simplified.ecore" />
-		<epsilon.emf.loadModel
-			name="preprocessed"
-			read="false"
-			store="true"
-			metamodeluri="http://BPMN/Simplified"
-			modelfile="${outputfile_filtered}"
-		/>
+		<epsilon.emf.register file="metamodels/BPMN2_Simplified.ecore"></epsilon.emf.register>
+		<epsilon.emf.loadModel name="preprocessed" read="false" store="true" metamodeluri="http://BPMN/Simplified" modelfile="${outputfile_filtered}"></epsilon.emf.loadModel>
 	</target>
 	
 		
@@ -53,55 +42,43 @@
 	     invoke EPL to filter the process model -->
 	<target name="normalization" depends="validate,loadMigrationModel">
 		<epsilon.flock src="src/normalization/Preprocessing.mig" originalModel="Original" migratedModel="Migrated">
-			<model ref="bpmn_input" as="Original"/>
-			<model ref="preprocessed" as="Migrated"/>
+			<model ref="bpmn_input" as="Original"></model>
+			<model ref="preprocessed" as="Migrated"></model>
 		</epsilon.flock>
 		
 		<!-- Store the preprocessed file, just for checking -->
-		<epsilon.storeModel model="preprocessed" target="${outputfile_normalized}"	/>
+		<epsilon.storeModel model="preprocessed" target="${outputfile_normalized}"></epsilon.storeModel>
 		<!-- copy tofile="models/output_preprocessed.pm" file="models/output_filtered.pm"/-->
 	</target>	
 		
 	<target name="filtering" depends="normalization">
 		<!-- Apply the Filtering rules -->
 		<epsilon.epl src="src/filtering/filtering.epl" repeatWhileMatches="true">
-			<model ref="preprocessed"/>
+			<model ref="preprocessed"></model>
 		</epsilon.epl>
 	</target>	
 		
 	<target name="mapping2petrinet" depends="filtering">
 		
-		<epsilon.emf.register file="metamodels/PetriNets.ecore" />
-		<epsilon.emf.loadModel
-			name="petrinet"
-			read="false"
-			store="true"
-			metamodeluri="http://uam.es/PetriNets"
-			modelfile="${outputfile_petrinet}"
-		/>
+		<epsilon.emf.register file="metamodels/PetriNets.ecore"></epsilon.emf.register>
+		<epsilon.emf.loadModel name="petrinet" read="false" store="true" metamodeluri="http://uam.es/PetriNets" modelfile="${outputfile_petrinet}"></epsilon.emf.loadModel>
 
 		<epsilon.flock src="src/petrinet_mapping/FilteredBPMN2PetriNet.mig" originalModel="Original" migratedModel="Migrated">
-			<model ref="preprocessed" as="Original"/>
-			<model ref="petrinet" as="Migrated"/>
+			<model ref="preprocessed" as="Original"></model>
+			<model ref="petrinet" as="Migrated"></model>
 		</epsilon.flock>
 		
 		<!-- Store the preprocessed file, just for checking -->
-		<epsilon.storeModel model="preprocessed" target="${outputfile_petrinet}"	/>
+		<epsilon.storeModel model="preprocessed" target="${outputfile_petrinet}"></epsilon.storeModel>
 		<!-- copy tofile="models/output_preprocessed.pm" file="models/output_filtered.pm"/-->
 	</target>	
 	
 	<target name="pn2sc_initialization">
-		<epsilon.emf.loadModel
-					name="sc_initialization"
-					read="false"
-					store="true"
-					metamodeluri="http://uam.es/StateCharts"
-					modelfile="${outputfile_sc}"
-				/>
+		<epsilon.emf.loadModel name="sc_initialization" read="false" store="true" metamodeluri="http://uam.es/StateCharts" modelfile="${outputfile_sc}"></epsilon.emf.loadModel>
 
 				<epsilon.flock src="/ttc_pn2sc-master/example_solution/initialisation/PetriNet2StateChart.mig" originalModel="Original" migratedModel="Migrated">
-					<model ref="preprocessed" as="Original"/>
-					<model ref="sc_initialization" as="Migrated"/>
+					<model ref="preprocessed" as="Original"></model>
+					<model ref="sc_initialization" as="Migrated"></model>
 				</epsilon.flock>
 
 	</target>

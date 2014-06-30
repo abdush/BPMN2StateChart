@@ -23,7 +23,7 @@ The validation EVL model will not parse the input (no error but no data); opposi
 Issue with EPackage registery or what??
 16. What is this generated after flock migration and saving output as .pm file:
 <ecore:EStringToStringMapEntry key="" value="bpmn2"> ...
-17. Pass input file to the workflow task: GUI, cmd ??
+17. Pass input file to the workflow task: GUI, cmd ?? Run as sample workspace JRE!!
 18. Copy output files during phases execution, for checking and testing
 19. Graphical editor for the new simplified metamodels.
 20. What if the same state name is used again in the process?
@@ -35,3 +35,10 @@ Issue with EPackage registery or what??
 26. traceability links from the filtered pm (elements) to the state chart (initial) elements.
 27. unsafe petri nets??
 28. transition labels.
+29. transition/hyberEdge names (equivalent)?
+30. Apply and rule twice?? reduced_result overriden by second rule? 
+how to remove the current processed transition (AND)? Transitions parent?
+31. need to have name for all places. unique?
+32. How to get the pseudostates from SCH, especially XOR?
+33. what is the single State generated!!?? Yes, it was for topState-- solved.
+34. Global variable in EOL (Map)!!??
