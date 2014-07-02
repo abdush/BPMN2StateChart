@@ -15,7 +15,8 @@
 	
 	<!-- Prepare the Filtered model for processing with Epsilon --> 
 	<target name="loadFilteredModel">
-		<epsilon.emf.loadModel name="bpmn_filtered" read="true" store="false" metamodeluri="http://BPMN/Simplified" modelfile="${outputfile_filtered}"></epsilon.emf.loadModel>
+		<epsilon.emf.loadModel name="bpmn_filtered" read="true" store="false" metamodeluri="http://BPMN/Simplified" modelfile="${outputfile_filtered}">
+		</epsilon.emf.loadModel>
 		<!-- metamodelfile="metamodels/BPMN20.ecore" -->
 
 	</target>
@@ -33,7 +34,7 @@
 		<epsilon.flock src="src/petrinet_mapping/FilteredBPMN2PetriNet.mig" originalModel="PM" migratedModel="PN">
 			<model ref="bpmn_filtered" as="PM"></model>
 			<model ref="petrinet" as="PN"></model>
-			<exports ref="pm_pn_map" optional="false"/>
+			<exports ref="pm_pn_map" optional="false"></exports>
 		</epsilon.flock>
 		
 		<!-- Store the preprocessed file, just for checking -->
@@ -49,7 +50,7 @@
 					<model ref="petrinet" as="PN"></model>
 					<model ref="sc_initialization" as="SC"></model>
 					<model ref="bpmn_filtered" as="PM"></model>
-					<exports ref="pn_sc_map" optional="false"/>
+					<exports ref="pn_sc_map" optional="false"></exports>
 				</epsilon.flock>
 
 	</target>
@@ -69,8 +70,8 @@
 			<model ref="uml_statechart" as="UML"></model>
 			<model ref="petrinet" as="PN"></model>
 			<model ref="bpmn_filtered" as="PM"></model>
-			<uses ref="pm_pn_map" optional="false"/>
-			<uses ref="pn_sc_map" optional="false"/>
+			<uses ref="pm_pn_map" optional="false"></uses>
+			<uses ref="pn_sc_map" optional="false"></uses>
 		</epsilon.flock>
 
 	</target>

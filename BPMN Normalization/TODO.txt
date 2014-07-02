@@ -42,3 +42,4 @@ how to remove the current processed transition (AND)? Transitions parent?
 32. How to get the pseudostates from SCH, especially XOR?
 33. what is the single State generated!!?? Yes, it was for topState-- solved.
 34. Global variable in EOL (Map)!!??
+35. how to include other ant files??

@@ -5,6 +5,8 @@ pre preprocessingStart {
 	Process.all.size().println();
 }
 
+--delete definitions
+
 retype Process to Process
 retype ParallelGateway to ParallelGateway
 retype ExclusiveGateway to ExclusiveGateway
