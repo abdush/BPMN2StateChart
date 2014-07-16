@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn2:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_aXEikOcyEeORjaaH4lhPVQ">
+  <rootElements xsi:type="bpmn2:Process" id="_lR0Y4OcyEeORjaaH4lhPVQ">
+    <flowElements xsi:type="bpmn2:StartEvent" id="_lR0Y4ecyEeORjaaH4lhPVQ" outgoing="_lR0Y4ucyEeORjaaH4lhPVQ"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="_lR0Y4ucyEeORjaaH4lhPVQ" sourceRef="_lR0Y4ecyEeORjaaH4lhPVQ" targetRef="_lR0Y4-cyEeORjaaH4lhPVQ"/>
+    <flowElements xsi:type="bpmn2:EndEvent" id="_lR0Y4-cyEeORjaaH4lhPVQ" incoming="_lR0Y4ucyEeORjaaH4lhPVQ"/>
+  </rootElements>
+</bpmn2:Definitions>

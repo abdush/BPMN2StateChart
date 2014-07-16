@@ -1,0 +1,170 @@
+
+Buildfile: C:\Users\Abdu\git\abdush\BPMN2StateChart\BPMN Normalization\workflow.xml
+
+loadBPMNModel:
+
+validate:
+[epsilon.evl - BPMN_Validation.evl] BPMN input model validation start:------
+[epsilon.evl - BPMN_Validation.evl] 1
+[epsilon.evl - BPMN_Validation.evl] org.eclipse.bpmn2.impl.ProcessImpl@3225f (id: _J84mQeneEeOgCMDZjxiKRQ, anyAttribute: null) (name: process_sample) (isClosed: false, isExecutable: false, processType: None)1
+[epsilon.evl - BPMN_Validation.evl] 1
+[epsilon.evl - BPMN_Validation.evl] BPMN input model validation End:------
+[epsilon.evl - BPMN_Validation.evl] Errors : 0
+
+loadMigrationModel:
+
+normalization:
+[epsilon.flock - Preprocessing.mig] Preprocessing phase start:-------
+[epsilon.flock - Preprocessing.mig] Warning: The type 'Process' is ambiguous and could refer to any of the following: 'Original!Process' 'Migrated!Process'. The type 'Original!Process' has been assumed. (C:\Users\Abdu\git\abdush\BPMN2StateChart\BPMN Normalization\src\normalization\Preprocessing.mig@5:22)
+[epsilon.flock - Preprocessing.mig] 1
+[epsilon.flock - Preprocessing.mig] Org: DataObject org.eclipse.bpmn2.impl.DataObjectImpl@125418d (id: DataObject_1, anyAttribute: null) (name: Data Object 1) (isCollection: false)
+[epsilon.flock - Preprocessing.mig] Mig: ObjectNode org.eclipse.emf.ecore.impl.DynamicEObjectImpl@1915de9 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@185c207 (name: ObjectNode) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] Org: DataObjectRef org.eclipse.bpmn2.impl.DataObjectReferenceImpl@f2b05e (id: _DataObjectReference_3, anyAttribute: null) (name: Reference 1 to Data Object 1)
+[epsilon.flock - Preprocessing.mig] Mig: ObjectNode org.eclipse.emf.ecore.impl.DynamicEObjectImpl@ac6ccc (eClass: org.eclipse.emf.ecore.impl.EClassImpl@185c207 (name: ObjectNode) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] Org: DataObjectRef org.eclipse.bpmn2.impl.DataObjectReferenceImpl@118ff4c (id: _DataObjectReference_4, anyAttribute: null) (name: Reference 2 to Data Object 1)
+[epsilon.flock - Preprocessing.mig] Mig: ObjectNode org.eclipse.emf.ecore.impl.DynamicEObjectImpl@1afdd7 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@185c207 (name: ObjectNode) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] Org: DataObjectRef org.eclipse.bpmn2.impl.DataObjectReferenceImpl@20da37 (id: _Var6UPG1EeOb54kXqxMk0A, anyAttribute: null) (name: Reference 3 to Data Object 1)
+[epsilon.flock - Preprocessing.mig] Mig: ObjectNode org.eclipse.emf.ecore.impl.DynamicEObjectImpl@f6ce2 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@185c207 (name: ObjectNode) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] Org: DataObjectRef org.eclipse.bpmn2.impl.DataObjectReferenceImpl@d68f85 (id: _Var6UvG1EeOb54kXqxMk0A, anyAttribute: null) (name: Reference 4 to Data Object 1)
+[epsilon.flock - Preprocessing.mig] Mig: ObjectNode org.eclipse.emf.ecore.impl.DynamicEObjectImpl@b56a7c (eClass: org.eclipse.emf.ecore.impl.EClassImpl@185c207 (name: ObjectNode) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] Org: Event org.eclipse.bpmn2.impl.StartEventImpl@c08d4 (id: _J84mQuneEeOgCMDZjxiKRQ, anyAttribute: null) (name: null) (parallelMultiple: false) (isInterrupting: true)
+[epsilon.flock - Preprocessing.mig] Mig: Event org.eclipse.emf.ecore.impl.DynamicEObjectImpl@62151b (eClass: org.eclipse.emf.ecore.impl.EClassImpl@146b745 (name: StartEvent) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] Org: DOA org.eclipse.bpmn2.impl.DataOutputAssociationImpl@1c8aa83 (id: DataOutputAssociation_1, anyAttribute: null)
+[epsilon.flock - Preprocessing.mig] Mig: ObjectFlow org.eclipse.emf.ecore.impl.DynamicEObjectImpl@124678d (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1713220 (name: ObjectFlow) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] Org: trgRef org.eclipse.bpmn2.impl.DataObjectImpl@125418d (id: DataObject_1, anyAttribute: null) (name: Data Object 1) (isCollection: false)
+[epsilon.flock - Preprocessing.mig] Mig: trgRef org.eclipse.emf.ecore.impl.DynamicEObjectImpl@1915de9 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@185c207 (name: ObjectNode) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] Mig: SrcRef org.eclipse.emf.ecore.impl.DynamicEObjectImpl@62151b (eClass: org.eclipse.emf.ecore.impl.EClassImpl@146b745 (name: StartEvent) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] org.eclipse.bpmn2.impl.SequenceFlowImpl@686637 (id: _J84mQ-neEeOgCMDZjxiKRQ, anyAttribute: null) (name: null) (isImmediate: false)
+[epsilon.flock - Preprocessing.mig] Org: Activity org.eclipse.bpmn2.impl.TaskImpl@ed02c (id: _J84mROneEeOgCMDZjxiKRQ, anyAttribute: null) (name: task 1) (completionQuantity: 1, isForCompensation: false, startQuantity: 1)
+[epsilon.flock - Preprocessing.mig] Mig: Activity org.eclipse.emf.ecore.impl.DynamicEObjectImpl@5e5c6c (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1a930dc (name: Activity) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] Org: DIO org.eclipse.bpmn2.impl.DataInputAssociationImpl@c281be (id: DataInputAssociation_1, anyAttribute: null)
+[epsilon.flock - Preprocessing.mig] Mig: ObjectFlow org.eclipse.emf.ecore.impl.DynamicEObjectImpl@10a7b64 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1713220 (name: ObjectFlow) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] Org: DOA org.eclipse.bpmn2.impl.DataOutputAssociationImpl@1eee14e (id: DataOutputAssociation_2, anyAttribute: null)
+[epsilon.flock - Preprocessing.mig] Mig: ObjectFlow org.eclipse.emf.ecore.impl.DynamicEObjectImpl@12b018a (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1713220 (name: ObjectFlow) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] Org: trgRef org.eclipse.bpmn2.impl.DataObjectReferenceImpl@f2b05e (id: _DataObjectReference_3, anyAttribute: null) (name: Reference 1 to Data Object 1)
+[epsilon.flock - Preprocessing.mig] Mig: trgRef org.eclipse.emf.ecore.impl.DynamicEObjectImpl@ac6ccc (eClass: org.eclipse.emf.ecore.impl.EClassImpl@185c207 (name: ObjectNode) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] Mig: SrcRef org.eclipse.emf.ecore.impl.DynamicEObjectImpl@5e5c6c (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1a930dc (name: Activity) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] Org: DOA org.eclipse.bpmn2.impl.DataOutputAssociationImpl@9df71 (id: DataOutputAssociation_3, anyAttribute: null)
+[epsilon.flock - Preprocessing.mig] Mig: ObjectFlow org.eclipse.emf.ecore.impl.DynamicEObjectImpl@724a32 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1713220 (name: ObjectFlow) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] Org: trgRef org.eclipse.bpmn2.impl.DataObjectReferenceImpl@118ff4c (id: _DataObjectReference_4, anyAttribute: null) (name: Reference 2 to Data Object 1)
+[epsilon.flock - Preprocessing.mig] Mig: trgRef org.eclipse.emf.ecore.impl.DynamicEObjectImpl@1afdd7 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@185c207 (name: ObjectNode) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] Mig: SrcRef org.eclipse.emf.ecore.impl.DynamicEObjectImpl@5e5c6c (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1a930dc (name: Activity) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] org.eclipse.bpmn2.impl.SequenceFlowImpl@8501f7 (id: _J84mReneEeOgCMDZjxiKRQ, anyAttribute: null) (name: null) (isImmediate: false)
+[epsilon.flock - Preprocessing.mig] org.eclipse.bpmn2.impl.SequenceFlowImpl@440486 (id: _7unF4OouEeO7IP1X9T78Pg, anyAttribute: null) (name: null) (isImmediate: false)
+[epsilon.flock - Preprocessing.mig] Org: Activity org.eclipse.bpmn2.impl.TaskImpl@1850afd (id: _J84mR-neEeOgCMDZjxiKRQ, anyAttribute: null) (name: task 2) (completionQuantity: 1, isForCompensation: false, startQuantity: 1)
+[epsilon.flock - Preprocessing.mig] Mig: Activity org.eclipse.emf.ecore.impl.DynamicEObjectImpl@1ec0ab1 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1a930dc (name: Activity) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] Org: DIO org.eclipse.bpmn2.impl.DataInputAssociationImpl@f7d50b (id: DataInputAssociation_3, anyAttribute: null)
+[epsilon.flock - Preprocessing.mig] Mig: ObjectFlow org.eclipse.emf.ecore.impl.DynamicEObjectImpl@1653bb9 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1713220 (name: ObjectFlow) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] Org: DOA org.eclipse.bpmn2.impl.DataOutputAssociationImpl@c3ea9a (id: DataOutputAssociation_5, anyAttribute: null)
+[epsilon.flock - Preprocessing.mig] Mig: ObjectFlow org.eclipse.emf.ecore.impl.DynamicEObjectImpl@13404f1 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1713220 (name: ObjectFlow) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] Org: trgRef org.eclipse.bpmn2.impl.DataObjectReferenceImpl@20da37 (id: _Var6UPG1EeOb54kXqxMk0A, anyAttribute: null) (name: Reference 3 to Data Object 1)
+[epsilon.flock - Preprocessing.mig] Mig: trgRef org.eclipse.emf.ecore.impl.DynamicEObjectImpl@f6ce2 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@185c207 (name: ObjectNode) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] Mig: SrcRef org.eclipse.emf.ecore.impl.DynamicEObjectImpl@1ec0ab1 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1a930dc (name: Activity) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] org.eclipse.bpmn2.impl.SequenceFlowImpl@1947835 (id: _J84mSeneEeOgCMDZjxiKRQ, anyAttribute: null) (name: null) (isImmediate: false)
+[epsilon.flock - Preprocessing.mig] Org: Activity org.eclipse.bpmn2.impl.TaskImpl@600c7e (id: _J84mSOneEeOgCMDZjxiKRQ, anyAttribute: null) (name: task 3) (completionQuantity: 1, isForCompensation: false, startQuantity: 1)
+[epsilon.flock - Preprocessing.mig] Mig: Activity org.eclipse.emf.ecore.impl.DynamicEObjectImpl@f34459 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1a930dc (name: Activity) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] Org: DIO org.eclipse.bpmn2.impl.DataInputAssociationImpl@5f27ee (id: DataInputAssociation_2, anyAttribute: null)
+[epsilon.flock - Preprocessing.mig] Mig: ObjectFlow org.eclipse.emf.ecore.impl.DynamicEObjectImpl@306bdb (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1713220 (name: ObjectFlow) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] org.eclipse.bpmn2.impl.SequenceFlowImpl@1d44f78 (id: _J84mSuneEeOgCMDZjxiKRQ, anyAttribute: null) (name: null) (isImmediate: false)
+[epsilon.flock - Preprocessing.mig] org.eclipse.bpmn2.impl.SequenceFlowImpl@c6365b (id: _J84mTOneEeOgCMDZjxiKRQ, anyAttribute: null) (name: null) (isImmediate: false)
+[epsilon.flock - Preprocessing.mig] Org: Activity org.eclipse.bpmn2.impl.TaskImpl@11a95e3 (id: _7EecYOoxEeO7IP1X9T78Pg, anyAttribute: null) (name: task 4) (completionQuantity: 1, isForCompensation: false, startQuantity: 1)
+[epsilon.flock - Preprocessing.mig] Mig: Activity org.eclipse.emf.ecore.impl.DynamicEObjectImpl@1e7b544 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1a930dc (name: Activity) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] org.eclipse.bpmn2.impl.SequenceFlowImpl@6698cf (id: _7EecYeoxEeO7IP1X9T78Pg, anyAttribute: null) (name: null) (isImmediate: false)
+[epsilon.flock - Preprocessing.mig] org.eclipse.bpmn2.impl.SequenceFlowImpl@593cde (id: _7EecY-oxEeO7IP1X9T78Pg, anyAttribute: null) (name: null) (isImmediate: false)
+[epsilon.flock - Preprocessing.mig] insideorg.eclipse.bpmn2.impl.SequenceFlowImpl@593cde (id: _7EecY-oxEeO7IP1X9T78Pg, anyAttribute: null) (name: null) (isImmediate: false)
+[epsilon.flock - Preprocessing.mig] org.eclipse.bpmn2.impl.FormalExpressionImpl@1368ef6 (id: FormalExpression_1, anyAttribute: null) (mixed: [ecore.xml.type:text=x > 10], language: null)
+[epsilon.flock - Preprocessing.mig] org.eclipse.bpmn2.impl.SequenceFlowImpl@ab2369 (id: _7EecZOoxEeO7IP1X9T78Pg, anyAttribute: null) (name: null) (isImmediate: false)
+[epsilon.flock - Preprocessing.mig] insideorg.eclipse.bpmn2.impl.SequenceFlowImpl@ab2369 (id: _7EecZOoxEeO7IP1X9T78Pg, anyAttribute: null) (name: null) (isImmediate: false)
+[epsilon.flock - Preprocessing.mig] org.eclipse.bpmn2.impl.FormalExpressionImpl@145ed88 (id: FormalExpression_2, anyAttribute: null) (mixed: [ecore.xml.type:text=x <= 10], language: null)
+[epsilon.flock - Preprocessing.mig] Org: Activity org.eclipse.bpmn2.impl.TaskImpl@1a1e4b0 (id: _7EecZeoxEeO7IP1X9T78Pg, anyAttribute: null) (name: task 5) (completionQuantity: 1, isForCompensation: false, startQuantity: 1)
+[epsilon.flock - Preprocessing.mig] Mig: Activity org.eclipse.emf.ecore.impl.DynamicEObjectImpl@27ac6c (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1a930dc (name: Activity) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] org.eclipse.bpmn2.impl.SequenceFlowImpl@1ad1918 (id: _7EecZuoxEeO7IP1X9T78Pg, anyAttribute: null) (name: null) (isImmediate: false)
+[epsilon.flock - Preprocessing.mig] Org: Activity org.eclipse.bpmn2.impl.TaskImpl@14a9543 (id: _7EecZ-oxEeO7IP1X9T78Pg, anyAttribute: null) (name: task 6) (completionQuantity: 1, isForCompensation: false, startQuantity: 1)
+[epsilon.flock - Preprocessing.mig] Mig: Activity org.eclipse.emf.ecore.impl.DynamicEObjectImpl@9b6d41 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1a930dc (name: Activity) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] org.eclipse.bpmn2.impl.SequenceFlowImpl@18d939b (id: _7EecaOoxEeO7IP1X9T78Pg, anyAttribute: null) (name: null) (isImmediate: false)
+[epsilon.flock - Preprocessing.mig] Org: Activity org.eclipse.bpmn2.impl.TaskImpl@1d5da39 (id: _7EecaeoxEeO7IP1X9T78Pg, anyAttribute: null) (name: task 7) (completionQuantity: 1, isForCompensation: false, startQuantity: 1)
+[epsilon.flock - Preprocessing.mig] Mig: Activity org.eclipse.emf.ecore.impl.DynamicEObjectImpl@8a69aa (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1a930dc (name: Activity) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] Org: DIO org.eclipse.bpmn2.impl.DataInputAssociationImpl@c2d823 (id: DataInputAssociation_5, anyAttribute: null)
+[epsilon.flock - Preprocessing.mig] Mig: ObjectFlow org.eclipse.emf.ecore.impl.DynamicEObjectImpl@f91df0 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1713220 (name: ObjectFlow) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] Org: DOA org.eclipse.bpmn2.impl.DataOutputAssociationImpl@1fbeb74 (id: DataOutputAssociation_4, anyAttribute: null)
+[epsilon.flock - Preprocessing.mig] Mig: ObjectFlow org.eclipse.emf.ecore.impl.DynamicEObjectImpl@11cb8b0 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1713220 (name: ObjectFlow) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] Org: trgRef org.eclipse.bpmn2.impl.DataObjectReferenceImpl@d68f85 (id: _Var6UvG1EeOb54kXqxMk0A, anyAttribute: null) (name: Reference 4 to Data Object 1)
+[epsilon.flock - Preprocessing.mig] Mig: trgRef org.eclipse.emf.ecore.impl.DynamicEObjectImpl@b56a7c (eClass: org.eclipse.emf.ecore.impl.EClassImpl@185c207 (name: ObjectNode) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] Mig: SrcRef org.eclipse.emf.ecore.impl.DynamicEObjectImpl@8a69aa (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1a930dc (name: Activity) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] org.eclipse.bpmn2.impl.SequenceFlowImpl@ea15c0 (id: Seq_7EecaeoxEeO7IP1X9T78Pg, anyAttribute: null) (name: null) (isImmediate: false)
+[epsilon.flock - Preprocessing.mig] Org: Event org.eclipse.bpmn2.impl.EndEventImpl@1c71172 (id: _J84mTeneEeOgCMDZjxiKRQ, anyAttribute: null) (name: null)
+[epsilon.flock - Preprocessing.mig] Mig: Event org.eclipse.emf.ecore.impl.DynamicEObjectImpl@18692c5 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@fd53dc (name: EndEvent) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] Org: DIO org.eclipse.bpmn2.impl.DataInputAssociationImpl@1f285c (id: DataInputAssociation_4, anyAttribute: null)
+[epsilon.flock - Preprocessing.mig] Mig: ObjectFlow org.eclipse.emf.ecore.impl.DynamicEObjectImpl@a135a4 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1713220 (name: ObjectFlow) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.flock - Preprocessing.mig] Original Num of flow elements: 28
+[epsilon.flock - Preprocessing.mig] Migrated Num of flow elements: 38
+[epsilon.flock - Preprocessing.mig] Preprocessing phase End:-------
+
+filtering:
+[epsilon.epl - filtering.epl] Filtering Rules Start:-----
+[epsilon.epl - filtering.epl] R1 match..
+[epsilon.epl - filtering.epl] R1 Matched..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@5e5c6c (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1a930dc (name: Activity) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R1 applied..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@ca4aa (eClass: org.eclipse.emf.ecore.impl.EClassImpl@9f285f (name: SequenceFlow) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R1 match..
+[epsilon.epl - filtering.epl] R1 Matched..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@1ec0ab1 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1a930dc (name: Activity) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R1 applied..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@17087ff (eClass: org.eclipse.emf.ecore.impl.EClassImpl@9f285f (name: SequenceFlow) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R1 match..
+[epsilon.epl - filtering.epl] R1 Matched..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@f34459 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1a930dc (name: Activity) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R1 applied..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@d8b1b2 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@9f285f (name: SequenceFlow) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R1 match..
+[epsilon.epl - filtering.epl] R1 Matched..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@1e7b544 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1a930dc (name: Activity) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R1 applied..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@12e1318 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@9f285f (name: SequenceFlow) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R1 match..
+[epsilon.epl - filtering.epl] R1 Matched..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@27ac6c (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1a930dc (name: Activity) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R1 applied..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@bd2144 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@9f285f (name: SequenceFlow) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R1 match..
+[epsilon.epl - filtering.epl] R1 Matched..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@9b6d41 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1a930dc (name: Activity) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R1 applied..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@d3157c (eClass: org.eclipse.emf.ecore.impl.EClassImpl@9f285f (name: SequenceFlow) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R1 match..
+[epsilon.epl - filtering.epl] R1 Matched..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@8a69aa (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1a930dc (name: Activity) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R1 applied..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@e5f788 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@9f285f (name: SequenceFlow) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R5 Matched..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@157aa11 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@9f285f (name: SequenceFlow) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R5 applied..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@1661282 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@237ff9 (name: ParallelGateway) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R5 Matched..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@11f33df (eClass: org.eclipse.emf.ecore.impl.EClassImpl@9f285f (name: SequenceFlow) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R5 applied..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@12a0424 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@237ff9 (name: ParallelGateway) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R7 Matched..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@172ecfb (eClass: org.eclipse.emf.ecore.impl.EClassImpl@9f285f (name: SequenceFlow) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R7 applied..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@2b5c2f (eClass: org.eclipse.emf.ecore.impl.EClassImpl@237ff9 (name: ParallelGateway) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R7 Matched..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@ca4aa (eClass: org.eclipse.emf.ecore.impl.EClassImpl@9f285f (name: SequenceFlow) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R7 applied..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@ea86a (eClass: org.eclipse.emf.ecore.impl.EClassImpl@237ff9 (name: ParallelGateway) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R7 Matched..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@17087ff (eClass: org.eclipse.emf.ecore.impl.EClassImpl@9f285f (name: SequenceFlow) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R7 applied..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@f0a332 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@237ff9 (name: ParallelGateway) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R7 Matched..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@e5f788 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@9f285f (name: SequenceFlow) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R7 applied..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@1de2408 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@237ff9 (name: ParallelGateway) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R8 Matched..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@d8b1b2 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@9f285f (name: SequenceFlow) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R8 applied..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@51afa (eClass: org.eclipse.emf.ecore.impl.EClassImpl@237ff9 (name: ParallelGateway) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R7 do..
+[epsilon.epl - filtering.epl] R1 do..
+[epsilon.epl - filtering.epl] R1 do..
+[epsilon.epl - filtering.epl] R7 do..
+[epsilon.epl - filtering.epl] R1 do..
+[epsilon.epl - filtering.epl] R7 do..
+[epsilon.epl - filtering.epl] R1 do..
+[epsilon.epl - filtering.epl] R1 do..
+[epsilon.epl - filtering.epl] R5 do..
+[epsilon.epl - filtering.epl] R1 do..
+[epsilon.epl - filtering.epl] R5 do..
+[epsilon.epl - filtering.epl] R7 do..
+[epsilon.epl - filtering.epl] R8 do..
+[epsilon.epl - filtering.epl] R1 do..
+[epsilon.epl - filtering.epl] R1 match..
+[epsilon.epl - filtering.epl] R1 Matched..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@2ab0c (eClass: org.eclipse.emf.ecore.impl.EClassImpl@237ff9 (name: ParallelGateway) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R1 applied..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@a135a4 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@1713220 (name: ObjectFlow) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R1 match..
+[epsilon.epl - filtering.epl] R1 Matched..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@1661282 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@237ff9 (name: ParallelGateway) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R1 applied..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@12bd005 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@9f285f (name: SequenceFlow) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R5 Matched..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@105d777 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@9f285f (name: SequenceFlow) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R5 applied..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@ea86a (eClass: org.eclipse.emf.ecore.impl.EClassImpl@237ff9 (name: ParallelGateway) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R5 Matched..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@8500a0 (eClass: org.eclipse.emf.ecore.impl.EClassImpl@9f285f (name: SequenceFlow) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R5 applied..org.eclipse.emf.ecore.impl.DynamicEObjectImpl@ea86a (eClass: org.eclipse.emf.ecore.impl.EClassImpl@237ff9 (name: ParallelGateway) (instanceClassName: null) (abstract: false, interface: false))
+[epsilon.epl - filtering.epl] R1 do..
+[epsilon.epl - filtering.epl] R1 do..
+[epsilon.epl - filtering.epl] R5 do..
+[epsilon.epl - filtering.epl] R5 do..
+[epsilon.epl - filtering.epl] Filtering Rules End:-----
+BUILD SUCCESSFUL
+Total time: 2 seconds

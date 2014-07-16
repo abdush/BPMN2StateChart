@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:pnet="http://uam.es/PetriNets">
+  <pnet:Net xmi:id="order_material">
+    <places name="StartEvent_1" postt="/0/@transitions.9"/>
+    <places name="Needs Authorization?" postt="/0/@transitions.3 /0/@transitions.4" pret="/0/@transitions.2"/>
+    <places name="Merge 1" postt="/0/@transitions.5" pret="/0/@transitions.4 /0/@transitions.7"/>
+    <places name="EndEvent_1" pret="/0/@transitions.8"/>
+    <places name="Not prepared" postt="/0/@transitions.0" pret="/0/@transitions.9"/>
+    <places name="Prepared" postt="/0/@transitions.1" pret="/0/@transitions.0"/>
+    <places name="Approved" postt="/0/@transitions.2" pret="/0/@transitions.1"/>
+    <places name="Authorized" postt="/0/@transitions.7" pret="/0/@transitions.3"/>
+    <places name="Submitted" postt="/0/@transitions.6" pret="/0/@transitions.5"/>
+    <places name="Ordered" postt="/0/@transitions.8" pret="/0/@transitions.6"/>
+    <transitions name="Not preparedPrepared" prep="/0/@places.4" postp="/0/@places.5"/>
+    <transitions name="PreparedApproved" prep="/0/@places.5" postp="/0/@places.6"/>
+    <transitions name="ApprovedNeeds Authorization?" prep="/0/@places.6" postp="/0/@places.1"/>
+    <transitions name="Needs Authorization?Authorized" prep="/0/@places.1" postp="/0/@places.7"/>
+    <transitions name="Needs Authorization?Merge 1" prep="/0/@places.1" postp="/0/@places.2"/>
+    <transitions name="Merge 1Submitted" prep="/0/@places.2" postp="/0/@places.8"/>
+    <transitions name="SubmittedOrdered" prep="/0/@places.8" postp="/0/@places.9"/>
+    <transitions name="AuthorizedMerge 1" prep="/0/@places.7" postp="/0/@places.2"/>
+    <transitions name="OrderedEndEvent_1" prep="/0/@places.9" postp="/0/@places.3"/>
+    <transitions name="StartEvent_1Not prepared" prep="/0/@places.0" postp="/0/@places.4"/>
+  </pnet:Net>
+  <ecore:EStringToStringMapEntry key="xsi" value="http://www.w3.org/2001/XMLSchema-instance"/>
+  <ecore:EStringToStringMapEntry key="" value="http://org.eclipse.bpmn2/default/order_material_process"/>
+  <ecore:EStringToStringMapEntry key="bpmn2" value="http://www.omg.org/spec/BPMN/20100524/MODEL"/>
+  <ecore:EStringToStringMapEntry key="bpmndi" value="http://www.omg.org/spec/BPMN/20100524/DI"/>
+  <ecore:EStringToStringMapEntry key="dc" value="http://www.omg.org/spec/DD/20100524/DC"/>
+  <ecore:EStringToStringMapEntry key="di" value="http://www.omg.org/spec/DD/20100524/DI"/>
+</xmi:XMI>

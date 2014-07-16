@@ -42,7 +42,7 @@ class ExclusiveGateway extends Gateway {
   !ordered !resolve ref SequenceFlow default;
 }
 
-@gmf.node(figure="rounded", label.placement="none", color="255,255,1", size="15,15")
+@gmf.node(label="name", figure="rectangle", color="0,0,0", size="15,50", label.placement="external")
 class ParallelGateway extends Gateway {
 }
 
@@ -63,7 +63,7 @@ class ObjectFlow extends Edge {
 class Event extends FlowNode {
 }
 
-@gmf.node(figure="rounded", label.placement="none", color="255,0,0", size="15,15")
+@gmf.node(figure="rounded", label.placement="none", color="255,255,1", size="15,15")
 class StartEvent extends Event {
 }
 

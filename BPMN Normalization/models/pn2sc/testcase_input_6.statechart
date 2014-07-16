@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ASCII"?>
+<schart:Statechart xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:schart="http://uam.es/StateCharts" xmi:id="$D">
+  <topState>
+    <contains xsi:type="schart:HyperEdge" name="t2" next="//@topState/@contains.3/@contains.0" rnext="//@topState/@contains.4/@contains.0/@contains.0/@contains.0 //@topState/@contains.4/@contains.0/@contains.1/@contains.0"/>
+    <contains xsi:type="schart:HyperEdge" name="t1" next="//@topState/@contains.4/@contains.0/@contains.0/@contains.0 //@topState/@contains.4/@contains.0/@contains.1/@contains.0 //@topState/@contains.2/@contains.0" rnext="//@topState/@contains.3/@contains.0"/>
+    <contains xsi:type="schart:OR" name="p4">
+      <contains xsi:type="schart:Basic" name="p4" rnext="//@topState/@contains.1"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="p1">
+      <contains xsi:type="schart:Basic" name="p1" next="//@topState/@contains.1" rnext="//@topState/@contains.0"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="p2p3">
+      <contains xsi:type="schart:AND" name="p2p3">
+        <contains xsi:type="schart:OR" name="p2">
+          <contains xsi:type="schart:Basic" name="p2" next="//@topState/@contains.0" rnext="//@topState/@contains.1"/>
+        </contains>
+        <contains xsi:type="schart:OR" name="p3">
+          <contains xsi:type="schart:Basic" name="p3" next="//@topState/@contains.0" rnext="//@topState/@contains.1"/>
+        </contains>
+      </contains>
+    </contains>
+  </topState>
+</schart:Statechart>

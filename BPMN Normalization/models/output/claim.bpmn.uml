@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML">
+  <ecore:EStringToStringMapEntry xmi:id="_tZMP0QHlEeSt5NjqwT8-GQ" key="xsi" value="http://www.w3.org/2001/XMLSchema-instance"/>
+  <ecore:EStringToStringMapEntry xmi:id="_tZMP0gHlEeSt5NjqwT8-GQ" key="" value="http://org.eclipse.bpmn2/default/claim_process"/>
+  <ecore:EStringToStringMapEntry xmi:id="_tZMP0wHlEeSt5NjqwT8-GQ" key="bpmn2" value="http://www.omg.org/spec/BPMN/20100524/MODEL"/>
+  <ecore:EStringToStringMapEntry xmi:id="_tZMP1AHlEeSt5NjqwT8-GQ" key="bpmndi" value="http://www.omg.org/spec/BPMN/20100524/DI"/>
+  <ecore:EStringToStringMapEntry xmi:id="_tZMP1QHlEeSt5NjqwT8-GQ" key="dc" value="http://www.omg.org/spec/DD/20100524/DC"/>
+  <ecore:EStringToStringMapEntry xmi:id="_tZMP1gHlEeSt5NjqwT8-GQ" key="di" value="http://www.omg.org/spec/DD/20100524/DI"/>
+  <uml:Model xmi:id="_tZVZwAHlEeSt5NjqwT8-GQ">
+    <packagedElement xmi:type="uml:StateMachine" xmi:id="claim">
+      <region xmi:id="_tY8YMAHlEeSt5NjqwT8-GQ" name="StartEvent_1receivedconfirmedpolicy not checkedpolicy checkeddamage not checkeddamage checkeddecidedRejectedassessedsettledExclusive Gateway 2archivedEndEvent_1">
+        <transition xmi:id="_tZlRYAHlEeSt5NjqwT8-GQ" source="_tY-NYAHlEeSt5NjqwT8-GQ" target="_tY-0cAHlEeSt5NjqwT8-GQ"/>
+        <transition xmi:id="_tZl4cAHlEeSt5NjqwT8-GQ" source="_tY-NYAHlEeSt5NjqwT8-GQ" target="_tZApoAHlEeSt5NjqwT8-GQ"/>
+        <transition xmi:id="_tZl4cQHlEeSt5NjqwT8-GQ" source="_tY-NYAHlEeSt5NjqwT8-GQ" target="_tZDF4AHlEeSt5NjqwT8-GQ"/>
+        <transition xmi:id="_tZl4cgHlEeSt5NjqwT8-GQ" source="_tY8_QAHlEeSt5NjqwT8-GQ" target="_tY-NYAHlEeSt5NjqwT8-GQ"/>
+        <transition xmi:id="_tZ1wEAHlEeSt5NjqwT8-GQ" source="_tZKaoAHlEeSt5NjqwT8-GQ" target="_tZLowAHlEeSt5NjqwT8-GQ"/>
+        <transition xmi:id="_tZ1wEQHlEeSt5NjqwT8-GQ" source="_tZJzkAHlEeSt5NjqwT8-GQ" target="_tZKaoAHlEeSt5NjqwT8-GQ"/>
+        <transition xmi:id="_tZ2XIAHlEeSt5NjqwT8-GQ" source="_tZACkAHlEeSt5NjqwT8-GQ" target="_tZKaoAHlEeSt5NjqwT8-GQ"/>
+        <transition xmi:id="_tZLowQHlEeSt5NjqwT8-GQ" name="archivedEndEvent_1" source="_tZLowAHlEeSt5NjqwT8-GQ" target="_tZMP0AHlEeSt5NjqwT8-GQ"/>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_tY8_QAHlEeSt5NjqwT8-GQ" name="StartEvent_1"/>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_tY-NYAHlEeSt5NjqwT8-GQ" name="fork#FlowElement#87" kind="fork"/>
+        <subvertex xmi:type="uml:State" xmi:id="_tY-NYQHlEeSt5NjqwT8-GQ" name="receivedconfirmedpolicy not checkedpolicy checkeddamage not checkeddamage checkeddecidedRejectedassessedsettledExclusive Gateway 2">
+          <region xmi:id="_tY-NYgHlEeSt5NjqwT8-GQ" name="receivedconfirmed">
+            <transition xmi:id="_tY-0cQHlEeSt5NjqwT8-GQ" name="receivedconfirmed" source="_tY-0cAHlEeSt5NjqwT8-GQ" target="_tZACkAHlEeSt5NjqwT8-GQ"/>
+            <subvertex xmi:type="uml:State" xmi:id="_tY-0cAHlEeSt5NjqwT8-GQ" name="received"/>
+            <subvertex xmi:type="uml:State" xmi:id="_tZACkAHlEeSt5NjqwT8-GQ" name="confirmed"/>
+          </region>
+          <region xmi:id="_tZACkQHlEeSt5NjqwT8-GQ" name="policy not checkedpolicy checkeddamage not checkeddamage checkeddecidedRejectedassessedsettledExclusive Gateway 2">
+            <transition xmi:id="_tZubUAHlEeSt5NjqwT8-GQ" source="_tZE7EAHlEeSt5NjqwT8-GQ" target="_tZGJMAHlEeSt5NjqwT8-GQ"/>
+            <transition xmi:id="_tZubUQHlEeSt5NjqwT8-GQ" source="_tZEUAAHlEeSt5NjqwT8-GQ" target="_tZE7EAHlEeSt5NjqwT8-GQ"/>
+            <transition xmi:id="_tZvCYAHlEeSt5NjqwT8-GQ" source="_tZB3wAHlEeSt5NjqwT8-GQ" target="_tZE7EAHlEeSt5NjqwT8-GQ"/>
+            <transition xmi:id="_tZGJMQHlEeSt5NjqwT8-GQ" name="decidedRejected" source="_tZGJMAHlEeSt5NjqwT8-GQ" target="_tZGwQAHlEeSt5NjqwT8-GQ"/>
+            <transition xmi:id="_tZGwQQHlEeSt5NjqwT8-GQ" name="decidedassessed" source="_tZGJMAHlEeSt5NjqwT8-GQ" target="_tZH-YAHlEeSt5NjqwT8-GQ"/>
+            <transition xmi:id="_tZH-YQHlEeSt5NjqwT8-GQ" name="RejectedExclusive Gateway 2" source="_tZGwQAHlEeSt5NjqwT8-GQ" target="_tZJzkAHlEeSt5NjqwT8-GQ"/>
+            <transition xmi:id="_tZIlcQHlEeSt5NjqwT8-GQ" name="settledExclusive Gateway 2" source="_tZIlcAHlEeSt5NjqwT8-GQ" target="_tZJzkAHlEeSt5NjqwT8-GQ"/>
+            <transition xmi:id="_tZJzkQHlEeSt5NjqwT8-GQ" name="assessedsettled" source="_tZH-YAHlEeSt5NjqwT8-GQ" target="_tZIlcAHlEeSt5NjqwT8-GQ"/>
+            <subvertex xmi:type="uml:State" xmi:id="_tZACkgHlEeSt5NjqwT8-GQ" name="policy not checkedpolicy checkeddamage not checkeddamage checked">
+              <region xmi:id="_tZACkwHlEeSt5NjqwT8-GQ" name="policy not checkedpolicy checked">
+                <transition xmi:id="_tZBQsAHlEeSt5NjqwT8-GQ" name="policy not checkedpolicy checked" source="_tZApoAHlEeSt5NjqwT8-GQ" target="_tZB3wAHlEeSt5NjqwT8-GQ"/>
+                <subvertex xmi:type="uml:State" xmi:id="_tZApoAHlEeSt5NjqwT8-GQ" name="policy not checked"/>
+                <subvertex xmi:type="uml:State" xmi:id="_tZB3wAHlEeSt5NjqwT8-GQ" name="policy checked"/>
+              </region>
+              <region xmi:id="_tZB3wQHlEeSt5NjqwT8-GQ" name="damage not checkeddamage checked">
+                <transition xmi:id="_tZDF4QHlEeSt5NjqwT8-GQ" name="damage not checkeddamage checked" source="_tZDF4AHlEeSt5NjqwT8-GQ" target="_tZEUAAHlEeSt5NjqwT8-GQ"/>
+                <subvertex xmi:type="uml:State" xmi:id="_tZDF4AHlEeSt5NjqwT8-GQ" name="damage not checked"/>
+                <subvertex xmi:type="uml:State" xmi:id="_tZEUAAHlEeSt5NjqwT8-GQ" name="damage checked"/>
+              </region>
+            </subvertex>
+            <subvertex xmi:type="uml:Pseudostate" xmi:id="_tZE7EAHlEeSt5NjqwT8-GQ" name="join#FlowElement#77" kind="join"/>
+            <subvertex xmi:type="uml:State" xmi:id="_tZGJMAHlEeSt5NjqwT8-GQ" name="decided"/>
+            <subvertex xmi:type="uml:State" xmi:id="_tZGwQAHlEeSt5NjqwT8-GQ" name="Rejected"/>
+            <subvertex xmi:type="uml:State" xmi:id="_tZH-YAHlEeSt5NjqwT8-GQ" name="assessed"/>
+            <subvertex xmi:type="uml:State" xmi:id="_tZIlcAHlEeSt5NjqwT8-GQ" name="settled"/>
+            <subvertex xmi:type="uml:Pseudostate" xmi:id="_tZJzkAHlEeSt5NjqwT8-GQ" name="Exclusive Gateway 2" kind="choice"/>
+          </region>
+        </subvertex>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_tZKaoAHlEeSt5NjqwT8-GQ" name="Parallel Gateway 5" kind="join"/>
+        <subvertex xmi:type="uml:State" xmi:id="_tZLowAHlEeSt5NjqwT8-GQ" name="archived"/>
+        <subvertex xmi:type="uml:FinalState" xmi:id="_tZMP0AHlEeSt5NjqwT8-GQ" name="EndEvent_1"/>
+      </region>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

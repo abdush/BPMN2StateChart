@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_QvMmcP75EeO9Sq_H2DImUQ" type="PapyrusUMLStateMachineDiagram" name="NewDiagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_QvMmcf75EeO9Sq_H2DImUQ" type="2000" fontName="Segoe UI" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_QvMmcv75EeO9Sq_H2DImUQ" type="2001">
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_QvNNgP75EeO9Sq_H2DImUQ" width="700" height="13"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_QvNNgf75EeO9Sq_H2DImUQ" type="2002">
+      <children xmi:type="notation:Shape" xmi:id="_QvNNgv75EeO9Sq_H2DImUQ" type="3000" fontName="Segoe UI" lineColor="0">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_QvNNg_75EeO9Sq_H2DImUQ" source="RegionAnnotationKey">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_QvNNhP75EeO9Sq_H2DImUQ" key="RegionZoneKey" value=""/>
+        </eAnnotations>
+        <children xmi:type="notation:DecorationNode" xmi:id="_QvNNhf75EeO9Sq_H2DImUQ" type="3002">
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_QvNNhv75EeO9Sq_H2DImUQ"/>
+        </children>
+        <children xmi:type="notation:BasicCompartment" xmi:id="_SYlwsP76EeO9Sq_H2DImUQ" visible="false" type="compartment_shape_display">
+          <styles xmi:type="notation:TitleStyle" xmi:id="_SYlwsf76EeO9Sq_H2DImUQ"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_SYlwsv76EeO9Sq_H2DImUQ"/>
+        </children>
+        <element xmi:type="uml:Region" href="claim_output.uml#_QvKKMP75EeO9Sq_H2DImUQ"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_QvNNh_75EeO9Sq_H2DImUQ" width="700" height="287"/>
+      </children>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_QvNNiP75EeO9Sq_H2DImUQ" y="13" width="700" height="287"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_SYj7gP76EeO9Sq_H2DImUQ" visible="false" type="compartment_shape_display">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_SYj7gf76EeO9Sq_H2DImUQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_SYj7gv76EeO9Sq_H2DImUQ"/>
+    </children>
+    <element xmi:type="uml:StateMachine" href="claim_output.uml#_QvJjIP75EeO9Sq_H2DImUQ"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_QvNNif75EeO9Sq_H2DImUQ" x="30" y="30" width="700" height="300"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_QvNNiv75EeO9Sq_H2DImUQ"/>
+  <element xmi:type="uml:StateMachine" href="claim_output.uml#_QvJjIP75EeO9Sq_H2DImUQ"/>
+</notation:Diagram>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ASCII"?>
+<pnet:Net xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pnet="http://uam.es/PetriNets" xmi:id="claim">
+  <places name="StartEvent_1" postt="//@transitions.2"/>
+  <places name="Exclusive Gateway 2" postt="//@transitions.0" pret="//@transitions.5 //@transitions.7"/>
+  <places name="EndEvent_1" pret="//@transitions.6"/>
+  <places name="received" postt="//@transitions.11" pret="//@transitions.2"/>
+  <places name="policy not checked" postt="//@transitions.8" pret="//@transitions.2"/>
+  <places name="damage not checked" postt="//@transitions.9" pret="//@transitions.2"/>
+  <places name="policy checked" postt="//@transitions.1" pret="//@transitions.8"/>
+  <places name="damage checked" postt="//@transitions.1" pret="//@transitions.9"/>
+  <places name="confirmed" postt="//@transitions.0" pret="//@transitions.11"/>
+  <places name="decided" postt="//@transitions.3 //@transitions.4" pret="//@transitions.1"/>
+  <places name="Rejected" postt="//@transitions.7" pret="//@transitions.3"/>
+  <places name="assessed" postt="//@transitions.10" pret="//@transitions.4"/>
+  <places name="settled" postt="//@transitions.5" pret="//@transitions.10"/>
+  <places name="archived" postt="//@transitions.6" pret="//@transitions.0"/>
+  <transitions name="Parallel Gateway 5" prep="//@places.1 //@places.8" postp="//@places.13"/>
+  <transitions name="join#FlowElement#77" prep="//@places.7 //@places.6" postp="//@places.9"/>
+  <transitions name="fork#FlowElement#87" prep="//@places.0" postp="//@places.3 //@places.4 //@places.5"/>
+  <transitions name="decidedRejected" prep="//@places.9" postp="//@places.10"/>
+  <transitions name="decidedassessed" prep="//@places.9" postp="//@places.11"/>
+  <transitions name="settledExclusive Gateway 2" prep="//@places.12" postp="//@places.1"/>
+  <transitions name="archivedEndEvent_1" prep="//@places.13" postp="//@places.2"/>
+  <transitions name="RejectedExclusive Gateway 2" prep="//@places.10" postp="//@places.1"/>
+  <transitions name="policy not checkedpolicy checked" prep="//@places.4" postp="//@places.6"/>
+  <transitions name="damage not checkeddamage checked" prep="//@places.5" postp="//@places.7"/>
+  <transitions name="assessedsettled" prep="//@places.11" postp="//@places.12"/>
+  <transitions name="receivedconfirmed" prep="//@places.3" postp="//@places.8"/>
+</pnet:Net>

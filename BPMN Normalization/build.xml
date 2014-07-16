@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="main">
+	
+	<!-- ANT Taskdefs for ant-contrib -->
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties"></taskdef>  
+	
+	<target name="loadModels">
+		<epsilon.emf.register file="tree.ecore"></epsilon.emf.register>		
+		<epsilon.emf.loadModel name="M" modelfile="tree.model" metamodeluri="Tree" read="false" store="true"></epsilon.emf.loadModel>
+	</target>
+	
+	<target name="Transformation1">
+		<epsilon.eol>
+			<model ref="M"></model>
+			
+			var t : new Tree;
+			t.label = &apos;t1&apos;;
+			
+		</epsilon.eol>
+	</target>
+	
+	<target name="Transformation2">
+		<epsilon.eol>
+			<model ref="M"></model>
+			
+			var t : new Tree;
+			t.label = &apos;t2&apos;;
+			
+		</epsilon.eol>
+	</target>
+
+	<target name="Validation1">
+		<epsilon.evl>
+			<model ref="M"></model>
+			
+			context Tree {
+				constraint C1 {
+					check : true
+				}
+			}
+			
+		</epsilon.evl>
+	</target>
+	
+	<target name="Validation2">
+		<epsilon.evl>
+			<model ref="M"></model>
+			
+			context Tree {
+				constraint C2 {
+					check : true -- Switch to false to make validation fail
+				}
+			}
+			
+		</epsilon.evl>
+	</target>
+	
+	<target name="Evaluation">
+		<epsilon.eol>
+			<model ref="M"></model>
+			
+			Tree.all.size().println();
+			
+		</epsilon.eol>
+	</target>
+	
+	<target name="main" depends="loadModels">
+		<runtarget target="Transformation1"></runtarget>
+		<runtarget target="Validation1"></runtarget>		
+		
+		<trycatch>
+			<try>
+				<!--Start a transaction on M so that we can roll it back later on.-->
+				<epsilon.startTransaction name="Transaction1" models="M"></epsilon.startTransaction>
+				<runtarget target="Transformation2"></runtarget>
+				<runtarget target="Validation2"></runtarget>
+				<!-- No errors in the validation. Commit the transaction.-->
+				<epsilon.commitTransaction name="Transaction1"></epsilon.commitTransaction>
+			</try>
+			<catch>
+				<!--If validation fails, roll back the transaction.-->
+				<epsilon.rollbackTransaction name="Transaction1"></epsilon.rollbackTransaction>
+			</catch>
+		</trycatch>
+		
+		<runtarget target="Evaluation"></runtarget>
+	</target>
+	
+</project>

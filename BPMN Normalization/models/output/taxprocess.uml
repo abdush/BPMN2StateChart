@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML">
+  <ecore:EStringToStringMapEntry xmi:id="_w2wnwQz6EeSKIfPo6WM67A" key="xsi" value="http://www.w3.org/2001/XMLSchema-instance"/>
+  <ecore:EStringToStringMapEntry xmi:id="_w2wnwgz6EeSKIfPo6WM67A" key="bpmn2" value="http://www.omg.org/spec/BPMN/20100524/MODEL"/>
+  <ecore:EStringToStringMapEntry xmi:id="_w2wnwwz6EeSKIfPo6WM67A" key="bpmndi" value="http://www.omg.org/spec/BPMN/20100524/DI"/>
+  <ecore:EStringToStringMapEntry xmi:id="_w2wnxAz6EeSKIfPo6WM67A" key="dc" value="http://www.omg.org/spec/DD/20100524/DC"/>
+  <ecore:EStringToStringMapEntry xmi:id="_w2wnxQz6EeSKIfPo6WM67A" key="di" value="http://www.omg.org/spec/DD/20100524/DI"/>
+  <uml:Model xmi:id="_w238gAz6EeSKIfPo6WM67A">
+    <packagedElement xmi:type="uml:StateMachine" xmi:id="taxprocess">
+      <region xmi:id="_w2looAz6EeSKIfPo6WM67A" name="StartEvent_1submittedExclusive Gateway 1rejectedEnd Event 2acceptedprocessedassessedreturnedEndEvent_1">
+        <transition xmi:id="_w2m2wQz6EeSKIfPo6WM67A" name="StartEvent_1submitted" source="_w2m2wAz6EeSKIfPo6WM67A" target="_w2nd0Az6EeSKIfPo6WM67A"/>
+        <transition xmi:id="_w2oE4Az6EeSKIfPo6WM67A" name="submittedExclusive Gateway 1" source="_w2nd0Az6EeSKIfPo6WM67A" target="_w2or8Az6EeSKIfPo6WM67A"/>
+        <transition xmi:id="_w2or8Qz6EeSKIfPo6WM67A" name="Exclusive Gateway 1rejected" source="_w2or8Az6EeSKIfPo6WM67A" target="_w2pTAAz6EeSKIfPo6WM67A"/>
+        <transition xmi:id="_w2pTAQz6EeSKIfPo6WM67A" name="rejectedEnd Event 2" source="_w2pTAAz6EeSKIfPo6WM67A" target="_w2qhIAz6EeSKIfPo6WM67A"/>
+        <transition xmi:id="_w3UocAz6EeSKIfPo6WM67A" source="_w2rIMAz6EeSKIfPo6WM67A" target="_w2sWUAz6EeSKIfPo6WM67A"/>
+        <transition xmi:id="_w3UocQz6EeSKIfPo6WM67A" source="_w2rIMAz6EeSKIfPo6WM67A" target="_w2s9YAz6EeSKIfPo6WM67A"/>
+        <transition xmi:id="_w3Uocgz6EeSKIfPo6WM67A" source="_w2or8Az6EeSKIfPo6WM67A" target="_w2rIMAz6EeSKIfPo6WM67A"/>
+        <transition xmi:id="_w3Zg8Az6EeSKIfPo6WM67A" source="_w2wAsAz6EeSKIfPo6WM67A" target="_w2wnwAz6EeSKIfPo6WM67A"/>
+        <transition xmi:id="_w3Zg8Qz6EeSKIfPo6WM67A" source="_w2vZoAz6EeSKIfPo6WM67A" target="_w2wAsAz6EeSKIfPo6WM67A"/>
+        <transition xmi:id="_w3aIAAz6EeSKIfPo6WM67A" source="_w2sWUAz6EeSKIfPo6WM67A" target="_w2wAsAz6EeSKIfPo6WM67A"/>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_w2m2wAz6EeSKIfPo6WM67A" name="StartEvent_1"/>
+        <subvertex xmi:type="uml:State" xmi:id="_w2nd0Az6EeSKIfPo6WM67A" name="submitted"/>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_w2or8Az6EeSKIfPo6WM67A" name="Exclusive Gateway 1" kind="choice"/>
+        <subvertex xmi:type="uml:State" xmi:id="_w2pTAAz6EeSKIfPo6WM67A" name="rejected"/>
+        <subvertex xmi:type="uml:FinalState" xmi:id="_w2qhIAz6EeSKIfPo6WM67A" name="End Event 2"/>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_w2rIMAz6EeSKIfPo6WM67A" name="Parallel Gateway 1" kind="fork"/>
+        <subvertex xmi:type="uml:State" xmi:id="_w2rIMQz6EeSKIfPo6WM67A" name="acceptedprocessedassessedreturned">
+          <region xmi:id="_w2rIMgz6EeSKIfPo6WM67A" name="accepted">
+            <subvertex xmi:type="uml:State" xmi:id="_w2sWUAz6EeSKIfPo6WM67A" name="accepted"/>
+          </region>
+          <region xmi:id="_w2sWUQz6EeSKIfPo6WM67A" name="processedassessedreturned">
+            <transition xmi:id="_w2tkcAz6EeSKIfPo6WM67A" name="processedassessed" source="_w2s9YAz6EeSKIfPo6WM67A" target="_w2uLgAz6EeSKIfPo6WM67A"/>
+            <transition xmi:id="_w2uLgQz6EeSKIfPo6WM67A" name="assessedreturned" source="_w2uLgAz6EeSKIfPo6WM67A" target="_w2vZoAz6EeSKIfPo6WM67A"/>
+            <subvertex xmi:type="uml:State" xmi:id="_w2s9YAz6EeSKIfPo6WM67A" name="processed"/>
+            <subvertex xmi:type="uml:State" xmi:id="_w2uLgAz6EeSKIfPo6WM67A" name="assessed"/>
+            <subvertex xmi:type="uml:State" xmi:id="_w2vZoAz6EeSKIfPo6WM67A" name="returned"/>
+          </region>
+        </subvertex>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_w2wAsAz6EeSKIfPo6WM67A" name="Parallel Gateway 2" kind="join"/>
+        <subvertex xmi:type="uml:FinalState" xmi:id="_w2wnwAz6EeSKIfPo6WM67A" name="EndEvent_1"/>
+      </region>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

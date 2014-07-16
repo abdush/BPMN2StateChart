@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_lqc9kP7nEeOBddW0GXcKEQ" type="PapyrusUMLStateMachineDiagram" name="NewDiagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_lqc9kf7nEeOBddW0GXcKEQ" type="2000" fontName="Segoe UI" lineColor="0">
+    <children xmi:type="notation:DecorationNode" xmi:id="_lqc9kv7nEeOBddW0GXcKEQ" type="2001">
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_lqc9k_7nEeOBddW0GXcKEQ" width="700" height="13"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_lqc9lP7nEeOBddW0GXcKEQ" type="2002">
+      <children xmi:type="notation:Shape" xmi:id="_lqc9lf7nEeOBddW0GXcKEQ" type="3000" fontName="Segoe UI" lineColor="0">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_lqc9lv7nEeOBddW0GXcKEQ" source="RegionAnnotationKey">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_lqc9l_7nEeOBddW0GXcKEQ" key="RegionZoneKey" value=""/>
+        </eAnnotations>
+        <children xmi:type="notation:DecorationNode" xmi:id="_lqc9mP7nEeOBddW0GXcKEQ" type="3002">
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_lqc9mf7nEeOBddW0GXcKEQ"/>
+        </children>
+        <element xmi:type="uml:Region" href="claim.uml#_lBtikf7nEeOBddW0GXcKEQ"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_lqc9mv7nEeOBddW0GXcKEQ" width="700" height="287"/>
+      </children>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_lqc9m_7nEeOBddW0GXcKEQ" y="13" width="700" height="287"/>
+    </children>
+    <element xmi:type="uml:StateMachine" href="claim.uml#_lBtikP7nEeOBddW0GXcKEQ"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_lqc9nP7nEeOBddW0GXcKEQ" x="30" y="30" width="700" height="300"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_lqc9nf7nEeOBddW0GXcKEQ"/>
+  <element xmi:type="uml:StateMachine" href="claim.uml#_lBtikP7nEeOBddW0GXcKEQ"/>
+</notation:Diagram>

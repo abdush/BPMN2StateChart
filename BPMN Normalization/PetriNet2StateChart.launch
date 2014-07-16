@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.epsilon.migration.eclipse.dt.launching.MigrationLaunchConfigurationDelegate">
+<intAttribute key="migratedModel" value="1"/>
+<listAttribute key="models">
+<listEntry value="#&#13;&#10;#Fri Jun 27 18:52:00 BST 2014&#13;&#10;isMetamodelFileBased=true&#13;&#10;name=PN&#13;&#10;readOnLoad=true&#13;&#10;storeOnDisposal=false&#13;&#10;aliases=&#13;&#10;cached=true&#13;&#10;fileBasedMetamodelUri=platform\:/resource/BPMN2StateChart/metamodels/PetriNets.ecore&#13;&#10;metamodelUri=&#13;&#10;modelUri=platform\:/resource/BPMN2StateChart/models/filtered2pn/claim_bpmn_PN.pn&#13;&#10;type=EMF&#13;&#10;modelFile=/BPMN2StateChart/models/filtered2pn/claim_bpmn_PN.pn&#13;&#10;expand=true&#13;&#10;metamodelFile=/BPMN2StateChart/metamodels/PetriNets.ecore&#13;&#10;"/>
+<listEntry value="#&#13;&#10;#Fri Jun 27 18:52:18 BST 2014&#13;&#10;isMetamodelFileBased=true&#13;&#10;name=SC&#13;&#10;readOnLoad=false&#13;&#10;storeOnDisposal=true&#13;&#10;aliases=&#13;&#10;cached=true&#13;&#10;fileBasedMetamodelUri=platform\:/resource/BPMN2StateChart/metamodels/StateCharts.ecore&#13;&#10;metamodelUri=&#13;&#10;modelUri=platform\:/resource/BPMN2StateChart/models/pn2sc/claim_SCH.statechart&#13;&#10;type=EMF&#13;&#10;modelFile=/BPMN2StateChart/models/pn2sc/claim_SCH.statechart&#13;&#10;expand=true&#13;&#10;metamodelFile=/BPMN2StateChart/metamodels/StateCharts.ecore&#13;&#10;"/>
+</listAttribute>
+<intAttribute key="originalModel" value="0"/>
+<stringAttribute key="source" value="/BPMN2StateChart/src/pn2sc/initialisation/PetriNet2StateChart.mig"/>
+</launchConfiguration>

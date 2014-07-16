@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:schart="http://uam.es/StateCharts">
+  <schart:Statechart xmi:id="_alJlwPiUEeOt65RHX0eZVA">
+    <topState>
+      <contains xsi:type="schart:HyperEdge" next="/0/@topState/@contains.11/@contains.0" rnext="/0/@topState/@contains.10/@contains.0"/>
+      <contains xsi:type="schart:HyperEdge" name="fork" next="/2/@contains.0/@contains.0 /2/@contains.1/@contains.0" rnext="/0/@topState/@contains.11/@contains.0"/>
+      <contains xsi:type="schart:HyperEdge" name="join" next="/0/@topState/@contains.12/@contains.0" rnext="/2/@contains.0/@contains.0 /2/@contains.1/@contains.0"/>
+      <contains xsi:type="schart:HyperEdge" next="/0/@topState/@contains.15/@contains.0" rnext="/0/@topState/@contains.12/@contains.0"/>
+      <contains xsi:type="schart:HyperEdge" next="/0/@topState/@contains.13/@contains.0" rnext="/0/@topState/@contains.12/@contains.0"/>
+      <contains xsi:type="schart:HyperEdge" next="/0/@topState/@contains.14/@contains.0" rnext="/0/@topState/@contains.13/@contains.0"/>
+      <contains xsi:type="schart:HyperEdge" next="/0/@topState/@contains.16/@contains.0" rnext="/0/@topState/@contains.15/@contains.0"/>
+      <contains xsi:type="schart:HyperEdge" next="/0/@topState/@contains.16/@contains.0" rnext="/0/@topState/@contains.14/@contains.0"/>
+      <contains xsi:type="schart:HyperEdge" next="/0/@topState/@contains.17/@contains.0" rnext="/0/@topState/@contains.16/@contains.0"/>
+      <contains xsi:type="schart:HyperEdge" next="/0/@topState/@contains.18/@contains.0" rnext="/0/@topState/@contains.17/@contains.0"/>
+      <contains xsi:type="schart:OR" name="StartEvent">
+        <contains xsi:type="schart:Basic" name="StartEvent" next="/0/@topState/@contains.0"/>
+      </contains>
+      <contains xsi:type="schart:OR" name="Received">
+        <contains xsi:type="schart:Basic" name="Received" next="/0/@topState/@contains.1" rnext="/0/@topState/@contains.0"/>
+      </contains>
+      <contains xsi:type="schart:OR" name="descision">
+        <contains xsi:type="schart:Basic" name="descision" next="/0/@topState/@contains.3 /0/@topState/@contains.4" rnext="/0/@topState/@contains.2"/>
+      </contains>
+      <contains xsi:type="schart:OR" name="assessed">
+        <contains xsi:type="schart:Basic" name="assessed" next="/0/@topState/@contains.5" rnext="/0/@topState/@contains.4"/>
+      </contains>
+      <contains xsi:type="schart:OR" name="settled">
+        <contains xsi:type="schart:Basic" name="settled" next="/0/@topState/@contains.7" rnext="/0/@topState/@contains.5"/>
+      </contains>
+      <contains xsi:type="schart:OR" name="rejected">
+        <contains xsi:type="schart:Basic" name="rejected" next="/0/@topState/@contains.6" rnext="/0/@topState/@contains.3"/>
+      </contains>
+      <contains xsi:type="schart:OR" name="merge">
+        <contains xsi:type="schart:Basic" name="merge" next="/0/@topState/@contains.8" rnext="/0/@topState/@contains.6 /0/@topState/@contains.7"/>
+      </contains>
+      <contains xsi:type="schart:OR" name="archived">
+        <contains xsi:type="schart:Basic" name="archived" next="/0/@topState/@contains.9" rnext="/0/@topState/@contains.8"/>
+      </contains>
+      <contains xsi:type="schart:OR" name="EndEvent">
+        <contains xsi:type="schart:Basic" name="EndEvent" rnext="/0/@topState/@contains.9"/>
+      </contains>
+    </topState>
+  </schart:Statechart>
+  <schart:AND name="policy checkeddamage checked"/>
+  <schart:AND name="policy checkeddamage checked">
+    <contains xsi:type="schart:OR" name="policy checked">
+      <contains xsi:type="schart:Basic" name="policy checked" next="/0/@topState/@contains.2" rnext="/0/@topState/@contains.1"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="damage checked">
+      <contains xsi:type="schart:Basic" name="damage checked" next="/0/@topState/@contains.2" rnext="/0/@topState/@contains.1"/>
+    </contains>
+  </schart:AND>
+  <schart:OR/>
+  <schart:AND name="policy checkeddamage checked"/>
+</xmi:XMI>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:pnet="http://uam.es/PetriNets">
+  <pnet:Net xmi:id="order_production">
+    <places name="StartEvent_1" postt="/0/@transitions.2"/>
+    <places name="unplanned" postt="/0/@transitions.3" pret="/0/@transitions.2"/>
+    <places name="uncheckedchecked" postt="/0/@transitions.0" pret="/0/@transitions.2"/>
+    <places name="plannedproduced" postt="/0/@transitions.1" pret="/0/@transitions.3"/>
+    <places name="costs unknowncosts calculated" postt="/0/@transitions.0" pret="/0/@transitions.3"/>
+    <places name="billedpaid" postt="/0/@transitions.1" pret="/0/@transitions.0"/>
+    <places name="shippedEndEvent_1" pret="/0/@transitions.1"/>
+    <transitions name="join#FlowElement#64" prep="/0/@places.2 /0/@places.4" postp="/0/@places.5"/>
+    <transitions name="join#FlowElement#68" prep="/0/@places.5 /0/@places.3" postp="/0/@places.6"/>
+    <transitions name="fork#FlowElement#74" prep="/0/@places.0" postp="/0/@places.2 /0/@places.1"/>
+    <transitions name="fork#FlowElement#84" prep="/0/@places.1" postp="/0/@places.3 /0/@places.4"/>
+  </pnet:Net>
+  <ecore:EStringToStringMapEntry key="xsi" value="http://www.w3.org/2001/XMLSchema-instance"/>
+  <ecore:EStringToStringMapEntry key="bpmn2" value="http://www.omg.org/spec/BPMN/20100524/MODEL"/>
+  <ecore:EStringToStringMapEntry key="bpmndi" value="http://www.omg.org/spec/BPMN/20100524/DI"/>
+  <ecore:EStringToStringMapEntry key="dc" value="http://www.omg.org/spec/DD/20100524/DC"/>
+  <ecore:EStringToStringMapEntry key="di" value="http://www.omg.org/spec/DD/20100524/DI"/>
+</xmi:XMI>

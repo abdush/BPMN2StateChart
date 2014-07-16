@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:schart="http://uam.es/StateCharts">
+  <schart:Statechart xmi:id="taxprocess">
+    <topState>
+      <contains xsi:type="schart:OR" name="StartEvent_1submittedExclusive Gateway 1rejectedEnd Event 2acceptedprocessedassessedreturnedEndEvent_1">
+        <contains xsi:type="schart:Basic" name="StartEvent_1" next="/0/@topState/@contains.0/@contains.1"/>
+        <contains xsi:type="schart:HyperEdge" name="StartEvent_1submitted" next="/0/@topState/@contains.0/@contains.2" rnext="/0/@topState/@contains.0/@contains.0"/>
+        <contains xsi:type="schart:Basic" name="submitted" next="/0/@topState/@contains.0/@contains.3" rnext="/0/@topState/@contains.0/@contains.1"/>
+        <contains xsi:type="schart:HyperEdge" name="submittedExclusive Gateway 1" next="/0/@topState/@contains.0/@contains.4" rnext="/0/@topState/@contains.0/@contains.2"/>
+        <contains xsi:type="schart:Basic" name="Exclusive Gateway 1" next="/0/@topState/@contains.0/@contains.9 /0/@topState/@contains.0/@contains.5" rnext="/0/@topState/@contains.0/@contains.3"/>
+        <contains xsi:type="schart:HyperEdge" name="Exclusive Gateway 1rejected" next="/0/@topState/@contains.0/@contains.6" rnext="/0/@topState/@contains.0/@contains.4"/>
+        <contains xsi:type="schart:Basic" name="rejected" next="/0/@topState/@contains.0/@contains.7" rnext="/0/@topState/@contains.0/@contains.5"/>
+        <contains xsi:type="schart:HyperEdge" name="rejectedEnd Event 2" next="/0/@topState/@contains.0/@contains.8" rnext="/0/@topState/@contains.0/@contains.6"/>
+        <contains xsi:type="schart:Basic" name="End Event 2" rnext="/0/@topState/@contains.0/@contains.7"/>
+        <contains xsi:type="schart:HyperEdge" name="Parallel Gateway 1" next="/0/@topState/@contains.0/@contains.10/@contains.0/@contains.0 /0/@topState/@contains.0/@contains.10/@contains.1/@contains.0" rnext="/0/@topState/@contains.0/@contains.4"/>
+        <contains xsi:type="schart:AND" name="acceptedprocessedassessedreturned">
+          <contains xsi:type="schart:OR" name="accepted">
+            <contains xsi:type="schart:Basic" name="accepted" next="/0/@topState/@contains.0/@contains.11" rnext="/0/@topState/@contains.0/@contains.9"/>
+          </contains>
+          <contains xsi:type="schart:OR" name="processedassessedreturned">
+            <contains xsi:type="schart:Basic" name="processed" next="/0/@topState/@contains.0/@contains.10/@contains.1/@contains.1" rnext="/0/@topState/@contains.0/@contains.9"/>
+            <contains xsi:type="schart:HyperEdge" name="processedassessed" next="/0/@topState/@contains.0/@contains.10/@contains.1/@contains.2" rnext="/0/@topState/@contains.0/@contains.10/@contains.1/@contains.0"/>
+            <contains xsi:type="schart:Basic" name="assessed" next="/0/@topState/@contains.0/@contains.10/@contains.1/@contains.3" rnext="/0/@topState/@contains.0/@contains.10/@contains.1/@contains.1"/>
+            <contains xsi:type="schart:HyperEdge" name="assessedreturned" next="/0/@topState/@contains.0/@contains.10/@contains.1/@contains.4" rnext="/0/@topState/@contains.0/@contains.10/@contains.1/@contains.2"/>
+            <contains xsi:type="schart:Basic" name="returned" next="/0/@topState/@contains.0/@contains.11" rnext="/0/@topState/@contains.0/@contains.10/@contains.1/@contains.3"/>
+          </contains>
+        </contains>
+        <contains xsi:type="schart:HyperEdge" name="Parallel Gateway 2" next="/0/@topState/@contains.0/@contains.12" rnext="/0/@topState/@contains.0/@contains.10/@contains.1/@contains.4 /0/@topState/@contains.0/@contains.10/@contains.0/@contains.0"/>
+        <contains xsi:type="schart:Basic" name="EndEvent_1" rnext="/0/@topState/@contains.0/@contains.11"/>
+      </contains>
+    </topState>
+  </schart:Statechart>
+  <ecore:EStringToStringMapEntry key="xsi" value="http://www.w3.org/2001/XMLSchema-instance"/>
+  <ecore:EStringToStringMapEntry key="bpmn2" value="http://www.omg.org/spec/BPMN/20100524/MODEL"/>
+  <ecore:EStringToStringMapEntry key="bpmndi" value="http://www.omg.org/spec/BPMN/20100524/DI"/>
+  <ecore:EStringToStringMapEntry key="dc" value="http://www.omg.org/spec/DD/20100524/DC"/>
+  <ecore:EStringToStringMapEntry key="di" value="http://www.omg.org/spec/DD/20100524/DI"/>
+</xmi:XMI>

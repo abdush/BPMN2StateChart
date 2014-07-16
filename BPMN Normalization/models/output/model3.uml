@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_R83OIP4iEeOfusmRbnlaFg" name="model">
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="_Sp6hYP4iEeOfusmRbnlaFg" name="StateMachine0">
+    <region xmi:id="_SrJQcP4iEeOfusmRbnlaFg" name="O0">
+      <transition xmi:id="_QsKJUP4kEeOfusmRbnlaFg" name="T0" source="_fd80kP4iEeOfusmRbnlaFg" target="_6XxhQP4jEeOfusmRbnlaFg"/>
+      <transition xmi:id="_Up-pwP4kEeOfusmRbnlaFg" name="T1" source="_6XxhQP4jEeOfusmRbnlaFg" target="__iUwAP4iEeOfusmRbnlaFg"/>
+      <transition xmi:id="_Z5bxMP4kEeOfusmRbnlaFg" name="T2" source="_6XxhQP4jEeOfusmRbnlaFg" target="_8PG2UP4jEeOfusmRbnlaFg"/>
+      <transition xmi:id="_sXTasP4kEeOfusmRbnlaFg" name="T15" source="_FxgZoP4kEeOfusmRbnlaFg" target="_BWHMYP4kEeOfusmRbnlaFg"/>
+      <transition xmi:id="_u79IwP4kEeOfusmRbnlaFg" name="T17" source="_BoXPcP4jEeOfusmRbnlaFg" target="_BWHMYP4kEeOfusmRbnlaFg"/>
+      <transition xmi:id="_v0Hf0P4kEeOfusmRbnlaFg" name="T18" source="_BWHMYP4kEeOfusmRbnlaFg" target="_CeS8cP4kEeOfusmRbnlaFg"/>
+      <transition xmi:id="_wn1bwP4kEeOfusmRbnlaFg" name="T19" source="_CeS8cP4kEeOfusmRbnlaFg" target="_iR_CcP4iEeOfusmRbnlaFg"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_fd80kP4iEeOfusmRbnlaFg" name="Initial"/>
+      <subvertex xmi:type="uml:FinalState" xmi:id="_iR_CcP4iEeOfusmRbnlaFg" name="FinalState"/>
+      <subvertex xmi:type="uml:State" xmi:id="_of9noP4iEeOfusmRbnlaFg" name="AND0">
+        <region xmi:id="_1iwIgP4iEeOfusmRbnlaFg" name="O1">
+          <transition xmi:id="_tJCZoP4kEeOfusmRbnlaFg" name="T16" source="__iUwAP4iEeOfusmRbnlaFg" target="_BoXPcP4jEeOfusmRbnlaFg"/>
+          <subvertex xmi:type="uml:State" xmi:id="__iUwAP4iEeOfusmRbnlaFg" name="received"/>
+          <subvertex xmi:type="uml:State" xmi:id="_BoXPcP4jEeOfusmRbnlaFg" name="confirmed"/>
+        </region>
+        <region xmi:id="_5jCuIP4iEeOfusmRbnlaFg" name="O2">
+          <transition xmi:id="_deInAP4kEeOfusmRbnlaFg" name="T4" source="_8PG2UP4jEeOfusmRbnlaFg" target="_QmteEP4jEeOfusmRbnlaFg"/>
+          <transition xmi:id="_f4tMAP4kEeOfusmRbnlaFg" name="T3" source="_8PG2UP4jEeOfusmRbnlaFg" target="_b7JmwP4jEeOfusmRbnlaFg"/>
+          <transition xmi:id="_jERwIP4kEeOfusmRbnlaFg" name="T7" source="_XReF4P4jEeOfusmRbnlaFg" target="_-E-LwP4jEeOfusmRbnlaFg"/>
+          <transition xmi:id="_ksiucP4kEeOfusmRbnlaFg" name="T8" source="_ft-YIP4jEeOfusmRbnlaFg" target="_-E-LwP4jEeOfusmRbnlaFg"/>
+          <transition xmi:id="_lq7pUP4kEeOfusmRbnlaFg" name="T9" source="_-E-LwP4jEeOfusmRbnlaFg" target="_pdlRAP4jEeOfusmRbnlaFg"/>
+          <transition xmi:id="_moL7wP4kEeOfusmRbnlaFg" name="T10" source="_pdlRAP4jEeOfusmRbnlaFg" target="_q2j2IP4jEeOfusmRbnlaFg"/>
+          <transition xmi:id="_ndpkIP4kEeOfusmRbnlaFg" name="T11" source="_pdlRAP4jEeOfusmRbnlaFg" target="_sqbAcP4jEeOfusmRbnlaFg"/>
+          <transition xmi:id="_oLuyIP4kEeOfusmRbnlaFg" name="T12" source="_sqbAcP4jEeOfusmRbnlaFg" target="_zzHhcP4jEeOfusmRbnlaFg"/>
+          <transition xmi:id="_pWWyMP4kEeOfusmRbnlaFg" name="T13" source="_zzHhcP4jEeOfusmRbnlaFg" target="_FxgZoP4kEeOfusmRbnlaFg"/>
+          <transition xmi:id="_qJA-MP4kEeOfusmRbnlaFg" name="T14" source="_q2j2IP4jEeOfusmRbnlaFg" target="_FxgZoP4kEeOfusmRbnlaFg"/>
+          <subvertex xmi:type="uml:State" xmi:id="_JLfpsP4jEeOfusmRbnlaFg" name="AND1">
+            <region xmi:id="_OpMogP4jEeOfusmRbnlaFg" name="O3">
+              <transition xmi:id="_g34xEP4kEeOfusmRbnlaFg" name="T5" source="_QmteEP4jEeOfusmRbnlaFg" target="_XReF4P4jEeOfusmRbnlaFg"/>
+              <subvertex xmi:type="uml:State" xmi:id="_QmteEP4jEeOfusmRbnlaFg" name="policy not checked"/>
+              <subvertex xmi:type="uml:State" xmi:id="_XReF4P4jEeOfusmRbnlaFg" name="policy checked"/>
+            </region>
+            <region xmi:id="_PfXbgP4jEeOfusmRbnlaFg" name="O4">
+              <transition xmi:id="_hoJJUP4kEeOfusmRbnlaFg" name="T6" source="_b7JmwP4jEeOfusmRbnlaFg" target="_ft-YIP4jEeOfusmRbnlaFg"/>
+              <subvertex xmi:type="uml:State" xmi:id="_b7JmwP4jEeOfusmRbnlaFg" name="damage not checked"/>
+              <subvertex xmi:type="uml:State" xmi:id="_ft-YIP4jEeOfusmRbnlaFg" name="damage checked"/>
+            </region>
+          </subvertex>
+          <subvertex xmi:type="uml:State" xmi:id="_pdlRAP4jEeOfusmRbnlaFg" name="decided"/>
+          <subvertex xmi:type="uml:State" xmi:id="_q2j2IP4jEeOfusmRbnlaFg" name="rejected"/>
+          <subvertex xmi:type="uml:State" xmi:id="_sqbAcP4jEeOfusmRbnlaFg" name="assessed"/>
+          <subvertex xmi:type="uml:State" xmi:id="_zzHhcP4jEeOfusmRbnlaFg" name="Settled"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_8PG2UP4jEeOfusmRbnlaFg" name="Fork1" kind="fork"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_-E-LwP4jEeOfusmRbnlaFg" name="Join0" kind="join"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_FxgZoP4kEeOfusmRbnlaFg" name="Choice0" kind="choice"/>
+        </region>
+      </subvertex>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_6XxhQP4jEeOfusmRbnlaFg" name="Fork0" kind="fork"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_BWHMYP4kEeOfusmRbnlaFg" name="Join1" kind="join"/>
+      <subvertex xmi:type="uml:State" xmi:id="_CeS8cP4kEeOfusmRbnlaFg" name="archived"/>
+    </region>
+  </packagedElement>
+</uml:Model>

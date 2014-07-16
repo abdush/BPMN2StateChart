@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML">
+  <uml:Transition xmi:id="_7S55IABaEeS9Sq_H2DImUQ" name="decidedRejected"/>
+  <uml:Transition xmi:id="_7S6gMABaEeS9Sq_H2DImUQ" name="decidedassessed"/>
+  <uml:Transition xmi:id="_7S6gMQBaEeS9Sq_H2DImUQ" name="settledExclusive Gateway 2"/>
+  <uml:Transition xmi:id="_7S6gMgBaEeS9Sq_H2DImUQ" name="archivedEndEvent_1"/>
+  <uml:Transition xmi:id="_7S7HQABaEeS9Sq_H2DImUQ" name="RejectedExclusive Gateway 2"/>
+  <uml:Transition xmi:id="_7S7HQQBaEeS9Sq_H2DImUQ" name="policy not checkedpolicy checked"/>
+  <uml:Transition xmi:id="_7S7HQgBaEeS9Sq_H2DImUQ" name="damage not checkeddamage checked"/>
+  <uml:Transition xmi:id="_7S7uUABaEeS9Sq_H2DImUQ" name="assessedsettled"/>
+  <uml:Transition xmi:id="_7S7uUQBaEeS9Sq_H2DImUQ" name="receivedconfirmed"/>
+  <ecore:EStringToStringMapEntry xmi:id="_7TXzMABaEeS9Sq_H2DImUQ" key="xsi" value="http://www.w3.org/2001/XMLSchema-instance"/>
+  <ecore:EStringToStringMapEntry xmi:id="_7TXzMQBaEeS9Sq_H2DImUQ" key="bpmn2" value="http://www.omg.org/spec/BPMN/20100524/MODEL"/>
+  <ecore:EStringToStringMapEntry xmi:id="_7TXzMgBaEeS9Sq_H2DImUQ" key="bpmndi" value="http://www.omg.org/spec/BPMN/20100524/DI"/>
+  <ecore:EStringToStringMapEntry xmi:id="_7TXzMwBaEeS9Sq_H2DImUQ" key="dc" value="http://www.omg.org/spec/DD/20100524/DC"/>
+  <ecore:EStringToStringMapEntry xmi:id="_7TXzNABaEeS9Sq_H2DImUQ" key="di" value="http://www.omg.org/spec/DD/20100524/DI"/>
+  <uml:Model xmi:id="_7kfYYABaEeS9Sq_H2DImUQ">
+    <packagedElement xmi:type="uml:StateMachine" xmi:id="claim">
+      <region xmi:id="_7S7uUgBaEeS9Sq_H2DImUQ" name="StartEvent_1"/>
+      <region xmi:id="_7S9jgABaEeS9Sq_H2DImUQ" name="Exclusive Gateway 2"/>
+      <region xmi:id="_7S__wABaEeS9Sq_H2DImUQ" name="EndEvent_1"/>
+      <region xmi:id="_7TB08ABaEeS9Sq_H2DImUQ" name="received"/>
+      <region xmi:id="_7TDqIABaEeS9Sq_H2DImUQ" name="policy not checked"/>
+      <region xmi:id="_7TFfUABaEeS9Sq_H2DImUQ" name="damage not checked"/>
+      <region xmi:id="_7TH7kABaEeS9Sq_H2DImUQ" name="policy checked"/>
+      <region xmi:id="_7TJwwABaEeS9Sq_H2DImUQ" name="damage checked"/>
+      <region xmi:id="_7TLl8ABaEeS9Sq_H2DImUQ" name="confirmed"/>
+      <region xmi:id="_7TNbIABaEeS9Sq_H2DImUQ" name="decided"/>
+      <region xmi:id="_7TPQUABaEeS9Sq_H2DImUQ" name="Rejected"/>
+      <region xmi:id="_7TRskABaEeS9Sq_H2DImUQ" name="assessed"/>
+      <region xmi:id="_7TThwABaEeS9Sq_H2DImUQ" name="settled"/>
+      <region xmi:id="_7TVW8ABaEeS9Sq_H2DImUQ" name="archived"/>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

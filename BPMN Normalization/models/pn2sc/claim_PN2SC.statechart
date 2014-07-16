@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ASCII"?>
+<schart:Statechart xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:schart="http://uam.es/StateCharts" xmi:id="_alJlwPiUEeOt65RHX0eZVA">
+  <topState>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.7/@contains.7" rnext="//@topState/@contains.7/@contains.6"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.7/@contains.8" rnext="//@topState/@contains.7/@contains.6"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.7/@contains.9" rnext="//@topState/@contains.7/@contains.8"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.7/@contains.10" rnext="//@topState/@contains.7/@contains.7"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.7/@contains.10" rnext="//@topState/@contains.7/@contains.9"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.7/@contains.11" rnext="//@topState/@contains.7/@contains.10"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.7/@contains.12" rnext="//@topState/@contains.7/@contains.11"/>
+    <contains xsi:type="schart:OR" name="StartEventReceivedpolicy checkeddamage checkeddescisionrejectedassessedsettledmergearchivedEndEvent">
+      <contains xsi:type="schart:Basic" name="StartEvent" next="//@topState/@contains.7/@contains.1"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.7/@contains.2" rnext="//@topState/@contains.7/@contains.0"/>
+      <contains xsi:type="schart:Basic" name="Received" next="//@topState/@contains.7/@contains.3" rnext="//@topState/@contains.7/@contains.1"/>
+      <contains xsi:type="schart:HyperEdge" name="fork" next="//@topState/@contains.7/@contains.4/@contains.0/@contains.0 //@topState/@contains.7/@contains.4/@contains.1/@contains.0" rnext="//@topState/@contains.7/@contains.2"/>
+      <contains xsi:type="schart:AND" name="policy checkeddamage checked">
+        <contains xsi:type="schart:OR" name="policy checked">
+          <contains xsi:type="schart:Basic" name="policy checked" next="//@topState/@contains.7/@contains.5" rnext="//@topState/@contains.7/@contains.3"/>
+        </contains>
+        <contains xsi:type="schart:OR" name="damage checked">
+          <contains xsi:type="schart:Basic" name="damage checked" next="//@topState/@contains.7/@contains.5" rnext="//@topState/@contains.7/@contains.3"/>
+        </contains>
+      </contains>
+      <contains xsi:type="schart:HyperEdge" name="join" next="//@topState/@contains.7/@contains.6" rnext="//@topState/@contains.7/@contains.4/@contains.0/@contains.0 //@topState/@contains.7/@contains.4/@contains.1/@contains.0"/>
+      <contains xsi:type="schart:Basic" name="descision" next="//@topState/@contains.0 //@topState/@contains.1" rnext="//@topState/@contains.7/@contains.5"/>
+      <contains xsi:type="schart:Basic" name="rejected" next="//@topState/@contains.3" rnext="//@topState/@contains.0"/>
+      <contains xsi:type="schart:Basic" name="assessed" next="//@topState/@contains.2" rnext="//@topState/@contains.1"/>
+      <contains xsi:type="schart:Basic" name="settled" next="//@topState/@contains.4" rnext="//@topState/@contains.2"/>
+      <contains xsi:type="schart:Basic" name="merge" next="//@topState/@contains.5" rnext="//@topState/@contains.3 //@topState/@contains.4"/>
+      <contains xsi:type="schart:Basic" name="archived" next="//@topState/@contains.6" rnext="//@topState/@contains.5"/>
+      <contains xsi:type="schart:Basic" name="EndEvent" rnext="//@topState/@contains.6"/>
+    </contains>
+  </topState>
+</schart:Statechart>

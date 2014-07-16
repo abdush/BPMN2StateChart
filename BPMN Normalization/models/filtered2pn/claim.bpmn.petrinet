@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:pnet="http://uam.es/PetriNets">
+  <pnet:Net xmi:id="claim">
+    <places name="StartEvent_1" postt="/0/@transitions.2"/>
+    <places name="Exclusive Gateway 2" postt="/0/@transitions.0" pret="/0/@transitions.5 /0/@transitions.7"/>
+    <places name="EndEvent_1" pret="/0/@transitions.6"/>
+    <places name="received" postt="/0/@transitions.11" pret="/0/@transitions.2"/>
+    <places name="policy not checked" postt="/0/@transitions.8" pret="/0/@transitions.2"/>
+    <places name="damage not checked" postt="/0/@transitions.9" pret="/0/@transitions.2"/>
+    <places name="policy checked" postt="/0/@transitions.1" pret="/0/@transitions.8"/>
+    <places name="damage checked" postt="/0/@transitions.1" pret="/0/@transitions.9"/>
+    <places name="confirmed" postt="/0/@transitions.0" pret="/0/@transitions.11"/>
+    <places name="decided" postt="/0/@transitions.3 /0/@transitions.4" pret="/0/@transitions.1"/>
+    <places name="Rejected" postt="/0/@transitions.7" pret="/0/@transitions.3"/>
+    <places name="assessed" postt="/0/@transitions.10" pret="/0/@transitions.4"/>
+    <places name="settled" postt="/0/@transitions.5" pret="/0/@transitions.10"/>
+    <places name="archived" postt="/0/@transitions.6" pret="/0/@transitions.0"/>
+    <transitions name="Parallel Gateway 5" prep="/0/@places.1 /0/@places.8" postp="/0/@places.13"/>
+    <transitions name="join#FlowElement#77" prep="/0/@places.7 /0/@places.6" postp="/0/@places.9"/>
+    <transitions name="fork#FlowElement#87" prep="/0/@places.0" postp="/0/@places.3 /0/@places.4 /0/@places.5"/>
+    <transitions name="decidedRejected" prep="/0/@places.9" postp="/0/@places.10"/>
+    <transitions name="decidedassessed" prep="/0/@places.9" postp="/0/@places.11"/>
+    <transitions name="settledExclusive Gateway 2" prep="/0/@places.12" postp="/0/@places.1"/>
+    <transitions name="archivedEndEvent_1" prep="/0/@places.13" postp="/0/@places.2"/>
+    <transitions name="RejectedExclusive Gateway 2" prep="/0/@places.10" postp="/0/@places.1"/>
+    <transitions name="policy not checkedpolicy checked" prep="/0/@places.4" postp="/0/@places.6"/>
+    <transitions name="damage not checkeddamage checked" prep="/0/@places.5" postp="/0/@places.7"/>
+    <transitions name="assessedsettled" prep="/0/@places.11" postp="/0/@places.12"/>
+    <transitions name="receivedconfirmed" prep="/0/@places.3" postp="/0/@places.8"/>
+  </pnet:Net>
+  <ecore:EStringToStringMapEntry key="xsi" value="http://www.w3.org/2001/XMLSchema-instance"/>
+  <ecore:EStringToStringMapEntry key="" value="http://org.eclipse.bpmn2/default/claim_process"/>
+  <ecore:EStringToStringMapEntry key="bpmn2" value="http://www.omg.org/spec/BPMN/20100524/MODEL"/>
+  <ecore:EStringToStringMapEntry key="bpmndi" value="http://www.omg.org/spec/BPMN/20100524/DI"/>
+  <ecore:EStringToStringMapEntry key="dc" value="http://www.omg.org/spec/DD/20100524/DC"/>
+  <ecore:EStringToStringMapEntry key="di" value="http://www.omg.org/spec/DD/20100524/DI"/>
+</xmi:XMI>
