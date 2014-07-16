@@ -357,14 +357,15 @@ operation FlowNode getOutgoingNodes() : Sequence(FlowNode) {
 	Simple Path of length 2between first and second gateway
 */
 operation SimplePathBetweenNodes?(first: ParallelGateway, second: ParallelGateway) : Boolean {
-	var queue = first.outgoing.collect(e | e.targetRef);
+	var queue = first.outgoing.collect(e | e.targetRef).flatten;
 	queue.remove(second);
 	while (queue.size() > 0) {
 		var node = queue.first();
-		var outgoingNodes = node.outgoing.collect(e | e.targetRef);
+		var outgoingNodes = node.outgoing.collect(e | e.targetRef).flatten.select(n | n.~visited <> true);
 		if (outgoingNodes.includes(second))
 			return true;
 		else {
+			node.~visited = true;
 			queue.removeAt(0);
 			queue.addAll(outgoingNodes);
 		}
