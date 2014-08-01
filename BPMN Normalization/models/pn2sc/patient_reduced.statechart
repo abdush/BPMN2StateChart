@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ASCII"?>
+<schart:Statechart xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:schart="http://uam.es/StateCharts" xmi:id="ID_32136603_1436_1204_0426_056655200001">
+  <topState>
+    <contains xsi:type="schart:OR" name="BO176_BO94newGateway4sampledGateway5diagnosedcontactedtreatedGateway16BO176_BO161">
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.1" name="BP176_BP94"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.2" rnext="//@topState/@contains.0/@contains.0" name="BP176_BP94new"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.3" rnext="//@topState/@contains.0/@contains.1" name="new"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.4" rnext="//@topState/@contains.0/@contains.2" name="newGateway4"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.5 //@topState/@contains.0/@contains.9" rnext="//@topState/@contains.0/@contains.3 //@topState/@contains.0/@contains.20" name="Gateway4"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.6" rnext="//@topState/@contains.0/@contains.4" name="Gateway4sampled"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.7" rnext="//@topState/@contains.0/@contains.5" name="sampled"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.8" rnext="//@topState/@contains.0/@contains.6" name="sampledGateway5"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.10" rnext="//@topState/@contains.0/@contains.7 //@topState/@contains.0/@contains.9" name="Gateway5"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.8" rnext="//@topState/@contains.0/@contains.4" name="Gateway4Gateway5"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.11" rnext="//@topState/@contains.0/@contains.8" name="Gateway5diagnosed"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.12" rnext="//@topState/@contains.0/@contains.10" name="diagnosed"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.13" rnext="//@topState/@contains.0/@contains.11" name="diagnosedcontacted"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.14" rnext="//@topState/@contains.0/@contains.12" name="contacted"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.15" rnext="//@topState/@contains.0/@contains.13" name="contactedtreated"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.16" rnext="//@topState/@contains.0/@contains.14" name="treated"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.17" rnext="//@topState/@contains.0/@contains.15" name="treatedGateway16"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.18 //@topState/@contains.0/@contains.20" rnext="//@topState/@contains.0/@contains.16" name="Gateway16"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.19" rnext="//@topState/@contains.0/@contains.17" name="Gateway16BP176_BP161"/>
+      <contains xsi:type="schart:Basic" rnext="//@topState/@contains.0/@contains.18" name="BP176_BP161"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.4" rnext="//@topState/@contains.0/@contains.17" name="Gateway16Gateway4"/>
+    </contains>
+  </topState>
+</schart:Statechart>

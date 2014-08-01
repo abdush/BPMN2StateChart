@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.epsilon.migration.eclipse.dt.launching.MigrationLaunchConfigurationDelegate">
+<intAttribute key="migratedModel" value="1"/>
+<listAttribute key="models">
+<listEntry value="#&#13;&#10;#Sat Jun 28 12:53:30 BST 2014&#13;&#10;isMetamodelFileBased=true&#13;&#10;name=SC&#13;&#10;readOnLoad=true&#13;&#10;storeOnDisposal=false&#13;&#10;aliases=&#13;&#10;cached=true&#13;&#10;fileBasedMetamodelUri=platform\:/resource/BPMN2StateChart/metamodels/StateCharts.ecore&#13;&#10;metamodelUri=&#13;&#10;modelUri=platform\:/resource/BPMN2StateChart/models/pn2sc/claim_SCH.statechart&#13;&#10;type=EMF&#13;&#10;modelFile=/BPMN2StateChart/models/pn2sc/claim_SCH.statechart&#13;&#10;expand=true&#13;&#10;metamodelFile=/BPMN2StateChart/metamodels/StateCharts.ecore&#13;&#10;"/>
+<listEntry value="#&#13;&#10;#Mon Jun 30 12:06:37 BST 2014&#13;&#10;isMetamodelFileBased=false&#13;&#10;name=UML&#13;&#10;readOnLoad=false&#13;&#10;storeOnDisposal=true&#13;&#10;aliases=&#13;&#10;cached=true&#13;&#10;fileBasedMetamodelUri=&#13;&#10;metamodelUri=http\://www.eclipse.org/uml2/4.0.0/UML&#13;&#10;modelUri=platform\:/resource/BPMN2StateChart/models/pn2sc/claim_output.uml&#13;&#10;type=EMF&#13;&#10;modelFile=/BPMN2StateChart/models/pn2sc/claim_output.uml&#13;&#10;expand=true&#13;&#10;metamodelFile=&#13;&#10;"/>
+<listEntry value="#&#13;&#10;#Sat Jun 28 12:54:22 BST 2014&#13;&#10;isMetamodelFileBased=false&#13;&#10;name=PM&#13;&#10;readOnLoad=true&#13;&#10;storeOnDisposal=false&#13;&#10;aliases=&#13;&#10;cached=true&#13;&#10;fileBasedMetamodelUri=&#13;&#10;metamodelUri=http\://www.eclipse.org/emf/2002/Ecore,http\://BPMN/Simplified&#13;&#10;modelUri=platform\:/resource/BPMN2StateChart/models/filtering/claim.bpmn_filtered.pm&#13;&#10;type=EMF&#13;&#10;modelFile=/BPMN2StateChart/models/filtering/claim.bpmn_filtered.pm&#13;&#10;expand=true&#13;&#10;metamodelFile=&#13;&#10;"/>
+</listAttribute>
+<intAttribute key="originalModel" value="0"/>
+<stringAttribute key="source" value="/BPMN2StateChart/src/postprocessing/sc2umlStatechart.mig"/>
+</launchConfiguration>

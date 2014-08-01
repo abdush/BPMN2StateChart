@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ASCII"?>
+<pnet:Net xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pnet="http://uam.es/PetriNets" xmi:id="permitrequest">
+  <places name="StartEvent_1" postt="//@transitions.4"/>
+  <places name="request received" postt="//@transitions.1" pret="//@transitions.4"/>
+  <places name="permit sent" postt="//@transitions.5" pret="//@transitions.8"/>
+  <places name="End Event 2" pret="//@transitions.6"/>
+  <places name="permit to be registered" postt="//@transitions.9" pret="//@transitions.3"/>
+  <places name="permit registered" postt="//@transitions.6" pret="//@transitions.9"/>
+  <places name="EndEvent_1" pret="//@transitions.5"/>
+  <places name="permit to be sent" postt="//@transitions.8" pret="//@transitions.3"/>
+  <places name="geometry unknown" postt="//@transitions.2" pret="//@transitions.1"/>
+  <places name="address unchecked" postt="//@transitions.7" pret="//@transitions.1"/>
+  <places name="decided geometry" postt="//@transitions.3" pret="//@transitions.2"/>
+  <places name="address checked" postt="//@transitions.0" pret="//@transitions.7"/>
+  <places name="geometry finalized" postt="//@transitions.0" pret="//@transitions.2"/>
+  <places name="permit granted" postt="//@transitions.0" pret="//@transitions.3"/>
+  <places name="address registered" postt="//@transitions.10" pret="//@transitions.0"/>
+  <places name="End Event 6" pret="//@transitions.10"/>
+  <transitions name="join#FlowElement#98" prep="//@places.11 //@places.12 //@places.13" postp="//@places.14"/>
+  <transitions name="fork#FlowElement#112" prep="//@places.1" postp="//@places.8 //@places.9"/>
+  <transitions name="fork#FlowElement#118" prep="//@places.8" postp="//@places.10 //@places.12"/>
+  <transitions name="fork#FlowElement#120" prep="//@places.10" postp="//@places.4 //@places.7 //@places.13"/>
+  <transitions name="StartEvent_1request received" prep="//@places.0" postp="//@places.1"/>
+  <transitions name="permit sentEndEvent_1" prep="//@places.2" postp="//@places.6"/>
+  <transitions name="permit registeredEnd Event 2" prep="//@places.5" postp="//@places.3"/>
+  <transitions name="address uncheckedaddress checked" prep="//@places.9" postp="//@places.11"/>
+  <transitions name="permit to be sentpermit sent" prep="//@places.7" postp="//@places.2"/>
+  <transitions name="permit to be registeredpermit registered" prep="//@places.4" postp="//@places.5"/>
+  <transitions name="address registeredEnd Event 6" prep="//@places.14" postp="//@places.15"/>
+</pnet:Net>

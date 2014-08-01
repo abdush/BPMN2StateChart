@@ -1,31 +1,24 @@
 <?xml version="1.0" encoding="ASCII"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:pnet="http://uam.es/PetriNets">
-  <pnet:Net xmi:id="order_production">
-    <places name="StartEvent_1" postt="/0/@transitions.2"/>
-    <places name="EndEvent_1" pret="/0/@transitions.4"/>
-    <places name="unplanned" postt="/0/@transitions.3" pret="/0/@transitions.2"/>
-    <places name="unchecked" postt="/0/@transitions.5" pret="/0/@transitions.2"/>
-    <places name="checked" postt="/0/@transitions.0" pret="/0/@transitions.5"/>
-    <places name="planned" postt="/0/@transitions.8" pret="/0/@transitions.3"/>
-    <places name="costs unknown" postt="/0/@transitions.6" pret="/0/@transitions.3"/>
-    <places name="billed" postt="/0/@transitions.7" pret="/0/@transitions.0"/>
-    <places name="paid" postt="/0/@transitions.1" pret="/0/@transitions.7"/>
-    <places name="produced" postt="/0/@transitions.1" pret="/0/@transitions.8"/>
-    <places name="shipped" postt="/0/@transitions.4" pret="/0/@transitions.1"/>
-    <places name="costs calculated" postt="/0/@transitions.0" pret="/0/@transitions.6"/>
-    <transitions name="join#FlowElement#64" prep="/0/@places.4 /0/@places.11" postp="/0/@places.7"/>
-    <transitions name="join#FlowElement#68" prep="/0/@places.9 /0/@places.8" postp="/0/@places.10"/>
-    <transitions name="fork#FlowElement#74" prep="/0/@places.0" postp="/0/@places.3 /0/@places.2"/>
-    <transitions name="fork#FlowElement#84" prep="/0/@places.2" postp="/0/@places.5 /0/@places.6"/>
-    <transitions name="shippedEndEvent_1" prep="/0/@places.10" postp="/0/@places.1"/>
-    <transitions name="uncheckedchecked" prep="/0/@places.3" postp="/0/@places.4"/>
-    <transitions name="costs unknowncosts calculated" prep="/0/@places.6" postp="/0/@places.11"/>
-    <transitions name="billedpaid" prep="/0/@places.7" postp="/0/@places.8"/>
-    <transitions name="plannedproduced" prep="/0/@places.5" postp="/0/@places.9"/>
-  </pnet:Net>
-  <ecore:EStringToStringMapEntry key="xsi" value="http://www.w3.org/2001/XMLSchema-instance"/>
-  <ecore:EStringToStringMapEntry key="bpmn2" value="http://www.omg.org/spec/BPMN/20100524/MODEL"/>
-  <ecore:EStringToStringMapEntry key="bpmndi" value="http://www.omg.org/spec/BPMN/20100524/DI"/>
-  <ecore:EStringToStringMapEntry key="dc" value="http://www.omg.org/spec/DD/20100524/DC"/>
-  <ecore:EStringToStringMapEntry key="di" value="http://www.omg.org/spec/DD/20100524/DI"/>
-</xmi:XMI>
+<pnet:Net xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pnet="http://uam.es/PetriNets" xmi:id="order_production">
+  <places name="StartEvent_1" postt="//@transitions.2"/>
+  <places name="EndEvent_1" pret="//@transitions.4"/>
+  <places name="unplanned" postt="//@transitions.3" pret="//@transitions.2"/>
+  <places name="unchecked" postt="//@transitions.5" pret="//@transitions.2"/>
+  <places name="checked" postt="//@transitions.0" pret="//@transitions.5"/>
+  <places name="planned" postt="//@transitions.8" pret="//@transitions.3"/>
+  <places name="costs unknown" postt="//@transitions.6" pret="//@transitions.3"/>
+  <places name="billed" postt="//@transitions.7" pret="//@transitions.0"/>
+  <places name="paid" postt="//@transitions.1" pret="//@transitions.7"/>
+  <places name="produced" postt="//@transitions.1" pret="//@transitions.8"/>
+  <places name="shipped" postt="//@transitions.4" pret="//@transitions.1"/>
+  <places name="costs calculated" postt="//@transitions.0" pret="//@transitions.6"/>
+  <transitions name="join#FlowElement#64" prep="//@places.4 //@places.11" postp="//@places.7"/>
+  <transitions name="join#FlowElement#68" prep="//@places.9 //@places.8" postp="//@places.10"/>
+  <transitions name="fork#FlowElement#74" prep="//@places.0" postp="//@places.3 //@places.2"/>
+  <transitions name="fork#FlowElement#84" prep="//@places.2" postp="//@places.5 //@places.6"/>
+  <transitions name="shippedEndEvent_1" prep="//@places.10" postp="//@places.1"/>
+  <transitions name="uncheckedchecked" prep="//@places.3" postp="//@places.4"/>
+  <transitions name="costs unknowncosts calculated" prep="//@places.6" postp="//@places.11"/>
+  <transitions name="billedpaid" prep="//@places.7" postp="//@places.8"/>
+  <transitions name="plannedproduced" prep="//@places.5" postp="//@places.9"/>
+</pnet:Net>

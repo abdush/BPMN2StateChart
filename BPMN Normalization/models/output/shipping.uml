@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_XrEVkBmWEeS4n7YXZ-K_0A">
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="shipping">
+    <region xmi:id="_Xq9A0BmWEeS4n7YXZ-K_0A" name="StartEvent_1acceptedprocessingdoneEnd Event 2">
+      <transition xmi:id="_Xq9A0hmWEeS4n7YXZ-K_0A" name="StartEvent_1accepted" source="_Xq9A0RmWEeS4n7YXZ-K_0A" target="_Xq-O8BmWEeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_Xq-O8RmWEeS4n7YXZ-K_0A" name="acceptedprocessing" source="_Xq-O8BmWEeS4n7YXZ-K_0A" target="_Xq_dEBmWEeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_Xq_dERmWEeS4n7YXZ-K_0A" name="processingdone" source="_Xq_dEBmWEeS4n7YXZ-K_0A" target="_Xq_dEhmWEeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_Xq_dExmWEeS4n7YXZ-K_0A" name="doneEnd Event 2" source="_Xq_dEhmWEeS4n7YXZ-K_0A" target="_XrArMBmWEeS4n7YXZ-K_0A"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_Xq9A0RmWEeS4n7YXZ-K_0A" name="StartEvent_1"/>
+      <subvertex xmi:type="uml:State" xmi:id="_Xq-O8BmWEeS4n7YXZ-K_0A" name="accepted"/>
+      <subvertex xmi:type="uml:State" xmi:id="_Xq_dEBmWEeS4n7YXZ-K_0A" name="processing"/>
+      <subvertex xmi:type="uml:State" xmi:id="_Xq_dEhmWEeS4n7YXZ-K_0A" name="done"/>
+      <subvertex xmi:type="uml:FinalState" xmi:id="_XrArMBmWEeS4n7YXZ-K_0A" name="End Event 2"/>
+    </region>
+  </packagedElement>
+</uml:Model>

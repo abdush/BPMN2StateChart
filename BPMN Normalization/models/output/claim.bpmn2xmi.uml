@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML">
+  <uml:Pseudostate xmi:id="_ybVJkBPkEeScqpgNd__8vg" name="Parallel Gateway 3" kind="fork"/>
+  <uml:Pseudostate xmi:id="_ybWXsBPkEeScqpgNd__8vg" name="Parallel Gateway 4" kind="join"/>
+  <uml:Pseudostate xmi:id="_ybXl0BPkEeScqpgNd__8vg" name="Parallel Gateway 5" kind="join"/>
+  <uml:Pseudostate xmi:id="_ybYz8BPkEeScqpgNd__8vg" name="join#FlowElement#79" kind="join"/>
+  <uml:Pseudostate xmi:id="_ybaCEBPkEeScqpgNd__8vg" name="join#FlowElement#85" kind="join"/>
+  <uml:Pseudostate xmi:id="_ybaCERPkEeScqpgNd__8vg" name="fork#FlowElement#87" kind="fork"/>
+  <uml:Pseudostate xmi:id="_ybbQMBPkEeScqpgNd__8vg" name="fork#FlowElement#93" kind="fork"/>
+  <uml:Model xmi:id="_yciDcBPkEeScqpgNd__8vg">
+    <packagedElement xmi:type="uml:StateMachine" xmi:id="claim">
+      <region xmi:id="_ybbQMRPkEeScqpgNd__8vg" name="StartEvent_1">
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_ybceUBPkEeScqpgNd__8vg" name="StartEvent_1"/>
+      </region>
+      <region xmi:id="_ybceURPkEeScqpgNd__8vg" name="Exclusive Gateway 1">
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_ybdscBPkEeScqpgNd__8vg" name="Exclusive Gateway 1" kind="choice"/>
+      </region>
+      <region xmi:id="_ybdscRPkEeScqpgNd__8vg" name="decided">
+        <subvertex xmi:type="uml:State" xmi:id="_ybe6kBPkEeScqpgNd__8vg" name="decided"/>
+      </region>
+      <region xmi:id="_ybe6kRPkEeScqpgNd__8vg" name="RejectedExclusive Gateway 2">
+        <transition xmi:id="_ybgIsRPkEeScqpgNd__8vg" name="RejectedExclusive Gateway 2" source="_ybgIsBPkEeScqpgNd__8vg" target="_ybhW0BPkEeScqpgNd__8vg"/>
+        <subvertex xmi:type="uml:State" xmi:id="_ybgIsBPkEeScqpgNd__8vg" name="Rejected"/>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_ybhW0BPkEeScqpgNd__8vg" name="Exclusive Gateway 2" kind="choice"/>
+      </region>
+      <region xmi:id="_ybhW0RPkEeScqpgNd__8vg" name="archivedEndEvent_1">
+        <transition xmi:id="_ybik8RPkEeScqpgNd__8vg" name="archivedEndEvent_1" source="_ybik8BPkEeScqpgNd__8vg" target="_ybjzEBPkEeScqpgNd__8vg"/>
+        <subvertex xmi:type="uml:State" xmi:id="_ybik8BPkEeScqpgNd__8vg" name="archived"/>
+        <subvertex xmi:type="uml:FinalState" xmi:id="_ybjzEBPkEeScqpgNd__8vg" name="EndEvent_1"/>
+      </region>
+      <region xmi:id="_ybjzERPkEeScqpgNd__8vg" name="Oarallel Gateway 3Oarallel Gateway 4">
+        <subvertex xmi:type="uml:State" xmi:id="_yblBMBPkEeScqpgNd__8vg" name="Parallel Gateway 3Parallel Gateway 4"/>
+      </region>
+      <region xmi:id="_yblBMRPkEeScqpgNd__8vg" name="Oarallel Gateway 3join#FlowElement#79">
+        <subvertex xmi:type="uml:State" xmi:id="_ybmPUBPkEeScqpgNd__8vg" name="Parallel Gateway 3join#FlowElement#79"/>
+      </region>
+      <region xmi:id="_ybmPURPkEeScqpgNd__8vg" name="join#FlowElement#79fork#FlowElement#95fork#FlowElement#95join#FlowElement#81assessedsettled">
+        <transition xmi:id="_ycuQsBPkEeScqpgNd__8vg" source="_yborkBPkEeScqpgNd__8vg" target="_ybp5sBPkEeScqpgNd__8vg"/>
+        <transition xmi:id="_ycuQsRPkEeScqpgNd__8vg" source="_yborkBPkEeScqpgNd__8vg" target="_ybrH0BPkEeScqpgNd__8vg"/>
+        <transition xmi:id="_ycuQshPkEeScqpgNd__8vg" source="_ybndcBPkEeScqpgNd__8vg" target="_yborkBPkEeScqpgNd__8vg"/>
+        <transition xmi:id="_ycws8BPkEeScqpgNd__8vg" source="_ybsV8BPkEeScqpgNd__8vg" target="_ybtkEBPkEeScqpgNd__8vg"/>
+        <transition xmi:id="_ycws8RPkEeScqpgNd__8vg" source="_ybp5sBPkEeScqpgNd__8vg" target="_ybsV8BPkEeScqpgNd__8vg"/>
+        <transition xmi:id="_ycws8hPkEeScqpgNd__8vg" source="_ybrH0BPkEeScqpgNd__8vg" target="_ybsV8BPkEeScqpgNd__8vg"/>
+        <subvertex xmi:type="uml:State" xmi:id="_ybndcBPkEeScqpgNd__8vg" name="join#FlowElement#79fork#FlowElement#95"/>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_yborkBPkEeScqpgNd__8vg" name="fork#FlowElement#95" kind="fork"/>
+        <subvertex xmi:type="uml:State" xmi:id="_yborkRPkEeScqpgNd__8vg" name="fork#FlowElement#95join#FlowElement#81assessed">
+          <region xmi:id="_yborkhPkEeScqpgNd__8vg" name="fork#FlowElement#95join#FlowElement#81">
+            <subvertex xmi:type="uml:State" xmi:id="_ybp5sBPkEeScqpgNd__8vg" name="fork#FlowElement#95join#FlowElement#81"/>
+          </region>
+          <region xmi:id="_ybp5sRPkEeScqpgNd__8vg" name="assessed">
+            <subvertex xmi:type="uml:State" xmi:id="_ybrH0BPkEeScqpgNd__8vg" name="assessed"/>
+          </region>
+        </subvertex>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_ybsV8BPkEeScqpgNd__8vg" name="join#FlowElement#81" kind="join"/>
+        <subvertex xmi:type="uml:State" xmi:id="_ybtkEBPkEeScqpgNd__8vg" name="settled"/>
+      </region>
+      <region xmi:id="_ybtkERPkEeScqpgNd__8vg" name="fork#FlowElement#87join#FlowElement#83receivedconfirmed">
+        <transition xmi:id="_yczJMBPkEeScqpgNd__8vg" source="_ybxOcBPkEeScqpgNd__8vg" target="_ybyckBPkEeScqpgNd__8vg"/>
+        <transition xmi:id="_yczJMRPkEeScqpgNd__8vg" source="_ybuyMBPkEeScqpgNd__8vg" target="_ybxOcBPkEeScqpgNd__8vg"/>
+        <transition xmi:id="_yczJMhPkEeScqpgNd__8vg" source="_ybwAUBPkEeScqpgNd__8vg" target="_ybxOcBPkEeScqpgNd__8vg"/>
+        <subvertex xmi:type="uml:State" xmi:id="_ybtkEhPkEeScqpgNd__8vg" name="fork#FlowElement#87join#FlowElement#83received">
+          <region xmi:id="_ybtkExPkEeScqpgNd__8vg" name="fork#FlowElement#87join#FlowElement#83">
+            <subvertex xmi:type="uml:State" xmi:id="_ybuyMBPkEeScqpgNd__8vg" name="fork#FlowElement#87join#FlowElement#83"/>
+          </region>
+          <region xmi:id="_ybuyMRPkEeScqpgNd__8vg" name="received">
+            <subvertex xmi:type="uml:State" xmi:id="_ybwAUBPkEeScqpgNd__8vg" name="received"/>
+          </region>
+        </subvertex>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_ybxOcBPkEeScqpgNd__8vg" name="join#FlowElement#83" kind="join"/>
+        <subvertex xmi:type="uml:State" xmi:id="_ybyckBPkEeScqpgNd__8vg" name="confirmed"/>
+      </region>
+      <region xmi:id="_ybyckRPkEeScqpgNd__8vg" name="fork#FlowElement#87join#FlowElement#73policy not checkedjoin#FlowElement#73fork#FlowElement#89fork#FlowElement#89join#FlowElement#77policy checkedfork#FlowElement#87join#FlowElement#75damage not checkedjoin#FlowElement#75fork#FlowElement#91fork#FlowElement#91join#FlowElement#77damage checkedjoin#FlowElement#77fork#FlowElement#93">
+        <transition xmi:id="_ydBysBPkEeScqpgNd__8vg" source="_ycEwcBPkEeScqpgNd__8vg" target="_ycF-kBPkEeScqpgNd__8vg"/>
+        <transition xmi:id="_ydBysRPkEeScqpgNd__8vg" source="_yb5xUBPkEeScqpgNd__8vg" target="_ycEwcBPkEeScqpgNd__8vg"/>
+        <transition xmi:id="_ydByshPkEeScqpgNd__8vg" source="_ycCUMBPkEeScqpgNd__8vg" target="_ycEwcBPkEeScqpgNd__8vg"/>
+        <transition xmi:id="_ydBysxPkEeScqpgNd__8vg" source="_ycDiUBPkEeScqpgNd__8vg" target="_ycEwcBPkEeScqpgNd__8vg"/>
+        <transition xmi:id="_ydDA0BPkEeScqpgNd__8vg" source="_yb6_cBPkEeScqpgNd__8vg" target="_ycEwcBPkEeScqpgNd__8vg"/>
+        <subvertex xmi:type="uml:State" xmi:id="_ybyckhPkEeScqpgNd__8vg" name="fork#FlowElement#87join#FlowElement#73policy not checkedjoin#FlowElement#73fork#FlowElement#89fork#FlowElement#89join#FlowElement#77policy checkedfork#FlowElement#87join#FlowElement#75damage not checkedjoin#FlowElement#75fork#FlowElement#91fork#FlowElement#91join#FlowElement#77damage checked">
+          <region xmi:id="_ybyckxPkEeScqpgNd__8vg" name="fork#FlowElement#87join#FlowElement#73policy not checkedjoin#FlowElement#73fork#FlowElement#89fork#FlowElement#89join#FlowElement#77policy checked">
+            <transition xmi:id="_yc4BsBPkEeScqpgNd__8vg" source="_yb2G8BPkEeScqpgNd__8vg" target="_yb3VEBPkEeScqpgNd__8vg"/>
+            <transition xmi:id="_yc4BsRPkEeScqpgNd__8vg" source="_ybzqsBPkEeScqpgNd__8vg" target="_yb2G8BPkEeScqpgNd__8vg"/>
+            <transition xmi:id="_yc4BshPkEeScqpgNd__8vg" source="_yb040BPkEeScqpgNd__8vg" target="_yb2G8BPkEeScqpgNd__8vg"/>
+            <transition xmi:id="_yc5P0BPkEeScqpgNd__8vg" source="_yb4jMBPkEeScqpgNd__8vg" target="_yb5xUBPkEeScqpgNd__8vg"/>
+            <transition xmi:id="_yc5P0RPkEeScqpgNd__8vg" source="_yb4jMBPkEeScqpgNd__8vg" target="_yb6_cBPkEeScqpgNd__8vg"/>
+            <transition xmi:id="_yc5P0hPkEeScqpgNd__8vg" source="_yb3VEBPkEeScqpgNd__8vg" target="_yb4jMBPkEeScqpgNd__8vg"/>
+            <subvertex xmi:type="uml:State" xmi:id="_ybyclBPkEeScqpgNd__8vg" name="fork#FlowElement#87join#FlowElement#73policy not checked">
+              <region xmi:id="_ybyclRPkEeScqpgNd__8vg" name="fork#FlowElement#87join#FlowElement#73">
+                <subvertex xmi:type="uml:State" xmi:id="_ybzqsBPkEeScqpgNd__8vg" name="fork#FlowElement#87join#FlowElement#73"/>
+              </region>
+              <region xmi:id="_ybzqsRPkEeScqpgNd__8vg" name="policy not checked">
+                <subvertex xmi:type="uml:State" xmi:id="_yb040BPkEeScqpgNd__8vg" name="policy not checked"/>
+              </region>
+            </subvertex>
+            <subvertex xmi:type="uml:Pseudostate" xmi:id="_yb2G8BPkEeScqpgNd__8vg" name="join#FlowElement#73" kind="join"/>
+            <subvertex xmi:type="uml:State" xmi:id="_yb3VEBPkEeScqpgNd__8vg" name="join#FlowElement#73fork#FlowElement#89"/>
+            <subvertex xmi:type="uml:Pseudostate" xmi:id="_yb4jMBPkEeScqpgNd__8vg" name="fork#FlowElement#89" kind="fork"/>
+            <subvertex xmi:type="uml:State" xmi:id="_yb4jMRPkEeScqpgNd__8vg" name="fork#FlowElement#89join#FlowElement#77policy checked">
+              <region xmi:id="_yb4jMhPkEeScqpgNd__8vg" name="fork#FlowElement#89join#FlowElement#77">
+                <subvertex xmi:type="uml:State" xmi:id="_yb5xUBPkEeScqpgNd__8vg" name="fork#FlowElement#89join#FlowElement#77"/>
+              </region>
+              <region xmi:id="_yb5xURPkEeScqpgNd__8vg" name="policy checked">
+                <subvertex xmi:type="uml:State" xmi:id="_yb6_cBPkEeScqpgNd__8vg" name="policy checked"/>
+              </region>
+            </subvertex>
+          </region>
+          <region xmi:id="_yb6_cRPkEeScqpgNd__8vg" name="fork#FlowElement#87join#FlowElement#75damage not checkedjoin#FlowElement#75fork#FlowElement#91fork#FlowElement#91join#FlowElement#77damage checked">
+            <transition xmi:id="_yc-IUBPkEeScqpgNd__8vg" source="_yb-p0BPkEeScqpgNd__8vg" target="_yb_38BPkEeScqpgNd__8vg"/>
+            <transition xmi:id="_yc-IURPkEeScqpgNd__8vg" source="_yb8NkBPkEeScqpgNd__8vg" target="_yb-p0BPkEeScqpgNd__8vg"/>
+            <transition xmi:id="_yc-IUhPkEeScqpgNd__8vg" source="_yb9bsBPkEeScqpgNd__8vg" target="_yb-p0BPkEeScqpgNd__8vg"/>
+            <transition xmi:id="_yc_WcBPkEeScqpgNd__8vg" source="_ycBGEBPkEeScqpgNd__8vg" target="_ycCUMBPkEeScqpgNd__8vg"/>
+            <transition xmi:id="_yc_WcRPkEeScqpgNd__8vg" source="_ycBGEBPkEeScqpgNd__8vg" target="_ycDiUBPkEeScqpgNd__8vg"/>
+            <transition xmi:id="_yc_WchPkEeScqpgNd__8vg" source="_yb_38BPkEeScqpgNd__8vg" target="_ycBGEBPkEeScqpgNd__8vg"/>
+            <subvertex xmi:type="uml:State" xmi:id="_yb6_chPkEeScqpgNd__8vg" name="fork#FlowElement#87join#FlowElement#75damage not checked">
+              <region xmi:id="_yb6_cxPkEeScqpgNd__8vg" name="fork#FlowElement#87join#FlowElement#75">
+                <subvertex xmi:type="uml:State" xmi:id="_yb8NkBPkEeScqpgNd__8vg" name="fork#FlowElement#87join#FlowElement#75"/>
+              </region>
+              <region xmi:id="_yb8NkRPkEeScqpgNd__8vg" name="damage not checked">
+                <subvertex xmi:type="uml:State" xmi:id="_yb9bsBPkEeScqpgNd__8vg" name="damage not checked"/>
+              </region>
+            </subvertex>
+            <subvertex xmi:type="uml:Pseudostate" xmi:id="_yb-p0BPkEeScqpgNd__8vg" name="join#FlowElement#75" kind="join"/>
+            <subvertex xmi:type="uml:State" xmi:id="_yb_38BPkEeScqpgNd__8vg" name="join#FlowElement#75fork#FlowElement#91"/>
+            <subvertex xmi:type="uml:Pseudostate" xmi:id="_ycBGEBPkEeScqpgNd__8vg" name="fork#FlowElement#91" kind="fork"/>
+            <subvertex xmi:type="uml:State" xmi:id="_ycBGERPkEeScqpgNd__8vg" name="fork#FlowElement#91join#FlowElement#77damage checked">
+              <region xmi:id="_ycBGEhPkEeScqpgNd__8vg" name="fork#FlowElement#91join#FlowElement#77">
+                <subvertex xmi:type="uml:State" xmi:id="_ycCUMBPkEeScqpgNd__8vg" name="fork#FlowElement#91join#FlowElement#77"/>
+              </region>
+              <region xmi:id="_ycCUMRPkEeScqpgNd__8vg" name="damage checked">
+                <subvertex xmi:type="uml:State" xmi:id="_ycDiUBPkEeScqpgNd__8vg" name="damage checked"/>
+              </region>
+            </subvertex>
+          </region>
+        </subvertex>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_ycEwcBPkEeScqpgNd__8vg" name="join#FlowElement#77" kind="join"/>
+        <subvertex xmi:type="uml:State" xmi:id="_ycF-kBPkEeScqpgNd__8vg" name="join#FlowElement#77fork#FlowElement#93"/>
+      </region>
+    </packagedElement>
+  </uml:Model>
+  <uml:Transition xmi:id="_yciDcRPkEeScqpgNd__8vg" source="_ybVJkBPkEeScqpgNd__8vg" target="_yblBMBPkEeScqpgNd__8vg"/>
+  <uml:Transition xmi:id="_ycjRkBPkEeScqpgNd__8vg" source="_ybVJkBPkEeScqpgNd__8vg" target="_ybmPUBPkEeScqpgNd__8vg"/>
+  <uml:Transition xmi:id="_ycjRkRPkEeScqpgNd__8vg" source="_ybdscBPkEeScqpgNd__8vg" target="_ybVJkBPkEeScqpgNd__8vg"/>
+  <uml:Transition xmi:id="_ycjRkhPkEeScqpgNd__8vg" source="_ybWXsBPkEeScqpgNd__8vg" target="_ybhW0BPkEeScqpgNd__8vg"/>
+  <uml:Transition xmi:id="_ycjRkxPkEeScqpgNd__8vg" source="_yblBMBPkEeScqpgNd__8vg" target="_ybWXsBPkEeScqpgNd__8vg"/>
+  <uml:Transition xmi:id="_ycjRlBPkEeScqpgNd__8vg" source="_ybtkEBPkEeScqpgNd__8vg" target="_ybWXsBPkEeScqpgNd__8vg"/>
+  <uml:Transition xmi:id="_ycjRlRPkEeScqpgNd__8vg" source="_ybXl0BPkEeScqpgNd__8vg" target="_ybik8BPkEeScqpgNd__8vg"/>
+  <uml:Transition xmi:id="_ycjRlhPkEeScqpgNd__8vg" source="_ybhW0BPkEeScqpgNd__8vg" target="_ybXl0BPkEeScqpgNd__8vg"/>
+  <uml:Transition xmi:id="_ycjRlxPkEeScqpgNd__8vg" source="_ybyckBPkEeScqpgNd__8vg" target="_ybXl0BPkEeScqpgNd__8vg"/>
+  <uml:Transition xmi:id="_yckfsBPkEeScqpgNd__8vg" source="_ybYz8BPkEeScqpgNd__8vg" target="_ybndcBPkEeScqpgNd__8vg"/>
+  <uml:Transition xmi:id="_yckfsRPkEeScqpgNd__8vg" source="_ybmPUBPkEeScqpgNd__8vg" target="_ybYz8BPkEeScqpgNd__8vg"/>
+  <uml:Transition xmi:id="_yckfshPkEeScqpgNd__8vg" source="_ybe6kBPkEeScqpgNd__8vg" target="_ybYz8BPkEeScqpgNd__8vg"/>
+  <uml:Transition xmi:id="_yckfsxPkEeScqpgNd__8vg" source="_ybaCEBPkEeScqpgNd__8vg" target="_ybgIsBPkEeScqpgNd__8vg"/>
+  <uml:Transition xmi:id="_yckftBPkEeScqpgNd__8vg" source="_ybdscBPkEeScqpgNd__8vg" target="_ybaCEBPkEeScqpgNd__8vg"/>
+  <uml:Transition xmi:id="_yckftRPkEeScqpgNd__8vg" source="_ybe6kBPkEeScqpgNd__8vg" target="_ybaCEBPkEeScqpgNd__8vg"/>
+  <uml:Transition xmi:id="_yclt0BPkEeScqpgNd__8vg" source="_ybaCERPkEeScqpgNd__8vg" target="_ybuyMBPkEeScqpgNd__8vg"/>
+  <uml:Transition xmi:id="_yclt0RPkEeScqpgNd__8vg" source="_ybaCERPkEeScqpgNd__8vg" target="_ybzqsBPkEeScqpgNd__8vg"/>
+  <uml:Transition xmi:id="_yclt0hPkEeScqpgNd__8vg" source="_ybaCERPkEeScqpgNd__8vg" target="_yb8NkBPkEeScqpgNd__8vg"/>
+  <uml:Transition xmi:id="_yclt0xPkEeScqpgNd__8vg" source="_ybaCERPkEeScqpgNd__8vg" target="_ybwAUBPkEeScqpgNd__8vg"/>
+  <uml:Transition xmi:id="_yclt1BPkEeScqpgNd__8vg" source="_ybaCERPkEeScqpgNd__8vg" target="_yb040BPkEeScqpgNd__8vg"/>
+  <uml:Transition xmi:id="_yclt1RPkEeScqpgNd__8vg" source="_ybaCERPkEeScqpgNd__8vg" target="_yb9bsBPkEeScqpgNd__8vg"/>
+  <uml:Transition xmi:id="_yclt1hPkEeScqpgNd__8vg" source="_ybceUBPkEeScqpgNd__8vg" target="_ybaCERPkEeScqpgNd__8vg"/>
+  <uml:Transition xmi:id="_yclt1xPkEeScqpgNd__8vg" source="_ybbQMBPkEeScqpgNd__8vg" target="_ybdscBPkEeScqpgNd__8vg"/>
+  <uml:Transition xmi:id="_yclt2BPkEeScqpgNd__8vg" source="_ybbQMBPkEeScqpgNd__8vg" target="_ybe6kBPkEeScqpgNd__8vg"/>
+  <uml:Transition xmi:id="_yclt2RPkEeScqpgNd__8vg" source="_ycF-kBPkEeScqpgNd__8vg" target="_ybbQMBPkEeScqpgNd__8vg"/>
+</xmi:XMI>

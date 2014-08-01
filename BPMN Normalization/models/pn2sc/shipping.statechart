@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ASCII"?>
+<schart:Statechart xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:schart="http://uam.es/StateCharts" xmi:id="shipping">
+  <topState>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.6/@contains.0" rnext="//@topState/@contains.4/@contains.0" name="StartEvent_1accepted"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.7/@contains.0" rnext="//@topState/@contains.6/@contains.0" name="acceptedprocessing"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.8/@contains.0" rnext="//@topState/@contains.7/@contains.0" name="processingdone"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.5/@contains.0" rnext="//@topState/@contains.8/@contains.0" name="doneEnd Event 2"/>
+    <contains xsi:type="schart:OR" name="StartEvent_1">
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0" name="StartEvent_1"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="End Event 2">
+      <contains xsi:type="schart:Basic" rnext="//@topState/@contains.3" name="End Event 2"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="accepted">
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.1" rnext="//@topState/@contains.0" name="accepted"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="processing">
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.2" rnext="//@topState/@contains.1" name="processing"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="done">
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.3" rnext="//@topState/@contains.2" name="done"/>
+    </contains>
+  </topState>
+</schart:Statechart>

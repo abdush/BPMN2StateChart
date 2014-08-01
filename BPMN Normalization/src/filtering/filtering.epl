@@ -53,12 +53,15 @@ pattern MergeDivergingExclusiveGateway
 		for (_edge in secondGateway.outgoing.clone()) {
 			//_edge.id = loopCount.asString();
 			//need to use clone() for below, but not above!!??
-			_edge.sourceRef = firstGateway;
+			
+			--_edge.sourceRef = firstGateway;
+			_edge.sourceRef = secondGateway.incoming.first().sourceRef;  // changed like R7
+			
 			//_edge.guard += "& " + edge.guard; //preserve guard???
 		}
 		delete secondGateway;
 		delete edge;
-		firstGateway.println("R2 applied..");
+		"".println("R2 applied..");
 	}
 }
 
@@ -82,11 +85,12 @@ pattern MergeConvergingExclusiveGateway
 	do {
 		"".println("R3 do..");
 		for (_edge in firstGateway.incoming.clone()) {
-			_edge.targetRef = secondGateway; 
+			--_edge.targetRef = secondGateway;
+			_edge.targetRef = firstGateway.outgoing.first().targetRef;  //changed like R7 
 		}
 		delete firstGateway;
 		delete edge;
-		secondGateway.println("R3 applied..");
+		"".println("R3 applied..");
 	}
 }
 
@@ -130,7 +134,7 @@ pattern DeleteRedundantEdgeParallelGateway
 	do {
 		"".println("R5 do..");
 		delete edge;
-		firstGateway.println("R5 applied..");
+		"".println("R5 applied..");
 	}
 }
  
@@ -153,7 +157,7 @@ pattern DeleteEndEventFromParallelGateway
 		"".println("R6 do..");
 		delete edge;
 		delete endEvent;
-		gateway.println("R6 applied..");
+		"".println("R6 applied..");
 	}
 }
 
@@ -189,17 +193,18 @@ pattern MergeDivergingParallelGateway
 		guard: firstGateway.outgoing.size() > 1 //no need!!  needed again		
 {
 	onmatch {
-		edge.println("R7 Matched..");
+		"".println("R7 Matched..");
 		
 	}
 	do {
 		"".println("R7 do..");
 		for (_edge in secondGateway.outgoing.clone()) {
-			_edge.sourceRef = firstGateway; 
+			--_edge.sourceRef = firstGateway;
+			_edge.sourceRef = secondGateway.incoming.first().sourceRef ;  // changed to this after testing with shippingAD.. firstgateway was deleted
 		}
 		delete secondGateway;
 		delete edge;
-		firstGateway.println("R7 applied..");
+		"".println("R7 applied..");
 	}
 }
 
@@ -217,17 +222,18 @@ pattern MergeConvergingParallelGateway
 		guard: secondGateway.incoming.size() > 1		//no need!! -- needed again 
 {
 	onmatch {
-		edge.println("R8 Matched..");
+		"".println("R8 Matched..");
 		
 	}
 	do {
 		"".println("R8 do..");
 		for (_edge in firstGateway.incoming.clone()) {
-			_edge.targetRef = secondGateway; 
+			--_edge.targetRef = secondGateway; 
+			_edge.targetRef = firstGateway.outgoing.first().targetRef ;  // changed also like R7
 		}
 		delete firstGateway;
 		delete edge;
-		secondGateway.println("R8 applied..");
+		"".println("R8 applied..");
 	}
 }
 
@@ -324,10 +330,10 @@ pattern RemoveRedundantEdges
 		--var edge = redundant_edge.at(0);
 		--edge.println();
 		var edge = redundant_edge.removeAt(0);
-		edge.println();
+		--edge.println();
 		delete redundant_edge;
-		flowNode1.outgoing.println();
-		edge.println("R11 applied..");
+		--flowNode1.outgoing.println();
+		"".println("R11 applied..");
 	}
 }
 post endFiltering {
@@ -353,14 +359,18 @@ operation FlowNode getOutgoingNodes() : Sequence(FlowNode) {
 	return FlowNode.all.select(n | _edges.exists(e | e.targetRef = n));
 }
 
-/* 
-	Simple Path of length 2between first and second gateway
+/*
+	Simple Path of length 2 between first and second gateway.
+	Not efficient.. better to check second gateway incoming instead.
 */
 operation SimplePathBetweenNodes?(first: ParallelGateway, second: ParallelGateway) : Boolean {
+	if (first.outgoing.size <=1 or second.incoming.size <=1 )
+		return false;
 	var queue = first.outgoing.collect(e | e.targetRef).flatten;
 	queue.remove(second);
 	while (queue.size() > 0) {
 		var node = queue.first();
+		--node.println(node.~visited);
 		var outgoingNodes = node.outgoing.collect(e | e.targetRef).flatten.select(n | n.~visited <> true);
 		if (outgoingNodes.includes(second))
 			return true;
@@ -368,8 +378,11 @@ operation SimplePathBetweenNodes?(first: ParallelGateway, second: ParallelGatewa
 			node.~visited = true;
 			queue.removeAt(0);
 			queue.addAll(outgoingNodes);
+			--node.println(node.~visited);
 		}
-	} 
+	}
+	for (node in FlowNode.all)
+		node.~visited = false; 
 	return false;
 }
 

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_m4SGoBmWEeS4n7YXZ-K_0A">
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="ID_32136603_1436_1204_0426_056655200001">
+    <region xmi:id="_m4DdIBmWEeS4n7YXZ-K_0A" name="BO176_BO94newGateway4sampledGateway5diagnosedcontactedtreatedGateway16BO176_BO161">
+      <transition xmi:id="_m4DdIhmWEeS4n7YXZ-K_0A" name="BP176_BP94new" source="_m4DdIRmWEeS4n7YXZ-K_0A" target="_m4ErQBmWEeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_m4ErQRmWEeS4n7YXZ-K_0A" name="newGateway4" source="_m4ErQBmWEeS4n7YXZ-K_0A" target="_m4F5YBmWEeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_m4F5YRmWEeS4n7YXZ-K_0A" name="Gateway4sampled" source="_m4F5YBmWEeS4n7YXZ-K_0A" target="_m4F5YhmWEeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_m4F5YxmWEeS4n7YXZ-K_0A" name="sampledGateway5" source="_m4F5YhmWEeS4n7YXZ-K_0A" target="_m4HHgBmWEeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_m4HHgRmWEeS4n7YXZ-K_0A" name="Gateway4Gateway5" source="_m4F5YBmWEeS4n7YXZ-K_0A" target="_m4HHgBmWEeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_m4HHghmWEeS4n7YXZ-K_0A" name="Gateway5diagnosed" source="_m4HHgBmWEeS4n7YXZ-K_0A" target="_m4IVoBmWEeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_m4IVoRmWEeS4n7YXZ-K_0A" name="diagnosedcontacted" source="_m4IVoBmWEeS4n7YXZ-K_0A" target="_m4JjwBmWEeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_m4JjwRmWEeS4n7YXZ-K_0A" name="contactedtreated" source="_m4JjwBmWEeS4n7YXZ-K_0A" target="_m4JjwhmWEeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_m4Kx4BmWEeS4n7YXZ-K_0A" name="treatedGateway16" source="_m4JjwhmWEeS4n7YXZ-K_0A" target="_m4Kx4RmWEeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_m4Kx4hmWEeS4n7YXZ-K_0A" name="Gateway16BP176_BP161" source="_m4Kx4RmWEeS4n7YXZ-K_0A" target="_m4MAABmWEeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_m4MAARmWEeS4n7YXZ-K_0A" name="Gateway16Gateway4" source="_m4Kx4RmWEeS4n7YXZ-K_0A" target="_m4F5YBmWEeS4n7YXZ-K_0A"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_m4DdIRmWEeS4n7YXZ-K_0A" name="BP176_BP94"/>
+      <subvertex xmi:type="uml:State" xmi:id="_m4ErQBmWEeS4n7YXZ-K_0A" name="new"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_m4F5YBmWEeS4n7YXZ-K_0A" name="Gateway4" kind="choice"/>
+      <subvertex xmi:type="uml:State" xmi:id="_m4F5YhmWEeS4n7YXZ-K_0A" name="sampled"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_m4HHgBmWEeS4n7YXZ-K_0A" name="Gateway5" kind="choice"/>
+      <subvertex xmi:type="uml:State" xmi:id="_m4IVoBmWEeS4n7YXZ-K_0A" name="diagnosed"/>
+      <subvertex xmi:type="uml:State" xmi:id="_m4JjwBmWEeS4n7YXZ-K_0A" name="contacted"/>
+      <subvertex xmi:type="uml:State" xmi:id="_m4JjwhmWEeS4n7YXZ-K_0A" name="treated"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_m4Kx4RmWEeS4n7YXZ-K_0A" name="Gateway16" kind="choice"/>
+      <subvertex xmi:type="uml:FinalState" xmi:id="_m4MAABmWEeS4n7YXZ-K_0A" name="BP176_BP161"/>
+    </region>
+  </packagedElement>
+</uml:Model>

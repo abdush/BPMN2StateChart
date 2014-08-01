@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="ASCII"?>
+<pnet:Net xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pnet="http://uam.es/PetriNets" xmi:id="shipping">
+  <places name="StartEvent_1acceptedprocessingdoneEnd Event 2"/>
+</pnet:Net>

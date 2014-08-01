@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_c8KbwBmWEeS4n7YXZ-K_0A">
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="moneywithdraw">
+    <region xmi:id="_c8DHABmWEeS4n7YXZ-K_0A" name="StartEvent_1uncredittedcheckedcredittedEnd Event 2">
+      <transition xmi:id="_c8DHAhmWEeS4n7YXZ-K_0A" name="StartEvent_1uncreditted" source="_c8DHARmWEeS4n7YXZ-K_0A" target="_c8EVIBmWEeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_c8EVIRmWEeS4n7YXZ-K_0A" name="uncredittedchecked" source="_c8EVIBmWEeS4n7YXZ-K_0A" target="_c8FjQBmWEeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_c8FjQRmWEeS4n7YXZ-K_0A" name="checkedcreditted" source="_c8FjQBmWEeS4n7YXZ-K_0A" target="_c8FjQhmWEeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_c8FjQxmWEeS4n7YXZ-K_0A" name="credittedEnd Event 2" source="_c8FjQhmWEeS4n7YXZ-K_0A" target="_c8GxYBmWEeS4n7YXZ-K_0A"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_c8DHARmWEeS4n7YXZ-K_0A" name="StartEvent_1"/>
+      <subvertex xmi:type="uml:State" xmi:id="_c8EVIBmWEeS4n7YXZ-K_0A" name="uncreditted"/>
+      <subvertex xmi:type="uml:State" xmi:id="_c8FjQBmWEeS4n7YXZ-K_0A" name="checked"/>
+      <subvertex xmi:type="uml:State" xmi:id="_c8FjQhmWEeS4n7YXZ-K_0A" name="creditted"/>
+      <subvertex xmi:type="uml:FinalState" xmi:id="_c8GxYBmWEeS4n7YXZ-K_0A" name="End Event 2"/>
+    </region>
+  </packagedElement>
+</uml:Model>

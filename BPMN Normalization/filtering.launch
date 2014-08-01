@@ -3,7 +3,7 @@
 <booleanAttribute key="fine_grained_profiling" value="false"/>
 <intAttribute key="maxLoops" value="-1"/>
 <listAttribute key="models">
-<listEntry value="#&#13;&#10;#Wed Jul 16 16:38:20 BST 2014&#13;&#10;isMetamodelFileBased=false&#13;&#10;name=BPMN&#13;&#10;readOnLoad=true&#13;&#10;storeOnDisposal=true&#13;&#10;aliases=&#13;&#10;cached=true&#13;&#10;fileBasedMetamodelUri=&#13;&#10;metamodelUri=http\://BPMN/Simplified,http\://www.eclipse.org/emf/2002/Ecore&#13;&#10;modelUri=platform\:/resource/BPMN2StateChart/models/bikeshop_normalized.pm&#13;&#10;type=EMF&#13;&#10;modelFile=/BPMN2StateChart/models/bikeshop_normalized.pm&#13;&#10;expand=true&#13;&#10;metamodelFile=&#13;&#10;"/>
+<listEntry value="#&#13;&#10;#Sun Jul 27 11:48:18 BST 2014&#13;&#10;isMetamodelFileBased=false&#13;&#10;name=BPMN&#13;&#10;readOnLoad=true&#13;&#10;storeOnDisposal=true&#13;&#10;aliases=&#13;&#10;cached=true&#13;&#10;fileBasedMetamodelUri=&#13;&#10;metamodelUri=http\://BPMN/Simplified,http\://www.eclipse.org/emf/2002/Ecore&#13;&#10;modelUri=platform\:/resource/BPMN2StateChart/models/bikeshop_normalized.pm&#13;&#10;type=EMF&#13;&#10;modelFile=/BPMN2StateChart/models/bikeshop_normalized.pm&#13;&#10;expand=true&#13;&#10;metamodelFile=&#13;&#10;"/>
 </listAttribute>
 <booleanAttribute key="profile_model_loading" value="false"/>
 <booleanAttribute key="profiling_enabled" value="false"/>

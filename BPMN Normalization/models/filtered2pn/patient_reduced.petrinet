@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="ASCII"?>
+<pnet:Net xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pnet="http://uam.es/PetriNets" xmi:id="ID_32136603_1436_1204_0426_056655200001">
+  <places name="BP176_BP94newGateway4sampledGateway5diagnosedcontactedtreatedGateway16BP176_BP161"/>
+</pnet:Net>

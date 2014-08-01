@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ASCII"?>
+<pnet:Net xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pnet="http://uam.es/PetriNets" xmi:id="claim">
+  <places name="StartEvent_1" postt="//@transitions.5"/>
+  <places name="Exclusive Gateway 1" postt="//@transitions.4 //@transitions.0" pret="//@transitions.6"/>
+  <places name="decided" postt="//@transitions.3 //@transitions.4" pret="//@transitions.6"/>
+  <places name="RejectedExclusive Gateway 2" postt="//@transitions.2" pret="//@transitions.4 //@transitions.1"/>
+  <places name="archivedEndEvent_1" pret="//@transitions.2"/>
+  <places name="fork#FlowElement#87join#FlowElement#83receivedconfirmed" postt="//@transitions.2" pret="//@transitions.5"/>
+  <places name="fork#FlowElement#87join#FlowElement#73policy not checkedjoin#FlowElement#73fork#FlowElement#89fork#FlowElement#89join#FlowElement#77policy checkedfork#FlowElement#87join#FlowElement#75damage not checkedjoin#FlowElement#75fork#FlowElement#91fork#FlowElement#91join#FlowElement#77damage checkedjoin#FlowElement#77fork#FlowElement#93" postt="//@transitions.6" pret="//@transitions.5"/>
+  <places name="Parallel Gateway 3Parallel Gateway 4" postt="//@transitions.1" pret="//@transitions.0"/>
+  <places name="Parallel Gateway 3join#FlowElement#79" postt="//@transitions.3" pret="//@transitions.0"/>
+  <places name="join#FlowElement#79fork#FlowElement#95fork#FlowElement#95join#FlowElement#81assessedsettled" postt="//@transitions.1" pret="//@transitions.3"/>
+  <transitions name="Parallel Gateway 3" prep="//@places.1" postp="//@places.7 //@places.8"/>
+  <transitions name="Parallel Gateway 4" prep="//@places.7 //@places.9" postp="//@places.3"/>
+  <transitions name="Parallel Gateway 5" prep="//@places.5 //@places.3" postp="//@places.4"/>
+  <transitions name="join#FlowElement#79" prep="//@places.8 //@places.2" postp="//@places.9"/>
+  <transitions name="join#FlowElement#85" prep="//@places.1 //@places.2" postp="//@places.3"/>
+  <transitions name="fork#FlowElement#87" prep="//@places.0" postp="//@places.5 //@places.6"/>
+  <transitions name="fork#FlowElement#93" prep="//@places.6" postp="//@places.1 //@places.2"/>
+</pnet:Net>

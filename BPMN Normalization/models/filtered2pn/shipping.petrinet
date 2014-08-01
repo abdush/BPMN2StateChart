@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<pnet:Net xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pnet="http://uam.es/PetriNets" xmi:id="shipping">
+  <places name="StartEvent_1" postt="//@transitions.0"/>
+  <places name="End Event 2" pret="//@transitions.3"/>
+  <places name="accepted" postt="//@transitions.1" pret="//@transitions.0"/>
+  <places name="processing" postt="//@transitions.2" pret="//@transitions.1"/>
+  <places name="done" postt="//@transitions.3" pret="//@transitions.2"/>
+  <transitions name="StartEvent_1accepted" prep="//@places.0" postp="//@places.2"/>
+  <transitions name="acceptedprocessing" prep="//@places.2" postp="//@places.3"/>
+  <transitions name="processingdone" prep="//@places.3" postp="//@places.4"/>
+  <transitions name="doneEnd Event 2" prep="//@places.4" postp="//@places.1"/>
+</pnet:Net>

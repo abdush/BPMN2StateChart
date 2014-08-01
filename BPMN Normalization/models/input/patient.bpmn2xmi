@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn2:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI-XMI" id="Definition" exporter="Visual Paradigm" exporterVersion="1" targetNamespace="http://www.omg.org/bpmn20">
+  <rootElements xsi:type="bpmn2:Process" id="ID_32136603_1436_1204_0426_056655200001" name="patient dermatology">
+    <flowElements xsi:type="bpmn2:StartEvent" id="BP176_BP94" name="" outgoing="BP176_BP96"/>
+    <flowElements xsi:type="bpmn2:Task" id="BP176_BP95" name="make appointment" incoming="BP176_BP96" outgoing="BP176_BP98">
+      <ioSpecification id="InputOutputSpecification_1">
+        <dataOutputs id="BP176_BP176-source"/>
+        <inputSets id="InputSet_1"/>
+        <outputSets id="OutputSet_1" dataOutputRefs="BP176_BP176-source"/>
+      </ioSpecification>
+      <dataOutputAssociations id="DataOutputAssociation_2" sourceRef="BP176_BP176-source" targetRef="DataObject_1"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP96" name="" sourceRef="BP176_BP94" targetRef="BP176_BP95"/>
+    <flowElements xsi:type="bpmn2:ExclusiveGateway" id="BP176_BP97" name="Gateway3" incoming="BP176_BP98 BP176_BP165" outgoing="BP176_BP100" gatewayDirection="Converging"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP98" name="" sourceRef="BP176_BP95" targetRef="BP176_BP97"/>
+    <flowElements xsi:type="bpmn2:Task" id="BP176_BP99" name="consult" incoming="BP176_BP100" outgoing="BP176_BP102"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP100" name="" sourceRef="BP176_BP97" targetRef="BP176_BP99"/>
+    <flowElements xsi:type="bpmn2:Task" id="BP176_BP101" name="analyze" incoming="BP176_BP102" outgoing="BP176_BP104"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP102" name="" sourceRef="BP176_BP99" targetRef="BP176_BP101"/>
+    <flowElements xsi:type="bpmn2:ExclusiveGateway" id="BP176_BP103" name="Gateway4" incoming="BP176_BP104" outgoing="BP176_BP106 BP176_BP113" gatewayDirection="Diverging"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP104" name="" sourceRef="BP176_BP101" targetRef="BP176_BP103"/>
+    <flowElements xsi:type="bpmn2:Task" id="BP176_BP105" name="take sample" incoming="BP176_BP106" outgoing="BP176_BP108">
+      <ioSpecification id="InputOutputSpecification_2">
+        <dataOutputs id="BP176_BP182-source"/>
+        <inputSets id="InputSet_2"/>
+        <outputSets id="OutputSet_2" dataOutputRefs="BP176_BP182-source"/>
+      </ioSpecification>
+      <dataOutputAssociations id="DataOutputAssociation_3" sourceRef="BP176_BP182-source" targetRef="_DataObjectReference_4"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP106" name="" sourceRef="BP176_BP103" targetRef="BP176_BP105"/>
+    <flowElements xsi:type="bpmn2:Task" id="BP176_BP107" name="send sample to lab" incoming="BP176_BP108" outgoing="BP176_BP110"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP108" name="" sourceRef="BP176_BP105" targetRef="BP176_BP107"/>
+    <flowElements xsi:type="bpmn2:Task" id="BP176_BP109" name="receive lab results" incoming="BP176_BP110" outgoing="BP176_BP112"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP110" name="" sourceRef="BP176_BP107" targetRef="BP176_BP109"/>
+    <flowElements xsi:type="bpmn2:ExclusiveGateway" id="BP176_BP111" name="Gateway5" incoming="BP176_BP112 BP176_BP113" outgoing="BP176_BP115" gatewayDirection="Converging"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP112" name="" sourceRef="BP176_BP109" targetRef="BP176_BP111"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP113" name="" sourceRef="BP176_BP103" targetRef="BP176_BP111"/>
+    <flowElements xsi:type="bpmn2:Task" id="BP176_BP114" name="diagnose" incoming="BP176_BP115" outgoing="BP176_BP117">
+      <ioSpecification id="InputOutputSpecification_3">
+        <dataOutputs id="BP176_BP184-source"/>
+        <inputSets id="InputSet_3"/>
+        <outputSets id="OutputSet_3" dataOutputRefs="BP176_BP184-source"/>
+      </ioSpecification>
+      <dataOutputAssociations id="DataOutputAssociation_4" sourceRef="BP176_BP184-source" targetRef="_DataObjectReference_5"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP115" name="" sourceRef="BP176_BP111" targetRef="BP176_BP114"/>
+    <flowElements xsi:type="bpmn2:ParallelGateway" id="BP176_BP116" name="Gateway6" incoming="BP176_BP117" outgoing="BP176_BP119 BP176_BP121" gatewayDirection="Diverging"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP117" name="" sourceRef="BP176_BP114" targetRef="BP176_BP116"/>
+    <flowElements xsi:type="bpmn2:Task" id="BP176_BP118" name="update patient info" incoming="BP176_BP119" outgoing="BP176_BP123"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP119" name="" sourceRef="BP176_BP116" targetRef="BP176_BP118"/>
+    <flowElements xsi:type="bpmn2:Task" id="BP176_BP120" name="contact patient" incoming="BP176_BP121" outgoing="BP176_BP124">
+      <ioSpecification id="InputOutputSpecification_4">
+        <dataOutputs id="BP176_BP179-source"/>
+        <inputSets id="InputSet_4"/>
+        <outputSets id="OutputSet_4" dataOutputRefs="BP176_BP179-source"/>
+      </ioSpecification>
+      <dataOutputAssociations id="DataOutputAssociation_5" sourceRef="BP176_BP179-source" targetRef="_DataObjectReference_6"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP121" name="" sourceRef="BP176_BP116" targetRef="BP176_BP120"/>
+    <flowElements xsi:type="bpmn2:ParallelGateway" id="BP176_BP122" name="Gateway7" incoming="BP176_BP123 BP176_BP124" outgoing="BP176_BP126" gatewayDirection="Converging"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP123" name="" sourceRef="BP176_BP118" targetRef="BP176_BP122"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP124" name="" sourceRef="BP176_BP120" targetRef="BP176_BP122"/>
+    <flowElements xsi:type="bpmn2:Task" id="BP176_BP125" name="check anesctization" incoming="BP176_BP126" outgoing="BP176_BP128"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP126" name="" sourceRef="BP176_BP122" targetRef="BP176_BP125"/>
+    <flowElements xsi:type="bpmn2:ExclusiveGateway" id="BP176_BP127" name="Gateway8" incoming="BP176_BP128" outgoing="BP176_BP130 BP176_BP133" gatewayDirection="Diverging"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP128" name="" sourceRef="BP176_BP125" targetRef="BP176_BP127"/>
+    <flowElements xsi:type="bpmn2:Task" id="BP176_BP129" name="do preoperative screening" incoming="BP176_BP130" outgoing="BP176_BP132"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP130" name="" sourceRef="BP176_BP127" targetRef="BP176_BP129"/>
+    <flowElements xsi:type="bpmn2:ExclusiveGateway" id="BP176_BP131" name="Gateway9" incoming="BP176_BP132 BP176_BP133" outgoing="BP176_BP135" gatewayDirection="Converging"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP132" name="" sourceRef="BP176_BP129" targetRef="BP176_BP131"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP133" name="" sourceRef="BP176_BP127" targetRef="BP176_BP131"/>
+    <flowElements xsi:type="bpmn2:Task" id="BP176_BP134" name="treatment" incoming="BP176_BP135" outgoing="BP176_BP137">
+      <ioSpecification id="InputOutputSpecification_5">
+        <dataOutputs id="BP176_BP180-source"/>
+        <inputSets id="InputSet_5"/>
+        <outputSets id="OutputSet_5" dataOutputRefs="BP176_BP180-source"/>
+      </ioSpecification>
+      <dataOutputAssociations id="DataOutputAssociation_6" sourceRef="BP176_BP180-source" targetRef="_DataObjectReference_7"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP135" name="" sourceRef="BP176_BP131" targetRef="BP176_BP134"/>
+    <flowElements xsi:type="bpmn2:Task" id="BP176_BP136" name="schedule post treatment checks" incoming="BP176_BP137" outgoing="BP176_BP139"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP137" name="" sourceRef="BP176_BP134" targetRef="BP176_BP136"/>
+    <flowElements xsi:type="bpmn2:ParallelGateway" id="BP176_BP138" name="Gateway10" incoming="BP176_BP139" outgoing="BP176_BP141 BP176_BP143" gatewayDirection="Diverging"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP139" name="" sourceRef="BP176_BP136" targetRef="BP176_BP138"/>
+    <flowElements xsi:type="bpmn2:ExclusiveGateway" id="BP176_BP140" name="Gateway11" incoming="BP176_BP141" outgoing="BP176_BP145 BP176_BP148" gatewayDirection="Diverging"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP141" name="" sourceRef="BP176_BP138" targetRef="BP176_BP140"/>
+    <flowElements xsi:type="bpmn2:ExclusiveGateway" id="BP176_BP142" name="Gateway12" incoming="BP176_BP143" outgoing="BP176_BP150 BP176_BP153" gatewayDirection="Diverging"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP143" name="" sourceRef="BP176_BP138" targetRef="BP176_BP142"/>
+    <flowElements xsi:type="bpmn2:Task" id="BP176_BP144" name="wound control" incoming="BP176_BP145" outgoing="BP176_BP147"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP145" name="" sourceRef="BP176_BP140" targetRef="BP176_BP144"/>
+    <flowElements xsi:type="bpmn2:ExclusiveGateway" id="BP176_BP146" name="Gateway13" incoming="BP176_BP147 BP176_BP148" outgoing="BP176_BP155" gatewayDirection="Converging"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP147" name="" sourceRef="BP176_BP144" targetRef="BP176_BP146"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP148" name="" sourceRef="BP176_BP140" targetRef="BP176_BP146"/>
+    <flowElements xsi:type="bpmn2:Task" id="BP176_BP149" name="remove stitches" incoming="BP176_BP150" outgoing="BP176_BP152"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP150" name="" sourceRef="BP176_BP142" targetRef="BP176_BP149"/>
+    <flowElements xsi:type="bpmn2:ExclusiveGateway" id="BP176_BP151" name="Gateway14" incoming="BP176_BP152 BP176_BP153" outgoing="BP176_BP156" gatewayDirection="Converging"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP152" name="" sourceRef="BP176_BP149" targetRef="BP176_BP151"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP153" name="" sourceRef="BP176_BP142" targetRef="BP176_BP151"/>
+    <flowElements xsi:type="bpmn2:ParallelGateway" id="BP176_BP154" name="Gateway15" incoming="BP176_BP155 BP176_BP156" outgoing="BP176_BP158" gatewayDirection="Converging"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP155" name="" sourceRef="BP176_BP146" targetRef="BP176_BP154"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP156" name="" sourceRef="BP176_BP151" targetRef="BP176_BP154"/>
+    <flowElements xsi:type="bpmn2:Task" id="BP176_BP157" name="check if long term health check needed" incoming="BP176_BP158" outgoing="BP176_BP160"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP158" name="" sourceRef="BP176_BP154" targetRef="BP176_BP157"/>
+    <flowElements xsi:type="bpmn2:ExclusiveGateway" id="BP176_BP159" name="Gateway16" incoming="BP176_BP160" outgoing="BP176_BP162 BP176_BP164" gatewayDirection="Diverging"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP160" name="" sourceRef="BP176_BP157" targetRef="BP176_BP159"/>
+    <flowElements xsi:type="bpmn2:EndEvent" id="BP176_BP161" name="" incoming="BP176_BP162"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP162" name="" sourceRef="BP176_BP159" targetRef="BP176_BP161"/>
+    <flowElements xsi:type="bpmn2:Task" id="BP176_BP163" name="schedule long term health check" incoming="BP176_BP164" outgoing="BP176_BP165"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP164" name="" sourceRef="BP176_BP159" targetRef="BP176_BP163"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="BP176_BP165" name="" sourceRef="BP176_BP163" targetRef="BP176_BP97"/>
+    <flowElements xsi:type="bpmn2:DataObject" id="DataObject_1" name="Patient">
+      <dataState id="DataState_1" name="new"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn2:DataObjectReference" id="_DataObjectReference_4" name="Patient" dataObjectRef="DataObject_1">
+      <dataState id="DataState_2" name="sampled"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn2:DataObjectReference" id="_DataObjectReference_5" name="Patient" dataObjectRef="DataObject_1">
+      <dataState id="DataState_3" name="diagnosed"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn2:DataObjectReference" id="_DataObjectReference_6" name="Patient" dataObjectRef="DataObject_1">
+      <dataState id="DataState_4" name="contacted"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn2:DataObjectReference" id="_DataObjectReference_7" name="Patient" dataObjectRef="DataObject_1">
+      <dataState id="DataState_5" name="treated"/>
+    </flowElements>
+  </rootElements>
+  <diagrams id="diagram-ID_32136603_1436_1204_0426_056655200001" name="patient dermatology">
+    <plane id="plane-ID_32136603_1436_1204_0426_056655200001">
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_16136603_1436_1204_0426_056655200002">
+        <bounds height="20.0" width="20.0" x="20.0" y="240.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP94"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_31136603_1436_1204_0426_056655200003">
+        <bounds height="40.0" width="80.0" x="70.0" y="230.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP95"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_33136603_1436_1204_0426_056655200005">
+        <bounds height="40.0" width="40.0" x="180.0" y="230.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP97"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_07136603_1436_1204_0426_056655200007">
+        <bounds height="40.0" width="50.0" x="250.0" y="230.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP99"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_17136603_1436_1204_0426_056655200011">
+        <bounds height="40.0" width="50.0" x="340.0" y="230.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP101"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_37136603_1436_1204_0426_056655200013">
+        <bounds height="40.0" width="40.0" x="440.0" y="230.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP103"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_00536603_1436_1204_0426_056655200015">
+        <bounds height="40.0" width="70.0" x="520.0" y="230.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP105"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_10536603_1436_1204_0426_056655200017">
+        <bounds height="40.0" width="110.0" x="620.0" y="230.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP107"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_30536603_1436_1204_0426_056655200021">
+        <bounds height="40.0" width="100.0" x="760.0" y="230.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP109"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_04536603_1436_1204_0426_056655200023">
+        <bounds height="40.0" width="40.0" x="920.0" y="230.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP111"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_34536603_1436_1204_0426_056655200026">
+        <bounds height="40.0" width="60.0" x="990.0" y="230.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP114"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_02536603_1436_1204_0426_056655200030">
+        <bounds height="40.0" width="40.0" x="30.0" y="390.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP116"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_22536603_1436_1204_0426_056655200032">
+        <bounds height="40.0" width="80.0" x="80.0" y="340.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP118"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_32536603_1436_1204_0426_056655200034">
+        <bounds height="40.0" width="70.0" x="80.0" y="440.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP120"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_06536603_1436_1204_0426_056655200036">
+        <bounds height="40.0" width="40.0" x="170.0" y="390.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP122"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_16536603_1436_1204_0426_056655200041">
+        <bounds height="40.0" width="90.0" x="240.0" y="390.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP125"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_01536603_1436_1204_0426_056655200043">
+        <bounds height="40.0" width="40.0" x="360.0" y="390.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP127"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_21536603_1436_1204_0426_056655200045">
+        <bounds height="40.0" width="100.0" x="450.0" y="390.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP129"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_11536603_1436_1204_0426_056655200047">
+        <bounds height="40.0" width="40.0" x="600.0" y="390.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP131"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_05536603_1436_1204_0426_056655200052">
+        <bounds height="40.0" width="60.0" x="670.0" y="390.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP134"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_15536603_1436_1204_0426_056655200054">
+        <bounds height="40.0" width="100.0" x="770.0" y="390.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP136"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_35536603_1436_1204_0426_056655200056">
+        <bounds height="40.0" width="40.0" x="910.0" y="390.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP138"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_03536603_1436_1204_0426_056655200060">
+        <bounds height="40.0" width="40.0" x="970.0" y="350.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP140"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_13536603_1436_1204_0426_056655200062">
+        <bounds height="40.0" width="40.0" x="960.0" y="450.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP142"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_33536603_1436_1204_0426_056655200064">
+        <bounds height="40.0" width="70.0" x="1050.0" y="350.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP144"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_07536603_1436_1204_0426_056655200066">
+        <bounds height="40.0" width="40.0" x="1180.0" y="350.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP146"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_17536603_1436_1204_0426_056655200071">
+        <bounds height="40.0" width="50.0" x="1040.0" y="450.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP149"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_37536603_1436_1204_0426_056655200073">
+        <bounds height="40.0" width="40.0" x="1140.0" y="450.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP151"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_20336603_1436_1204_0426_056655200076">
+        <bounds height="40.0" width="40.0" x="1240.0" y="390.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP154"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_04336603_1436_1204_0426_056655200101">
+        <bounds height="70.0" width="100.0" x="1300.0" y="390.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP157"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_24336603_1436_1204_0426_056655200103">
+        <bounds height="40.0" width="40.0" x="1330.0" y="310.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP159"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_36336603_1436_1204_0426_056655200105">
+        <bounds height="20.0" width="20.0" x="1460.0" y="320.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP161"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_21336603_1436_1204_0426_056655200107">
+        <bounds height="70.0" width="90.0" x="1300.0" y="80.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP163"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_31336603_1436_1204_0426_056655200115">
+        <bounds height="50.0" width="40.0" x="100.0" y="560.0"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_31336603_1436_1204_0426_056655200116">
+        <bounds height="50.0" width="40.0" x="670.0" y="560.0"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_33120667_1436_1204_0426_056655200136">
+        <bounds height="50.0" width="40.0" x="560.0" y="20.0"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="ID_33120667_1436_1204_0426_056655200137">
+        <bounds height="50.0" width="40.0" x="990.0" y="20.0"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_DataObject_2">
+        <bounds height="65.0" width="36.0" x="80.0" y="60.0"/>
+        <bpmnElement href="patient.bpmn#DataObject_1"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_DataObjectReference_1">
+        <bounds height="65.0" width="36.0" x="558.0" y="16.0"/>
+        <bpmnElement href="patient.bpmn#_DataObjectReference_4"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_DataObjectReference_2">
+        <bounds height="65.0" width="36.0" x="1020.0" y="30.0"/>
+        <bpmnElement href="patient.bpmn#_DataObjectReference_5"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_DataObjectReference_3">
+        <bounds height="65.0" width="36.0" x="100.0" y="540.0"/>
+        <bpmnElement href="patient.bpmn#_DataObjectReference_6"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_DataObjectReference_4">
+        <bounds height="65.0" width="36.0" x="700.0" y="560.0"/>
+        <bpmnElement href="patient.bpmn#_DataObjectReference_7"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_05136603_1436_1204_0426_056655200004">
+        <waypoint x="40.0" y="250.0"/>
+        <waypoint x="69.0" y="250.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP96"/>
+        <sourceElement href="patient.bpmn#ID_16136603_1436_1204_0426_056655200002"/>
+        <targetElement href="patient.bpmn#ID_31136603_1436_1204_0426_056655200003"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_33136603_1436_1204_0426_056655200006">
+        <waypoint x="150.0" y="250.0"/>
+        <waypoint x="179.0" y="250.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP98"/>
+        <sourceElement href="patient.bpmn#ID_31136603_1436_1204_0426_056655200003"/>
+        <targetElement href="patient.bpmn#ID_33136603_1436_1204_0426_056655200005"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_27136603_1436_1204_0426_056655200010">
+        <waypoint x="220.0" y="250.0"/>
+        <waypoint x="249.0" y="250.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP100"/>
+        <sourceElement href="patient.bpmn#ID_33136603_1436_1204_0426_056655200005"/>
+        <targetElement href="patient.bpmn#ID_07136603_1436_1204_0426_056655200007"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_17136603_1436_1204_0426_056655200012">
+        <waypoint x="300.0" y="250.0"/>
+        <waypoint x="339.0" y="250.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP102"/>
+        <sourceElement href="patient.bpmn#ID_07136603_1436_1204_0426_056655200007"/>
+        <targetElement href="patient.bpmn#ID_17136603_1436_1204_0426_056655200011"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_00536603_1436_1204_0426_056655200014">
+        <waypoint x="390.0" y="250.0"/>
+        <waypoint x="439.0" y="250.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP104"/>
+        <sourceElement href="patient.bpmn#ID_17136603_1436_1204_0426_056655200011"/>
+        <targetElement href="patient.bpmn#ID_37136603_1436_1204_0426_056655200013"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_20536603_1436_1204_0426_056655200016">
+        <waypoint x="480.0" y="250.0"/>
+        <waypoint x="519.0" y="250.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP106"/>
+        <sourceElement href="patient.bpmn#ID_37136603_1436_1204_0426_056655200013"/>
+        <targetElement href="patient.bpmn#ID_00536603_1436_1204_0426_056655200015"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_10536603_1436_1204_0426_056655200020">
+        <waypoint x="590.0" y="250.0"/>
+        <waypoint x="619.0" y="250.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP108"/>
+        <sourceElement href="patient.bpmn#ID_00536603_1436_1204_0426_056655200015"/>
+        <targetElement href="patient.bpmn#ID_10536603_1436_1204_0426_056655200017"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_04536603_1436_1204_0426_056655200022">
+        <waypoint x="730.0" y="250.0"/>
+        <waypoint x="759.0" y="250.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP110"/>
+        <sourceElement href="patient.bpmn#ID_10536603_1436_1204_0426_056655200017"/>
+        <targetElement href="patient.bpmn#ID_30536603_1436_1204_0426_056655200021"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_24536603_1436_1204_0426_056655200024">
+        <waypoint x="860.0" y="250.0"/>
+        <waypoint x="919.0" y="250.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP112"/>
+        <sourceElement href="patient.bpmn#ID_30536603_1436_1204_0426_056655200021"/>
+        <targetElement href="patient.bpmn#ID_04536603_1436_1204_0426_056655200023"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_14536603_1436_1204_0426_056655200025">
+        <waypoint x="480.0" y="250.0"/>
+        <waypoint x="500.0" y="250.0"/>
+        <waypoint x="500.0" y="210.0"/>
+        <waypoint x="880.0" y="210.0"/>
+        <waypoint x="880.0" y="250.0"/>
+        <waypoint x="919.0" y="250.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP113"/>
+        <sourceElement href="patient.bpmn#ID_37136603_1436_1204_0426_056655200013"/>
+        <targetElement href="patient.bpmn#ID_04536603_1436_1204_0426_056655200023"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_34536603_1436_1204_0426_056655200027">
+        <waypoint x="960.0" y="250.0"/>
+        <waypoint x="989.0" y="250.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP115"/>
+        <sourceElement href="patient.bpmn#ID_04536603_1436_1204_0426_056655200023"/>
+        <targetElement href="patient.bpmn#ID_34536603_1436_1204_0426_056655200026"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_22536603_1436_1204_0426_056655200031">
+        <waypoint x="1020.0" y="270.0"/>
+        <waypoint x="1020.0" y="320.0"/>
+        <waypoint x="30.0" y="320.0"/>
+        <waypoint x="30.0" y="409.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP117"/>
+        <sourceElement href="patient.bpmn#ID_34536603_1436_1204_0426_056655200026"/>
+        <targetElement href="patient.bpmn#ID_02536603_1436_1204_0426_056655200030"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_12536603_1436_1204_0426_056655200033">
+        <waypoint x="50.0" y="390.0"/>
+        <waypoint x="50.0" y="360.0"/>
+        <waypoint x="79.0" y="360.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP119"/>
+        <sourceElement href="patient.bpmn#ID_02536603_1436_1204_0426_056655200030"/>
+        <targetElement href="patient.bpmn#ID_22536603_1436_1204_0426_056655200032"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_32536603_1436_1204_0426_056655200035">
+        <waypoint x="50.0" y="430.0"/>
+        <waypoint x="50.0" y="460.0"/>
+        <waypoint x="79.0" y="460.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP121"/>
+        <sourceElement href="patient.bpmn#ID_02536603_1436_1204_0426_056655200030"/>
+        <targetElement href="patient.bpmn#ID_32536603_1436_1204_0426_056655200034"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_26536603_1436_1204_0426_056655200037">
+        <waypoint x="160.0" y="350.0"/>
+        <waypoint x="190.0" y="350.0"/>
+        <waypoint x="190.0" y="390.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP123"/>
+        <sourceElement href="patient.bpmn#ID_22536603_1436_1204_0426_056655200032"/>
+        <targetElement href="patient.bpmn#ID_06536603_1436_1204_0426_056655200036"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_16536603_1436_1204_0426_056655200040">
+        <waypoint x="150.0" y="460.0"/>
+        <waypoint x="190.0" y="460.0"/>
+        <waypoint x="190.0" y="430.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP124"/>
+        <sourceElement href="patient.bpmn#ID_32536603_1436_1204_0426_056655200034"/>
+        <targetElement href="patient.bpmn#ID_06536603_1436_1204_0426_056655200036"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_36536603_1436_1204_0426_056655200042">
+        <waypoint x="210.0" y="410.0"/>
+        <waypoint x="239.0" y="410.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP126"/>
+        <sourceElement href="patient.bpmn#ID_06536603_1436_1204_0426_056655200036"/>
+        <targetElement href="patient.bpmn#ID_16536603_1436_1204_0426_056655200041"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_01536603_1436_1204_0426_056655200044">
+        <waypoint x="330.0" y="410.0"/>
+        <waypoint x="359.0" y="410.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP128"/>
+        <sourceElement href="patient.bpmn#ID_16536603_1436_1204_0426_056655200041"/>
+        <targetElement href="patient.bpmn#ID_01536603_1436_1204_0426_056655200043"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_11536603_1436_1204_0426_056655200046">
+        <waypoint x="400.0" y="410.0"/>
+        <waypoint x="449.0" y="410.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP130"/>
+        <sourceElement href="patient.bpmn#ID_01536603_1436_1204_0426_056655200043"/>
+        <targetElement href="patient.bpmn#ID_21536603_1436_1204_0426_056655200045"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_31536603_1436_1204_0426_056655200050">
+        <waypoint x="550.0" y="409.0"/>
+        <waypoint x="600.0" y="409.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP132"/>
+        <sourceElement href="patient.bpmn#ID_21536603_1436_1204_0426_056655200045"/>
+        <targetElement href="patient.bpmn#ID_11536603_1436_1204_0426_056655200047"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_05536603_1436_1204_0426_056655200051">
+        <waypoint x="400.0" y="410.0"/>
+        <waypoint x="430.0" y="410.0"/>
+        <waypoint x="430.0" y="370.0"/>
+        <waypoint x="560.0" y="370.0"/>
+        <waypoint x="560.0" y="410.0"/>
+        <waypoint x="599.0" y="410.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP133"/>
+        <sourceElement href="patient.bpmn#ID_01536603_1436_1204_0426_056655200043"/>
+        <targetElement href="patient.bpmn#ID_11536603_1436_1204_0426_056655200047"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_25536603_1436_1204_0426_056655200053">
+        <waypoint x="640.0" y="410.0"/>
+        <waypoint x="669.0" y="410.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP135"/>
+        <sourceElement href="patient.bpmn#ID_11536603_1436_1204_0426_056655200047"/>
+        <targetElement href="patient.bpmn#ID_05536603_1436_1204_0426_056655200052"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_15536603_1436_1204_0426_056655200055">
+        <waypoint x="730.0" y="399.0"/>
+        <waypoint x="770.0" y="399.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP137"/>
+        <sourceElement href="patient.bpmn#ID_05536603_1436_1204_0426_056655200052"/>
+        <targetElement href="patient.bpmn#ID_15536603_1436_1204_0426_056655200054"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_03536603_1436_1204_0426_056655200057">
+        <waypoint x="870.0" y="410.0"/>
+        <waypoint x="909.0" y="410.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP139"/>
+        <sourceElement href="patient.bpmn#ID_15536603_1436_1204_0426_056655200054"/>
+        <targetElement href="patient.bpmn#ID_35536603_1436_1204_0426_056655200056"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_23536603_1436_1204_0426_056655200061">
+        <waypoint x="950.0" y="410.0"/>
+        <waypoint x="990.0" y="410.0"/>
+        <waypoint x="990.0" y="390.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP141"/>
+        <sourceElement href="patient.bpmn#ID_35536603_1436_1204_0426_056655200056"/>
+        <targetElement href="patient.bpmn#ID_03536603_1436_1204_0426_056655200060"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_13536603_1436_1204_0426_056655200063">
+        <waypoint x="930.0" y="430.0"/>
+        <waypoint x="930.0" y="470.0"/>
+        <waypoint x="959.0" y="470.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP143"/>
+        <sourceElement href="patient.bpmn#ID_35536603_1436_1204_0426_056655200056"/>
+        <targetElement href="patient.bpmn#ID_13536603_1436_1204_0426_056655200062"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_07536603_1436_1204_0426_056655200065">
+        <waypoint x="1010.0" y="370.0"/>
+        <waypoint x="1049.0" y="370.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP145"/>
+        <sourceElement href="patient.bpmn#ID_03536603_1436_1204_0426_056655200060"/>
+        <targetElement href="patient.bpmn#ID_33536603_1436_1204_0426_056655200064"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_27536603_1436_1204_0426_056655200067">
+        <waypoint x="1120.0" y="370.0"/>
+        <waypoint x="1179.0" y="370.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP147"/>
+        <sourceElement href="patient.bpmn#ID_33536603_1436_1204_0426_056655200064"/>
+        <targetElement href="patient.bpmn#ID_07536603_1436_1204_0426_056655200066"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_27536603_1436_1204_0426_056655200070">
+        <waypoint x="1010.0" y="370.0"/>
+        <waypoint x="1030.0" y="370.0"/>
+        <waypoint x="1030.0" y="340.0"/>
+        <waypoint x="1150.0" y="340.0"/>
+        <waypoint x="1150.0" y="370.0"/>
+        <waypoint x="1179.0" y="370.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP148"/>
+        <sourceElement href="patient.bpmn#ID_03536603_1436_1204_0426_056655200060"/>
+        <targetElement href="patient.bpmn#ID_07536603_1436_1204_0426_056655200066"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_37536603_1436_1204_0426_056655200072">
+        <waypoint x="1000.0" y="470.0"/>
+        <waypoint x="1039.0" y="470.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP150"/>
+        <sourceElement href="patient.bpmn#ID_13536603_1436_1204_0426_056655200062"/>
+        <targetElement href="patient.bpmn#ID_17536603_1436_1204_0426_056655200071"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_00336603_1436_1204_0426_056655200074">
+        <waypoint x="1090.0" y="479.0"/>
+        <waypoint x="1148.0" y="479.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP152"/>
+        <sourceElement href="patient.bpmn#ID_17536603_1436_1204_0426_056655200071"/>
+        <targetElement href="patient.bpmn#ID_37536603_1436_1204_0426_056655200073"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_20336603_1436_1204_0426_056655200075">
+        <waypoint x="980.0" y="490.0"/>
+        <waypoint x="980.0" y="510.0"/>
+        <waypoint x="1160.0" y="510.0"/>
+        <waypoint x="1160.0" y="490.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP153"/>
+        <sourceElement href="patient.bpmn#ID_13536603_1436_1204_0426_056655200062"/>
+        <targetElement href="patient.bpmn#ID_37536603_1436_1204_0426_056655200073"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_10336603_1436_1204_0426_056655200077">
+        <waypoint x="1200.0" y="390.0"/>
+        <waypoint x="1200.0" y="410.0"/>
+        <waypoint x="1239.0" y="410.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP155"/>
+        <sourceElement href="patient.bpmn#ID_07536603_1436_1204_0426_056655200066"/>
+        <targetElement href="patient.bpmn#ID_20336603_1436_1204_0426_056655200076"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_30336603_1436_1204_0426_056655200100">
+        <waypoint x="1180.0" y="470.0"/>
+        <waypoint x="1260.0" y="470.0"/>
+        <waypoint x="1260.0" y="430.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP156"/>
+        <sourceElement href="patient.bpmn#ID_37536603_1436_1204_0426_056655200073"/>
+        <targetElement href="patient.bpmn#ID_20336603_1436_1204_0426_056655200076"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_04336603_1436_1204_0426_056655200102">
+        <waypoint x="1280.0" y="410.0"/>
+        <waypoint x="1299.0" y="410.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP158"/>
+        <sourceElement href="patient.bpmn#ID_20336603_1436_1204_0426_056655200076"/>
+        <targetElement href="patient.bpmn#ID_04336603_1436_1204_0426_056655200101"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_14336603_1436_1204_0426_056655200104">
+        <waypoint x="1350.0" y="389.0"/>
+        <waypoint x="1350.0" y="350.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP160"/>
+        <sourceElement href="patient.bpmn#ID_04336603_1436_1204_0426_056655200101"/>
+        <targetElement href="patient.bpmn#ID_24336603_1436_1204_0426_056655200103"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_01336603_1436_1204_0426_056655200106">
+        <waypoint x="1370.0" y="330.0"/>
+        <waypoint x="1460.0" y="330.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP162"/>
+        <sourceElement href="patient.bpmn#ID_24336603_1436_1204_0426_056655200103"/>
+        <targetElement href="patient.bpmn#ID_36336603_1436_1204_0426_056655200105"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_21336603_1436_1204_0426_056655200110">
+        <waypoint x="1350.0" y="310.0"/>
+        <waypoint x="1350.0" y="150.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP164"/>
+        <sourceElement href="patient.bpmn#ID_24336603_1436_1204_0426_056655200103"/>
+        <targetElement href="patient.bpmn#ID_21336603_1436_1204_0426_056655200107"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_11336603_1436_1204_0426_056655200111">
+        <waypoint x="1299.0" y="100.0"/>
+        <waypoint x="200.0" y="100.0"/>
+        <waypoint x="200.0" y="230.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP165"/>
+        <sourceElement href="patient.bpmn#ID_21336603_1436_1204_0426_056655200107"/>
+        <targetElement href="patient.bpmn#ID_33136603_1436_1204_0426_056655200005"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_07700713_1436_1204_0426_056655200131">
+        <waypoint x="120.0" y="229.0"/>
+        <waypoint x="120.0" y="90.0"/>
+        <waypoint x="110.0" y="90.0"/>
+        <waypoint x="110.0" y="80.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP176"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_44240713_1436_1204_0426_056655200134">
+        <waypoint x="80.0" y="471.0"/>
+        <waypoint x="80.0" y="560.0"/>
+        <waypoint x="99.0" y="560.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP179"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_64240713_1436_1204_0426_056655200135">
+        <waypoint x="730.0" y="424.0"/>
+        <waypoint x="740.0" y="424.0"/>
+        <waypoint x="740.0" y="560.0"/>
+        <waypoint x="710.0" y="560.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP180"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_27120667_1436_1204_0426_056655200140">
+        <waypoint x="580.0" y="229.0"/>
+        <waypoint x="580.0" y="70.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP182"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="ID_37120667_1436_1204_0426_056655200141">
+        <waypoint x="1010.0" y="229.0"/>
+        <waypoint x="1010.0" y="70.0"/>
+        <bpmnElement href="patient.bpmn#BP176_BP184"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_DataOutputAssociation_2">
+        <waypoint x="110.0" y="230.0"/>
+        <waypoint x="110.0" y="183.0"/>
+        <waypoint x="98.0" y="183.0"/>
+        <waypoint x="98.0" y="125.0"/>
+        <bpmnElement href="patient.bpmn#DataOutputAssociation_2"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_DataOutputAssociation_3">
+        <waypoint x="555.0" y="230.0"/>
+        <waypoint x="555.0" y="48.0"/>
+        <waypoint x="558.0" y="48.0"/>
+        <bpmnElement href="patient.bpmn#DataOutputAssociation_3"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_DataOutputAssociation_4">
+        <waypoint x="1020.0" y="230.0"/>
+        <waypoint x="1020.0" y="62.0"/>
+        <waypoint x="1020.0" y="62.0"/>
+        <bpmnElement href="patient.bpmn#DataOutputAssociation_4"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_DataOutputAssociation_5">
+        <waypoint x="115.0" y="480.0"/>
+        <waypoint x="115.0" y="520.0"/>
+        <waypoint x="118.0" y="520.0"/>
+        <waypoint x="118.0" y="540.0"/>
+        <bpmnElement href="patient.bpmn#DataOutputAssociation_5"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_DataOutputAssociation_6">
+        <waypoint x="700.0" y="430.0"/>
+        <waypoint x="700.0" y="592.0"/>
+        <waypoint x="700.0" y="592.0"/>
+        <bpmnElement href="patient.bpmn#DataOutputAssociation_6"/>
+      </planeElement>
+      <bpmnElement href="patient.bpmn#ID_32136603_1436_1204_0426_056655200001"/>
+    </plane>
+  </diagrams>
+</bpmn2:Definitions>

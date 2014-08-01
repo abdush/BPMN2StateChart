@@ -1,0 +1,43 @@
+
+@cached
+operation pm_link_pn() : Map {
+	var pm_pn_map = new Map;
+	for (node in PM!FlowNode.all) {
+		pm_pn_map.put(node, node.equivalent());
+	}
+	--getEquivalenceMap().println();
+	return pm_pn_map;
+}
+
+@cached	
+operation getEquivalenceMap() : Map {
+	return pn_link_sc();
+}
+
+@cached
+operation pn_link_sc() : Map {
+	var pn_sc_map = new Map;
+	for (node in PN!Place.all) {
+		pn_sc_map.put(node, node.equivalent());
+	}
+	for (node in PN!Transition.all) {
+		pn_sc_map.put(node, node.equivalent());
+	}
+	--getEquivalenceMap().println();
+	return pn_sc_map;
+}
+
+@cached
+operation SC!State get_src_map() : PM!FlowNode {
+	self.println();
+	var pn_sc_map = pn_link_sc();
+	var pm_pn_map = pm_link_pn();
+	var pn;
+	for (key in pn_sc_map.keySet())
+		if (pn_sc_map.get(key) == self)
+			pn = key;
+	for (key in pm_pn_map.keySet())
+		if (pm_pn_map.get(key) == pn)
+			return key;
+	return null;
+}

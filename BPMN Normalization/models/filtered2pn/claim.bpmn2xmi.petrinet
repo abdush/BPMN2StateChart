@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ASCII"?>
+<pnet:Net xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pnet="http://uam.es/PetriNets" xmi:id="claim">
+  <places name="StartEvent_1" postt="//@transitions.10"/>
+  <places name="Exclusive Gateway 1" postt="//@transitions.9 //@transitions.0" pret="//@transitions.13"/>
+  <places name="Exclusive Gateway 2" postt="//@transitions.2" pret="//@transitions.1 //@transitions.16"/>
+  <places name="EndEvent_1" pret="//@transitions.15"/>
+  <places name="received" postt="//@transitions.8" pret="//@transitions.10"/>
+  <places name="policy not checked" postt="//@transitions.3" pret="//@transitions.10"/>
+  <places name="damage not checked" postt="//@transitions.4" pret="//@transitions.10"/>
+  <places name="policy checked" postt="//@transitions.5" pret="//@transitions.11"/>
+  <places name="damage checked" postt="//@transitions.5" pret="//@transitions.12"/>
+  <places name="confirmed" postt="//@transitions.2" pret="//@transitions.8"/>
+  <places name="decided" postt="//@transitions.6 //@transitions.9" pret="//@transitions.13"/>
+  <places name="Rejected" postt="//@transitions.16" pret="//@transitions.9"/>
+  <places name="assessed" postt="//@transitions.7" pret="//@transitions.14"/>
+  <places name="settled" postt="//@transitions.1" pret="//@transitions.7"/>
+  <places name="archived" postt="//@transitions.15" pret="//@transitions.2"/>
+  <places name="fork#FlowElement#87join#FlowElement#83" postt="//@transitions.8" pret="//@transitions.10"/>
+  <places name="fork#FlowElement#87join#FlowElement#73" postt="//@transitions.3" pret="//@transitions.10"/>
+  <places name="fork#FlowElement#87join#FlowElement#75" postt="//@transitions.4" pret="//@transitions.10"/>
+  <places name="fork#FlowElement#89join#FlowElement#77" postt="//@transitions.5" pret="//@transitions.11"/>
+  <places name="fork#FlowElement#91join#FlowElement#77" postt="//@transitions.5" pret="//@transitions.12"/>
+  <places name="Parallel Gateway 3Parallel Gateway 4" postt="//@transitions.1" pret="//@transitions.0"/>
+  <places name="Parallel Gateway 3join#FlowElement#79" postt="//@transitions.6" pret="//@transitions.0"/>
+  <places name="fork#FlowElement#95join#FlowElement#81" postt="//@transitions.7" pret="//@transitions.14"/>
+  <places name="join#FlowElement#73fork#FlowElement#89" postt="//@transitions.11" pret="//@transitions.3"/>
+  <places name="join#FlowElement#75fork#FlowElement#91" postt="//@transitions.12" pret="//@transitions.4"/>
+  <places name="join#FlowElement#77fork#FlowElement#93" postt="//@transitions.13" pret="//@transitions.5"/>
+  <places name="join#FlowElement#79fork#FlowElement#95" postt="//@transitions.14" pret="//@transitions.6"/>
+  <transitions name="Parallel Gateway 3" prep="//@places.1" postp="//@places.20 //@places.21"/>
+  <transitions name="Parallel Gateway 4" prep="//@places.20 //@places.13" postp="//@places.2"/>
+  <transitions name="Parallel Gateway 5" prep="//@places.2 //@places.9" postp="//@places.14"/>
+  <transitions name="join#FlowElement#73" prep="//@places.16 //@places.5" postp="//@places.23"/>
+  <transitions name="join#FlowElement#75" prep="//@places.17 //@places.6" postp="//@places.24"/>
+  <transitions name="join#FlowElement#77" prep="//@places.18 //@places.19 //@places.8 //@places.7" postp="//@places.25"/>
+  <transitions name="join#FlowElement#79" prep="//@places.21 //@places.10" postp="//@places.26"/>
+  <transitions name="join#FlowElement#81" prep="//@places.22 //@places.12" postp="//@places.13"/>
+  <transitions name="join#FlowElement#83" prep="//@places.15 //@places.4" postp="//@places.9"/>
+  <transitions name="join#FlowElement#85" prep="//@places.1 //@places.10" postp="//@places.11"/>
+  <transitions name="fork#FlowElement#87" prep="//@places.0" postp="//@places.15 //@places.16 //@places.17 //@places.4 //@places.5 //@places.6"/>
+  <transitions name="fork#FlowElement#89" prep="//@places.23" postp="//@places.18 //@places.7"/>
+  <transitions name="fork#FlowElement#91" prep="//@places.24" postp="//@places.19 //@places.8"/>
+  <transitions name="fork#FlowElement#93" prep="//@places.25" postp="//@places.1 //@places.10"/>
+  <transitions name="fork#FlowElement#95" prep="//@places.26" postp="//@places.22 //@places.12"/>
+  <transitions name="archivedEndEvent_1" prep="//@places.14" postp="//@places.3"/>
+  <transitions name="RejectedExclusive Gateway 2" prep="//@places.11" postp="//@places.2"/>
+</pnet:Net>

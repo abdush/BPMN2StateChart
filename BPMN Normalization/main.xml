@@ -8,8 +8,8 @@
 	<property name="sc.dir" value="models/pn2sc"></property>
 	<property name="output.dir" value="models/output"></property>
 	
-	<property name="bpmn_inputfile" value="${input.dir}/taxprocess.bpmn"></property>
-	<basename file="${bpmn_inputfile}" property="input_filename" suffix="bpmn"></basename>			
+	<property name="bpmn_inputfile" value="${input.dir}/order_production.bpmn2xmi"></property>
+	<basename file="${bpmn_inputfile}" property="input_filename" suffix="bpmn2xmi"></basename>			
 	<property name="outputfile_normalized" value="${normalization.dir}/${input_filename}_normalized.pm"></property>
 	<property name="outputfile_filtered" value="${filtering.dir}/${input_filename}_filtered.pm"></property>
 	<property name="outputfile_petrinet" value="${petrinet.dir}/${input_filename}.petrinet"></property>

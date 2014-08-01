@@ -1,47 +1,37 @@
 <?xml version="1.0" encoding="ASCII"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:pnet="http://uam.es/PetriNets">
-  <pnet:Net xmi:id="bikeshop">
-    <places name="StartEvent_1" postt="/0/@transitions.7"/>
-    <places name="no trade-in" postt="/0/@transitions.5" pret="/0/@transitions.7"/>
-    <places name="not ordered at supplier" postt="/0/@transitions.4" pret="/0/@transitions.7"/>
-    <places name="accessories unknown" postt="/0/@transitions.6" pret="/0/@transitions.7"/>
-    <places name="Exclusive Gateway 1" postt="/0/@transitions.8 /0/@transitions.9" pret="/0/@transitions.5"/>
-    <places name="ordered at supplier" postt="/0/@transitions.2" pret="/0/@transitions.4"/>
-    <places name="Exclusive Gateway 3" postt="/0/@transitions.10" pret="/0/@transitions.2 /0/@transitions.14"/>
-    <places name="accessories fixed" postt="/0/@transitions.1" pret="/0/@transitions.6"/>
-    <places name="trade-in" postt="/0/@transitions.11" pret="/0/@transitions.8"/>
-    <places name="signed" postt="/0/@transitions.2" pret="/0/@transitions.1"/>
-    <places name="Exclusive Gateway 2" postt="/0/@transitions.1" pret="/0/@transitions.9 /0/@transitions.11"/>
-    <places name="bike ready" postt="/0/@transitions.12" pret="/0/@transitions.10"/>
-    <places name="Exclusive Gateway 4" postt="/0/@transitions.3 /0/@transitions.13" pret="/0/@transitions.12"/>
-    <places name="reordered" postt="/0/@transitions.14" pret="/0/@transitions.13"/>
-    <places name="accessories ready" postt="/0/@transitions.0" pret="/0/@transitions.3"/>
-    <places name="bike ready" postt="/0/@transitions.0" pret="/0/@transitions.3"/>
-    <places name="closed" postt="/0/@transitions.15" pret="/0/@transitions.0"/>
-    <places name="EndEvent_1" pret="/0/@transitions.15"/>
-    <places name="fork#FlowElement#96join#FlowElement#90" postt="/0/@transitions.4" pret="/0/@transitions.7"/>
-    <places name="fork#FlowElement#96join#FlowElement#92" postt="/0/@transitions.5" pret="/0/@transitions.7"/>
-    <places name="fork#FlowElement#96join#FlowElement#94" postt="/0/@transitions.6" pret="/0/@transitions.7"/>
-    <transitions name="Parallel Gateway 5" prep="/0/@places.15 /0/@places.14" postp="/0/@places.16"/>
-    <transitions name="Parallel Gateway 2" prep="/0/@places.7 /0/@places.10" postp="/0/@places.9"/>
-    <transitions name="Parallel Gateway 3" prep="/0/@places.5 /0/@places.9" postp="/0/@places.6"/>
-    <transitions name="Parallel Gateway 4" prep="/0/@places.12" postp="/0/@places.15 /0/@places.14"/>
-    <transitions name="join#FlowElement#90" prep="/0/@places.18 /0/@places.2" postp="/0/@places.5"/>
-    <transitions name="join#FlowElement#92" prep="/0/@places.19 /0/@places.1" postp="/0/@places.4"/>
-    <transitions name="join#FlowElement#94" prep="/0/@places.20 /0/@places.3" postp="/0/@places.7"/>
-    <transitions name="fork#FlowElement#96" prep="/0/@places.0" postp="/0/@places.18 /0/@places.19 /0/@places.20 /0/@places.1 /0/@places.2 /0/@places.3"/>
-    <transitions name="Exclusive Gateway 1trade-in" prep="/0/@places.4" postp="/0/@places.8"/>
-    <transitions name="Exclusive Gateway 1Exclusive Gateway 2" prep="/0/@places.4" postp="/0/@places.10"/>
-    <transitions name="Exclusive Gateway 3bike ready" prep="/0/@places.6" postp="/0/@places.11"/>
-    <transitions name="trade-inExclusive Gateway 2" prep="/0/@places.8" postp="/0/@places.10"/>
-    <transitions name="bike readyExclusive Gateway 4" prep="/0/@places.11" postp="/0/@places.12"/>
-    <transitions name="Exclusive Gateway 4reordered" prep="/0/@places.12" postp="/0/@places.13"/>
-    <transitions name="reorderedExclusive Gateway 3" prep="/0/@places.13" postp="/0/@places.6"/>
-    <transitions name="closedEndEvent_1" prep="/0/@places.16" postp="/0/@places.17"/>
-  </pnet:Net>
-  <ecore:EStringToStringMapEntry key="xsi" value="http://www.w3.org/2001/XMLSchema-instance"/>
-  <ecore:EStringToStringMapEntry key="bpmn2" value="http://www.omg.org/spec/BPMN/20100524/MODEL"/>
-  <ecore:EStringToStringMapEntry key="bpmndi" value="http://www.omg.org/spec/BPMN/20100524/DI"/>
-  <ecore:EStringToStringMapEntry key="dc" value="http://www.omg.org/spec/DD/20100524/DC"/>
-  <ecore:EStringToStringMapEntry key="di" value="http://www.omg.org/spec/DD/20100524/DI"/>
-</xmi:XMI>
+<pnet:Net xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pnet="http://uam.es/PetriNets" xmi:id="bikeshop">
+  <places name="StartEvent_1" postt="//@transitions.4"/>
+  <places name="no trade-in" postt="//@transitions.14" pret="//@transitions.4"/>
+  <places name="not ordered at supplier" postt="//@transitions.13" pret="//@transitions.4"/>
+  <places name="accessories unknown" postt="//@transitions.15" pret="//@transitions.4"/>
+  <places name="Exclusive Gateway 1" postt="//@transitions.5 //@transitions.6" pret="//@transitions.14"/>
+  <places name="ordered at supplier" postt="//@transitions.2" pret="//@transitions.13"/>
+  <places name="Exclusive Gateway 3" postt="//@transitions.7" pret="//@transitions.2 //@transitions.11"/>
+  <places name="accessories fixed" postt="//@transitions.1" pret="//@transitions.15"/>
+  <places name="trade-in" postt="//@transitions.8" pret="//@transitions.5"/>
+  <places name="signed" postt="//@transitions.2" pret="//@transitions.1"/>
+  <places name="Exclusive Gateway 2" postt="//@transitions.1" pret="//@transitions.6 //@transitions.8"/>
+  <places name="bike ready" postt="//@transitions.9" pret="//@transitions.7"/>
+  <places name="Exclusive Gateway 4" postt="//@transitions.3 //@transitions.10" pret="//@transitions.9"/>
+  <places name="reordered" postt="//@transitions.11" pret="//@transitions.10"/>
+  <places name="accessories ready" postt="//@transitions.0" pret="//@transitions.3"/>
+  <places name="bike ready" postt="//@transitions.0" pret="//@transitions.3"/>
+  <places name="closed" postt="//@transitions.12" pret="//@transitions.0"/>
+  <places name="EndEvent_1" pret="//@transitions.12"/>
+  <transitions name="Parallel Gateway 5" prep="//@places.15 //@places.14" postp="//@places.16"/>
+  <transitions name="Parallel Gateway 2" prep="//@places.7 //@places.10" postp="//@places.9"/>
+  <transitions name="Parallel Gateway 3" prep="//@places.5 //@places.9" postp="//@places.6"/>
+  <transitions name="Parallel Gateway 4" prep="//@places.12" postp="//@places.15 //@places.14"/>
+  <transitions name="fork#FlowElement#96" prep="//@places.0" postp="//@places.1 //@places.2 //@places.3"/>
+  <transitions name="Exclusive Gateway 1trade-in" prep="//@places.4" postp="//@places.8"/>
+  <transitions name="Exclusive Gateway 1Exclusive Gateway 2" prep="//@places.4" postp="//@places.10"/>
+  <transitions name="Exclusive Gateway 3bike ready" prep="//@places.6" postp="//@places.11"/>
+  <transitions name="trade-inExclusive Gateway 2" prep="//@places.8" postp="//@places.10"/>
+  <transitions name="bike readyExclusive Gateway 4" prep="//@places.11" postp="//@places.12"/>
+  <transitions name="Exclusive Gateway 4reordered" prep="//@places.12" postp="//@places.13"/>
+  <transitions name="reorderedExclusive Gateway 3" prep="//@places.13" postp="//@places.6"/>
+  <transitions name="closedEndEvent_1" prep="//@places.16" postp="//@places.17"/>
+  <transitions name="not ordered at supplierordered at supplier" prep="//@places.2" postp="//@places.5"/>
+  <transitions name="no trade-inExclusive Gateway 1" prep="//@places.1" postp="//@places.4"/>
+  <transitions name="accessories unknownaccessories fixed" prep="//@places.3" postp="//@places.7"/>
+</pnet:Net>

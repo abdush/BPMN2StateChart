@@ -10,7 +10,6 @@
         eType="#//AND" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="State" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="next" upperBound="-1" eType="#//State"
         eOpposite="#//State/rnext">
       <eAnnotations source="gmf.link">
@@ -24,6 +23,7 @@
         eType="#//State" eOpposite="#//State/next"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rcontains" eType="#//Compound"
         eOpposite="#//Compound/contains"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HyperEdge" eSuperTypes="#//State">
     <eAnnotations source="gmf.node">

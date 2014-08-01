@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ASCII"?>
+<pnet:Net xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pnet="http://uam.es/PetriNets" xmi:id="ID_32136603_1436_1204_0426_056655200001">
+  <places name="BP176_BP94" postt="//@transitions.0"/>
+  <places name="Gateway4" postt="//@transitions.2 //@transitions.4" pret="//@transitions.1 //@transitions.10"/>
+  <places name="Gateway5" postt="//@transitions.5" pret="//@transitions.3 //@transitions.4"/>
+  <places name="Gateway16" postt="//@transitions.9 //@transitions.10" pret="//@transitions.8"/>
+  <places name="BP176_BP161" pret="//@transitions.9"/>
+  <places name="new" postt="//@transitions.1" pret="//@transitions.0"/>
+  <places name="sampled" postt="//@transitions.3" pret="//@transitions.2"/>
+  <places name="diagnosed" postt="//@transitions.6" pret="//@transitions.5"/>
+  <places name="contacted" postt="//@transitions.7" pret="//@transitions.6"/>
+  <places name="treated" postt="//@transitions.8" pret="//@transitions.7"/>
+  <transitions name="BP176_BP94new" prep="//@places.0" postp="//@places.5"/>
+  <transitions name="newGateway4" prep="//@places.5" postp="//@places.1"/>
+  <transitions name="Gateway4sampled" prep="//@places.1" postp="//@places.6"/>
+  <transitions name="sampledGateway5" prep="//@places.6" postp="//@places.2"/>
+  <transitions name="Gateway4Gateway5" prep="//@places.1" postp="//@places.2"/>
+  <transitions name="Gateway5diagnosed" prep="//@places.2" postp="//@places.7"/>
+  <transitions name="diagnosedcontacted" prep="//@places.7" postp="//@places.8"/>
+  <transitions name="contactedtreated" prep="//@places.8" postp="//@places.9"/>
+  <transitions name="treatedGateway16" prep="//@places.9" postp="//@places.3"/>
+  <transitions name="Gateway16BP176_BP161" prep="//@places.3" postp="//@places.4"/>
+  <transitions name="Gateway16Gateway4" prep="//@places.3" postp="//@places.1"/>
+</pnet:Net>

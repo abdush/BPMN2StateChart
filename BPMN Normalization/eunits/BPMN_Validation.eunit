@@ -1,0 +1,85 @@
+operation validateBPMN(bpmn_model) {
+  var evl_task = createBPMNValidateTask(bpmn_model);
+  evl_task.execute();
+  return EVL!EvlUnsatisfiedConstraint.all;
+}
+
+-*
+ antProject is Ant's Project object, and is supplied by EUnit.
+*-
+operation createEmfLoadTask(modelName : String, modelFilename : String, metamodelFilename : String) {
+  var task = antProject.createTask("epsilon.emf.loadModel");
+  var basedir = antProject.getBaseDir();
+  task.setModelFile(new Native('java.io.File')(basedir, "models/input/" + modelFilename));
+  --task.setMetamodelFile(new Native('java.io.File')(basedir, "metamodels/" + metamodelFilename));
+  task.setMetamodelUri("http://www.omg.org/spec/BPMN/20100524/MODEL-XMI");
+  task.setName(modelName);
+  task.setRead(true);
+  task.setStore(false);
+  return task;
+}
+
+operation createBPMNValidateTask(modelName : String) {
+  
+  var evl_task = antProject.createTask("epsilon.evl");
+  var basedir = antProject.getBaseDir();
+  evl_task.setSrc(new Native('java.io.File')(basedir, "src/normalization/BPMN_Validation.evl"));
+  evl_task.createModel().setRef(modelName);
+  evl_task.setFailOnErrors(false);
+  evl_task.setFailOnWarnings(false);
+  evl_task.setExportAsModel("EVL");
+  return evl_task;
+}
+
+
+@model
+operation loadModels() {
+  --var loadTree  = createEmfLoadTask("Tree", "tree.model", "tree.ecore");
+  --var loadGraph = createEmfLoadTask("Graph", "graph-expected.model", "graph.ecore");
+  --var loadExpectedGraph = createEmfLoadTask("GraphExpected", "graph-expected.model", "graph.ecore");
+
+  var loadBpmn_input  = createEmfLoadTask("bpmn_input", "bikeshop.bpmn", "BPMN20.ecore");
+  var loadInvalid_input_elements = createEmfLoadTask("invalid_bpmn_input", "invalid_input_1_invalidElements.bpmn", "BPMN20.ecore");
+  
+  // Do not read the graph-expected.model in loadGraph: we only
+  // want an empty model that we can use as destination for the ETL
+  // transformation.
+  --loadGraph.setRead(false);
+
+  --loadTree.execute();
+  --loadGraph.execute();
+  --loadExpectedGraph.execute();
+  loadBpmn_input.execute();
+  loadInvalid_input_elements.execute();
+}
+
+@test
+operation valid() {
+  --var tree = new Tree!Tree;
+  var errors = validateBPMN("bpmn_input");
+  assertEquals(0, errors.size);
+}
+
+
+@test
+operation error() {
+  
+  var errors = validateBPMN("invalid_bpmn_input");
+  assertEquals(2, errors.size);
+  var error = errors.first;
+  --assertEquals(tree, error.instance);
+  assertEquals(false, error.constraint.isCritique);
+  assertEquals("MustHaveOnlyAllowedNodes", error.constraint.name);
+}
+/*
+@test
+operation warning() {
+  
+  var errors = validateTree(tree, "t1");
+  assertEquals(1, errors.size);
+  var error = errors.first;
+  assertEquals(tree, error.instance);
+  assertEquals(true, error.constraint.isCritique);
+  assertEquals("LabelsEndInN", error.constraint.name);
+}
+*/

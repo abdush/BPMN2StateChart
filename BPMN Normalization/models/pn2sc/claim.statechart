@@ -1,59 +1,59 @@
 <?xml version="1.0" encoding="ASCII"?>
 <schart:Statechart xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:schart="http://uam.es/StateCharts" xmi:id="claim">
   <topState>
-    <contains xsi:type="schart:HyperEdge" name="Parallel Gateway 5" next="//@topState/@contains.25/@contains.0" rnext="//@topState/@contains.13/@contains.0 //@topState/@contains.20/@contains.0"/>
-    <contains xsi:type="schart:HyperEdge" name="join#FlowElement#77" next="//@topState/@contains.21/@contains.0" rnext="//@topState/@contains.19/@contains.0 //@topState/@contains.18/@contains.0"/>
-    <contains xsi:type="schart:HyperEdge" name="fork#FlowElement#87" next="//@topState/@contains.15/@contains.0 //@topState/@contains.16/@contains.0 //@topState/@contains.17/@contains.0" rnext="//@topState/@contains.12/@contains.0"/>
-    <contains xsi:type="schart:HyperEdge" name="decidedRejected" next="//@topState/@contains.22/@contains.0" rnext="//@topState/@contains.21/@contains.0"/>
-    <contains xsi:type="schart:HyperEdge" name="decidedassessed" next="//@topState/@contains.23/@contains.0" rnext="//@topState/@contains.21/@contains.0"/>
-    <contains xsi:type="schart:HyperEdge" name="settledExclusive Gateway 2" next="//@topState/@contains.13/@contains.0" rnext="//@topState/@contains.24/@contains.0"/>
-    <contains xsi:type="schart:HyperEdge" name="archivedEndEvent_1" next="//@topState/@contains.14/@contains.0" rnext="//@topState/@contains.25/@contains.0"/>
-    <contains xsi:type="schart:HyperEdge" name="RejectedExclusive Gateway 2" next="//@topState/@contains.13/@contains.0" rnext="//@topState/@contains.22/@contains.0"/>
-    <contains xsi:type="schart:HyperEdge" name="policy not checkedpolicy checked" next="//@topState/@contains.18/@contains.0" rnext="//@topState/@contains.16/@contains.0"/>
-    <contains xsi:type="schart:HyperEdge" name="damage not checkeddamage checked" next="//@topState/@contains.19/@contains.0" rnext="//@topState/@contains.17/@contains.0"/>
-    <contains xsi:type="schart:HyperEdge" name="assessedsettled" next="//@topState/@contains.24/@contains.0" rnext="//@topState/@contains.23/@contains.0"/>
-    <contains xsi:type="schart:HyperEdge" name="receivedconfirmed" next="//@topState/@contains.20/@contains.0" rnext="//@topState/@contains.15/@contains.0"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.25/@contains.0" rnext="//@topState/@contains.13/@contains.0 //@topState/@contains.20/@contains.0" name="Parallel Gateway 5"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.21/@contains.0" rnext="//@topState/@contains.19/@contains.0 //@topState/@contains.18/@contains.0" name="join#FlowElement#77"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.15/@contains.0 //@topState/@contains.16/@contains.0 //@topState/@contains.17/@contains.0" rnext="//@topState/@contains.12/@contains.0" name="fork#FlowElement#87"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.22/@contains.0" rnext="//@topState/@contains.21/@contains.0" name="decidedRejected"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.23/@contains.0" rnext="//@topState/@contains.21/@contains.0" name="decidedassessed"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.13/@contains.0" rnext="//@topState/@contains.24/@contains.0" name="settledExclusive Gateway 2"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.14/@contains.0" rnext="//@topState/@contains.25/@contains.0" name="archivedEndEvent_1"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.13/@contains.0" rnext="//@topState/@contains.22/@contains.0" name="RejectedExclusive Gateway 2"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.18/@contains.0" rnext="//@topState/@contains.16/@contains.0" name="policy not checkedpolicy checked"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.19/@contains.0" rnext="//@topState/@contains.17/@contains.0" name="damage not checkeddamage checked"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.24/@contains.0" rnext="//@topState/@contains.23/@contains.0" name="assessedsettled"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.20/@contains.0" rnext="//@topState/@contains.15/@contains.0" name="receivedconfirmed"/>
     <contains xsi:type="schart:OR" name="StartEvent_1">
-      <contains xsi:type="schart:Basic" name="StartEvent_1" next="//@topState/@contains.2"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.2" name="StartEvent_1"/>
     </contains>
     <contains xsi:type="schart:OR" name="Exclusive Gateway 2">
-      <contains xsi:type="schart:Basic" name="Exclusive Gateway 2" next="//@topState/@contains.0" rnext="//@topState/@contains.5 //@topState/@contains.7"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0" rnext="//@topState/@contains.5 //@topState/@contains.7" name="Exclusive Gateway 2"/>
     </contains>
     <contains xsi:type="schart:OR" name="EndEvent_1">
-      <contains xsi:type="schart:Basic" name="EndEvent_1" rnext="//@topState/@contains.6"/>
+      <contains xsi:type="schart:Basic" rnext="//@topState/@contains.6" name="EndEvent_1"/>
     </contains>
     <contains xsi:type="schart:OR" name="received">
-      <contains xsi:type="schart:Basic" name="received" next="//@topState/@contains.11" rnext="//@topState/@contains.2"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.11" rnext="//@topState/@contains.2" name="received"/>
     </contains>
     <contains xsi:type="schart:OR" name="policy not checked">
-      <contains xsi:type="schart:Basic" name="policy not checked" next="//@topState/@contains.8" rnext="//@topState/@contains.2"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.8" rnext="//@topState/@contains.2" name="policy not checked"/>
     </contains>
     <contains xsi:type="schart:OR" name="damage not checked">
-      <contains xsi:type="schart:Basic" name="damage not checked" next="//@topState/@contains.9" rnext="//@topState/@contains.2"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.9" rnext="//@topState/@contains.2" name="damage not checked"/>
     </contains>
     <contains xsi:type="schart:OR" name="policy checked">
-      <contains xsi:type="schart:Basic" name="policy checked" next="//@topState/@contains.1" rnext="//@topState/@contains.8"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.1" rnext="//@topState/@contains.8" name="policy checked"/>
     </contains>
     <contains xsi:type="schart:OR" name="damage checked">
-      <contains xsi:type="schart:Basic" name="damage checked" next="//@topState/@contains.1" rnext="//@topState/@contains.9"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.1" rnext="//@topState/@contains.9" name="damage checked"/>
     </contains>
     <contains xsi:type="schart:OR" name="confirmed">
-      <contains xsi:type="schart:Basic" name="confirmed" next="//@topState/@contains.0" rnext="//@topState/@contains.11"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0" rnext="//@topState/@contains.11" name="confirmed"/>
     </contains>
     <contains xsi:type="schart:OR" name="decided">
-      <contains xsi:type="schart:Basic" name="decided" next="//@topState/@contains.3 //@topState/@contains.4" rnext="//@topState/@contains.1"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.3 //@topState/@contains.4" rnext="//@topState/@contains.1" name="decided"/>
     </contains>
     <contains xsi:type="schart:OR" name="Rejected">
-      <contains xsi:type="schart:Basic" name="Rejected" next="//@topState/@contains.7" rnext="//@topState/@contains.3"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.7" rnext="//@topState/@contains.3" name="Rejected"/>
     </contains>
     <contains xsi:type="schart:OR" name="assessed">
-      <contains xsi:type="schart:Basic" name="assessed" next="//@topState/@contains.10" rnext="//@topState/@contains.4"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.10" rnext="//@topState/@contains.4" name="assessed"/>
     </contains>
     <contains xsi:type="schart:OR" name="settled">
-      <contains xsi:type="schart:Basic" name="settled" next="//@topState/@contains.5" rnext="//@topState/@contains.10"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.5" rnext="//@topState/@contains.10" name="settled"/>
     </contains>
     <contains xsi:type="schart:OR" name="archived">
-      <contains xsi:type="schart:Basic" name="archived" next="//@topState/@contains.6" rnext="//@topState/@contains.0"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.6" rnext="//@topState/@contains.0" name="archived"/>
     </contains>
   </topState>
 </schart:Statechart>

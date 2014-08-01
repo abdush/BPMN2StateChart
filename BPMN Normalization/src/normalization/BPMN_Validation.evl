@@ -1,4 +1,5 @@
 import "Normalization_Helper.eol";
+
 pre validationStart {
 	"BPMN input model validation start:------".println();
 	Process.all.size().println();
@@ -54,13 +55,13 @@ context Process {
 		message : "There must be only elements of type [Event, Task, Exclusive Gateway, Parallel Gateway, SequenceFlow, Data Object, Data Object Reference] but found " + nonAllowedElements
 	}
 	
-	constraint MustHaveAtleastOneStatefulDataObject {
+	constraint MustHaveOneStatefulDataObject {
 		guard: self.satisfies("MustExistOneProcess")
 		check {
 			var numberOfStatefulData = self.getStatefulDataObjects().size();
-			return numberOfStatefulData >=1;
+			return numberOfStatefulData =1;
 		}
-		message : "There must be at least one stateful data object but there are " + numberOfStatefulData
+		message : "There must be one stateful data object but there are " + numberOfStatefulData
 	}
 }
 
