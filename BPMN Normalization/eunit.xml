@@ -2,35 +2,16 @@
 <project>
 
 	<property name="models.location" location="${basedir}/models/input" />
-	<!--property name="graph.model.location" location="${models.location}/graph-expected.model" />
-	<property name="tree.model.location" location="${models.location}/tree.model" /-->
-
-	
 	<property name="metamodels.location" location="${basedir}/metamodels" />
 	<property name="BPMN.metamodel.location" location="${metamodels.location}/BPMN20.ecore" />
-	<!--property name="elements.metamodel.location" location="${metamodels.location}/elements.ecore" />
-	<property name="graph.metamodel.location" location="${metamodels.location}/graph.ecore" />
-	<property name="tree.metamodel.location" location="${metamodels.location}/tree.ecore" /-->
-
-	<property name="src.location" location="${basedir}/src/normalization"/>
+	
+	<property name="src.location" location="${basedir}/src"/>
 	<property name="tests.location" location="${basedir}/eunits"/>
-	<!--property name="antmodels.eunit.location" location="${tests.location}/load-models-implicitly.eunit"/>
-	<property name="anttargetmodels.eunit.location" location="${tests.location}/load-models-running-ant-target.eunit"/>
-	<property name="inlineantmodels.eunit.location" location="${tests.location}/load-models-with-inline-ant-tasks.eunit"/>
-	<property name="hutnmodels.eunit.location" location="${tests.location}/load-models-with-hutn.eunit"/-->
-
+	
 	<!-- EUNIT TARGETS -->
 	<target name="evl-exportAsModel">
-	    <epsilon.eunit src="${tests.location}/BPMN_Validation.eunit">
-	      <!--modelTasks>
-	        <epsilon.emf.loadModel name="bpmn_input" metamodelfile="BPMN20.ecore" read="false" store="false" />
-	      </modelTasks-->
-	    </epsilon.eunit>
-	  </target>
-
-	  <!--target name="validate-BPMN">
-	    <epsilon.evl src="${src.location}/BPMN_Validation.evl" failOnErrors="false" failOnWarnings="false" exportAsModel="EVL">
-	      <model ref="bpmn_input" />
-	    </epsilon.evl>
-	  </target-->
+	    <!--epsilon.eunit src="${tests.location}/BPMN_Validation.eunit"/-->
+		<epsilon.eunit src="${tests.location}/filtering.eunit" />
+	</target>
+		
 </project>

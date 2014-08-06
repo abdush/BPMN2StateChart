@@ -1,66 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML">
-  <uml:Pseudostate xmi:id="_ZYUvkBj8EeS4n7YXZ-K_0A" name="join#FlowElement#98" kind="join"/>
-  <uml:Pseudostate xmi:id="_ZYV9sBj8EeS4n7YXZ-K_0A" name="fork#FlowElement#112" kind="fork"/>
-  <uml:Pseudostate xmi:id="_ZYXL0Bj8EeS4n7YXZ-K_0A" name="fork#FlowElement#118" kind="fork"/>
-  <uml:Pseudostate xmi:id="_ZYYZ8Bj8EeS4n7YXZ-K_0A" name="fork#FlowElement#120" kind="fork"/>
-  <uml:Model xmi:id="_ZZiQgBj8EeS4n7YXZ-K_0A">
-    <packagedElement xmi:type="uml:StateMachine" xmi:id="permitrequest">
-      <region xmi:id="_ZYcEUBj8EeS4n7YXZ-K_0A" name="StartEvent_1request received">
-        <transition xmi:id="_ZYhj4Bj8EeS4n7YXZ-K_0A" name="StartEvent_1request received" source="_ZYdScBj8EeS4n7YXZ-K_0A" target="_ZYnqgBj8EeS4n7YXZ-K_0A"/>
-        <subvertex xmi:type="uml:Pseudostate" xmi:id="_ZYdScBj8EeS4n7YXZ-K_0A" name="StartEvent_1"/>
-        <subvertex xmi:type="uml:State" xmi:id="_ZYnqgBj8EeS4n7YXZ-K_0A" name="request received"/>
-      </region>
-      <region xmi:id="_ZYoRkBj8EeS4n7YXZ-K_0A" name="permit to be registeredpermit registeredEnd Event 2">
-        <transition xmi:id="_ZYpfsRj8EeS4n7YXZ-K_0A" name="permit to be registeredpermit registered" source="_ZYpfsBj8EeS4n7YXZ-K_0A" target="_ZYrU4Bj8EeS4n7YXZ-K_0A"/>
-        <transition xmi:id="_ZYrU4Rj8EeS4n7YXZ-K_0A" name="permit registeredEnd Event 2" source="_ZYrU4Bj8EeS4n7YXZ-K_0A" target="_ZY4wQBj8EeS4n7YXZ-K_0A"/>
-        <subvertex xmi:type="uml:State" xmi:id="_ZYpfsBj8EeS4n7YXZ-K_0A" name="permit to be registered"/>
-        <subvertex xmi:type="uml:State" xmi:id="_ZYrU4Bj8EeS4n7YXZ-K_0A" name="permit registered"/>
-        <subvertex xmi:type="uml:FinalState" xmi:id="_ZY4wQBj8EeS4n7YXZ-K_0A" name="End Event 2"/>
-      </region>
-      <region xmi:id="_ZY4wQRj8EeS4n7YXZ-K_0A" name="permit to be sentpermit sentEndEvent_1">
-        <transition xmi:id="_ZY6lcRj8EeS4n7YXZ-K_0A" name="permit to be sentpermit sent" source="_ZY6lcBj8EeS4n7YXZ-K_0A" target="_ZY8aoBj8EeS4n7YXZ-K_0A"/>
-        <transition xmi:id="_ZY8aoRj8EeS4n7YXZ-K_0A" name="permit sentEndEvent_1" source="_ZY8aoBj8EeS4n7YXZ-K_0A" target="_ZY9owBj8EeS4n7YXZ-K_0A"/>
-        <subvertex xmi:type="uml:State" xmi:id="_ZY6lcBj8EeS4n7YXZ-K_0A" name="permit to be sent"/>
-        <subvertex xmi:type="uml:State" xmi:id="_ZY8aoBj8EeS4n7YXZ-K_0A" name="permit sent"/>
-        <subvertex xmi:type="uml:FinalState" xmi:id="_ZY9owBj8EeS4n7YXZ-K_0A" name="EndEvent_1"/>
-      </region>
-      <region xmi:id="_ZY9owRj8EeS4n7YXZ-K_0A" name="geometry unknown">
-        <subvertex xmi:type="uml:State" xmi:id="_ZY-24Bj8EeS4n7YXZ-K_0A" name="geometry unknown"/>
-      </region>
-      <region xmi:id="_ZY-24Rj8EeS4n7YXZ-K_0A" name="address uncheckedaddress checked">
-        <transition xmi:id="_ZZAFARj8EeS4n7YXZ-K_0A" name="address uncheckedaddress checked" source="_ZZAFABj8EeS4n7YXZ-K_0A" target="_ZZB6MBj8EeS4n7YXZ-K_0A"/>
-        <subvertex xmi:type="uml:State" xmi:id="_ZZAFABj8EeS4n7YXZ-K_0A" name="address unchecked"/>
-        <subvertex xmi:type="uml:State" xmi:id="_ZZB6MBj8EeS4n7YXZ-K_0A" name="address checked"/>
-      </region>
-      <region xmi:id="_ZZB6MRj8EeS4n7YXZ-K_0A" name="decided geometry">
-        <subvertex xmi:type="uml:State" xmi:id="_ZZDIUBj8EeS4n7YXZ-K_0A" name="decided geometry"/>
-      </region>
-      <region xmi:id="_ZZDIURj8EeS4n7YXZ-K_0A" name="geometry finalized">
-        <subvertex xmi:type="uml:State" xmi:id="_ZZEWcBj8EeS4n7YXZ-K_0A" name="geometry finalized"/>
-      </region>
-      <region xmi:id="_ZZEWcRj8EeS4n7YXZ-K_0A" name="permit granted">
-        <subvertex xmi:type="uml:State" xmi:id="_ZZFkkBj8EeS4n7YXZ-K_0A" name="permit granted"/>
-      </region>
-      <region xmi:id="_ZZFkkRj8EeS4n7YXZ-K_0A" name="address registeredEnd Event 6">
-        <transition xmi:id="_ZZGysRj8EeS4n7YXZ-K_0A" name="address registeredEnd Event 6" source="_ZZGysBj8EeS4n7YXZ-K_0A" target="_ZZQjsBj8EeS4n7YXZ-K_0A"/>
-        <subvertex xmi:type="uml:State" xmi:id="_ZZGysBj8EeS4n7YXZ-K_0A" name="address registered"/>
-        <subvertex xmi:type="uml:FinalState" xmi:id="_ZZQjsBj8EeS4n7YXZ-K_0A" name="End Event 6"/>
-      </region>
-    </packagedElement>
-  </uml:Model>
-  <uml:Transition xmi:id="_ZbBeQBj8EeS4n7YXZ-K_0A" source="_ZYUvkBj8EeS4n7YXZ-K_0A" target="_ZZGysBj8EeS4n7YXZ-K_0A"/>
-  <uml:Transition xmi:id="_ZbW1cBj8EeS4n7YXZ-K_0A" source="_ZZB6MBj8EeS4n7YXZ-K_0A" target="_ZYUvkBj8EeS4n7YXZ-K_0A"/>
-  <uml:Transition xmi:id="_ZbXcgBj8EeS4n7YXZ-K_0A" source="_ZZEWcBj8EeS4n7YXZ-K_0A" target="_ZYUvkBj8EeS4n7YXZ-K_0A"/>
-  <uml:Transition xmi:id="_ZbXcgRj8EeS4n7YXZ-K_0A" source="_ZZFkkBj8EeS4n7YXZ-K_0A" target="_ZYUvkBj8EeS4n7YXZ-K_0A"/>
-  <uml:Transition xmi:id="_ZbYqoBj8EeS4n7YXZ-K_0A" source="_ZYV9sBj8EeS4n7YXZ-K_0A" target="_ZY-24Bj8EeS4n7YXZ-K_0A"/>
-  <uml:Transition xmi:id="_ZbZRsBj8EeS4n7YXZ-K_0A" source="_ZYV9sBj8EeS4n7YXZ-K_0A" target="_ZZAFABj8EeS4n7YXZ-K_0A"/>
-  <uml:Transition xmi:id="_ZbZRsRj8EeS4n7YXZ-K_0A" source="_ZYnqgBj8EeS4n7YXZ-K_0A" target="_ZYV9sBj8EeS4n7YXZ-K_0A"/>
-  <uml:Transition xmi:id="_ZbZ4wBj8EeS4n7YXZ-K_0A" source="_ZYXL0Bj8EeS4n7YXZ-K_0A" target="_ZZDIUBj8EeS4n7YXZ-K_0A"/>
-  <uml:Transition xmi:id="_ZbZ4wRj8EeS4n7YXZ-K_0A" source="_ZYXL0Bj8EeS4n7YXZ-K_0A" target="_ZZEWcBj8EeS4n7YXZ-K_0A"/>
-  <uml:Transition xmi:id="_ZbZ4whj8EeS4n7YXZ-K_0A" source="_ZY-24Bj8EeS4n7YXZ-K_0A" target="_ZYXL0Bj8EeS4n7YXZ-K_0A"/>
-  <uml:Transition xmi:id="_Zbaf0Bj8EeS4n7YXZ-K_0A" source="_ZYYZ8Bj8EeS4n7YXZ-K_0A" target="_ZYpfsBj8EeS4n7YXZ-K_0A"/>
-  <uml:Transition xmi:id="_ZbbG4Bj8EeS4n7YXZ-K_0A" source="_ZYYZ8Bj8EeS4n7YXZ-K_0A" target="_ZY6lcBj8EeS4n7YXZ-K_0A"/>
-  <uml:Transition xmi:id="_ZbbG4Rj8EeS4n7YXZ-K_0A" source="_ZYYZ8Bj8EeS4n7YXZ-K_0A" target="_ZZFkkBj8EeS4n7YXZ-K_0A"/>
-  <uml:Transition xmi:id="_ZbbG4hj8EeS4n7YXZ-K_0A" source="_ZZDIUBj8EeS4n7YXZ-K_0A" target="_ZYYZ8Bj8EeS4n7YXZ-K_0A"/>
-</xmi:XMI>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_6c9M0BzbEeS4n7YXZ-K_0A">
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="permitrequest">
+    <region xmi:id="_6cXW8BzbEeS4n7YXZ-K_0A" name="StartEvent_1request receivedgeometry unknowndecided geometrypermit to be registeredpermit registeredEnd Event 2permit to be sentpermit sentEndEvent_1permit grantedaddress registeredEnd Event 6address uncheckedaddress checkedgeometry finalized">
+      <subvertex xmi:type="uml:State" xmi:id="_6cXW8RzbEeS4n7YXZ-K_0A" name="StartEvent_1request receivedgeometry unknowndecided geometrypermit to be registeredpermit registeredEnd Event 2permit to be sentpermit sentEndEvent_1permit grantedaddress registeredEnd Event 6address uncheckedaddress checkedgeometry finalized">
+        <region xmi:id="_6cXW8hzbEeS4n7YXZ-K_0A" name="StartEvent_1request receivedgeometry unknowndecided geometrypermit to be registeredpermit registeredEnd Event 2permit to be sentpermit sentEndEvent_1permit grantedaddress registeredEnd Event 6">
+          <transition xmi:id="_6cYlERzbEeS4n7YXZ-K_0A" name="StartEvent_1request received" source="_6cYlEBzbEeS4n7YXZ-K_0A" target="_6cZzMBzbEeS4n7YXZ-K_0A"/>
+          <transition xmi:id="_6jU6kBzbEeS4n7YXZ-K_0A" source="_6cbBUBzbEeS4n7YXZ-K_0A" target="_6ccPcBzbEeS4n7YXZ-K_0A"/>
+          <transition xmi:id="_6jU6kRzbEeS4n7YXZ-K_0A" source="_6cbBUBzbEeS4n7YXZ-K_0A" target="_6csHEBzbEeS4n7YXZ-K_0A"/>
+          <transition xmi:id="_6jU6khzbEeS4n7YXZ-K_0A" source="_6cZzMBzbEeS4n7YXZ-K_0A" target="_6cbBUBzbEeS4n7YXZ-K_0A"/>
+          <transition xmi:id="_6jWIsBzbEeS4n7YXZ-K_0A" source="_6cddkBzbEeS4n7YXZ-K_0A" target="_6cersBzbEeS4n7YXZ-K_0A"/>
+          <transition xmi:id="_6jXW0BzbEeS4n7YXZ-K_0A" source="_6cddkBzbEeS4n7YXZ-K_0A" target="_6cujUBzbEeS4n7YXZ-K_0A"/>
+          <transition xmi:id="_6jXW0RzbEeS4n7YXZ-K_0A" source="_6ccPcBzbEeS4n7YXZ-K_0A" target="_6cddkBzbEeS4n7YXZ-K_0A"/>
+          <transition xmi:id="_6jYk8BzbEeS4n7YXZ-K_0A" source="_6cf50BzbEeS4n7YXZ-K_0A" target="_6chH8BzbEeS4n7YXZ-K_0A"/>
+          <transition xmi:id="_6jYk8RzbEeS4n7YXZ-K_0A" source="_6cf50BzbEeS4n7YXZ-K_0A" target="_6ckyUBzbEeS4n7YXZ-K_0A"/>
+          <transition xmi:id="_6jYk8hzbEeS4n7YXZ-K_0A" source="_6cf50BzbEeS4n7YXZ-K_0A" target="_6cocsBzbEeS4n7YXZ-K_0A"/>
+          <transition xmi:id="_6jYk8xzbEeS4n7YXZ-K_0A" source="_6cersBzbEeS4n7YXZ-K_0A" target="_6cf50BzbEeS4n7YXZ-K_0A"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_6cYlEBzbEeS4n7YXZ-K_0A" name="StartEvent_1"/>
+          <subvertex xmi:type="uml:State" xmi:id="_6cZzMBzbEeS4n7YXZ-K_0A" name="request received"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_6cbBUBzbEeS4n7YXZ-K_0A" name="fork#FlowElement#112" kind="fork"/>
+          <subvertex xmi:type="uml:State" xmi:id="_6ccPcBzbEeS4n7YXZ-K_0A" name="geometry unknown"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_6cddkBzbEeS4n7YXZ-K_0A" name="fork#FlowElement#118" kind="fork"/>
+          <subvertex xmi:type="uml:State" xmi:id="_6cersBzbEeS4n7YXZ-K_0A" name="decided geometry"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_6cf50BzbEeS4n7YXZ-K_0A" name="fork#FlowElement#120" kind="fork"/>
+          <subvertex xmi:type="uml:State" xmi:id="_6cf50RzbEeS4n7YXZ-K_0A" name="permit to be registeredpermit registeredEnd Event 2permit to be sentpermit sentEndEvent_1permit grantedaddress registeredEnd Event 6">
+            <region xmi:id="_6cf50hzbEeS4n7YXZ-K_0A" name="permit to be registeredpermit registeredEnd Event 2">
+              <transition xmi:id="_6chH8RzbEeS4n7YXZ-K_0A" name="permit to be registeredpermit registered" source="_6chH8BzbEeS4n7YXZ-K_0A" target="_6ciWEBzbEeS4n7YXZ-K_0A"/>
+              <transition xmi:id="_6ciWERzbEeS4n7YXZ-K_0A" name="permit registeredEnd Event 2" source="_6ciWEBzbEeS4n7YXZ-K_0A" target="_6cjkMBzbEeS4n7YXZ-K_0A"/>
+              <subvertex xmi:type="uml:State" xmi:id="_6chH8BzbEeS4n7YXZ-K_0A" name="permit to be registered"/>
+              <subvertex xmi:type="uml:State" xmi:id="_6ciWEBzbEeS4n7YXZ-K_0A" name="permit registered"/>
+              <subvertex xmi:type="uml:FinalState" xmi:id="_6cjkMBzbEeS4n7YXZ-K_0A" name="End Event 2"/>
+            </region>
+            <region xmi:id="_6cjkMRzbEeS4n7YXZ-K_0A" name="permit to be sentpermit sentEndEvent_1">
+              <transition xmi:id="_6ckyURzbEeS4n7YXZ-K_0A" name="permit to be sentpermit sent" source="_6ckyUBzbEeS4n7YXZ-K_0A" target="_6cmAcBzbEeS4n7YXZ-K_0A"/>
+              <transition xmi:id="_6cmAcRzbEeS4n7YXZ-K_0A" name="permit sentEndEvent_1" source="_6cmAcBzbEeS4n7YXZ-K_0A" target="_6cnOkBzbEeS4n7YXZ-K_0A"/>
+              <subvertex xmi:type="uml:State" xmi:id="_6ckyUBzbEeS4n7YXZ-K_0A" name="permit to be sent"/>
+              <subvertex xmi:type="uml:State" xmi:id="_6cmAcBzbEeS4n7YXZ-K_0A" name="permit sent"/>
+              <subvertex xmi:type="uml:FinalState" xmi:id="_6cnOkBzbEeS4n7YXZ-K_0A" name="EndEvent_1"/>
+            </region>
+            <region xmi:id="_6cnOkRzbEeS4n7YXZ-K_0A" name="permit grantedaddress registeredEnd Event 6">
+              <transition xmi:id="_6jjkEBzbEeS4n7YXZ-K_0A" source="_6cpq0BzbEeS4n7YXZ-K_0A" target="_6cpq0RzbEeS4n7YXZ-K_0A"/>
+              <transition xmi:id="_6jjkERzbEeS4n7YXZ-K_0A" source="_6ctVMBzbEeS4n7YXZ-K_0A" target="_6cpq0BzbEeS4n7YXZ-K_0A"/>
+              <transition xmi:id="_6jjkEhzbEeS4n7YXZ-K_0A" source="_6cujUBzbEeS4n7YXZ-K_0A" target="_6cpq0BzbEeS4n7YXZ-K_0A"/>
+              <transition xmi:id="_6jjkExzbEeS4n7YXZ-K_0A" source="_6cocsBzbEeS4n7YXZ-K_0A" target="_6cpq0BzbEeS4n7YXZ-K_0A"/>
+              <transition xmi:id="_6cq48BzbEeS4n7YXZ-K_0A" name="address registeredEnd Event 6" source="_6cpq0RzbEeS4n7YXZ-K_0A" target="_6cq48RzbEeS4n7YXZ-K_0A"/>
+              <subvertex xmi:type="uml:State" xmi:id="_6cocsBzbEeS4n7YXZ-K_0A" name="permit granted"/>
+              <subvertex xmi:type="uml:Pseudostate" xmi:id="_6cpq0BzbEeS4n7YXZ-K_0A" name="join#FlowElement#98" kind="join"/>
+              <subvertex xmi:type="uml:State" xmi:id="_6cpq0RzbEeS4n7YXZ-K_0A" name="address registered"/>
+              <subvertex xmi:type="uml:FinalState" xmi:id="_6cq48RzbEeS4n7YXZ-K_0A" name="End Event 6"/>
+            </region>
+          </subvertex>
+        </region>
+        <region xmi:id="_6cq48hzbEeS4n7YXZ-K_0A" name="address uncheckedaddress checked">
+          <transition xmi:id="_6csHERzbEeS4n7YXZ-K_0A" name="address uncheckedaddress checked" source="_6csHEBzbEeS4n7YXZ-K_0A" target="_6ctVMBzbEeS4n7YXZ-K_0A"/>
+          <subvertex xmi:type="uml:State" xmi:id="_6csHEBzbEeS4n7YXZ-K_0A" name="address unchecked"/>
+          <subvertex xmi:type="uml:State" xmi:id="_6ctVMBzbEeS4n7YXZ-K_0A" name="address checked"/>
+        </region>
+        <region xmi:id="_6ctVMRzbEeS4n7YXZ-K_0A" name="geometry finalized">
+          <subvertex xmi:type="uml:State" xmi:id="_6cujUBzbEeS4n7YXZ-K_0A" name="geometry finalized"/>
+        </region>
+      </subvertex>
+    </region>
+  </packagedElement>
+</uml:Model>

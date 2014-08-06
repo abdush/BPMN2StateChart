@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="ASCII"?>
 <schart:Statechart xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:schart="http://uam.es/StateCharts" xmi:id="order_production">
   <topState>
-    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.9/@contains.0" rnext="//@topState/@contains.6/@contains.2 //@topState/@contains.8/@contains.2" name="join#FlowElement#64"/>
-    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.10/@contains.0" rnext="//@topState/@contains.7/@contains.2 //@topState/@contains.9/@contains.2" name="join#FlowElement#68"/>
-    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.6/@contains.0 //@topState/@contains.5/@contains.0" rnext="//@topState/@contains.4/@contains.0" name="fork#FlowElement#74"/>
-    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.7/@contains.0 //@topState/@contains.8/@contains.0" rnext="//@topState/@contains.5/@contains.0" name="fork#FlowElement#84"/>
-    <contains xsi:type="schart:OR" name="StartEvent_1">
-      <contains xsi:type="schart:Basic" next="//@topState/@contains.2" name="StartEvent_1"/>
-    </contains>
-    <contains xsi:type="schart:OR" name="unplanned">
-      <contains xsi:type="schart:Basic" next="//@topState/@contains.3" rnext="//@topState/@contains.2" name="unplanned"/>
-    </contains>
-    <contains xsi:type="schart:OR" name="uncheckedchecked">
-      <contains xsi:type="schart:Basic" next="//@topState/@contains.6/@contains.1" rnext="//@topState/@contains.2" name="unchecked"/>
-      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.6/@contains.2" rnext="//@topState/@contains.6/@contains.0" name="uncheckedchecked"/>
-      <contains xsi:type="schart:Basic" next="//@topState/@contains.0" rnext="//@topState/@contains.6/@contains.1" name="checked"/>
-    </contains>
-    <contains xsi:type="schart:OR" name="plannedproduced">
-      <contains xsi:type="schart:Basic" next="//@topState/@contains.7/@contains.1" rnext="//@topState/@contains.3" name="planned"/>
-      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.7/@contains.2" rnext="//@topState/@contains.7/@contains.0" name="plannedproduced"/>
-      <contains xsi:type="schart:Basic" next="//@topState/@contains.1" rnext="//@topState/@contains.7/@contains.1" name="produced"/>
-    </contains>
-    <contains xsi:type="schart:OR" name="costs unknowncosts calculated">
-      <contains xsi:type="schart:Basic" next="//@topState/@contains.8/@contains.1" rnext="//@topState/@contains.3" name="costs unknown"/>
-      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.8/@contains.2" rnext="//@topState/@contains.8/@contains.0" name="costs unknowncosts calculated"/>
-      <contains xsi:type="schart:Basic" next="//@topState/@contains.0" rnext="//@topState/@contains.8/@contains.1" name="costs calculated"/>
-    </contains>
-    <contains xsi:type="schart:OR" name="billedpaid">
-      <contains xsi:type="schart:Basic" next="//@topState/@contains.9/@contains.1" rnext="//@topState/@contains.0" name="billed"/>
-      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.9/@contains.2" rnext="//@topState/@contains.9/@contains.0" name="billedpaid"/>
-      <contains xsi:type="schart:Basic" next="//@topState/@contains.1" rnext="//@topState/@contains.9/@contains.1" name="paid"/>
-    </contains>
-    <contains xsi:type="schart:OR" name="shippedEndEvent_1">
-      <contains xsi:type="schart:Basic" next="//@topState/@contains.10/@contains.1" rnext="//@topState/@contains.1" name="shipped"/>
-      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.10/@contains.2" rnext="//@topState/@contains.10/@contains.0" name="shippedEndEvent_1"/>
-      <contains xsi:type="schart:Basic" rnext="//@topState/@contains.10/@contains.1" name="EndEvent_1"/>
+    <contains xsi:type="schart:OR" name="StartEvent_1uncheckedcheckedbilledpaidunplannedplannedproducedshippedEndEvent_1costs unknowncosts calculated">
+      <contains xsi:type="schart:AND" name="StartEvent_1uncheckedcheckedbilledpaidunplannedplannedproducedshippedEndEvent_1costs unknowncosts calculated">
+        <contains xsi:type="schart:OR" name="StartEvent_1uncheckedcheckedbilledpaidunplannedplannedproducedshippedEndEvent_1">
+          <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.1" name="StartEvent_1"/>
+          <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.2/@contains.0/@contains.0 //@topState/@contains.0/@contains.0/@contains.0/@contains.2/@contains.1/@contains.0" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.0" name="fork#FlowElement#74"/>
+          <contains xsi:type="schart:AND" name="uncheckedcheckedbilledpaidunplannedplannedproduced">
+            <contains xsi:type="schart:OR" name="uncheckedcheckedbilledpaid">
+              <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.2/@contains.0/@contains.1" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.1" name="unchecked"/>
+              <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.2/@contains.0/@contains.2" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.2/@contains.0/@contains.0" name="uncheckedchecked"/>
+              <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.2/@contains.0/@contains.3" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.2/@contains.0/@contains.1" name="checked"/>
+              <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.2/@contains.0/@contains.4" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.2/@contains.0/@contains.2 //@topState/@contains.0/@contains.0/@contains.1/@contains.2" name="join#FlowElement#64"/>
+              <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.2/@contains.0/@contains.5" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.2/@contains.0/@contains.3" name="billed"/>
+              <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.2/@contains.0/@contains.6" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.2/@contains.0/@contains.4" name="billedpaid"/>
+              <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.3" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.2/@contains.0/@contains.5" name="paid"/>
+            </contains>
+            <contains xsi:type="schart:OR" name="unplannedplannedproduced">
+              <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.2/@contains.1/@contains.1" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.1" name="unplanned"/>
+              <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.2/@contains.1/@contains.2 //@topState/@contains.0/@contains.0/@contains.1/@contains.0" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.2/@contains.1/@contains.0" name="fork#FlowElement#84"/>
+              <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.2/@contains.1/@contains.3" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.2/@contains.1/@contains.1" name="planned"/>
+              <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.2/@contains.1/@contains.4" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.2/@contains.1/@contains.2" name="plannedproduced"/>
+              <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.3" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.2/@contains.1/@contains.3" name="produced"/>
+            </contains>
+          </contains>
+          <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.4" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.2/@contains.1/@contains.4 //@topState/@contains.0/@contains.0/@contains.0/@contains.2/@contains.0/@contains.6" name="join#FlowElement#68"/>
+          <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.5" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.3" name="shipped"/>
+          <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.6" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.4" name="shippedEndEvent_1"/>
+          <contains xsi:type="schart:Basic" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.5" name="EndEvent_1"/>
+        </contains>
+        <contains xsi:type="schart:OR" name="costs unknowncosts calculated">
+          <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.0/@contains.1/@contains.1" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.2/@contains.1/@contains.1" name="costs unknown"/>
+          <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.0/@contains.1/@contains.2" rnext="//@topState/@contains.0/@contains.0/@contains.1/@contains.0" name="costs unknowncosts calculated"/>
+          <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.2/@contains.0/@contains.3" rnext="//@topState/@contains.0/@contains.0/@contains.1/@contains.1" name="costs calculated"/>
+        </contains>
+      </contains>
     </contains>
   </topState>
 </schart:Statechart>

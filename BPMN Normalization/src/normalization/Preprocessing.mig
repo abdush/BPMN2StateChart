@@ -1,12 +1,12 @@
 import "Normalization_Helper.eol";
 
+/****************************************** Pre block **************************************************/
 pre preprocessingStart {
 	"Preprocessing phase start:-------".println();
 	Process.all.size().println();
 }
 
---delete definitions
-
+/******************************************* Migration ************************************************/
 retype Process to Process
 retype ParallelGateway to ParallelGateway
 retype ExclusiveGateway to ExclusiveGateway
@@ -93,6 +93,13 @@ migrate Event
 	migrated.println("Mig: Event ");
 }
 
+/****************************************************** Post block: *************************************
+1- Activity nodes with multiple incoming (outgoing) sequence flows handled by adding merge (fork). 
+2- Object nodes with no incoming (outgoing) object flows handled by checking the unique activity node 
+associated with the object node and changing the sequence flow target (source), otherwise fail!!!.
+3- Activity nodes with multiple incoming (outgoing) edges handled by adding join (fork).
+*******************************************************************************************************/
+
 post test {
 	Original!Process.all.first.flowElements.size().println("Original Num of flow elements: ");
 	Migrated!Process.all.first.flowElements.size().println("Migrated Num of flow elements: ");
@@ -103,6 +110,10 @@ post _addForkGateway {
 	for(activityNode in Migrated!Activity.all.select(a | a.outgoing.select(e | e.isTypeOf(Migrated!SequenceFlow)).size() > 1)) {
  		activityNode._addFork();
  	}
+ 	
+ 	for(activityNode in Migrated!Event.all.select(a | a.outgoing.select(e | e.isTypeOf(Migrated!SequenceFlow)).size() > 1)) {
+ 		activityNode._addFork();
+ 	}
 }
 
 -- For Activities with multiple incoming sequence flows
@@ -110,47 +121,67 @@ post addMergeGateway {
 	for(activityNode in Migrated!Activity.all.select(a | a.incoming.select(e | e.isTypeOf(Migrated!SequenceFlow)).size() > 1)) {
  		activityNode.addMerge();
  	}
+ 	
+ 	for(activityNode in Migrated!Event.all.select(a | a.incoming.select(e | e.isTypeOf(Migrated!SequenceFlow)).size() > 1)) {
+ 		activityNode.addMerge();
+ 	}
 }
 
+-- Object nodes with no outgoing flow.
 post addOutputObjectFlow {
 	for (objectNode in Migrated!ObjectNode.all.select(o | o.outgoing.isUndefined() or o.outgoing.size() = 0)) {
-		objectNode.name.println();
-		var actionNode = objectNode.incoming.first().sourceRef; //The unique activity node a to which o is output and a has no multiple object nodes, otherwise fail
-		if (objectNode.incoming.size() > 1) {
-			" : The object Node need to be fixed (Multiple incoming)".println(objectNode.name); 
-			//exit
-		} else {
-			
-			if (actionNode.hasMultipleObjectFlows())
-			{
-				" : The object Node need to be fixed (Multiple object flows)".println(objectNode.name); 
-				//exit
+				
+		if (objectNode.incoming.size() == 1) {
+			//The unique activity node a to which o is output.
+			var actionNode = objectNode.incoming.first().sourceRef;
+			if (not actionNode.hasMultipleOutgoingObjectFlows()) {
+				//There is a unique control flow from a
+				var outgoingControlEdge = actionNode.outgoing.first();  
+				outgoingControlEdge.sourceRef = objectNode;
+			} else {
+				" : Object Node need to be fixed".println(objectNode.name + " " + objectNode.dataState.name);
+				" : Node has multiple data outputs".println(actionNode.name); 
+				throw "Node has multiple data outputs";
+				//abort;
 			}
+		} else {
+				" : Object Node need to be fixed (Output from multiple nodes.)".println(objectNode.name + " " + objectNode.dataState.name); 
+				abort;
 		}
-		var outgoingControlEdge = actionNode.outgoing.first();  //There is a unique control flow from a
-		outgoingControlEdge.sourceRef = objectNode;
 	}
 }
 
+-- Object nodes with no incoming flow.
 post addInputObjectFlow {
 	for (objectNode in Migrated!ObjectNode.all.select(o | o.incoming.isUndefined() or o.incoming.size() = 0)) {
-		var actionNode = objectNode.outgoing.first().targetRef; //The unique activity node a to which o is input and a has no multiple object nodes, otherwise fail
-		if ((objectNode.outgoing.size() > 1) or (actionNode.hasMultipleObjectFlows())) 
-		{
-			" : The object Node need to be fixed".println(objectNode.name); 
-			//exit
+		
+		if (objectNode.outgoing.size() == 1) {
+			//The unique activity node a to which o is input.
+			var actionNode = objectNode.outgoing.first().targetRef;
+			if (not actionNode.hasMultipleIncomingObjectFlows()) {
+				//There is a unique control flow to a
+				var incomingControlEdge = actionNode.incoming.first();    
+				incomingControlEdge.targetRef = objectNode;
+			} else {
+				" : Object Node need to be fixed".println(objectNode.name + " " + objectNode.dataState.name);
+				" : Node has multiple data inputs".println(actionNode.name); 
+				abort;
+			}
+		} else {
+				" : Object Node need to be fixed (Input to multiple nodes.)".println(objectNode.name + " " + objectNode.dataState.name); 
+				abort;
 		}
-		var incomingControlEdge = actionNode.incoming.first();  //There is a unique control flow to a
-		incomingControlEdge.targetRef = objectNode;
 	}
 }
 
+-- For Activities with multiple incoming edges
 post addJoinGateway {
  	for(activityNode in Migrated!FlowNode.all.select(n | (n.isTypeOf(Migrated!Activity) or n.isKindOf(Migrated!Event)) and n.incoming.size > 1)) {
  		activityNode.addJoin();
  	}
 }
 
+-- For Activities with multiple outgoing edges
 post addForkGateway {
 	for(activityNode in Migrated!FlowNode.all.select(n | (n.isTypeOf(Migrated!Activity) or n.isKindOf(Migrated!Event)) and n.outgoing.size > 1)) {
  		activityNode.addFork();
@@ -166,10 +197,15 @@ operation Original!Activity hasMultipleOutgoingControlFlows() : Boolean {
 	return self.outgoing.size() > 1;
 }
 
-operation Migrated!FlowNode hasMultipleObjectFlows() : Boolean {
-	var numOfOutgoingObjectFlows = self.outgoing.select(e | e.isTypeOf(Migrated!ObjectFlow)).size();
-	var numOfIncomingObjectFlows = self.incoming.select(e | e.isTypeOf(Migrated!ObjectFlow)).size(); 
-	return  (numOfOutgoingObjectFlows + numOfIncomingObjectFlows ) > 1;
+operation Migrated!FlowNode hasMultipleOutgoingObjectFlows() : Boolean {
+	return  self.outgoing.select(e | e.isTypeOf(Migrated!ObjectFlow)).size() > 1;
+}
+operation Migrated!FlowNode hasMultipleIncomingObjectFlows() : Boolean { 
+	return  self.incoming.select(e | e.isTypeOf(Migrated!ObjectFlow)).size() > 1;
+}
+
+operation Migrated!FlowNode hasMultipleObjectFlows() : Boolean { 
+	return  hasMultipleOutgoingObjectFlows() or hasMultipleIncomingObjectFlows();
 }
 
 operation Original!FlowElement getContainingProcess() : Original!Process {

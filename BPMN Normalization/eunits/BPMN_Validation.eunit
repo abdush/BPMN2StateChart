@@ -53,6 +53,7 @@ operation loadModels() {
   loadInvalid_input_elements.execute();
 }
 
+@skip
 @test
 operation valid() {
   --var tree = new Tree!Tree;
@@ -60,7 +61,7 @@ operation valid() {
   assertEquals(0, errors.size);
 }
 
-
+@skip
 @test
 operation error() {
   

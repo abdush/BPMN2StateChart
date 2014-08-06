@@ -1,16 +1,4 @@
 <?xml version="1.0" encoding="ASCII"?>
 <pnet:Net xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pnet="http://uam.es/PetriNets" xmi:id="permitrequest">
-  <places name="StartEvent_1request received" postt="//@transitions.1"/>
-  <places name="permit to be registeredpermit registeredEnd Event 2" pret="//@transitions.3"/>
-  <places name="permit to be sentpermit sentEndEvent_1" pret="//@transitions.3"/>
-  <places name="geometry unknown" postt="//@transitions.2" pret="//@transitions.1"/>
-  <places name="address uncheckedaddress checked" postt="//@transitions.0" pret="//@transitions.1"/>
-  <places name="decided geometry" postt="//@transitions.3" pret="//@transitions.2"/>
-  <places name="geometry finalized" postt="//@transitions.0" pret="//@transitions.2"/>
-  <places name="permit granted" postt="//@transitions.0" pret="//@transitions.3"/>
-  <places name="address registeredEnd Event 6" pret="//@transitions.0"/>
-  <transitions name="join#FlowElement#98" prep="//@places.6 //@places.7 //@places.4" postp="//@places.8"/>
-  <transitions name="fork#FlowElement#112" prep="//@places.0" postp="//@places.3 //@places.4"/>
-  <transitions name="fork#FlowElement#118" prep="//@places.3" postp="//@places.5 //@places.6"/>
-  <transitions name="fork#FlowElement#120" prep="//@places.5" postp="//@places.1 //@places.2 //@places.7"/>
+  <places name="StartEvent_1request receivedgeometry unknowndecided geometrypermit to be registeredpermit registeredEnd Event 2permit to be sentpermit sentEndEvent_1permit grantedaddress registeredEnd Event 6address uncheckedaddress checkedgeometry finalized"/>
 </pnet:Net>

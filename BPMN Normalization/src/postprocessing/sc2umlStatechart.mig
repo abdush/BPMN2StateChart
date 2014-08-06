@@ -49,17 +49,6 @@ when: not original.has_no_parent?()
 retype Basic to Pseudostate
 when: original.pm_equivalent().isTypeOf(PM!StartEvent)
 
--- Other nodes can have no next states??
-retype Basic to FinalState
-when: original.pm_equivalent().isTypeOf(PM!EndEvent)
-
-retype Basic to Pseudostate
-when: original.pm_equivalent().isTypeOf(PM!ExclusiveGateway)
-
-retype Basic to State
-when: not (original.pm_equivalent().isTypeOf(PM!ExclusiveGateway) or original.pm_equivalent().isTypeOf(PM!StartEvent) or original.pm_equivalent().isTypeOf(PM!EndEvent))
--- Change later to ObjectNode!!
-
 migrate Basic
 when: original.pm_equivalent().isTypeOf(PM!StartEvent)
 {
@@ -69,6 +58,9 @@ when: original.pm_equivalent().isTypeOf(PM!StartEvent)
 	migrated.container = original.rcontains.equivalent();
 	
 }
+
+retype Basic to FinalState
+when: original.pm_equivalent().isTypeOf(PM!EndEvent)
 
 migrate Basic
 when: original.pm_equivalent().isTypeOf(PM!EndEvent)
@@ -80,6 +72,9 @@ when: original.pm_equivalent().isTypeOf(PM!EndEvent)
 	
 }
 
+retype Basic to Pseudostate
+when: original.pm_equivalent().isTypeOf(PM!ExclusiveGateway)
+
 migrate Basic
 when: original.pm_equivalent().isTypeOf(PM!ExclusiveGateway)
 {
@@ -90,14 +85,21 @@ when: original.pm_equivalent().isTypeOf(PM!ExclusiveGateway)
 	migrated.kind = UML!PseudostateKind#choice;
 } 
 
+retype Basic to State
+when: not (original.pm_equivalent().isTypeOf(PM!ExclusiveGateway) 
+or original.pm_equivalent().isTypeOf(PM!StartEvent) 
+or original.pm_equivalent().isTypeOf(PM!EndEvent))
+-- Change later to ObjectNode!!
+
 migrate Basic
-when: not (original.pm_equivalent().isTypeOf(PM!ExclusiveGateway) or original.pm_equivalent().isTypeOf(PM!StartEvent) or original.pm_equivalent().isTypeOf(PM!EndEvent))
+when: not (original.pm_equivalent().isTypeOf(PM!ExclusiveGateway) 
+or original.pm_equivalent().isTypeOf(PM!StartEvent) 
+or original.pm_equivalent().isTypeOf(PM!EndEvent))
 {
 	original.pm_equivalent().println();
 	original.println("Orig Basic: ");
 	migrated.println("Mig State: ");
 	migrated.container = original.rcontains.equivalent();
-	
 }
 
 retype HyperEdge to Transition

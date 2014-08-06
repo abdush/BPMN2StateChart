@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="ASCII"?>
 <schart:Statechart xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:schart="http://uam.es/StateCharts" xmi:id="permitrequest">
   <topState>
-    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.12/@contains.0" rnext="//@topState/@contains.8/@contains.2 //@topState/@contains.10/@contains.0 //@topState/@contains.11/@contains.0" name="join#FlowElement#98"/>
-    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.7/@contains.0 //@topState/@contains.8/@contains.0" rnext="//@topState/@contains.4/@contains.2" name="fork#FlowElement#112"/>
-    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.9/@contains.0 //@topState/@contains.10/@contains.0" rnext="//@topState/@contains.7/@contains.0" name="fork#FlowElement#118"/>
-    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.5/@contains.0 //@topState/@contains.6/@contains.0 //@topState/@contains.11/@contains.0" rnext="//@topState/@contains.9/@contains.0" name="fork#FlowElement#120"/>
-    <contains xsi:type="schart:OR" name="StartEvent_1request received">
-      <contains xsi:type="schart:Basic" next="//@topState/@contains.4/@contains.1" name="StartEvent_1"/>
-      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.4/@contains.2" rnext="//@topState/@contains.4/@contains.0" name="StartEvent_1request received"/>
-      <contains xsi:type="schart:Basic" next="//@topState/@contains.1" rnext="//@topState/@contains.4/@contains.1" name="request received"/>
-    </contains>
-    <contains xsi:type="schart:OR" name="permit to be registeredpermit registeredEnd Event 2">
-      <contains xsi:type="schart:Basic" next="//@topState/@contains.5/@contains.1" rnext="//@topState/@contains.3" name="permit to be registered"/>
-      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.5/@contains.2" rnext="//@topState/@contains.5/@contains.0" name="permit to be registeredpermit registered"/>
-      <contains xsi:type="schart:Basic" next="//@topState/@contains.5/@contains.3" rnext="//@topState/@contains.5/@contains.1" name="permit registered"/>
-      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.5/@contains.4" rnext="//@topState/@contains.5/@contains.2" name="permit registeredEnd Event 2"/>
-      <contains xsi:type="schart:Basic" rnext="//@topState/@contains.5/@contains.3" name="End Event 2"/>
-    </contains>
-    <contains xsi:type="schart:OR" name="permit to be sentpermit sentEndEvent_1">
-      <contains xsi:type="schart:Basic" next="//@topState/@contains.6/@contains.1" rnext="//@topState/@contains.3" name="permit to be sent"/>
-      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.6/@contains.2" rnext="//@topState/@contains.6/@contains.0" name="permit to be sentpermit sent"/>
-      <contains xsi:type="schart:Basic" next="//@topState/@contains.6/@contains.3" rnext="//@topState/@contains.6/@contains.1" name="permit sent"/>
-      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.6/@contains.4" rnext="//@topState/@contains.6/@contains.2" name="permit sentEndEvent_1"/>
-      <contains xsi:type="schart:Basic" rnext="//@topState/@contains.6/@contains.3" name="EndEvent_1"/>
-    </contains>
-    <contains xsi:type="schart:OR" name="geometry unknown">
-      <contains xsi:type="schart:Basic" next="//@topState/@contains.2" rnext="//@topState/@contains.1" name="geometry unknown"/>
-    </contains>
-    <contains xsi:type="schart:OR" name="address uncheckedaddress checked">
-      <contains xsi:type="schart:Basic" next="//@topState/@contains.8/@contains.1" rnext="//@topState/@contains.1" name="address unchecked"/>
-      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.8/@contains.2" rnext="//@topState/@contains.8/@contains.0" name="address uncheckedaddress checked"/>
-      <contains xsi:type="schart:Basic" next="//@topState/@contains.0" rnext="//@topState/@contains.8/@contains.1" name="address checked"/>
-    </contains>
-    <contains xsi:type="schart:OR" name="decided geometry">
-      <contains xsi:type="schart:Basic" next="//@topState/@contains.3" rnext="//@topState/@contains.2" name="decided geometry"/>
-    </contains>
-    <contains xsi:type="schart:OR" name="geometry finalized">
-      <contains xsi:type="schart:Basic" next="//@topState/@contains.0" rnext="//@topState/@contains.2" name="geometry finalized"/>
-    </contains>
-    <contains xsi:type="schart:OR" name="permit granted">
-      <contains xsi:type="schart:Basic" next="//@topState/@contains.0" rnext="//@topState/@contains.3" name="permit granted"/>
-    </contains>
-    <contains xsi:type="schart:OR" name="address registeredEnd Event 6">
-      <contains xsi:type="schart:Basic" next="//@topState/@contains.12/@contains.1" rnext="//@topState/@contains.0" name="address registered"/>
-      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.12/@contains.2" rnext="//@topState/@contains.12/@contains.0" name="address registeredEnd Event 6"/>
-      <contains xsi:type="schart:Basic" rnext="//@topState/@contains.12/@contains.1" name="End Event 6"/>
+    <contains xsi:type="schart:OR" name="StartEvent_1request receivedgeometry unknowndecided geometrypermit to be registeredpermit registeredEnd Event 2permit to be sentpermit sentEndEvent_1permit grantedaddress registeredEnd Event 6address uncheckedaddress checkedgeometry finalized">
+      <contains xsi:type="schart:AND" name="StartEvent_1request receivedgeometry unknowndecided geometrypermit to be registeredpermit registeredEnd Event 2permit to be sentpermit sentEndEvent_1permit grantedaddress registeredEnd Event 6address uncheckedaddress checkedgeometry finalized">
+        <contains xsi:type="schart:OR" name="StartEvent_1request receivedgeometry unknowndecided geometrypermit to be registeredpermit registeredEnd Event 2permit to be sentpermit sentEndEvent_1permit grantedaddress registeredEnd Event 6">
+          <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.1" name="StartEvent_1"/>
+          <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.2" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.0" name="StartEvent_1request received"/>
+          <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.3" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.1" name="request received"/>
+          <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.4 //@topState/@contains.0/@contains.0/@contains.1/@contains.0" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.2" name="fork#FlowElement#112"/>
+          <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.5" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.3" name="geometry unknown"/>
+          <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.6 //@topState/@contains.0/@contains.0/@contains.2/@contains.0" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.4" name="fork#FlowElement#118"/>
+          <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.7" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.5" name="decided geometry"/>
+          <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.8/@contains.0/@contains.0 //@topState/@contains.0/@contains.0/@contains.0/@contains.8/@contains.1/@contains.0 //@topState/@contains.0/@contains.0/@contains.0/@contains.8/@contains.2/@contains.0" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.6" name="fork#FlowElement#120"/>
+          <contains xsi:type="schart:AND" name="permit to be registeredpermit registeredEnd Event 2permit to be sentpermit sentEndEvent_1permit grantedaddress registeredEnd Event 6">
+            <contains xsi:type="schart:OR" name="permit to be registeredpermit registeredEnd Event 2">
+              <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.8/@contains.0/@contains.1" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.7" name="permit to be registered"/>
+              <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.8/@contains.0/@contains.2" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.8/@contains.0/@contains.0" name="permit to be registeredpermit registered"/>
+              <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.8/@contains.0/@contains.3" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.8/@contains.0/@contains.1" name="permit registered"/>
+              <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.8/@contains.0/@contains.4" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.8/@contains.0/@contains.2" name="permit registeredEnd Event 2"/>
+              <contains xsi:type="schart:Basic" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.8/@contains.0/@contains.3" name="End Event 2"/>
+            </contains>
+            <contains xsi:type="schart:OR" name="permit to be sentpermit sentEndEvent_1">
+              <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.8/@contains.1/@contains.1" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.7" name="permit to be sent"/>
+              <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.8/@contains.1/@contains.2" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.8/@contains.1/@contains.0" name="permit to be sentpermit sent"/>
+              <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.8/@contains.1/@contains.3" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.8/@contains.1/@contains.1" name="permit sent"/>
+              <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.8/@contains.1/@contains.4" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.8/@contains.1/@contains.2" name="permit sentEndEvent_1"/>
+              <contains xsi:type="schart:Basic" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.8/@contains.1/@contains.3" name="EndEvent_1"/>
+            </contains>
+            <contains xsi:type="schart:OR" name="permit grantedaddress registeredEnd Event 6">
+              <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.8/@contains.2/@contains.1" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.7" name="permit granted"/>
+              <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.8/@contains.2/@contains.2" rnext="//@topState/@contains.0/@contains.0/@contains.1/@contains.2 //@topState/@contains.0/@contains.0/@contains.2/@contains.0 //@topState/@contains.0/@contains.0/@contains.0/@contains.8/@contains.2/@contains.0" name="join#FlowElement#98"/>
+              <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.8/@contains.2/@contains.3" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.8/@contains.2/@contains.1" name="address registered"/>
+              <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.8/@contains.2/@contains.4" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.8/@contains.2/@contains.2" name="address registeredEnd Event 6"/>
+              <contains xsi:type="schart:Basic" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.8/@contains.2/@contains.3" name="End Event 6"/>
+            </contains>
+          </contains>
+        </contains>
+        <contains xsi:type="schart:OR" name="address uncheckedaddress checked">
+          <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.0/@contains.1/@contains.1" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.3" name="address unchecked"/>
+          <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.0/@contains.1/@contains.2" rnext="//@topState/@contains.0/@contains.0/@contains.1/@contains.0" name="address uncheckedaddress checked"/>
+          <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.8/@contains.2/@contains.1" rnext="//@topState/@contains.0/@contains.0/@contains.1/@contains.1" name="address checked"/>
+        </contains>
+        <contains xsi:type="schart:OR" name="geometry finalized">
+          <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.0/@contains.0/@contains.8/@contains.2/@contains.1" rnext="//@topState/@contains.0/@contains.0/@contains.0/@contains.5" name="geometry finalized"/>
+        </contains>
+      </contains>
     </contains>
   </topState>
 </schart:Statechart>

@@ -52,7 +52,8 @@ context Process {
 			or n.isTypeOf(ParallelGateway) or n.isTypeOf(Task) or n.isTypeOf(SequenceFlow) or n.isTypeOf(DataObject) or n.isTypeOf(DataObjectReference)); 
 			return nonAllowedElements.size = 0;
 		}
-		message : "There must be only elements of type [Event, Task, Exclusive Gateway, Parallel Gateway, SequenceFlow, Data Object, Data Object Reference] but found " + nonAllowedElements
+		message : "There must be only elements of type [Event, Task, Exclusive Gateway, Parallel Gateway, SequenceFlow, Data Object, Data Object Reference] "
+		+ "but found " + nonAllowedElements
 	}
 	
 	constraint MustHaveOneStatefulDataObject {

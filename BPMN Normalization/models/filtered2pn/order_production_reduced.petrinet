@@ -1,14 +1,4 @@
 <?xml version="1.0" encoding="ASCII"?>
 <pnet:Net xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pnet="http://uam.es/PetriNets" xmi:id="order_production">
-  <places name="StartEvent_1" postt="//@transitions.2"/>
-  <places name="unplanned" postt="//@transitions.3" pret="//@transitions.2"/>
-  <places name="uncheckedchecked" postt="//@transitions.0" pret="//@transitions.2"/>
-  <places name="plannedproduced" postt="//@transitions.1" pret="//@transitions.3"/>
-  <places name="costs unknowncosts calculated" postt="//@transitions.0" pret="//@transitions.3"/>
-  <places name="billedpaid" postt="//@transitions.1" pret="//@transitions.0"/>
-  <places name="shippedEndEvent_1" pret="//@transitions.1"/>
-  <transitions name="join#FlowElement#64" prep="//@places.2 //@places.4" postp="//@places.5"/>
-  <transitions name="join#FlowElement#68" prep="//@places.5 //@places.3" postp="//@places.6"/>
-  <transitions name="fork#FlowElement#74" prep="//@places.0" postp="//@places.2 //@places.1"/>
-  <transitions name="fork#FlowElement#84" prep="//@places.1" postp="//@places.3 //@places.4"/>
+  <places name="StartEvent_1uncheckedcheckedbilledpaidunplannedplannedproducedshippedEndEvent_1costs unknowncosts calculated"/>
 </pnet:Net>

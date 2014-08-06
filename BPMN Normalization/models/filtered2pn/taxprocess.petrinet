@@ -1,28 +1,21 @@
 <?xml version="1.0" encoding="ASCII"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:pnet="http://uam.es/PetriNets">
-  <pnet:Net xmi:id="taxprocess">
-    <places name="StartEvent_1" postt="/0/@transitions.2"/>
-    <places name="Exclusive Gateway 1" postt="/0/@transitions.3 /0/@transitions.0" pret="/0/@transitions.4"/>
-    <places name="End Event 2" pret="/0/@transitions.5"/>
-    <places name="EndEvent_1" pret="/0/@transitions.1"/>
-    <places name="submitted" postt="/0/@transitions.4" pret="/0/@transitions.2"/>
-    <places name="rejected" postt="/0/@transitions.5" pret="/0/@transitions.3"/>
-    <places name="accepted" postt="/0/@transitions.1" pret="/0/@transitions.0"/>
-    <places name="processed" postt="/0/@transitions.6" pret="/0/@transitions.0"/>
-    <places name="assessed" postt="/0/@transitions.7" pret="/0/@transitions.6"/>
-    <places name="returned" postt="/0/@transitions.1" pret="/0/@transitions.7"/>
-    <transitions name="Parallel Gateway 1" prep="/0/@places.1" postp="/0/@places.6 /0/@places.7"/>
-    <transitions name="Parallel Gateway 2" prep="/0/@places.9 /0/@places.6" postp="/0/@places.3"/>
-    <transitions name="StartEvent_1submitted" prep="/0/@places.0" postp="/0/@places.4"/>
-    <transitions name="Exclusive Gateway 1rejected" prep="/0/@places.1" postp="/0/@places.5"/>
-    <transitions name="submittedExclusive Gateway 1" prep="/0/@places.4" postp="/0/@places.1"/>
-    <transitions name="rejectedEnd Event 2" prep="/0/@places.5" postp="/0/@places.2"/>
-    <transitions name="processedassessed" prep="/0/@places.7" postp="/0/@places.8"/>
-    <transitions name="assessedreturned" prep="/0/@places.8" postp="/0/@places.9"/>
-  </pnet:Net>
-  <ecore:EStringToStringMapEntry key="xsi" value="http://www.w3.org/2001/XMLSchema-instance"/>
-  <ecore:EStringToStringMapEntry key="bpmn2" value="http://www.omg.org/spec/BPMN/20100524/MODEL"/>
-  <ecore:EStringToStringMapEntry key="bpmndi" value="http://www.omg.org/spec/BPMN/20100524/DI"/>
-  <ecore:EStringToStringMapEntry key="dc" value="http://www.omg.org/spec/DD/20100524/DC"/>
-  <ecore:EStringToStringMapEntry key="di" value="http://www.omg.org/spec/DD/20100524/DI"/>
-</xmi:XMI>
+<pnet:Net xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pnet="http://uam.es/PetriNets" xmi:id="taxprocess">
+  <places name="StartEvent_1" postt="//@transitions.2"/>
+  <places name="Exclusive Gateway 1" postt="//@transitions.3 //@transitions.0" pret="//@transitions.4"/>
+  <places name="End Event 2" pret="//@transitions.5"/>
+  <places name="EndEvent_1" pret="//@transitions.1"/>
+  <places name="submitted" postt="//@transitions.4" pret="//@transitions.2"/>
+  <places name="rejected" postt="//@transitions.5" pret="//@transitions.3"/>
+  <places name="accepted" postt="//@transitions.1" pret="//@transitions.0"/>
+  <places name="processed" postt="//@transitions.6" pret="//@transitions.0"/>
+  <places name="assessed" postt="//@transitions.7" pret="//@transitions.6"/>
+  <places name="returned" postt="//@transitions.1" pret="//@transitions.7"/>
+  <transitions name="Parallel Gateway 1" prep="//@places.1" postp="//@places.6 //@places.7"/>
+  <transitions name="Parallel Gateway 2" prep="//@places.9 //@places.6" postp="//@places.3"/>
+  <transitions name="StartEvent_1submitted" prep="//@places.0" postp="//@places.4"/>
+  <transitions name="Exclusive Gateway 1rejected" prep="//@places.1" postp="//@places.5"/>
+  <transitions name="submittedExclusive Gateway 1" prep="//@places.4" postp="//@places.1"/>
+  <transitions name="rejectedEnd Event 2" prep="//@places.5" postp="//@places.2"/>
+  <transitions name="processedassessed" prep="//@places.7" postp="//@places.8"/>
+  <transitions name="assessedreturned" prep="//@places.8" postp="//@places.9"/>
+</pnet:Net>

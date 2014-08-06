@@ -1,12 +1,15 @@
 import "processable.eol";
 import "or.eol";
 import "and.eol";
+import "cross_sync.eol";
 
 var current_processable_transitions = processable_transitions();
 var i = 1;
+var T3_Rule_applied = false;
 while (current_processable_transitions.notEmpty()) {
 	var reduced_a_transition_this_iteration = false;
 	var reduction_result = null;
+	var T3_Rule_result = null;
 	i.println(current_processable_transitions);
 	/*
 	// ANDs
@@ -53,10 +56,26 @@ while (current_processable_transitions.notEmpty()) {
 	} else {
 		// No processable transition could be reduced, so fail with an error.
 		"inside While Else".println();
-		current_processable_transitions.println('ERROR: None of the following processable transitions could be reduced: ');
-		break;
+		//current_processable_transitions.println('ERROR: None of the following processable transitions could be reduced: ');
+		//break;
+		
+		//Try to apply T3
+		T3_Rule_result = applyT3Rule();
+		if (T3_Rule_result.get('a_place_was_reduced?')) {
+			T3_Rule_applied = true;
+		} else {
+			// No processable transition could be reduced, so fail with an error.
+			current_processable_transitions.println('ERROR: None of the following processable transitions could be reduced: ');
+			break;	
+		}
 	}
 	i = i+1;
+}
+
+//Apply T2b Rule if T3 Rule applied
+if (T3_Rule_applied) {
+	//Apply RuleT2b and break;
+	applyT2bRule();
 }
 
 operation Transition reduce() : Map {
