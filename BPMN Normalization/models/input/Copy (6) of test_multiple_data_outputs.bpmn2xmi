@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn2:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI-XMI" id="Definitions_1" targetNamespace="http://org.eclipse.bpmn2/default/process">
+  <rootElements xsi:type="bpmn2:Process" id="test" name="Default Process">
+    <flowElements xsi:type="bpmn2:StartEvent" id="StartEvent_1" outgoing="SequenceFlow_2"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="SequenceFlow_2" sourceRef="StartEvent_1" targetRef="Task_1"/>
+    <flowElements xsi:type="bpmn2:Task" id="Task_2" name="Task 2" incoming="SequenceFlow_3" outgoing="SequenceFlow_1">
+      <ioSpecification id="InputOutputSpecification_2">
+        <dataInputs id="DataInput_1" name="input1"/>
+        <dataInputs id="DataInput_4" name="input2"/>
+        <dataOutputs id="DataOutput_2" name="output1"/>
+        <dataOutputs id="DataOutput_3" name="output2"/>
+        <inputSets id="InputSet_2" dataInputRefs="DataInput_1 DataInput_4"/>
+        <outputSets id="OutputSet_2" dataOutputRefs="DataOutput_2 DataOutput_3"/>
+      </ioSpecification>
+      <dataInputAssociations id="DataInputAssociation_1" sourceRef="DataObject_1" targetRef="DataInput_1"/>
+      <dataInputAssociations id="DataInputAssociation_2" sourceRef="_DataObjectReference_4" targetRef="DataInput_4"/>
+      <dataOutputAssociations id="DataOutputAssociation_2" sourceRef="DataOutput_2" targetRef="_DataObjectReference_4"/>
+      <dataOutputAssociations id="DataOutputAssociation_3" sourceRef="DataOutput_3" targetRef="_DataObjectReference_3"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="SequenceFlow_1" sourceRef="Task_2" targetRef="EndEvent_1"/>
+    <flowElements xsi:type="bpmn2:Task" id="Task_1" name="Task 1" incoming="SequenceFlow_2" outgoing="SequenceFlow_3">
+      <ioSpecification id="InputOutputSpecification_1">
+        <dataOutputs id="DataOutput_1" name="output1"/>
+        <inputSets id="InputSet_1"/>
+        <outputSets id="OutputSet_1" dataOutputRefs="DataOutput_1"/>
+      </ioSpecification>
+      <dataOutputAssociations id="DataOutputAssociation_1" sourceRef="DataOutput_1" targetRef="DataObject_1"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="SequenceFlow_3" sourceRef="Task_1" targetRef="Task_2"/>
+    <flowElements xsi:type="bpmn2:EndEvent" id="EndEvent_1" incoming="SequenceFlow_1">
+      <dataInputs id="DataInput_2" name="input1"/>
+      <dataInputs id="DataInput_3" name="input2"/>
+      <inputSet id="_InputSet_2" dataInputRefs="DataInput_2 DataInput_3" name="Input Set 2"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn2:DataObject" id="DataObject_1" name="Object 1">
+      <dataState id="DataState_1" name="Data State 1"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn2:DataObjectReference" id="_DataObjectReference_3" name="Reference to Object 1" dataObjectRef="DataObject_1">
+      <dataState id="DataState_3" name="Data State 3"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn2:DataObjectReference" id="_DataObjectReference_4" name="Reference to Object 1" dataObjectRef="DataObject_1">
+      <dataState id="DataState_2" name="Data State 2"/>
+    </flowElements>
+  </rootElements>
+  <diagrams id="BPMNDiagram_1" name="Default Process Diagram">
+    <plane id="BPMNPlane_1">
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_1">
+        <bounds height="36.0" width="36.0" x="100.0" y="112.0"/>
+        <bpmnElement href="Copy%20(6)%20of%20test_multiple_data_outputs.bpmn#StartEvent_1"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_2">
+        <bounds height="36.0" width="36.0" x="600.0" y="112.0"/>
+        <bpmnElement href="Copy%20(6)%20of%20test_multiple_data_outputs.bpmn#EndEvent_1"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_Task_2">
+        <bounds height="50.0" width="110.0" x="420.0" y="106.0"/>
+        <bpmnElement href="Copy%20(6)%20of%20test_multiple_data_outputs.bpmn#Task_2"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_Task_1">
+        <bounds height="50.0" width="110.0" x="220.0" y="105.0"/>
+        <bpmnElement href="Copy%20(6)%20of%20test_multiple_data_outputs.bpmn#Task_1"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_DataObject_1">
+        <bounds height="65.0" width="36.0" x="280.0" y="232.0"/>
+        <bpmnElement href="Copy%20(6)%20of%20test_multiple_data_outputs.bpmn#DataObject_1"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_DataObjectReference_1">
+        <bounds height="65.0" width="36.0" x="500.0" y="232.0"/>
+        <bpmnElement href="Copy%20(6)%20of%20test_multiple_data_outputs.bpmn#_DataObjectReference_3"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_DataObjectReference_2">
+        <bounds height="65.0" width="36.0" x="457.0"/>
+        <bpmnElement href="Copy%20(6)%20of%20test_multiple_data_outputs.bpmn#_DataObjectReference_4"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_SequenceFlow_1">
+        <waypoint x="530.0" y="131.0"/>
+        <waypoint x="561.0" y="131.0"/>
+        <waypoint x="561.0" y="130.0"/>
+        <waypoint x="600.0" y="130.0"/>
+        <bpmnElement href="Copy%20(6)%20of%20test_multiple_data_outputs.bpmn#SequenceFlow_1"/>
+        <sourceElement href="Copy%20(6)%20of%20test_multiple_data_outputs.bpmn#BPMNShape_Task_2"/>
+        <targetElement href="Copy%20(6)%20of%20test_multiple_data_outputs.bpmn#BPMNShape_2"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_SequenceFlow_2">
+        <waypoint x="136.0" y="130.0"/>
+        <waypoint x="173.0" y="130.0"/>
+        <waypoint x="173.0" y="130.0"/>
+        <waypoint x="220.0" y="130.0"/>
+        <bpmnElement href="Copy%20(6)%20of%20test_multiple_data_outputs.bpmn#SequenceFlow_2"/>
+        <sourceElement href="Copy%20(6)%20of%20test_multiple_data_outputs.bpmn#BPMNShape_1"/>
+        <targetElement href="Copy%20(6)%20of%20test_multiple_data_outputs.bpmn#BPMNShape_Task_1"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_SequenceFlow_3">
+        <waypoint x="330.0" y="130.0"/>
+        <waypoint x="370.0" y="130.0"/>
+        <waypoint x="370.0" y="131.0"/>
+        <waypoint x="420.0" y="131.0"/>
+        <bpmnElement href="Copy%20(6)%20of%20test_multiple_data_outputs.bpmn#SequenceFlow_3"/>
+        <sourceElement href="Copy%20(6)%20of%20test_multiple_data_outputs.bpmn#BPMNShape_Task_1"/>
+        <targetElement href="Copy%20(6)%20of%20test_multiple_data_outputs.bpmn#BPMNShape_Task_2"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_DataOutputAssociation_1">
+        <waypoint x="275.0" y="155.0"/>
+        <waypoint x="275.0" y="264.0"/>
+        <waypoint x="280.0" y="264.0"/>
+        <bpmnElement href="Copy%20(6)%20of%20test_multiple_data_outputs.bpmn#DataOutputAssociation_1"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_DataInputAssociation_1">
+        <waypoint x="316.0" y="264.0"/>
+        <waypoint x="475.0" y="264.0"/>
+        <waypoint x="475.0" y="156.0"/>
+        <bpmnElement href="Copy%20(6)%20of%20test_multiple_data_outputs.bpmn#DataInputAssociation_1"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_DataOutputAssociation_2">
+        <waypoint x="475.0" y="106.0"/>
+        <waypoint x="475.0" y="85.0"/>
+        <waypoint x="475.0" y="85.0"/>
+        <waypoint x="475.0" y="65.0"/>
+        <bpmnElement href="Copy%20(6)%20of%20test_multiple_data_outputs.bpmn#DataOutputAssociation_2"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_DataOutputAssociation_3">
+        <waypoint x="475.0" y="156.0"/>
+        <waypoint x="475.0" y="264.0"/>
+        <waypoint x="500.0" y="264.0"/>
+        <bpmnElement href="Copy%20(6)%20of%20test_multiple_data_outputs.bpmn#DataOutputAssociation_3"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_DataInputAssociation_2">
+        <waypoint x="475.0" y="65.0"/>
+        <waypoint x="475.0" y="83.0"/>
+        <waypoint x="475.0" y="83.0"/>
+        <waypoint x="475.0" y="106.0"/>
+        <bpmnElement href="Copy%20(6)%20of%20test_multiple_data_outputs.bpmn#DataInputAssociation_2"/>
+      </planeElement>
+      <bpmnElement href="Copy%20(6)%20of%20test_multiple_data_outputs.bpmn#test"/>
+    </plane>
+  </diagrams>
+</bpmn2:Definitions>

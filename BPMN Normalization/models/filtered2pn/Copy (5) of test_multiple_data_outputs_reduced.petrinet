@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ASCII"?>
+<pnet:Net xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pnet="http://uam.es/PetriNets" xmi:id="test">
+  <places name="StartEvent_1Data State 1Data State 3EndEvent_1"/>
+  <places name="Data State 2"/>
+</pnet:Net>

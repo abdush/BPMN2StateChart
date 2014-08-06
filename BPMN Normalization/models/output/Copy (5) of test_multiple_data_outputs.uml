@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_nprPsBv5EeS4n7YXZ-K_0A">
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="test">
+    <region xmi:id="_npj68Bv5EeS4n7YXZ-K_0A" name="StartEvent_1Data State 1Data State 3EndEvent_1">
+      <transition xmi:id="_npj68hv5EeS4n7YXZ-K_0A" name="StartEvent_1Data State 1" source="_npj68Rv5EeS4n7YXZ-K_0A" target="_nplJEBv5EeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_nplJERv5EeS4n7YXZ-K_0A" name="Data State 1Data State 3" source="_nplJEBv5EeS4n7YXZ-K_0A" target="_npmXMBv5EeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_npmXMRv5EeS4n7YXZ-K_0A" name="Data State 3EndEvent_1" source="_npmXMBv5EeS4n7YXZ-K_0A" target="_npmXMhv5EeS4n7YXZ-K_0A"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_npj68Rv5EeS4n7YXZ-K_0A" name="StartEvent_1"/>
+      <subvertex xmi:type="uml:State" xmi:id="_nplJEBv5EeS4n7YXZ-K_0A" name="Data State 1"/>
+      <subvertex xmi:type="uml:State" xmi:id="_npmXMBv5EeS4n7YXZ-K_0A" name="Data State 3"/>
+      <subvertex xmi:type="uml:FinalState" xmi:id="_npmXMhv5EeS4n7YXZ-K_0A" name="EndEvent_1"/>
+    </region>
+    <region xmi:id="_npmXMxv5EeS4n7YXZ-K_0A" name="Data State 2">
+      <transition xmi:id="_npnlURv5EeS4n7YXZ-K_0A" name="Data State 2Data State 2" source="_npnlUBv5EeS4n7YXZ-K_0A" target="_npnlUBv5EeS4n7YXZ-K_0A"/>
+      <subvertex xmi:type="uml:State" xmi:id="_npnlUBv5EeS4n7YXZ-K_0A" name="Data State 2"/>
+    </region>
+  </packagedElement>
+</uml:Model>

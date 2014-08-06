@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_CSRTgBztEeS4n7YXZ-K_0A">
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="test_multiple_data_outputs">
+    <region xmi:id="_CSHigRztEeS4n7YXZ-K_0A" name="StartEvent_1State 1State 2State 3Exclusive Gateway 2State 4EndEvent_1">
+      <transition xmi:id="_CSIwoBztEeS4n7YXZ-K_0A" name="StartEvent_1State 1" source="_CSHighztEeS4n7YXZ-K_0A" target="_CSIwoRztEeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_CSIwohztEeS4n7YXZ-K_0A" name="State 1State 3" source="_CSIwoRztEeS4n7YXZ-K_0A" target="_CSLM4BztEeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_CSJ-wRztEeS4n7YXZ-K_0A" name="State 2Exclusive Gateway 2" source="_CSJ-wBztEeS4n7YXZ-K_0A" target="_CSMbABztEeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_CSLM4RztEeS4n7YXZ-K_0A" name="State 3Exclusive Gateway 2" source="_CSLM4BztEeS4n7YXZ-K_0A" target="_CSMbABztEeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_CSMbARztEeS4n7YXZ-K_0A" name="State 1State 2" source="_CSIwoRztEeS4n7YXZ-K_0A" target="_CSJ-wBztEeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_CSMbAhztEeS4n7YXZ-K_0A" name="Exclusive Gateway 2State 4" source="_CSMbABztEeS4n7YXZ-K_0A" target="_CSMbAxztEeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_CSMbBBztEeS4n7YXZ-K_0A" name="State 4EndEvent_1" source="_CSMbAxztEeS4n7YXZ-K_0A" target="_CSNpIBztEeS4n7YXZ-K_0A"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_CSHighztEeS4n7YXZ-K_0A" name="StartEvent_1"/>
+      <subvertex xmi:type="uml:State" xmi:id="_CSIwoRztEeS4n7YXZ-K_0A" name="State 1"/>
+      <subvertex xmi:type="uml:State" xmi:id="_CSJ-wBztEeS4n7YXZ-K_0A" name="State 2"/>
+      <subvertex xmi:type="uml:State" xmi:id="_CSLM4BztEeS4n7YXZ-K_0A" name="State 3"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_CSMbABztEeS4n7YXZ-K_0A" name="Exclusive Gateway 2" kind="choice"/>
+      <subvertex xmi:type="uml:State" xmi:id="_CSMbAxztEeS4n7YXZ-K_0A" name="State 4"/>
+      <subvertex xmi:type="uml:FinalState" xmi:id="_CSNpIBztEeS4n7YXZ-K_0A" name="EndEvent_1"/>
+    </region>
+  </packagedElement>
+</uml:Model>

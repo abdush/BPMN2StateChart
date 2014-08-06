@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ASCII"?>
+<pnet:Net xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pnet="http://uam.es/PetriNets" xmi:id="test_multiple_data_outputs">
+  <places name="StartEvent_1" postt="//@transitions.1"/>
+  <places name="State 1" postt="//@transitions.2 //@transitions.3" pret="//@transitions.1"/>
+  <places name="State 2" postt="//@transitions.0" pret="//@transitions.3"/>
+  <places name="State 3" postt="//@transitions.0" pret="//@transitions.2"/>
+  <places name="State 4" postt="//@transitions.4" pret="//@transitions.0"/>
+  <places name="EndEvent_1" pret="//@transitions.4"/>
+  <transitions name="join#FlowElement#35" prep="//@places.3 //@places.2" postp="//@places.4"/>
+  <transitions name="StartEvent_1State 1" prep="//@places.0" postp="//@places.1"/>
+  <transitions name="State 1State 3" prep="//@places.1" postp="//@places.3"/>
+  <transitions name="State 1State 2" prep="//@places.1" postp="//@places.2"/>
+  <transitions name="State 4EndEvent_1" prep="//@places.4" postp="//@places.5"/>
+</pnet:Net>

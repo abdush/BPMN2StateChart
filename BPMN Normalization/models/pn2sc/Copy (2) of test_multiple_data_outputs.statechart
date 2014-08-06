@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ASCII"?>
+<schart:Statechart xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:schart="http://uam.es/StateCharts" xmi:id="test_multiple_data_outputs">
+  <topState>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.9/@contains.0" rnext="//@topState/@contains.11/@contains.0 //@topState/@contains.8/@contains.0 //@topState/@contains.7/@contains.0" name="join#FlowElement#35"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.11/@contains.0 //@topState/@contains.8/@contains.0" rnext="//@topState/@contains.6/@contains.0" name="fork#FlowElement#41"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.11/@contains.0 //@topState/@contains.7/@contains.0" rnext="//@topState/@contains.6/@contains.0" name="fork#FlowElement#43"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.6/@contains.0" rnext="//@topState/@contains.5/@contains.0" name="StartEvent_1State 1"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.10/@contains.0" rnext="//@topState/@contains.9/@contains.0" name="State 4EndEvent_1"/>
+    <contains xsi:type="schart:OR" name="StartEvent_1">
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.3" name="StartEvent_1"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="State 1">
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.1 //@topState/@contains.2" rnext="//@topState/@contains.3" name="State 1"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="State 2">
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0" rnext="//@topState/@contains.2" name="State 2"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="State 3">
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0" rnext="//@topState/@contains.1" name="State 3"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="State 4">
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.4" rnext="//@topState/@contains.0" name="State 4"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="EndEvent_1">
+      <contains xsi:type="schart:Basic" rnext="//@topState/@contains.4" name="EndEvent_1"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="Exclusive Gateway 2">
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0" rnext="//@topState/@contains.1 //@topState/@contains.2" name="Exclusive Gateway 2"/>
+    </contains>
+  </topState>
+</schart:Statechart>

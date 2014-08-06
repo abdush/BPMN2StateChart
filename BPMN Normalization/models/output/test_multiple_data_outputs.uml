@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML">
+  <uml:Pseudostate xmi:id="_O3iYMB1sEeS3F5nEeZkXJg" name="join#FlowElement#35" kind="join"/>
+  <uml:Transition xmi:id="_O3mpoB1sEeS3F5nEeZkXJg" name="State 1State 2" source="_O3waoB1sEeS3F5nEeZkXJg" target="_O3y24B1sEeS3F5nEeZkXJg"/>
+  <uml:Model xmi:id="_O4CugB1sEeS3F5nEeZkXJg">
+    <packagedElement xmi:type="uml:StateMachine" xmi:id="test_multiple_data_outputs">
+      <region xmi:id="_O3qUAB1sEeS3F5nEeZkXJg" name="StartEvent_1State 1State 3">
+        <transition xmi:id="_O3q7ER1sEeS3F5nEeZkXJg" name="StartEvent_1State 1" source="_O3q7EB1sEeS3F5nEeZkXJg" target="_O3waoB1sEeS3F5nEeZkXJg"/>
+        <transition xmi:id="_O3xBsB1sEeS3F5nEeZkXJg" name="State 1State 3" source="_O3waoB1sEeS3F5nEeZkXJg" target="_O3xowB1sEeS3F5nEeZkXJg"/>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_O3q7EB1sEeS3F5nEeZkXJg" name="StartEvent_1"/>
+        <subvertex xmi:type="uml:State" xmi:id="_O3waoB1sEeS3F5nEeZkXJg" name="State 1"/>
+        <subvertex xmi:type="uml:State" xmi:id="_O3xowB1sEeS3F5nEeZkXJg" name="State 3"/>
+      </region>
+      <region xmi:id="_O3xowR1sEeS3F5nEeZkXJg" name="State 2">
+        <subvertex xmi:type="uml:State" xmi:id="_O3y24B1sEeS3F5nEeZkXJg" name="State 2"/>
+      </region>
+      <region xmi:id="_O3y24R1sEeS3F5nEeZkXJg" name="State 4EndEvent_1">
+        <transition xmi:id="_O3zd8R1sEeS3F5nEeZkXJg" name="State 4EndEvent_1" source="_O3zd8B1sEeS3F5nEeZkXJg" target="_O316MB1sEeS3F5nEeZkXJg"/>
+        <subvertex xmi:type="uml:State" xmi:id="_O3zd8B1sEeS3F5nEeZkXJg" name="State 4"/>
+        <subvertex xmi:type="uml:FinalState" xmi:id="_O316MB1sEeS3F5nEeZkXJg" name="EndEvent_1"/>
+      </region>
+    </packagedElement>
+  </uml:Model>
+  <uml:Transition xmi:id="_O5ECMB1sEeS3F5nEeZkXJg" source="_O3iYMB1sEeS3F5nEeZkXJg" target="_O3zd8B1sEeS3F5nEeZkXJg"/>
+  <uml:Transition xmi:id="_O5EpQB1sEeS3F5nEeZkXJg" source="_O3xowB1sEeS3F5nEeZkXJg" target="_O3iYMB1sEeS3F5nEeZkXJg"/>
+  <uml:Transition xmi:id="_O5EpQR1sEeS3F5nEeZkXJg" source="_O3y24B1sEeS3F5nEeZkXJg" target="_O3iYMB1sEeS3F5nEeZkXJg"/>
+</xmi:XMI>

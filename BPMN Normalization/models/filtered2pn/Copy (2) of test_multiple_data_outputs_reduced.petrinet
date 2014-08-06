@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<pnet:Net xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pnet="http://uam.es/PetriNets" xmi:id="test_multiple_data_outputs">
+  <places name="StartEvent_1State 1Exclusive Gateway 2"/>
+  <places name="State 2"/>
+  <places name="State 3State 4EndEvent_1" pret="//@transitions.0"/>
+  <transitions name="fork#FlowElement#41" postp="//@places.2"/>
+</pnet:Net>

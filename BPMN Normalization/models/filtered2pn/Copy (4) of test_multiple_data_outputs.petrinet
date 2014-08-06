@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<pnet:Net xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pnet="http://uam.es/PetriNets" xmi:id="test">
+  <places name="StartEvent_1" postt="//@transitions.2"/>
+  <places name="EndEvent_1" pret="//@transitions.0"/>
+  <places name="Data State 1" postt="//@transitions.1" pret="//@transitions.2"/>
+  <places name="Data State 3" postt="//@transitions.0" pret="//@transitions.1"/>
+  <places name="Data State 2" postt="//@transitions.0" pret="//@transitions.1"/>
+  <transitions name="join#FlowElement#20" prep="//@places.3 //@places.4" postp="//@places.1"/>
+  <transitions name="fork#FlowElement#22" prep="//@places.2" postp="//@places.4 //@places.3"/>
+  <transitions name="StartEvent_1Data State 1" prep="//@places.0" postp="//@places.2"/>
+</pnet:Net>

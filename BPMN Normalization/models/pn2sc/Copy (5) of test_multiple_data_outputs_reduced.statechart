@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ASCII"?>
+<schart:Statechart xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:schart="http://uam.es/StateCharts" xmi:id="test">
+  <topState>
+    <contains xsi:type="schart:OR" name="StartEvent_1Data State 1Data State 3EndEvent_1">
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.1" name="StartEvent_1"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.2" rnext="//@topState/@contains.0/@contains.0" name="StartEvent_1Data State 1"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.3" rnext="//@topState/@contains.0/@contains.1" name="Data State 1"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.4" rnext="//@topState/@contains.0/@contains.2" name="Data State 1Data State 3"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.5" rnext="//@topState/@contains.0/@contains.3" name="Data State 3"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.6" rnext="//@topState/@contains.0/@contains.4" name="Data State 3EndEvent_1"/>
+      <contains xsi:type="schart:Basic" rnext="//@topState/@contains.0/@contains.5" name="EndEvent_1"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="Data State 2">
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.1/@contains.1" rnext="//@topState/@contains.1/@contains.1" name="Data State 2"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.1/@contains.0" rnext="//@topState/@contains.1/@contains.0" name="Data State 2Data State 2"/>
+    </contains>
+  </topState>
+</schart:Statechart>

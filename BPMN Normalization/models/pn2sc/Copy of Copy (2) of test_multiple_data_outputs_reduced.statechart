@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ASCII"?>
+<schart:Statechart xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:schart="http://uam.es/StateCharts" xmi:id="test_multiple_data_outputs">
+  <topState>
+    <contains xsi:type="schart:OR" name="StartEvent_1State 1State 2State 3Exclusive Gateway 2State 4EndEvent_1">
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.1" name="StartEvent_1"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.2" rnext="//@topState/@contains.0/@contains.0" name="StartEvent_1State 1"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.3 //@topState/@contains.0/@contains.9" rnext="//@topState/@contains.0/@contains.1" name="State 1"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.6" rnext="//@topState/@contains.0/@contains.2" name="State 1State 3"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.5" rnext="//@topState/@contains.0/@contains.9" name="State 2"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.8" rnext="//@topState/@contains.0/@contains.4" name="State 2Exclusive Gateway 2"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.7" rnext="//@topState/@contains.0/@contains.3" name="State 3"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.8" rnext="//@topState/@contains.0/@contains.6" name="State 3Exclusive Gateway 2"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.10" rnext="//@topState/@contains.0/@contains.7 //@topState/@contains.0/@contains.5" name="Exclusive Gateway 2"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.4" rnext="//@topState/@contains.0/@contains.2" name="State 1State 2"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.11" rnext="//@topState/@contains.0/@contains.8" name="Exclusive Gateway 2State 4"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.12" rnext="//@topState/@contains.0/@contains.10" name="State 4"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.13" rnext="//@topState/@contains.0/@contains.11" name="State 4EndEvent_1"/>
+      <contains xsi:type="schart:Basic" rnext="//@topState/@contains.0/@contains.12" name="EndEvent_1"/>
+    </contains>
+  </topState>
+</schart:Statechart>

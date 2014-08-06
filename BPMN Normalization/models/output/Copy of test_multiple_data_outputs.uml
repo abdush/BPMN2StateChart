@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_RnSvIBtgEeS4n7YXZ-K_0A">
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="test_multiple_data_outputs">
+    <region xmi:id="_RnHwARtgEeS4n7YXZ-K_0A" name="StartEvent_1State 1State 3State 2State 4EndEvent_1">
+      <transition xmi:id="_RnI-IRtgEeS4n7YXZ-K_0A" name="StartEvent_1State 1" source="_RnI-IBtgEeS4n7YXZ-K_0A" target="_RnI-IhtgEeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_RnbSABtgEeS4n7YXZ-K_0A" source="_RnKMQBtgEeS4n7YXZ-K_0A" target="_RnKMQxtgEeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_RnbSARtgEeS4n7YXZ-K_0A" source="_RnKMQBtgEeS4n7YXZ-K_0A" target="_RnLaYBtgEeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_RnbSAhtgEeS4n7YXZ-K_0A" source="_RnI-IhtgEeS4n7YXZ-K_0A" target="_RnKMQBtgEeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_RnduQBtgEeS4n7YXZ-K_0A" source="_RnMogBtgEeS4n7YXZ-K_0A" target="_RnMogRtgEeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_RnduQRtgEeS4n7YXZ-K_0A" source="_RnKMQxtgEeS4n7YXZ-K_0A" target="_RnMogBtgEeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_RnduQhtgEeS4n7YXZ-K_0A" source="_RnLaYBtgEeS4n7YXZ-K_0A" target="_RnMogBtgEeS4n7YXZ-K_0A"/>
+      <transition xmi:id="_RnMoghtgEeS4n7YXZ-K_0A" name="State 4EndEvent_1" source="_RnMogRtgEeS4n7YXZ-K_0A" target="_RnN2oBtgEeS4n7YXZ-K_0A"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_RnI-IBtgEeS4n7YXZ-K_0A" name="StartEvent_1"/>
+      <subvertex xmi:type="uml:State" xmi:id="_RnI-IhtgEeS4n7YXZ-K_0A" name="State 1"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_RnKMQBtgEeS4n7YXZ-K_0A" name="Parallel Gateway 1" kind="fork"/>
+      <subvertex xmi:type="uml:State" xmi:id="_RnKMQRtgEeS4n7YXZ-K_0A" name="State 3State 2">
+        <region xmi:id="_RnKMQhtgEeS4n7YXZ-K_0A" name="State 3">
+          <subvertex xmi:type="uml:State" xmi:id="_RnKMQxtgEeS4n7YXZ-K_0A" name="State 3"/>
+        </region>
+        <region xmi:id="_RnKMRBtgEeS4n7YXZ-K_0A" name="State 2">
+          <subvertex xmi:type="uml:State" xmi:id="_RnLaYBtgEeS4n7YXZ-K_0A" name="State 2"/>
+        </region>
+      </subvertex>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_RnMogBtgEeS4n7YXZ-K_0A" name="join#FlowElement#29" kind="join"/>
+      <subvertex xmi:type="uml:State" xmi:id="_RnMogRtgEeS4n7YXZ-K_0A" name="State 4"/>
+      <subvertex xmi:type="uml:FinalState" xmi:id="_RnN2oBtgEeS4n7YXZ-K_0A" name="EndEvent_1"/>
+    </region>
+  </packagedElement>
+</uml:Model>
