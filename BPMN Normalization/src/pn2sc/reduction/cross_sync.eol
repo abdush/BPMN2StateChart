@@ -1,0 +1,63 @@
+import "equivalence.eol";
+import "petri_net_navigation.eol";
+
+operation applyT3Rule() : Map {
+	var result = Map{'a_place_was_reduced?' = false, 'impacted_place' = null};
+	for (place in PN!Place.all) {
+		result = place.applyT3Rule();
+		if (result.get('a_place_was_reduced?'))
+			break;
+	}
+	return result;
+}
+
+operation PN!Place applyT3Rule() : Map {
+	var result = Map{'a_place_was_reduced?' = false, 'impacted_place' = null};
+	if (self.between_fork_join?() ) {			//and self.name =='costs unknowncosts calculated'
+		("Performing T3 for p=" + self.name).println();
+		self.pret.clear();
+		self.postt.clear();	
+		
+		result.put('impacted_place', self); 
+		result.put('a_place_was_reduced?', true);	
+	}
+	
+	return result;
+}
+
+operation applyT2bRule() : Map {
+	
+	"Trying to Apply RuleT2b".println();
+	var places = PN!Place.all;
+	var transitions = PN!Transition.all;
+	
+	places.println();
+	transitions.println();
+	
+	if (places.size() > 1 and transitions.size() == 0) {
+		("Performing T2b for places=" + places).println();
+	
+		var parent = new SC!AND;
+		parent.name = places.collect(s|s.name).concat().replace("P", "A").replace("O", "A");
+		parent.contains.addAll(places.equivalent());
+		
+		var root = new SC!OR;
+		SC!Statechart.all.first.topState.contains.add(root);		
+		root.name = places.collect(s|s.name).concat().replace("P", "O");
+		root.contains.add(parent);
+		
+		places.first.name = places.collect(p|p.name).concat();
+		delete places.tail();
+	}
+}
+
+operation PN!Place between_fork_join?() : Boolean {
+	return self.pret.exists(t | t.postp.size() > 1) and 
+		   self.postt.exists(t | t.prep.size() > 1);
+}
+
+operation Collection tail() : Collection {
+	var tailed = self.clone();
+	tailed.removeAt(0);
+	return tailed;
+}
