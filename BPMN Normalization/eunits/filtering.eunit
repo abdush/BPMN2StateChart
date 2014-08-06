@@ -1,0 +1,58 @@
+operation createEmfLoadTask(modelName : String, modelFilename : String, metamodelFilename : String) {
+  var task = antProject.createTask("epsilon.emf.loadModel");
+  var basedir = antProject.getBaseDir();
+  task.setModelFile(new Native('java.io.File')(basedir, "models/eunit_tests/" + modelFilename));
+  --task.setMetamodelFile(new Native('java.io.File')(basedir, "metamodels/" + metamodelFilename));
+  task.setMetamodelUri("http://BPMN/Simplified");
+  task.setName(modelName);
+  task.setRead(true);
+  task.setStore(false);
+  return task;
+}
+
+operation createFilteringTask(modelName : String) {
+  
+  var epl_task = antProject.createTask("epsilon.epl");
+  var basedir = antProject.getBaseDir();
+  epl_task.setSrc(new Native('java.io.File')(basedir, "src/filtering/filtering.epl"));
+  epl_task.createModel().setRef(modelName);
+  epl_task.setExportAs("EPL");
+  epl_task.setRepeatWhileMatches(true);
+  epl_task.setMaxLoops(-1);
+  return epl_task;
+}
+
+operation applyFilteringRules(bpmn_model) {
+  var epl_task = createFilteringTask(bpmn_model);
+  epl_task.execute();
+  
+  --module.parse(new Native('java.io.File')(basedir, "src/filtering/filtering.epl"));
+  --module.getContext().getModelRepository().addModel(EPL);
+  --return EPL;
+}
+
+@model
+operation loadModels() {
+  
+  var loadR1  = createEmfLoadTask("R1", "R1.model", "BPMN20.ecore");
+  var loadR1_expected  = createEmfLoadTask("R1_expected", "R1_expected.model", "BPMN20.ecore");
+  loadR1.execute();
+  loadR1_expected.execute();
+}
+/* 
+operation applyFiltering(input_file) {
+	createEmfLoadTask("input", input_file, "BPMN20.ecore");
+	runTarget("filtering_rules");
+}
+*/
+@test
+operation R1() {
+  applyFilteringRules("R1");
+  --var PModel = module.getContext().getModelRepository().getModelByName("EPL");  
+  var R1matched =EPL!SingleInputOutputNonObjectNode.all;
+  --var patternsmatched = PModel.getMatches();
+  assertEquals(3, R1matched.size);
+  --var R1matched = patternsmatched.select(p | p.getPattern().getName() == "SingleInputOutputNonObjectNode");
+  --assertEquals(3, R1matched.size);
+  --assertEqualModels("R1","R1_expected");
+}

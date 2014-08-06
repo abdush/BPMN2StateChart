@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ASCII"?>
+<pm:Process xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pm="http://BPMN/Simplified" xmi:id="_BA2icBnNEeS4n7YXZ-K_0A">
+  <flowElements xsi:type="pm:StartEvent" xmi:id="_GYUWYBnNEeS4n7YXZ-K_0A" outgoing="_HzvykBnNEeS4n7YXZ-K_0A"/>
+  <flowElements xsi:type="pm:SequenceFlow" xmi:id="_HzvykBnNEeS4n7YXZ-K_0A" sourceRef="_GYUWYBnNEeS4n7YXZ-K_0A" targetRef="_KIjt0BnNEeS4n7YXZ-K_0A"/>
+  <flowElements xsi:type="pm:ObjectNode" xmi:id="_KIjt0BnNEeS4n7YXZ-K_0A" incoming="_HzvykBnNEeS4n7YXZ-K_0A" outgoing="_LWYL0BnNEeS4n7YXZ-K_0A"/>
+  <flowElements xsi:type="pm:ObjectFlow" xmi:id="_LWYL0BnNEeS4n7YXZ-K_0A" sourceRef="_KIjt0BnNEeS4n7YXZ-K_0A" targetRef="_Pz78QBnNEeS4n7YXZ-K_0A"/>
+  <flowElements xsi:type="pm:EndEvent" xmi:id="_Pz78QBnNEeS4n7YXZ-K_0A" incoming="_LWYL0BnNEeS4n7YXZ-K_0A"/>
+</pm:Process>
