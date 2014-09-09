@@ -14,11 +14,11 @@ operation createFilteringTask(modelName : String) {
   
   var epl_task = antProject.createTask("epsilon.epl");
   var basedir = antProject.getBaseDir();
-  epl_task.setSrc(new Native('java.io.File')(basedir, "src/filtering/filtering.epl"));
+  epl_task.setSrc(new Native('java.io.File')(basedir, "src/filtering_component/filtering/filtering.epl"));
   epl_task.createModel().setRef(modelName);
   epl_task.setExportAs("EPL");
-  epl_task.setRepeatWhileMatches(true);
-  epl_task.setMaxLoops(-1);
+  --epl_task.setRepeatWhileMatches(true);
+  --epl_task.setMaxLoops(-1);
   return epl_task;
 }
 
@@ -36,23 +36,176 @@ operation loadModels() {
   
   var loadR1  = createEmfLoadTask("R1", "R1.model", "BPMN20.ecore");
   var loadR1_expected  = createEmfLoadTask("R1_expected", "R1_expected.model", "BPMN20.ecore");
+  var loadR2  = createEmfLoadTask("R2", "R2.model", "BPMN20.ecore");
+  var loadR2_expected  = createEmfLoadTask("R2_expected", "R2_expected.model", "BPMN20.ecore");
+  var loadR3  = createEmfLoadTask("R3", "R3.model", "BPMN20.ecore");
+  var loadR3_expected  = createEmfLoadTask("R3_expected", "R3_expected.model", "BPMN20.ecore");
+  var loadR4  = createEmfLoadTask("R4", "R4.model", "BPMN20.ecore");
+  var loadR4_expected  = createEmfLoadTask("R4_expected", "R4_expected.model", "BPMN20.ecore");
+  var loadR5  = createEmfLoadTask("R5", "R5.model", "BPMN20.ecore");
+  var loadR5_expected  = createEmfLoadTask("R5_expected", "R5_expected.model", "BPMN20.ecore");
+  var loadR6  = createEmfLoadTask("R6", "R6.model", "BPMN20.ecore");
+  var loadR6_expected  = createEmfLoadTask("R6_expected", "R6_expected.model", "BPMN20.ecore");
+  var loadR7  = createEmfLoadTask("R7", "R7.model", "BPMN20.ecore");
+  var loadR7_expected  = createEmfLoadTask("R7_expected", "R7_expected.model", "BPMN20.ecore");
+  var loadR8  = createEmfLoadTask("R8", "R8.model", "BPMN20.ecore");
+  var loadR8_expected  = createEmfLoadTask("R8_expected", "R8_expected.model", "BPMN20.ecore");
+  var loadR9  = createEmfLoadTask("R9", "R9.model", "BPMN20.ecore");
+  var loadR9_expected  = createEmfLoadTask("R9_expected", "R9_expected.model", "BPMN20.ecore");
+  var loadR10  = createEmfLoadTask("R10", "R10.model", "BPMN20.ecore");
+  var loadR10_expected  = createEmfLoadTask("R10_expected", "R10_expected.model", "BPMN20.ecore");
+  
   loadR1.execute();
   loadR1_expected.execute();
+  loadR2.execute();
+  loadR2_expected.execute();
+  loadR3.execute();
+  loadR3_expected.execute();
+  loadR4.execute();
+  loadR4_expected.execute();
+  loadR5.execute();
+  loadR5_expected.execute();
+  loadR6.execute();
+  loadR6_expected.execute();
+  loadR7.execute();
+  loadR7_expected.execute();
+  loadR8.execute();
+  loadR8_expected.execute();
+  loadR9.execute();
+  loadR9_expected.execute();
+  loadR10.execute();
+  loadR10_expected.execute();
 }
-/* 
-operation applyFiltering(input_file) {
-	createEmfLoadTask("input", input_file, "BPMN20.ecore");
-	runTarget("filtering_rules");
-}
-*/
+
 @test
 operation R1() {
   applyFilteringRules("R1");
-  --var PModel = module.getContext().getModelRepository().getModelByName("EPL");  
+  EPL.getMatches().size().println();
+  
+  --applyFilteringRules("R1");
+  --EPL.getMatches().size().println();
   var R1matched =EPL!SingleInputOutputNonObjectNode.all;
+  /*while (EPL.getMatches().size() <> 0) {
+  	applyFilteringRules("R1");
+  	R1matched = R1matched + EPL!SingleInputOutputNonObjectNode.all.size;
+  	
+  }*/
+  --var PModel = module.getContext().getModelRepository().getModelByName("EPL");  
+  --var R1mastched =EPL!SingleInputOutputNonObjectNode.all;
   --var patternsmatched = PModel.getMatches();
   assertEquals(3, R1matched.size);
   --var R1matched = patternsmatched.select(p | p.getPattern().getName() == "SingleInputOutputNonObjectNode");
   --assertEquals(3, R1matched.size);
-  --assertEqualModels("R1","R1_expected");
+  assertEqualModels("R1","R1_expected");
+}
+
+@test
+operation R2() {
+  applyFilteringRules("R2");
+  EPL.getMatches().size().println();
+  applyFilteringRules("R2");
+  EPL.getMatches().size().println();
+  var R2matched =EPL!MergeDivergingExclusiveGateway.all;
+  assertEquals(1, R2matched.size);
+  assertEqualModels("R2","R2_expected");
+}
+
+@test
+operation R3() {
+  applyFilteringRules("R3");
+  EPL.getMatches().size().println();
+  --applyFilteringRules("R3");
+  EPL.getMatches().size().println();
+  var R3matched =EPL!MergeConvergingExclusiveGateway.all;
+  assertEquals(1, R3matched.size);
+  assertEqualModels("R3","R3_expected");
+}
+
+
+@test
+operation R4() {
+  applyFilteringRules("R4");
+  EPL.getMatches().size().println();
+  --applyFilteringRules("R4");
+  --EPL.getMatches().size().println();
+  var R4matched =EPL!DeleteLoopEdgeExclusiveGateway.all;
+  assertEquals(1, R4matched.size);
+  assertEqualModels("R4","R4_expected");
+}
+
+@test
+operation R5() {
+  applyFilteringRules("R5");
+  EPL.getMatches().size().println();
+  applyFilteringRules("R5");
+  --applyFilteringRules("R4");
+  --EPL.getMatches().size().println();
+  var R5matched =EPL!DeleteRedundantEdgeParallelGateway.all;
+  assertEquals(3, R5matched.size);
+  assertEqualModels("R5","R5_expected");
+}
+
+
+@test
+operation R6() {
+  applyFilteringRules("R6");
+  EPL.getMatches().size().println();
+  --applyFilteringRules("R6");
+  --applyFilteringRules("R4");
+  --EPL.getMatches().size().println();
+  var R6matched =EPL!DeleteEndEventFromParallelGateway.all;
+  assertEquals(1, R6matched.size);
+  assertEqualModels("R6","R6_expected");
+}
+
+
+@test
+operation R7() {
+  applyFilteringRules("R7");
+  EPL.getMatches().size().println();
+  --applyFilteringRules("R7");
+  --applyFilteringRules("R4");
+  --EPL.getMatches().size().println();
+  var R7matched =EPL!MergeDivergingParallelGateway.all;
+  assertEquals(1, R7matched.size);
+  assertEqualModels("R7","R7_expected");
+}
+
+
+@test
+operation R8() {
+  applyFilteringRules("R8");
+  EPL.getMatches().size().println();
+  --applyFilteringRules("R8");
+  --applyFilteringRules("R4");
+  --EPL.getMatches().size().println();
+  var R8matched =EPL!MergeConvergingParallelGateway.all;
+  assertEquals(1, R8matched.size);
+  assertEqualModels("R8","R8_expected");
+}
+
+
+@test
+operation R9() {
+  applyFilteringRules("R9");
+  EPL.getMatches().size().println();
+  applyFilteringRules("R9");
+  --applyFilteringRules("R4");
+  --EPL.getMatches().size().println();
+  var R9matched =EPL!DeleteRedundantDecisionExclusiveGateway.all;
+  assertEquals(1, R9matched.size);
+  assertEqualModels("R9","R9_expected");
+}
+
+
+@test
+operation R10() {
+  applyFilteringRules("R10");
+  EPL.getMatches().size().println();
+  --applyFilteringRules("R10");
+  --applyFilteringRules("R4");
+  --EPL.getMatches().size().println();
+  var R10matched =EPL!DeleteRedundantMergeExclusiveGateway.all;
+  assertEquals(1, R10matched.size);
+  assertEqualModels("R10","R10_expected");
 }

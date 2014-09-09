@@ -1,89 +1,138 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project default="main">
+<project default="main" basedir=".">
+	<taskdef resource="org/eclipse/epsilon/workflow/tasks/tasks.xml"/>
+	<taskdef resource="org/eclipse/epsilon/workflow/tasks/emf/tasks.xml"/>
 	
-	<!-- ANT Taskdefs for ant-contrib -->
-	<taskdef resource="net/sf/antcontrib/antcontrib.properties"></taskdef>  
+	<property name="metamodel.dir" value="metamodels"></property>
+	<property name="input.dir" value="models/input"></property>
+	<property name="normalization.dir" value="models/normalization"></property>
+	<property name="filtering.dir" value="models/filtering"></property>
+	<property name="petrinet.dir" value="models/filtered2pn"></property>
+	<property name="sc.dir" value="models/pn2sc"></property>
+	<property name="output.dir" value="models/output"></property>
 	
-	<target name="loadModels">
-		<epsilon.emf.register file="tree.ecore"></epsilon.emf.register>		
-		<epsilon.emf.loadModel name="M" modelfile="tree.model" metamodeluri="Tree" read="false" store="true"></epsilon.emf.loadModel>
-	</target>
+	<property name="bpmn_inputfile" value="${input.dir}/taxprocess.bpmn2xmi"></property>
+	<basename file="${bpmn_inputfile}" property="input_filename" suffix="bpmn2xmi"></basename>			
+	<property name="outputfile_normalized" value="${normalization.dir}/${input_filename}_normalized.pm"></property>
+	<property name="outputfile_filtered" value="${filtering.dir}/${input_filename}_filtered.pm"></property>
+	<property name="outputfile_petrinet" value="${petrinet.dir}/${input_filename}.petrinet"></property>
+	<property name="outputfile_petrinet_after_reduction" value="${petrinet.dir}/${input_filename}_reduced.petrinet"></property>
+	<property name="outputfile_sc" value="${sc.dir}/${input_filename}.statechart"></property>
+	<property name="outputfile_sc_after_reduction" value="${sc.dir}/${input_filename}_reduced.statechart"></property>
+	<property name="outputfile_umlsc" value="${output.dir}/${input_filename}.uml"></property>
 	
-	<target name="Transformation1">
-		<epsilon.eol>
-			<model ref="M"></model>
-			
-			var t : new Tree;
-			t.label = &apos;t1&apos;;
-			
-		</epsilon.eol>
-	</target>
+	<!-- include file="workflow2.xml" as="synthesizing"-->
 	
-	<target name="Transformation2">
-		<epsilon.eol>
-			<model ref="M"></model>
-			
-			var t : new Tree;
-			t.label = &apos;t2&apos;;
-			
-		</epsilon.eol>
-	</target>
+	<target name="main" depends="uml_statechart_mapping"></target>
+	
+	<!-- Filtering Phase -->	
+		<!-- Prepare the BPMN model for processing with Epsilon --> 
+		<target name="loadBPMNModel">
+				
+			<!--epsilon.emf.register file="metamodels/BPMN20.ecore" /-->
+			<epsilon.emf.loadModel name="bpmn_input" read="true" store="false" metamodelfile="metamodels/BPMN20.ecore" modelfile="${bpmn_inputfile}"></epsilon.emf.loadModel>
+			<!-- metamodelfile="metamodels/BPMN20.ecore" metamodeluri="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI"-->
 
-	<target name="Validation1">
-		<epsilon.evl>
-			<model ref="M"></model>
-			
-			context Tree {
-				constraint C1 {
-					check : true
-				}
-			}
-			
-		</epsilon.evl>
-	</target>
-	
-	<target name="Validation2">
-		<epsilon.evl>
-			<model ref="M"></model>
-			
-			context Tree {
-				constraint C2 {
-					check : true -- Switch to false to make validation fail
-				}
-			}
-			
-		</epsilon.evl>
-	</target>
-	
-	<target name="Evaluation">
-		<epsilon.eol>
-			<model ref="M"></model>
-			
-			Tree.all.size().println();
-			
-		</epsilon.eol>
-	</target>
-	
-	<target name="main" depends="loadModels">
-		<runtarget target="Transformation1"></runtarget>
-		<runtarget target="Validation1"></runtarget>		
+		</target>
 		
-		<trycatch>
-			<try>
-				<!--Start a transaction on M so that we can roll it back later on.-->
-				<epsilon.startTransaction name="Transaction1" models="M"></epsilon.startTransaction>
-				<runtarget target="Transformation2"></runtarget>
-				<runtarget target="Validation2"></runtarget>
-				<!-- No errors in the validation. Commit the transaction.-->
-				<epsilon.commitTransaction name="Transaction1"></epsilon.commitTransaction>
-			</try>
-			<catch>
-				<!--If validation fails, roll back the transaction.-->
-				<epsilon.rollbackTransaction name="Transaction1"></epsilon.rollbackTransaction>
-			</catch>
-		</trycatch>
+		<!-- First check that the BPMN is well-formed -->
+		<target name="validate" depends="loadBPMNModel">
+			<!-- Note that this task will fail if the model is not valid due to the failonerrors=true attribute. -->
+			<epsilon.evl src="src/normalization/BPMN_Validation.evl" failonerrors="true">
+				<model ref="bpmn_input"></model>
+			</epsilon.evl>
+		</target>
 		
-		<runtarget target="Evaluation"></runtarget>
-	</target>
+		<!-- Next prepare a new and empty preprocessed model for use in the Flock and EPL scripts -->
+		<target name="loadMigrationModel">
+			<!--epsilon.emf.register file="metamodels/BPMN2_Simplified.ecore"></epsilon.emf.register-->
+			<epsilon.emf.loadModel name="preprocessed" read="false" store="true" metamodelfile="metamodels/BPMN2_Simplified.ecore" modelfile="${outputfile_filtered}"></epsilon.emf.loadModel>
+		</target>
+		
+			
+		<!-- Invoke Flock to migrate and normalize the input bpmn, and then invoke EPL to filter the process model -->
+		<target name="normalization" depends="validate,loadMigrationModel">
+			<epsilon.flock src="src/normalization/Preprocessing.mig" originalModel="Original" migratedModel="Migrated">
+				<model ref="bpmn_input" as="Original"></model>
+				<model ref="preprocessed" as="Migrated"></model>
+			</epsilon.flock>
+			
+			<!-- Store the preprocessed file, just for checking -->
+			<epsilon.storeModel model="preprocessed" target="${outputfile_normalized}"></epsilon.storeModel>
+			<!-- copy tofile="models/output_preprocessed.pm" file="models/output_filtered.pm"/-->
+		</target>	
+			
+		<target name="filtering" depends="normalization">
+			<!-- Apply the Filtering rules -->
+			<epsilon.epl src="src/filtering/filtering.epl" repeatWhileMatches="true">
+				<model ref="preprocessed" as="filtered"></model>
+			</epsilon.epl>
+			
+			<!-- Store the preprocessed file, just for checking -->
+			<epsilon.storeModel model="preprocessed" target="${outputfile_filtered}"></epsilon.storeModel>
+		</target>	
+	<!-- END of Filtering phase -->
 	
+	<!-- Synthesizing Phase -->
+	<!-- Next prepare a new and empty preprocessed model for use in the Flock script -->
+		<target name="loadPetriNetModel">
+		    <!--epsilon.emf.register file="metamodels/PetriNets.ecore"></epsilon.emf.register-->
+			<epsilon.emf.loadModel name="petrinet" read="false" store="true" metamodelfile="metamodels/PetriNets.ecore" modelfile="${outputfile_petrinet_after_reduction}"></epsilon.emf.loadModel>
+		</target>
+		
+			
+		<!-- Invoke Flock to migrate filtered model into Petri net -->
+		<target name="mapping2petrinet" depends="filtering,loadPetriNetModel">
+			<epsilon.flock src="src/petrinet_mapping/FilteredBPMN2PetriNet.mig" originalModel="PM" migratedModel="PN">
+				<model ref="preprocessed" as="PM"></model>
+				<model ref="petrinet" as="PN"></model>
+				<exports ref="pm_pn_map" optional="false"></exports>
+			</epsilon.flock>
+			
+			<!-- Store the pertrinet file, just for checking -->
+			<epsilon.storeModel model="petrinet" target="${outputfile_petrinet}"></epsilon.storeModel>
+			<!-- copy tofile="models/output_preprocessed.pm" file="models/output_filtered.pm"/-->
+		</target>	
+			
+		<!-- Invoke Flock to migrate petri net into state chart hierarchy, and then apply reduction rules -->	
+		<target name="pn2sc_initialization" depends="mapping2petrinet">
+			<epsilon.emf.loadModel name="sc_initialization" read="false" store="true" 
+								   metamodelfile="metamodels/StateCharts.ecore" modelfile="${outputfile_sc_after_reduction}">
+			</epsilon.emf.loadModel>
+			
+			<epsilon.flock src="src/pn2sc/initialisation/PetriNet2StateChart.mig" originalModel="PN" migratedModel="SC">
+				<model ref="petrinet" as="PN"></model>
+				<model ref="sc_initialization" as="SC"></model>
+				<exports ref="pn_sc_map" optional="false"></exports>
+			</epsilon.flock>
+			
+			<!-- Store the migrated SC file, just for checking -->
+			<epsilon.storeModel model="sc_initialization" target="${outputfile_sc}"></epsilon.storeModel>
+		</target>
+		
+		<target name="statechart_reduction" depends="pn2sc_initialization">
+			<epsilon.eol src="src/pn2sc/reduction/reduce_state_chart.eol">
+				<model ref="petrinet" as="PN"></model>
+				<model ref="sc_initialization" as="SC"></model>
+			</epsilon.eol>
+		</target>
+		
+		<target name="uml_statechart_mapping" depends="statechart_reduction">
+			<epsilon.emf.loadModel name="uml_statechart" read="false" store="true" 
+				                   metamodelfile="metamodels/UML.ecore" modelfile="${outputfile_umlsc}">
+			</epsilon.emf.loadModel>
+
+			<epsilon.flock src="src/postprocessing/sc2umlStatechart.mig" originalModel="SC" migratedModel="UML">
+				<model ref="sc_initialization" as="SC"></model>
+				<model ref="uml_statechart" as="UML"></model>
+				<model ref="petrinet" as="PN"></model>
+				<model ref="preprocessed" as="PM"></model>
+				<uses ref="pm_pn_map" optional="false"></uses>
+				<uses ref="pn_sc_map" optional="false"></uses>
+			</epsilon.flock>
+		</target>
+	<!-- END of Synthesizing Phase -->
+	
+	<!-- Force Eclipse to refresh our project so we can see the newly generated files -->
+	<!-- eclipse.refreshLocal resource="${basedir}" depth="infinite" /-->
 </project>

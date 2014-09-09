@@ -10,7 +10,8 @@
 	
 	<!-- EUNIT TARGETS -->
 	<target name="evl-exportAsModel">
-	    <!--epsilon.eunit src="${tests.location}/BPMN_Validation.eunit"/-->
+	    <epsilon.eunit src="${tests.location}/validation.eunit"/>
+		<epsilon.eunit src="${tests.location}/normalization.eunit" />
 		<epsilon.eunit src="${tests.location}/filtering.eunit" />
 	</target>
 		

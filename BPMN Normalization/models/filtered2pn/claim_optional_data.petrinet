@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ASCII"?>
+<pnet:Net xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pnet="http://uam.es/PetriNets" xmi:id="claim_optional_data">
+  <places name="StartEvent_1" postt="//@transitions.8"/>
+  <places name="Exclusive Gateway 1" postt="//@transitions.3 //@transitions.4" pret="//@transitions.5"/>
+  <places name="Exclusive Gateway 3" postt="//@transitions.2" pret="//@transitions.0 //@transitions.9 //@transitions.3"/>
+  <places name="EndEvent_1" pret="//@transitions.2"/>
+  <places name="new" postt="//@transitions.10" pret="//@transitions.8"/>
+  <places name="registered" postt="//@transitions.5" pret="//@transitions.10"/>
+  <places name="notfraudulent" postt="//@transitions.4" pret="//@transitions.5"/>
+  <places name="fraudulent" postt="//@transitions.3" pret="//@transitions.5"/>
+  <places name="Exclusive Gateway 2" postt="//@transitions.1 //@transitions.9" pret="//@transitions.7"/>
+  <places name="accepted" postt="//@transitions.1 //@transitions.0" pret="//@transitions.7"/>
+  <places name="rejected" postt="//@transitions.2" pret="//@transitions.7"/>
+  <places name="filled" postt="//@transitions.2" pret="//@transitions.6"/>
+  <places name="Parallel Gateway 2Reference to claimParallel Gateway 2" postt="//@transitions.0" pret="//@transitions.6"/>
+  <places name="Parallel Gateway 1Reference to claimParallel Gateway 2Reference to claim" postt="//@transitions.6" pret="//@transitions.1"/>
+  <places name="Exclusive Gateway 1Reference to claimExclusive Gateway 2Reference to claimReference to claim" postt="//@transitions.7" pret="//@transitions.4"/>
+  <transitions name="Parallel Gateway 2" prep="//@places.12 //@places.9" postp="//@places.2"/>
+  <transitions name="Parallel Gateway 1Reference to claim" prep="//@places.8 //@places.9" postp="//@places.13"/>
+  <transitions name="Exclusive Gateway 3Reference to claimReference to claim" prep="//@places.2 //@places.10 //@places.11" postp="//@places.3"/>
+  <transitions name="Exclusive Gateway 1Reference to claim" prep="//@places.1 //@places.7" postp="//@places.2"/>
+  <transitions name="Exclusive Gateway 1Reference to claim" prep="//@places.1 //@places.6" postp="//@places.14"/>
+  <transitions name="Exclusive Gateway 1Reference to claimReference to claim" prep="//@places.5" postp="//@places.1 //@places.7 //@places.6"/>
+  <transitions name="Parallel Gateway 2Reference to claim" prep="//@places.13" postp="//@places.12 //@places.11"/>
+  <transitions name="Exclusive Gateway 2Reference to claimReference to claim" prep="//@places.14" postp="//@places.8 //@places.9 //@places.10"/>
+  <transitions name="StartEvent_1new" prep="//@places.0" postp="//@places.4"/>
+  <transitions name="Exclusive Gateway 2Exclusive Gateway 3" prep="//@places.8" postp="//@places.2"/>
+  <transitions name="newregistered" prep="//@places.4" postp="//@places.5"/>
+</pnet:Net>

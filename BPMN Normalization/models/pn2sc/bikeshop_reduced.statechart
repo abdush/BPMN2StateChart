@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ASCII"?>
+<schart:Statechart xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:schart="http://uam.es/StateCharts" xmi:id="bikeshop">
+  <topState>
+    <contains xsi:type="schart:OR" name="StartEvent_1no trade-inExclusive Gateway 1trade-inExclusive Gateway 2accessories unknownaccessories fixedsignednot ordered at supplierordered at supplierExclusive Gateway 3bike readyExclusive Gateway 4bike ready [2]accessories readyclosedreorderedEndEvent_1">
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.1" name="StartEvent_1"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.2/@contains.0/@contains.0/@contains.0/@contains.0 //@topState/@contains.0/@contains.2/@contains.1/@contains.0 //@topState/@contains.0/@contains.2/@contains.0/@contains.0/@contains.1/@contains.0" rnext="//@topState/@contains.0/@contains.0" name="Parallel Gateway 1Order [no trade-in]Order [not ordered at supplier]Order [accessories unknown]"/>
+      <contains xsi:type="schart:AND" name="no trade-inExclusive Gateway 1trade-inExclusive Gateway 2accessories unknownaccessories fixedsignednot ordered at supplierordered at supplier">
+        <contains xsi:type="schart:OR" name="no trade-inExclusive Gateway 1trade-inExclusive Gateway 2accessories unknownaccessories fixedsigned">
+          <contains xsi:type="schart:AND" name="no trade-inExclusive Gateway 1trade-inExclusive Gateway 2accessories unknownaccessories fixed">
+            <contains xsi:type="schart:OR" name="no trade-inExclusive Gateway 1trade-inExclusive Gateway 2">
+              <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.2/@contains.0/@contains.0/@contains.0/@contains.1" rnext="//@topState/@contains.0/@contains.1" name="no trade-in"/>
+              <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.2/@contains.0/@contains.0/@contains.0/@contains.2" rnext="//@topState/@contains.0/@contains.2/@contains.0/@contains.0/@contains.0/@contains.0" name="no trade-inExclusive Gateway 1"/>
+              <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.2/@contains.0/@contains.0/@contains.0/@contains.3 //@topState/@contains.0/@contains.2/@contains.0/@contains.0/@contains.0/@contains.5" rnext="//@topState/@contains.0/@contains.2/@contains.0/@contains.0/@contains.0/@contains.1" name="Exclusive Gateway 1"/>
+              <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.2/@contains.0/@contains.0/@contains.0/@contains.4" rnext="//@topState/@contains.0/@contains.2/@contains.0/@contains.0/@contains.0/@contains.2" name="Exclusive Gateway 1trade-in"/>
+              <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.2/@contains.0/@contains.0/@contains.0/@contains.7" rnext="//@topState/@contains.0/@contains.2/@contains.0/@contains.0/@contains.0/@contains.3" name="trade-in"/>
+              <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.2/@contains.0/@contains.0/@contains.0/@contains.6" rnext="//@topState/@contains.0/@contains.2/@contains.0/@contains.0/@contains.0/@contains.2" name="Exclusive Gateway 1Exclusive Gateway 2"/>
+              <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.2/@contains.0/@contains.1" rnext="//@topState/@contains.0/@contains.2/@contains.0/@contains.0/@contains.0/@contains.5 //@topState/@contains.0/@contains.2/@contains.0/@contains.0/@contains.0/@contains.7" name="Exclusive Gateway 2"/>
+              <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.2/@contains.0/@contains.0/@contains.0/@contains.6" rnext="//@topState/@contains.0/@contains.2/@contains.0/@contains.0/@contains.0/@contains.4" name="trade-inExclusive Gateway 2"/>
+            </contains>
+            <contains xsi:type="schart:OR" name="accessories unknownaccessories fixed">
+              <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.2/@contains.0/@contains.0/@contains.1/@contains.1" rnext="//@topState/@contains.0/@contains.1" name="accessories unknown"/>
+              <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.2/@contains.0/@contains.0/@contains.1/@contains.2" rnext="//@topState/@contains.0/@contains.2/@contains.0/@contains.0/@contains.1/@contains.0" name="accessories unknownaccessories fixed"/>
+              <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.2/@contains.0/@contains.1" rnext="//@topState/@contains.0/@contains.2/@contains.0/@contains.0/@contains.1/@contains.1" name="accessories fixed"/>
+            </contains>
+          </contains>
+          <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.2/@contains.0/@contains.2" rnext="//@topState/@contains.0/@contains.2/@contains.0/@contains.0/@contains.1/@contains.2 //@topState/@contains.0/@contains.2/@contains.0/@contains.0/@contains.0/@contains.6" name="Parallel Gateway 2"/>
+          <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.3" rnext="//@topState/@contains.0/@contains.2/@contains.0/@contains.1" name="signed"/>
+        </contains>
+        <contains xsi:type="schart:OR" name="not ordered at supplierordered at supplier">
+          <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.2/@contains.1/@contains.1" rnext="//@topState/@contains.0/@contains.1" name="not ordered at supplier"/>
+          <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.2/@contains.1/@contains.2" rnext="//@topState/@contains.0/@contains.2/@contains.1/@contains.0" name="not ordered at supplierordered at supplier"/>
+          <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.3" rnext="//@topState/@contains.0/@contains.2/@contains.1/@contains.1" name="ordered at supplier"/>
+        </contains>
+      </contains>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.4" rnext="//@topState/@contains.0/@contains.2/@contains.1/@contains.2 //@topState/@contains.0/@contains.2/@contains.0/@contains.2" name="Parallel Gateway 3"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.5" rnext="//@topState/@contains.0/@contains.3 //@topState/@contains.0/@contains.15" name="Exclusive Gateway 3"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.6" rnext="//@topState/@contains.0/@contains.4" name="Exclusive Gateway 3bike ready"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.7" rnext="//@topState/@contains.0/@contains.5" name="bike ready"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.8" rnext="//@topState/@contains.0/@contains.6" name="bike readyExclusive Gateway 4"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.9 //@topState/@contains.0/@contains.13" rnext="//@topState/@contains.0/@contains.7" name="Exclusive Gateway 4"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.10/@contains.0/@contains.0 //@topState/@contains.0/@contains.10/@contains.1/@contains.0" rnext="//@topState/@contains.0/@contains.8" name="Parallel Gateway 4"/>
+      <contains xsi:type="schart:AND" name="bike ready [2]accessories ready">
+        <contains xsi:type="schart:OR" name="bike ready [2]">
+          <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.11" rnext="//@topState/@contains.0/@contains.9" name="bike ready [2]"/>
+        </contains>
+        <contains xsi:type="schart:OR" name="accessories ready">
+          <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.11" rnext="//@topState/@contains.0/@contains.9" name="accessories ready"/>
+        </contains>
+      </contains>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.12" rnext="//@topState/@contains.0/@contains.10/@contains.0/@contains.0 //@topState/@contains.0/@contains.10/@contains.1/@contains.0" name="Parallel Gateway 5"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.16" rnext="//@topState/@contains.0/@contains.11" name="closed"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.14" rnext="//@topState/@contains.0/@contains.8" name="Exclusive Gateway 4reordered"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.15" rnext="//@topState/@contains.0/@contains.13" name="reordered"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.4" rnext="//@topState/@contains.0/@contains.14" name="reorderedExclusive Gateway 3"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.17" rnext="//@topState/@contains.0/@contains.12" name="closedEndEvent_1"/>
+      <contains xsi:type="schart:Basic" rnext="//@topState/@contains.0/@contains.16" name="EndEvent_1"/>
+    </contains>
+  </topState>
+</schart:Statechart>

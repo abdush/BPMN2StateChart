@@ -1,1 +1,1 @@
-ant -f workflow.xml -lib ./lib/ -Dbpmn_inputfile=${input.dir}/Preprocessing_with_DataObjects_WithNoIO.bpmn2
+ant -lib ./lib/ 

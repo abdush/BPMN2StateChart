@@ -1,4 +1,4 @@
-import "normalization.eol";
+--import "normalization.eol";
 
 "Flow elements containing process:".println();
 --for (flowElement in FlowElement.all)

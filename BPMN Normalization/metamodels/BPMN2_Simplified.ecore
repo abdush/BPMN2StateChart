@@ -41,9 +41,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExclusiveGateway" eSuperTypes="#//Gateway">
     <eAnnotations source="gmf.node">
-      <details key="figure" value="rounded"/>
+      <details key="figure" value="polygon"/>
+      <details key="polygon.x" value="0 50 100 50"/>
+      <details key="polygon.y" value="50 100 50 0"/>
       <details key="label.placement" value="none"/>
-      <details key="color" value="255,255,0"/>
+      <details key="color" value="255,255,255"/>
       <details key="size" value="15,15"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="default" ordered="false"
@@ -51,10 +53,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParallelGateway" eSuperTypes="#//Gateway">
     <eAnnotations source="gmf.node">
-      <details key="figure" value="rounded"/>
+      <details key="label" value="name"/>
+      <details key="figure" value="rectangle"/>
+      <details key="color" value="0,0,0"/>
+      <details key="size" value="15,50"/>
       <details key="label.placement" value="none"/>
-      <details key="color" value="255,255,1"/>
-      <details key="size" value="15,15"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Edge" eSuperTypes="#//FlowElement">
@@ -68,7 +71,6 @@
       <details key="source" value="sourceRef"/>
       <details key="target" value="targetRef"/>
       <details key="target.decoration" value="arrow"/>
-      <details key="label" value="guard"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="guard" ordered="false"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -85,18 +87,16 @@
   <eClassifiers xsi:type="ecore:EClass" name="Event" eSuperTypes="#//FlowNode"/>
   <eClassifiers xsi:type="ecore:EClass" name="StartEvent" eSuperTypes="#//Event">
     <eAnnotations source="gmf.node">
-      <details key="figure" value="rounded"/>
+      <details key="figure" value="ellipse"/>
       <details key="label.placement" value="none"/>
-      <details key="color" value="255,0,0"/>
-      <details key="size" value="15,15"/>
+      <details key="color" value="0,255,0"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EndEvent" eSuperTypes="#//Event">
     <eAnnotations source="gmf.node">
-      <details key="figure" value="rounded"/>
+      <details key="figure" value="ellipse"/>
       <details key="label.placement" value="none"/>
       <details key="color" value="0,0,0"/>
-      <details key="size" value="15,15"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="GatewayDirection">

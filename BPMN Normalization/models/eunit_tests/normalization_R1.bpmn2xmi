@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn2:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" id="_J84mQOneEeOgCMDZjxiKRQ" targetNamespace="bpmn2">
+  <rootElements xsi:type="bpmn2:Process" id="_J84mQeneEeOgCMDZjxiKRQ" name="process1">
+    <flowElements xsi:type="bpmn2:StartEvent" id="_J84mQuneEeOgCMDZjxiKRQ" outgoing="_J84mQ-neEeOgCMDZjxiKRQ"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="_J84mQ-neEeOgCMDZjxiKRQ" sourceRef="_J84mQuneEeOgCMDZjxiKRQ" targetRef="_J84mROneEeOgCMDZjxiKRQ"/>
+    <flowElements xsi:type="bpmn2:Task" id="_J84mROneEeOgCMDZjxiKRQ" name="task 1" incoming="_J84mQ-neEeOgCMDZjxiKRQ" outgoing="_J84mReneEeOgCMDZjxiKRQ _7unF4OouEeO7IP1X9T78Pg"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="_J84mReneEeOgCMDZjxiKRQ" sourceRef="_J84mROneEeOgCMDZjxiKRQ" targetRef="_J84mR-neEeOgCMDZjxiKRQ"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="_7unF4OouEeO7IP1X9T78Pg" sourceRef="_J84mROneEeOgCMDZjxiKRQ" targetRef="_J84mSOneEeOgCMDZjxiKRQ"/>
+    <flowElements xsi:type="bpmn2:Task" id="_J84mR-neEeOgCMDZjxiKRQ" name="task 2" incoming="_J84mReneEeOgCMDZjxiKRQ" outgoing="_J84mSeneEeOgCMDZjxiKRQ"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="_J84mSeneEeOgCMDZjxiKRQ" sourceRef="_J84mR-neEeOgCMDZjxiKRQ" targetRef="_J84mS-neEeOgCMDZjxiKRQ"/>
+    <flowElements xsi:type="bpmn2:Task" id="_J84mSOneEeOgCMDZjxiKRQ" name="task 3" incoming="_7unF4OouEeO7IP1X9T78Pg" outgoing="_J84mSuneEeOgCMDZjxiKRQ"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="_J84mSuneEeOgCMDZjxiKRQ" sourceRef="_J84mSOneEeOgCMDZjxiKRQ" targetRef="_J84mS-neEeOgCMDZjxiKRQ"/>
+    <flowElements xsi:type="bpmn2:ParallelGateway" id="_J84mS-neEeOgCMDZjxiKRQ" incoming="_J84mSeneEeOgCMDZjxiKRQ _J84mSuneEeOgCMDZjxiKRQ" outgoing="_J84mTOneEeOgCMDZjxiKRQ" gatewayDirection="Converging"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="_J84mTOneEeOgCMDZjxiKRQ" sourceRef="_J84mS-neEeOgCMDZjxiKRQ" targetRef="_7EecYOoxEeO7IP1X9T78Pg"/>
+    <flowElements xsi:type="bpmn2:Task" id="_7EecYOoxEeO7IP1X9T78Pg" name="task 4" incoming="_J84mTOneEeOgCMDZjxiKRQ" outgoing="_7EecYeoxEeO7IP1X9T78Pg"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="_7EecYeoxEeO7IP1X9T78Pg" sourceRef="_7EecYOoxEeO7IP1X9T78Pg" targetRef="_7EecYuoxEeO7IP1X9T78Pg"/>
+    <flowElements xsi:type="bpmn2:ExclusiveGateway" id="_7EecYuoxEeO7IP1X9T78Pg" incoming="_7EecYeoxEeO7IP1X9T78Pg" outgoing="_7EecY-oxEeO7IP1X9T78Pg _7EecZOoxEeO7IP1X9T78Pg" gatewayDirection="Diverging"/>
+    <flowElements xsi:type="bpmn2:Task" id="_7EecZeoxEeO7IP1X9T78Pg" name="task 5" incoming="_7EecY-oxEeO7IP1X9T78Pg" outgoing="_7EecZuoxEeO7IP1X9T78Pg"/>
+    <flowElements xsi:type="bpmn2:Task" id="_7EecZ-oxEeO7IP1X9T78Pg" name="task 6" incoming="_7EecZOoxEeO7IP1X9T78Pg" outgoing="_7EecaOoxEeO7IP1X9T78Pg"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="_7EecY-oxEeO7IP1X9T78Pg" sourceRef="_7EecYuoxEeO7IP1X9T78Pg" targetRef="_7EecZeoxEeO7IP1X9T78Pg"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="_7EecZOoxEeO7IP1X9T78Pg" sourceRef="_7EecYuoxEeO7IP1X9T78Pg" targetRef="_7EecZ-oxEeO7IP1X9T78Pg"/>
+    <flowElements xsi:type="bpmn2:Task" id="_7EecaeoxEeO7IP1X9T78Pg" name="task 7" incoming="_7EecZuoxEeO7IP1X9T78Pg _7EecaOoxEeO7IP1X9T78Pg" outgoing="_7EecauoxEeO7IP1X9T78Pg"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="_7EecZuoxEeO7IP1X9T78Pg" sourceRef="_7EecZeoxEeO7IP1X9T78Pg" targetRef="_7EecaeoxEeO7IP1X9T78Pg"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="_7EecaOoxEeO7IP1X9T78Pg" sourceRef="_7EecZ-oxEeO7IP1X9T78Pg" targetRef="_7EecaeoxEeO7IP1X9T78Pg"/>
+    <flowElements xsi:type="bpmn2:EndEvent" id="_J84mTeneEeOgCMDZjxiKRQ" incoming="_7EecauoxEeO7IP1X9T78Pg"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="_7EecauoxEeO7IP1X9T78Pg" sourceRef="_7EecaeoxEeO7IP1X9T78Pg" targetRef="_J84mTeneEeOgCMDZjxiKRQ"/>
+  </rootElements>
+</bpmn2:Definitions>

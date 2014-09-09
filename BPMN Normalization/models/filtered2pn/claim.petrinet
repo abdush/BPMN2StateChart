@@ -15,8 +15,8 @@
   <places name="settled" postt="//@transitions.5" pret="//@transitions.10"/>
   <places name="archived" postt="//@transitions.6" pret="//@transitions.0"/>
   <transitions name="Parallel Gateway 5" prep="//@places.1 //@places.8" postp="//@places.13"/>
-  <transitions name="join#FlowElement#77" prep="//@places.7 //@places.6" postp="//@places.9"/>
-  <transitions name="fork#FlowElement#87" prep="//@places.0" postp="//@places.3 //@places.4 //@places.5"/>
+  <transitions name="Parallel Gateway 2Claim [damage checked]Claim [policy checked]" prep="//@places.7 //@places.6" postp="//@places.9"/>
+  <transitions name="Parallel Gateway 1Claim [Received]Claim [policy not checked]Claim [damage not checked]" prep="//@places.0" postp="//@places.3 //@places.4 //@places.5"/>
   <transitions name="decidedRejected" prep="//@places.9" postp="//@places.10"/>
   <transitions name="decidedassessed" prep="//@places.9" postp="//@places.11"/>
   <transitions name="settledExclusive Gateway 2" prep="//@places.12" postp="//@places.1"/>

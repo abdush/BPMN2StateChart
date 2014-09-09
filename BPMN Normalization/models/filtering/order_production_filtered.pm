@@ -48,9 +48,9 @@
   <flowElements xsi:type="pm:ObjectFlow" id="DataOutputAssociation_6" sourceRef="//@flowElements.32" targetRef="_DataObjectReference_7"/>
   <flowElements xsi:type="pm:ObjectFlow" id="DataInputAssociation_2" sourceRef="_DataObjectReference_6" targetRef="_DataObjectReference_10"/>
   <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#63" sourceRef="//@flowElements.28" targetRef="_DataObjectReference_8"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#64" incoming="//@flowElements.18 //@flowElements.19" outgoing="//@flowElements.27" gatewayDirection="Converging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#64" name="join1Order [checked]Order [costs calculated]" incoming="//@flowElements.18 //@flowElements.19" outgoing="//@flowElements.27" gatewayDirection="Converging"/>
   <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#67" sourceRef="//@flowElements.30" targetRef="_DataObjectReference_11"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#68" incoming="//@flowElements.21 //@flowElements.22" outgoing="//@flowElements.29" gatewayDirection="Converging"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#74" incoming="SequenceFlow_2" outgoing="//@flowElements.14 //@flowElements.15" gatewayDirection="Diverging"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#84" incoming="//@flowElements.23" outgoing="//@flowElements.24 //@flowElements.25" gatewayDirection="Diverging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#68" name="join2Order [produced]Order [paid]" incoming="//@flowElements.21 //@flowElements.22" outgoing="//@flowElements.29" gatewayDirection="Converging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#74" name="fork1Order [unchecked]Order [unplanned]" incoming="SequenceFlow_2" outgoing="//@flowElements.14 //@flowElements.15" gatewayDirection="Diverging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#84" name="fork2Order [planned]Order [costs unknown]" incoming="//@flowElements.23" outgoing="//@flowElements.24 //@flowElements.25" gatewayDirection="Diverging"/>
 </pm:Process>

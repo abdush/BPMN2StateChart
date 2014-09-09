@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="ASCII"?>
 <pnet:Net xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pnet="http://uam.es/PetriNets" xmi:id="order_production">
-  <places name="StartEvent_1uncheckedcheckedbilledpaidunplannedplannedproducedshippedEndEvent_1costs unknowncosts calculated"/>
+  <places name="StartEvent_1unplannedplannedproducedcosts unknowncosts calculatedbilledpaidshippedEndEvent_1uncheckedchecked"/>
 </pnet:Net>

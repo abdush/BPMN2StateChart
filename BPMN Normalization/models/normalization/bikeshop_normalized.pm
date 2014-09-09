@@ -80,7 +80,7 @@
     <dataState xmi:id="DataState_10" id="DataState_10" name="accessories ready"/>
   </flowElements>
   <flowElements xsi:type="pm:ObjectNode" xmi:id="_DataObjectReference_12" id="_DataObjectReference_12" name="Order [bike ready]" incoming="//@flowElements.81" outgoing="SequenceFlow_23">
-    <dataState xmi:id="DataState_11" id="DataState_11" name="bike ready"/>
+    <dataState xmi:id="DataState_11" id="DataState_11" name="bike ready [2]"/>
   </flowElements>
   <flowElements xsi:type="pm:ObjectNode" xmi:id="_DataObjectReference_13" id="_DataObjectReference_13" name="Order [closed]" incoming="//@flowElements.87" outgoing="SequenceFlow_32">
     <dataState xmi:id="DataState_12" id="DataState_12" name="closed"/>
@@ -113,11 +113,11 @@
   <flowElements xsi:type="pm:ObjectFlow" id="DataOutputAssociation_9" sourceRef="Task_9" targetRef="_DataObjectReference_10"/>
   <flowElements xsi:type="pm:ObjectFlow" id="DataOutputAssociation_12" sourceRef="Task_15" targetRef="_DataObjectReference_13"/>
   <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#89" sourceRef="//@flowElements.89" targetRef="Task_2"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#90" incoming="SequenceFlow_4 //@flowElements.76" outgoing="//@flowElements.88" gatewayDirection="Converging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#90" name="Parallel Gateway 1Order [not ordered at supplier]" incoming="SequenceFlow_4 //@flowElements.76" outgoing="//@flowElements.88" gatewayDirection="Converging"/>
   <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#91" sourceRef="//@flowElements.91" targetRef="Task_3"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#92" incoming="SequenceFlow_5 //@flowElements.78" outgoing="//@flowElements.90" gatewayDirection="Converging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#92" name="Parallel Gateway 1Order [no trade-in]" incoming="SequenceFlow_5 //@flowElements.78" outgoing="//@flowElements.90" gatewayDirection="Converging"/>
   <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#93" sourceRef="//@flowElements.93" targetRef="Task_4"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#94" incoming="SequenceFlow_6 //@flowElements.79" outgoing="//@flowElements.92" gatewayDirection="Converging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#94" name="Parallel Gateway 1Order [accessories unknown]" incoming="SequenceFlow_6 //@flowElements.79" outgoing="//@flowElements.92" gatewayDirection="Converging"/>
   <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#95" sourceRef="Task_1" targetRef="//@flowElements.95"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#96" incoming="//@flowElements.94" outgoing="SequenceFlow_3 //@flowElements.73 //@flowElements.74 //@flowElements.75" gatewayDirection="Diverging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#96" name="Parallel Gateway 1Order [no trade-in]Order [not ordered at supplier]Order [accessories unknown]" incoming="//@flowElements.94" outgoing="SequenceFlow_3 //@flowElements.73 //@flowElements.74 //@flowElements.75" gatewayDirection="Diverging"/>
 </pm:Process>

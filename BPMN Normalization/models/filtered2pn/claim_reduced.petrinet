@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="ASCII"?>
 <pnet:Net xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pnet="http://uam.es/PetriNets" xmi:id="claim">
-  <places name="StartEvent_1receivedconfirmedpolicy not checkedpolicy checkeddamage not checkeddamage checkeddecidedRejectedassessedsettledExclusive Gateway 2archivedEndEvent_1"/>
+  <places name="StartEvent_1receivedconfirmedpolicy not checkedpolicy checkeddamage not checkeddamage checkedsettleddecidedRejectedassessedExclusive Gateway 2archivedEndEvent_1"/>
 </pnet:Net>

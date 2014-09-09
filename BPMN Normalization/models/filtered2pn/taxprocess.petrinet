@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="ASCII"?>
 <pnet:Net xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pnet="http://uam.es/PetriNets" xmi:id="taxprocess">
-  <places name="StartEvent_1" postt="//@transitions.2"/>
-  <places name="Exclusive Gateway 1" postt="//@transitions.3 //@transitions.0" pret="//@transitions.4"/>
-  <places name="End Event 2" pret="//@transitions.5"/>
-  <places name="EndEvent_1" pret="//@transitions.1"/>
-  <places name="submitted" postt="//@transitions.4" pret="//@transitions.2"/>
-  <places name="rejected" postt="//@transitions.5" pret="//@transitions.3"/>
+  <places name="StartEvent_1" postt="//@transitions.4"/>
+  <places name="submitted" postt="//@transitions.5" pret="//@transitions.2"/>
+  <places name="rejected" postt="//@transitions.6" pret="//@transitions.3"/>
   <places name="accepted" postt="//@transitions.1" pret="//@transitions.0"/>
-  <places name="processed" postt="//@transitions.6" pret="//@transitions.0"/>
-  <places name="assessed" postt="//@transitions.7" pret="//@transitions.6"/>
-  <places name="returned" postt="//@transitions.1" pret="//@transitions.7"/>
-  <transitions name="Parallel Gateway 1" prep="//@places.1" postp="//@places.6 //@places.7"/>
-  <transitions name="Parallel Gateway 2" prep="//@places.9 //@places.6" postp="//@places.3"/>
-  <transitions name="StartEvent_1submitted" prep="//@places.0" postp="//@places.4"/>
-  <transitions name="Exclusive Gateway 1rejected" prep="//@places.1" postp="//@places.5"/>
-  <transitions name="submittedExclusive Gateway 1" prep="//@places.4" postp="//@places.1"/>
-  <transitions name="rejectedEnd Event 2" prep="//@places.5" postp="//@places.2"/>
-  <transitions name="processedassessed" prep="//@places.7" postp="//@places.8"/>
-  <transitions name="assessedreturned" prep="//@places.8" postp="//@places.9"/>
+  <places name="processed" postt="//@transitions.7" pret="//@transitions.0"/>
+  <places name="assessed" postt="//@transitions.8" pret="//@transitions.7"/>
+  <places name="returned" postt="//@transitions.1" pret="//@transitions.8"/>
+  <places name="Exclusive Gateway 1" postt="//@transitions.3 //@transitions.0" pret="//@transitions.5"/>
+  <places name="End Event 2" pret="//@transitions.6"/>
+  <places name="EndEvent_1" pret="//@transitions.1"/>
+  <places name="not submitted" postt="//@transitions.2" pret="//@transitions.4"/>
+  <transitions name="Parallel Gateway 1" prep="//@places.7" postp="//@places.3 //@places.4"/>
+  <transitions name="Parallel Gateway 2" prep="//@places.3 //@places.6" postp="//@places.9"/>
+  <transitions name="not submittedsubmitted" prep="//@places.10" postp="//@places.1"/>
+  <transitions name="Exclusive Gateway 1rejected" prep="//@places.7" postp="//@places.2"/>
+  <transitions name="StartEvent_1not submitted" prep="//@places.0" postp="//@places.10"/>
+  <transitions name="submittedExclusive Gateway 1" prep="//@places.1" postp="//@places.7"/>
+  <transitions name="rejectedEnd Event 2" prep="//@places.2" postp="//@places.8"/>
+  <transitions name="processedassessed" prep="//@places.4" postp="//@places.5"/>
+  <transitions name="assessedreturned" prep="//@places.5" postp="//@places.6"/>
 </pnet:Net>

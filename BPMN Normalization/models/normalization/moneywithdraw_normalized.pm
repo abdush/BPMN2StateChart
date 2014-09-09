@@ -37,7 +37,7 @@
   <flowElements xsi:type="pm:ObjectFlow" id="DataInputAssociation_2" sourceRef="_DataObjectReference_3" targetRef="//@flowElements.31"/>
   <flowElements xsi:type="pm:ObjectFlow" id="DataOutputAssociation_2" sourceRef="Task_4" targetRef="_DataObjectReference_4"/>
   <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#31" sourceRef="//@flowElements.31" targetRef="Task_4"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#32" incoming="SequenceFlow_8 //@flowElements.28" outgoing="//@flowElements.30" gatewayDirection="Converging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#32" name="Parallel Gateway 2Account [checked]" incoming="SequenceFlow_8 //@flowElements.28" outgoing="//@flowElements.30" gatewayDirection="Converging"/>
   <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#33" sourceRef="Task_2" targetRef="//@flowElements.33"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#34" incoming="//@flowElements.32" outgoing="SequenceFlow_6 //@flowElements.27" gatewayDirection="Diverging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#34" name="Parallel Gateway 2Account [checked]" incoming="//@flowElements.32" outgoing="SequenceFlow_6 //@flowElements.27" gatewayDirection="Diverging"/>
 </pm:Process>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ASCII"?>
+<pm:Process xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pm="http://BPMN/Simplified" xmi:id="_vLiLIPIWEeOlfPK6ouZEvw" id="process 1" name="process 1">
+  <flowElements xsi:type="pm:StartEvent" xmi:id="_x52LgPIWEeOlfPK6ouZEvw" id="flowElem1" name="SE" outgoing="_MjqaUBUXEeSzrpBAxAp9hw"/>
+  <flowElements xsi:type="pm:SequenceFlow" xmi:id="_MjqaUBUXEeSzrpBAxAp9hw" sourceRef="_x52LgPIWEeOlfPK6ouZEvw" targetRef="_NMPdQBUXEeSzrpBAxAp9hw"/>
+  <flowElements xsi:type="pm:ParallelGateway" xmi:id="_NMPdQBUXEeSzrpBAxAp9hw" name="PG1" incoming="_MjqaUBUXEeSzrpBAxAp9hw" outgoing="_H1NycPIeEeOnSq85WS3IoA _AL5-ABUYEeSzrpBAxAp9hw _Nq5KUBUmEeSzrpBAxAp9hw" gatewayDirection="Diverging"/>
+  <flowElements xsi:type="pm:ObjectFlow" xmi:id="_H1NycPIeEeOnSq85WS3IoA" sourceRef="_NMPdQBUXEeSzrpBAxAp9hw" targetRef="_0WNgQPIWEeOlfPK6ouZEvw"/>
+  <flowElements xsi:type="pm:ObjectNode" xmi:id="_0WNgQPIWEeOlfPK6ouZEvw" id="flowElem3" name="obj 1" incoming="_H1NycPIeEeOnSq85WS3IoA" outgoing="_2HScUPIWEeOlfPK6ouZEvw"/>
+  <flowElements xsi:type="pm:ObjectFlow" xmi:id="_2HScUPIWEeOlfPK6ouZEvw" id="flowElem4" name="obj flow 1" sourceRef="_0WNgQPIWEeOlfPK6ouZEvw" targetRef="_mBsSsPLPEeORMfPPZlikBw"/>
+  <flowElements xsi:type="pm:ObjectFlow" xmi:id="_AL5-ABUYEeSzrpBAxAp9hw" sourceRef="_NMPdQBUXEeSzrpBAxAp9hw" targetRef="_A0lHkBUYEeSzrpBAxAp9hw"/>
+  <flowElements xsi:type="pm:ObjectNode" xmi:id="_A0lHkBUYEeSzrpBAxAp9hw" name="obj2" incoming="_AL5-ABUYEeSzrpBAxAp9hw" outgoing="_BzY5MBUYEeSzrpBAxAp9hw"/>
+  <flowElements xsi:type="pm:ObjectFlow" xmi:id="_BzY5MBUYEeSzrpBAxAp9hw" sourceRef="_A0lHkBUYEeSzrpBAxAp9hw" targetRef="_mBsSsPLPEeORMfPPZlikBw"/>
+  <flowElements xsi:type="pm:ObjectFlow" xmi:id="_Nq5KUBUmEeSzrpBAxAp9hw" name="" sourceRef="_NMPdQBUXEeSzrpBAxAp9hw" targetRef="_OZNo4BUmEeSzrpBAxAp9hw"/>
+  <flowElements xsi:type="pm:ObjectNode" xmi:id="_OZNo4BUmEeSzrpBAxAp9hw" name="obj 3" incoming="_Nq5KUBUmEeSzrpBAxAp9hw" outgoing="_PY8AgBUmEeSzrpBAxAp9hw"/>
+  <flowElements xsi:type="pm:ObjectFlow" xmi:id="_PY8AgBUmEeSzrpBAxAp9hw" sourceRef="_OZNo4BUmEeSzrpBAxAp9hw" targetRef="_mBsSsPLPEeORMfPPZlikBw"/>
+  <flowElements xsi:type="pm:EndEvent" xmi:id="_mBsSsPLPEeORMfPPZlikBw" incoming="_PY8AgBUmEeSzrpBAxAp9hw _BzY5MBUYEeSzrpBAxAp9hw _2HScUPIWEeOlfPK6ouZEvw"/>
+</pm:Process>

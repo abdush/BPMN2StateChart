@@ -2,8 +2,8 @@
 <schart:Statechart xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:schart="http://uam.es/StateCharts" xmi:id="claim">
   <topState>
     <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.25/@contains.0" rnext="//@topState/@contains.13/@contains.0 //@topState/@contains.20/@contains.0" name="Parallel Gateway 5"/>
-    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.21/@contains.0" rnext="//@topState/@contains.19/@contains.0 //@topState/@contains.18/@contains.0" name="join#FlowElement#77"/>
-    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.15/@contains.0 //@topState/@contains.16/@contains.0 //@topState/@contains.17/@contains.0" rnext="//@topState/@contains.12/@contains.0" name="fork#FlowElement#87"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.21/@contains.0" rnext="//@topState/@contains.19/@contains.0 //@topState/@contains.18/@contains.0" name="Parallel Gateway 2Claim [damage checked]Claim [policy checked]"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.15/@contains.0 //@topState/@contains.16/@contains.0 //@topState/@contains.17/@contains.0" rnext="//@topState/@contains.12/@contains.0" name="Parallel Gateway 1Claim [Received]Claim [policy not checked]Claim [damage not checked]"/>
     <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.22/@contains.0" rnext="//@topState/@contains.21/@contains.0" name="decidedRejected"/>
     <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.23/@contains.0" rnext="//@topState/@contains.21/@contains.0" name="decidedassessed"/>
     <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.13/@contains.0" rnext="//@topState/@contains.24/@contains.0" name="settledExclusive Gateway 2"/>

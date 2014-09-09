@@ -79,31 +79,31 @@
   <flowElements xsi:type="pm:ObjectFlow" id="DataInputAssociation_2" sourceRef="_DataObjectReference_6" targetRef="//@flowElements.71"/>
   <flowElements xsi:type="pm:ObjectFlow" id="DataOutputAssociation_4" sourceRef="//@flowElements.85" targetRef="_DataObjectReference_10"/>
   <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#59" sourceRef="//@flowElements.59" targetRef="Task_3"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#60" incoming="SequenceFlow_5 //@flowElements.41" outgoing="//@flowElements.58" gatewayDirection="Converging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#60" name="fork1Order [unchecked]" incoming="SequenceFlow_5 //@flowElements.41" outgoing="//@flowElements.58" gatewayDirection="Converging"/>
   <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#61" sourceRef="//@flowElements.61" targetRef="Task_5"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#62" incoming="SequenceFlow_9 //@flowElements.43" outgoing="//@flowElements.60" gatewayDirection="Converging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#62" name="fork2Order [costs unknown]" incoming="SequenceFlow_9 //@flowElements.43" outgoing="//@flowElements.60" gatewayDirection="Converging"/>
   <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#63" sourceRef="//@flowElements.63" targetRef="Task_6"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#64" incoming="SequenceFlow_10 //@flowElements.45 //@flowElements.46" outgoing="//@flowElements.62" gatewayDirection="Converging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#64" name="join1Order [checked]Order [costs calculated]" incoming="SequenceFlow_10 //@flowElements.45 //@flowElements.46" outgoing="//@flowElements.62" gatewayDirection="Converging"/>
   <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#65" sourceRef="//@flowElements.65" targetRef="Task_7"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#66" incoming="SequenceFlow_12 //@flowElements.48" outgoing="//@flowElements.64" gatewayDirection="Converging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#66" name="Create billOrder [billed]" incoming="SequenceFlow_12 //@flowElements.48" outgoing="//@flowElements.64" gatewayDirection="Converging"/>
   <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#67" sourceRef="//@flowElements.67" targetRef="Task_8"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#68" incoming="SequenceFlow_15 //@flowElements.50 //@flowElements.51" outgoing="//@flowElements.66" gatewayDirection="Converging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#68" name="join2Order [produced]Order [paid]" incoming="SequenceFlow_15 //@flowElements.50 //@flowElements.51" outgoing="//@flowElements.66" gatewayDirection="Converging"/>
   <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#69" sourceRef="//@flowElements.69" targetRef="Task_2"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#70" incoming="SequenceFlow_4 //@flowElements.53" outgoing="//@flowElements.68" gatewayDirection="Converging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#70" name="fork1Order [unplanned]" incoming="SequenceFlow_4 //@flowElements.53" outgoing="//@flowElements.68" gatewayDirection="Converging"/>
   <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#71" sourceRef="//@flowElements.71" targetRef="Task_4"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#72" incoming="SequenceFlow_8 //@flowElements.56" outgoing="//@flowElements.70" gatewayDirection="Converging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#72" name="fork2Order [planned]" incoming="SequenceFlow_8 //@flowElements.56" outgoing="//@flowElements.70" gatewayDirection="Converging"/>
   <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#73" sourceRef="Task_1" targetRef="//@flowElements.73"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#74" incoming="//@flowElements.72" outgoing="SequenceFlow_3 //@flowElements.39 //@flowElements.40" gatewayDirection="Diverging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#74" name="fork1Order [unchecked]Order [unplanned]" incoming="//@flowElements.72" outgoing="SequenceFlow_3 //@flowElements.39 //@flowElements.40" gatewayDirection="Diverging"/>
   <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#75" sourceRef="Task_3" targetRef="//@flowElements.75"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#76" incoming="//@flowElements.74" outgoing="SequenceFlow_7 //@flowElements.42" gatewayDirection="Diverging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#76" name="join1Order [checked]" incoming="//@flowElements.74" outgoing="SequenceFlow_7 //@flowElements.42" gatewayDirection="Diverging"/>
   <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#77" sourceRef="Task_5" targetRef="//@flowElements.77"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#78" incoming="//@flowElements.76" outgoing="SequenceFlow_11 //@flowElements.44" gatewayDirection="Diverging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#78" name="join1Order [costs calculated]" incoming="//@flowElements.76" outgoing="SequenceFlow_11 //@flowElements.44" gatewayDirection="Diverging"/>
   <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#79" sourceRef="Task_6" targetRef="//@flowElements.79"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#80" incoming="//@flowElements.78" outgoing="SequenceFlow_12 //@flowElements.47" gatewayDirection="Diverging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#80" name="Create billOrder [billed]Order [billed]" incoming="//@flowElements.78" outgoing="SequenceFlow_12 //@flowElements.47" gatewayDirection="Diverging"/>
   <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#81" sourceRef="Task_7" targetRef="//@flowElements.81"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#82" incoming="//@flowElements.80" outgoing="SequenceFlow_13 //@flowElements.49" gatewayDirection="Diverging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#82" name="join2Order [paid]" incoming="//@flowElements.80" outgoing="SequenceFlow_13 //@flowElements.49" gatewayDirection="Diverging"/>
   <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#83" sourceRef="Task_2" targetRef="//@flowElements.83"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#84" incoming="//@flowElements.82" outgoing="SequenceFlow_6 //@flowElements.54 //@flowElements.55" gatewayDirection="Diverging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#84" name="fork2Order [planned]Order [costs unknown]" incoming="//@flowElements.82" outgoing="SequenceFlow_6 //@flowElements.54 //@flowElements.55" gatewayDirection="Diverging"/>
   <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#85" sourceRef="Task_4" targetRef="//@flowElements.85"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#86" incoming="//@flowElements.84" outgoing="SequenceFlow_14 //@flowElements.57" gatewayDirection="Diverging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#86" name="join2Order [produced]" incoming="//@flowElements.84" outgoing="SequenceFlow_14 //@flowElements.57" gatewayDirection="Diverging"/>
 </pm:Process>

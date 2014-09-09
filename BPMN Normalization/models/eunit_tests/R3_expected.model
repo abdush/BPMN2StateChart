@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ASCII"?>
+<pm:Process xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pm="http://BPMN/Simplified" xmi:id="_vLiLIPIWEeOlfPK6ouZEvw" id="process 1" name="process 1">
+  <flowElements xsi:type="pm:StartEvent" xmi:id="_x52LgPIWEeOlfPK6ouZEvw" id="flowElem1" name="SE" outgoing="_zMe4EPIWEeOlfPK6ouZEvw _wlHTkPIeEeOnSq85WS3IoA"/>
+  <flowElements xsi:type="pm:SequenceFlow" xmi:id="_zMe4EPIWEeOlfPK6ouZEvw" id="flowElem2" name="seqflow1" sourceRef="_x52LgPIWEeOlfPK6ouZEvw" targetRef="_1Er4IPLMEeORMfPPZlikBw" guard=""/>
+  <flowElements xsi:type="pm:ExclusiveGateway" xmi:id="_1Er4IPLMEeORMfPPZlikBw" incoming="_zMe4EPIWEeOlfPK6ouZEvw" outgoing="_q0YF8PLMEeORMfPPZlikBw"/>
+  <flowElements xsi:type="pm:SequenceFlow" xmi:id="_q0YF8PLMEeORMfPPZlikBw" sourceRef="_1Er4IPLMEeORMfPPZlikBw" targetRef="_FBI0YPI2EeOnSq85WS3IoA"/>
+  <flowElements xsi:type="pm:SequenceFlow" xmi:id="_wlHTkPIeEeOnSq85WS3IoA" id="seq2" name="seq2" sourceRef="_x52LgPIWEeOlfPK6ouZEvw" targetRef="_FBI0YPI2EeOnSq85WS3IoA" guard=""/>
+  <flowElements xsi:type="pm:ExclusiveGateway" xmi:id="_FBI0YPI2EeOnSq85WS3IoA" id="Ex 2" name="ex 2" incoming="_q0YF8PLMEeORMfPPZlikBw _wlHTkPIeEeOnSq85WS3IoA" outgoing="_HkeT0PI2EeOnSq85WS3IoA _IL-YsPI2EeOnSq85WS3IoA" gatewayDirection="Diverging"/>
+  <flowElements xsi:type="pm:SequenceFlow" xmi:id="_HkeT0PI2EeOnSq85WS3IoA" id="seq5" name="seq5" sourceRef="_FBI0YPI2EeOnSq85WS3IoA" targetRef="_OKj3API2EeOnSq85WS3IoA" guard="g3"/>
+  <flowElements xsi:type="pm:SequenceFlow" xmi:id="_IL-YsPI2EeOnSq85WS3IoA" id="seq6" name="seq6" sourceRef="_FBI0YPI2EeOnSq85WS3IoA" targetRef="_-abXMPIWEeOlfPK6ouZEvw" guard="g4"/>
+  <flowElements xsi:type="pm:EndEvent" xmi:id="_-abXMPIWEeOlfPK6ouZEvw" id="flowElem7" name="EE" incoming="_IL-YsPI2EeOnSq85WS3IoA"/>
+  <flowElements xsi:type="pm:EndEvent" xmi:id="_OKj3API2EeOnSq85WS3IoA" incoming="_HkeT0PI2EeOnSq85WS3IoA"/>
+</pm:Process>

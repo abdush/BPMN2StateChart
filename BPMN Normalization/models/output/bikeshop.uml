@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_GXgKMCypEeSLL6400SPdjw">
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="bikeshop">
+    <region xmi:id="_GW5GMSypEeSLL6400SPdjw" name="StartEvent_1no trade-inExclusive Gateway 1trade-inExclusive Gateway 2accessories unknownaccessories fixedsignednot ordered at supplierordered at supplierExclusive Gateway 3bike readyExclusive Gateway 4bike ready [2]accessories readyclosedreorderedEndEvent_1">
+      <transition xmi:id="_GXimcCypEeSLL6400SPdjw" source="_GW7icCypEeSLL6400SPdjw" target="_GW8wkCypEeSLL6400SPdjw"/>
+      <transition xmi:id="_GXimcSypEeSLL6400SPdjw" source="_GW7icCypEeSLL6400SPdjw" target="_GXFTciypEeSLL6400SPdjw"/>
+      <transition xmi:id="_GXimciypEeSLL6400SPdjw" source="_GW7icCypEeSLL6400SPdjw" target="_GXBpECypEeSLL6400SPdjw"/>
+      <transition xmi:id="_GXj0kCypEeSLL6400SPdjw" source="_GW6UUCypEeSLL6400SPdjw" target="_GW7icCypEeSLL6400SPdjw"/>
+      <transition xmi:id="_GXrJUCypEeSLL6400SPdjw" source="_GXI90CypEeSLL6400SPdjw" target="_GXI90SypEeSLL6400SPdjw"/>
+      <transition xmi:id="_GXsXcCypEeSLL6400SPdjw" source="_GXHvsCypEeSLL6400SPdjw" target="_GXI90CypEeSLL6400SPdjw"/>
+      <transition xmi:id="_GXsXcSypEeSLL6400SPdjw" source="_GXFTcCypEeSLL6400SPdjw" target="_GXI90CypEeSLL6400SPdjw"/>
+      <transition xmi:id="_GXI90iypEeSLL6400SPdjw" name="Exclusive Gateway 3bike ready" source="_GXI90SypEeSLL6400SPdjw" target="_GXKL8CypEeSLL6400SPdjw"/>
+      <transition xmi:id="_GXKL8SypEeSLL6400SPdjw" name="bike readyExclusive Gateway 4" source="_GXKL8CypEeSLL6400SPdjw" target="_GXLaECypEeSLL6400SPdjw"/>
+      <transition xmi:id="_GXtlkCypEeSLL6400SPdjw" source="_GXMoMCypEeSLL6400SPdjw" target="_GXN2UCypEeSLL6400SPdjw"/>
+      <transition xmi:id="_GXuzsCypEeSLL6400SPdjw" source="_GXMoMCypEeSLL6400SPdjw" target="_GXPEcCypEeSLL6400SPdjw"/>
+      <transition xmi:id="_GXuzsSypEeSLL6400SPdjw" source="_GXLaECypEeSLL6400SPdjw" target="_GXMoMCypEeSLL6400SPdjw"/>
+      <transition xmi:id="_GXwB0CypEeSLL6400SPdjw" source="_GXQSkCypEeSLL6400SPdjw" target="_GXRgsCypEeSLL6400SPdjw"/>
+      <transition xmi:id="_GXwB0SypEeSLL6400SPdjw" source="_GXN2UCypEeSLL6400SPdjw" target="_GXQSkCypEeSLL6400SPdjw"/>
+      <transition xmi:id="_GXwB0iypEeSLL6400SPdjw" source="_GXPEcCypEeSLL6400SPdjw" target="_GXQSkCypEeSLL6400SPdjw"/>
+      <transition xmi:id="_GXRgsSypEeSLL6400SPdjw" name="Exclusive Gateway 4reordered" source="_GXLaECypEeSLL6400SPdjw" target="_GXSu0CypEeSLL6400SPdjw"/>
+      <transition xmi:id="_GXSu0SypEeSLL6400SPdjw" name="reorderedExclusive Gateway 3" source="_GXSu0CypEeSLL6400SPdjw" target="_GXI90SypEeSLL6400SPdjw"/>
+      <transition xmi:id="_GXSu0iypEeSLL6400SPdjw" name="closedEndEvent_1" source="_GXRgsCypEeSLL6400SPdjw" target="_GXT88CypEeSLL6400SPdjw"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_GW6UUCypEeSLL6400SPdjw" name="StartEvent_1"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_GW7icCypEeSLL6400SPdjw" name="Parallel Gateway 1Order [no trade-in]Order [not ordered at supplier]Order [accessories unknown]" kind="fork"/>
+      <subvertex xmi:type="uml:State" xmi:id="_GW7icSypEeSLL6400SPdjw" name="no trade-inExclusive Gateway 1trade-inExclusive Gateway 2accessories unknownaccessories fixedsignednot ordered at supplierordered at supplier">
+        <region xmi:id="_GW7iciypEeSLL6400SPdjw" name="no trade-inExclusive Gateway 1trade-inExclusive Gateway 2accessories unknownaccessories fixedsigned">
+          <transition xmi:id="_GXp7MCypEeSLL6400SPdjw" source="_GXEFUCypEeSLL6400SPdjw" target="_GXFTcCypEeSLL6400SPdjw"/>
+          <transition xmi:id="_GXp7MSypEeSLL6400SPdjw" source="_GXC3MCypEeSLL6400SPdjw" target="_GXEFUCypEeSLL6400SPdjw"/>
+          <transition xmi:id="_GXp7MiypEeSLL6400SPdjw" source="_GXAa8CypEeSLL6400SPdjw" target="_GXEFUCypEeSLL6400SPdjw"/>
+          <subvertex xmi:type="uml:State" xmi:id="_GW7icyypEeSLL6400SPdjw" name="no trade-inExclusive Gateway 1trade-inExclusive Gateway 2accessories unknownaccessories fixed">
+            <region xmi:id="_GW7idCypEeSLL6400SPdjw" name="no trade-inExclusive Gateway 1trade-inExclusive Gateway 2">
+              <transition xmi:id="_GW8wkSypEeSLL6400SPdjw" name="no trade-inExclusive Gateway 1" source="_GW8wkCypEeSLL6400SPdjw" target="_GW9-sCypEeSLL6400SPdjw"/>
+              <transition xmi:id="_GW9-sSypEeSLL6400SPdjw" name="Exclusive Gateway 1trade-in" source="_GW9-sCypEeSLL6400SPdjw" target="_GW_M0CypEeSLL6400SPdjw"/>
+              <transition xmi:id="_GW_M0SypEeSLL6400SPdjw" name="Exclusive Gateway 1Exclusive Gateway 2" source="_GW9-sCypEeSLL6400SPdjw" target="_GXAa8CypEeSLL6400SPdjw"/>
+              <transition xmi:id="_GXAa8SypEeSLL6400SPdjw" name="trade-inExclusive Gateway 2" source="_GW_M0CypEeSLL6400SPdjw" target="_GXAa8CypEeSLL6400SPdjw"/>
+              <subvertex xmi:type="uml:State" xmi:id="_GW8wkCypEeSLL6400SPdjw" name="no trade-in"/>
+              <subvertex xmi:type="uml:Pseudostate" xmi:id="_GW9-sCypEeSLL6400SPdjw" name="Exclusive Gateway 1" kind="choice"/>
+              <subvertex xmi:type="uml:State" xmi:id="_GW_M0CypEeSLL6400SPdjw" name="trade-in"/>
+              <subvertex xmi:type="uml:Pseudostate" xmi:id="_GXAa8CypEeSLL6400SPdjw" name="Exclusive Gateway 2" kind="choice"/>
+            </region>
+            <region xmi:id="_GXAa8iypEeSLL6400SPdjw" name="accessories unknownaccessories fixed">
+              <transition xmi:id="_GXBpESypEeSLL6400SPdjw" name="accessories unknownaccessories fixed" source="_GXBpECypEeSLL6400SPdjw" target="_GXC3MCypEeSLL6400SPdjw"/>
+              <subvertex xmi:type="uml:State" xmi:id="_GXBpECypEeSLL6400SPdjw" name="accessories unknown"/>
+              <subvertex xmi:type="uml:State" xmi:id="_GXC3MCypEeSLL6400SPdjw" name="accessories fixed"/>
+            </region>
+          </subvertex>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_GXEFUCypEeSLL6400SPdjw" name="Parallel Gateway 2" kind="join"/>
+          <subvertex xmi:type="uml:State" xmi:id="_GXFTcCypEeSLL6400SPdjw" name="signed"/>
+        </region>
+        <region xmi:id="_GXFTcSypEeSLL6400SPdjw" name="not ordered at supplierordered at supplier">
+          <transition xmi:id="_GXGhkCypEeSLL6400SPdjw" name="not ordered at supplierordered at supplier" source="_GXFTciypEeSLL6400SPdjw" target="_GXHvsCypEeSLL6400SPdjw"/>
+          <subvertex xmi:type="uml:State" xmi:id="_GXFTciypEeSLL6400SPdjw" name="not ordered at supplier"/>
+          <subvertex xmi:type="uml:State" xmi:id="_GXHvsCypEeSLL6400SPdjw" name="ordered at supplier"/>
+        </region>
+      </subvertex>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_GXI90CypEeSLL6400SPdjw" name="Parallel Gateway 3" kind="join"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_GXI90SypEeSLL6400SPdjw" name="Exclusive Gateway 3" kind="choice"/>
+      <subvertex xmi:type="uml:State" xmi:id="_GXKL8CypEeSLL6400SPdjw" name="bike ready"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_GXLaECypEeSLL6400SPdjw" name="Exclusive Gateway 4" kind="choice"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_GXMoMCypEeSLL6400SPdjw" name="Parallel Gateway 4" kind="fork"/>
+      <subvertex xmi:type="uml:State" xmi:id="_GXMoMSypEeSLL6400SPdjw" name="bike ready [2]accessories ready">
+        <region xmi:id="_GXMoMiypEeSLL6400SPdjw" name="bike ready [2]">
+          <subvertex xmi:type="uml:State" xmi:id="_GXN2UCypEeSLL6400SPdjw" name="bike ready [2]"/>
+        </region>
+        <region xmi:id="_GXN2USypEeSLL6400SPdjw" name="accessories ready">
+          <subvertex xmi:type="uml:State" xmi:id="_GXPEcCypEeSLL6400SPdjw" name="accessories ready"/>
+        </region>
+      </subvertex>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_GXQSkCypEeSLL6400SPdjw" name="Parallel Gateway 5" kind="join"/>
+      <subvertex xmi:type="uml:State" xmi:id="_GXRgsCypEeSLL6400SPdjw" name="closed"/>
+      <subvertex xmi:type="uml:State" xmi:id="_GXSu0CypEeSLL6400SPdjw" name="reordered"/>
+      <subvertex xmi:type="uml:FinalState" xmi:id="_GXT88CypEeSLL6400SPdjw" name="EndEvent_1"/>
+    </region>
+  </packagedElement>
+</uml:Model>

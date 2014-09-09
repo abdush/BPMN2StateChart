@@ -1,35 +1,27 @@
 <?xml version="1.0" encoding="ASCII"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:schart="http://uam.es/StateCharts">
-  <schart:Statechart xmi:id="order_material">
-    <topState>
-      <contains xsi:type="schart:OR" name="StartEvent_1Not preparedOreparedApprovedNeeds Authorization?AuthorizedMerge 1SubmittedOrderedEndEvent_1">
-        <contains xsi:type="schart:Basic" name="StartEvent_1" next="/0/@topState/@contains.0/@contains.1"/>
-        <contains xsi:type="schart:HyperEdge" name="StartEvent_1Not prepared" next="/0/@topState/@contains.0/@contains.2" rnext="/0/@topState/@contains.0/@contains.0"/>
-        <contains xsi:type="schart:Basic" name="Not prepared" next="/0/@topState/@contains.0/@contains.3" rnext="/0/@topState/@contains.0/@contains.1"/>
-        <contains xsi:type="schart:HyperEdge" name="Not preparedPrepared" next="/0/@topState/@contains.0/@contains.4" rnext="/0/@topState/@contains.0/@contains.2"/>
-        <contains xsi:type="schart:Basic" name="Prepared" next="/0/@topState/@contains.0/@contains.5" rnext="/0/@topState/@contains.0/@contains.3"/>
-        <contains xsi:type="schart:HyperEdge" name="PreparedApproved" next="/0/@topState/@contains.0/@contains.6" rnext="/0/@topState/@contains.0/@contains.4"/>
-        <contains xsi:type="schart:Basic" name="Approved" next="/0/@topState/@contains.0/@contains.7" rnext="/0/@topState/@contains.0/@contains.5"/>
-        <contains xsi:type="schart:HyperEdge" name="ApprovedNeeds Authorization?" next="/0/@topState/@contains.0/@contains.8" rnext="/0/@topState/@contains.0/@contains.6"/>
-        <contains xsi:type="schart:Basic" name="Needs Authorization?" next="/0/@topState/@contains.0/@contains.9 /0/@topState/@contains.0/@contains.11" rnext="/0/@topState/@contains.0/@contains.7"/>
-        <contains xsi:type="schart:HyperEdge" name="Needs Authorization?Authorized" next="/0/@topState/@contains.0/@contains.10" rnext="/0/@topState/@contains.0/@contains.8"/>
-        <contains xsi:type="schart:Basic" name="Authorized" next="/0/@topState/@contains.0/@contains.17" rnext="/0/@topState/@contains.0/@contains.9"/>
-        <contains xsi:type="schart:HyperEdge" name="Needs Authorization?Merge 1" next="/0/@topState/@contains.0/@contains.12" rnext="/0/@topState/@contains.0/@contains.8"/>
-        <contains xsi:type="schart:Basic" name="Merge 1" next="/0/@topState/@contains.0/@contains.13" rnext="/0/@topState/@contains.0/@contains.11 /0/@topState/@contains.0/@contains.17"/>
-        <contains xsi:type="schart:HyperEdge" name="Merge 1Submitted" next="/0/@topState/@contains.0/@contains.14" rnext="/0/@topState/@contains.0/@contains.12"/>
-        <contains xsi:type="schart:Basic" name="Submitted" next="/0/@topState/@contains.0/@contains.15" rnext="/0/@topState/@contains.0/@contains.13"/>
-        <contains xsi:type="schart:HyperEdge" name="SubmittedOrdered" next="/0/@topState/@contains.0/@contains.16" rnext="/0/@topState/@contains.0/@contains.14"/>
-        <contains xsi:type="schart:Basic" name="Ordered" next="/0/@topState/@contains.0/@contains.18" rnext="/0/@topState/@contains.0/@contains.15"/>
-        <contains xsi:type="schart:HyperEdge" name="AuthorizedMerge 1" next="/0/@topState/@contains.0/@contains.12" rnext="/0/@topState/@contains.0/@contains.10"/>
-        <contains xsi:type="schart:HyperEdge" name="OrderedEndEvent_1" next="/0/@topState/@contains.0/@contains.19" rnext="/0/@topState/@contains.0/@contains.16"/>
-        <contains xsi:type="schart:Basic" name="EndEvent_1" rnext="/0/@topState/@contains.0/@contains.18"/>
-      </contains>
-    </topState>
-  </schart:Statechart>
-  <ecore:EStringToStringMapEntry key="xsi" value="http://www.w3.org/2001/XMLSchema-instance"/>
-  <ecore:EStringToStringMapEntry key="" value="http://org.eclipse.bpmn2/default/order_material_process"/>
-  <ecore:EStringToStringMapEntry key="bpmn2" value="http://www.omg.org/spec/BPMN/20100524/MODEL"/>
-  <ecore:EStringToStringMapEntry key="bpmndi" value="http://www.omg.org/spec/BPMN/20100524/DI"/>
-  <ecore:EStringToStringMapEntry key="dc" value="http://www.omg.org/spec/DD/20100524/DC"/>
-  <ecore:EStringToStringMapEntry key="di" value="http://www.omg.org/spec/DD/20100524/DI"/>
-</xmi:XMI>
+<schart:Statechart xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:schart="http://uam.es/StateCharts" xmi:id="order_material">
+  <topState>
+    <contains xsi:type="schart:OR" name="StartEvent_1Not preparedOreparedApprovedNeeds Authorization?AuthorizedMerge 1SubmittedOrderedEndEvent_1">
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.1" name="StartEvent_1"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.2" rnext="//@topState/@contains.0/@contains.0" name="StartEvent_1Not prepared"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.3" rnext="//@topState/@contains.0/@contains.1" name="Not prepared"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.4" rnext="//@topState/@contains.0/@contains.2" name="Not preparedPrepared"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.5" rnext="//@topState/@contains.0/@contains.3" name="Prepared"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.6" rnext="//@topState/@contains.0/@contains.4" name="PreparedApproved"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.7" rnext="//@topState/@contains.0/@contains.5" name="Approved"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.8" rnext="//@topState/@contains.0/@contains.6" name="ApprovedNeeds Authorization?"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.9 //@topState/@contains.0/@contains.11" rnext="//@topState/@contains.0/@contains.7" name="Needs Authorization?"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.10" rnext="//@topState/@contains.0/@contains.8" name="Needs Authorization?Authorized"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.17" rnext="//@topState/@contains.0/@contains.9" name="Authorized"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.12" rnext="//@topState/@contains.0/@contains.8" name="Needs Authorization?Merge 1"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.13" rnext="//@topState/@contains.0/@contains.11 //@topState/@contains.0/@contains.17" name="Merge 1"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.14" rnext="//@topState/@contains.0/@contains.12" name="Merge 1Submitted"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.15" rnext="//@topState/@contains.0/@contains.13" name="Submitted"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.16" rnext="//@topState/@contains.0/@contains.14" name="SubmittedOrdered"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.18" rnext="//@topState/@contains.0/@contains.15" name="Ordered"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.12" rnext="//@topState/@contains.0/@contains.10" name="AuthorizedMerge 1"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.19" rnext="//@topState/@contains.0/@contains.16" name="OrderedEndEvent_1"/>
+      <contains xsi:type="schart:Basic" rnext="//@topState/@contains.0/@contains.18" name="EndEvent_1"/>
+    </contains>
+  </topState>
+</schart:Statechart>

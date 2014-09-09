@@ -159,7 +159,7 @@
       <dataState id="DataState_10" name="accessories ready"/>
     </flowElements>
     <flowElements xsi:type="bpmn2:DataObjectReference" id="_DataObjectReference_12" name="Order [bike ready]" dataObjectRef="DataObject_1">
-      <dataState id="DataState_11" name="bike ready"/>
+      <dataState id="DataState_11" name="bike ready [2]"/>
     </flowElements>
     <flowElements xsi:type="bpmn2:DataObjectReference" id="_DataObjectReference_13" name="Order [closed]" dataObjectRef="DataObject_1">
       <dataState id="DataState_12" name="closed"/>

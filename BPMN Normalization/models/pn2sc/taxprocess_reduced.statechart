@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="ASCII"?>
 <schart:Statechart xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:schart="http://uam.es/StateCharts" xmi:id="taxprocess">
   <topState>
-    <contains xsi:type="schart:OR" name="StartEvent_1submittedExclusive Gateway 1rejectedEnd Event 2acceptedprocessedassessedreturnedEndEvent_1">
+    <contains xsi:type="schart:OR" name="StartEvent_1not submittedsubmittedExclusive Gateway 1rejectedEnd Event 2acceptedprocessedassessedreturnedEndEvent_1">
       <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.1" name="StartEvent_1"/>
-      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.2" rnext="//@topState/@contains.0/@contains.0" name="StartEvent_1submitted"/>
-      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.3" rnext="//@topState/@contains.0/@contains.1" name="submitted"/>
-      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.4" rnext="//@topState/@contains.0/@contains.2" name="submittedExclusive Gateway 1"/>
-      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.9 //@topState/@contains.0/@contains.5" rnext="//@topState/@contains.0/@contains.3" name="Exclusive Gateway 1"/>
-      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.6" rnext="//@topState/@contains.0/@contains.4" name="Exclusive Gateway 1rejected"/>
-      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.7" rnext="//@topState/@contains.0/@contains.5" name="rejected"/>
-      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.8" rnext="//@topState/@contains.0/@contains.6" name="rejectedEnd Event 2"/>
-      <contains xsi:type="schart:Basic" rnext="//@topState/@contains.0/@contains.7" name="End Event 2"/>
-      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.10/@contains.0/@contains.0 //@topState/@contains.0/@contains.10/@contains.1/@contains.0" rnext="//@topState/@contains.0/@contains.4" name="Parallel Gateway 1"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.2" rnext="//@topState/@contains.0/@contains.0" name="StartEvent_1not submitted"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.3" rnext="//@topState/@contains.0/@contains.1" name="not submitted"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.4" rnext="//@topState/@contains.0/@contains.2" name="not submittedsubmitted"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.5" rnext="//@topState/@contains.0/@contains.3" name="submitted"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.6" rnext="//@topState/@contains.0/@contains.4" name="submittedExclusive Gateway 1"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.11 //@topState/@contains.0/@contains.7" rnext="//@topState/@contains.0/@contains.5" name="Exclusive Gateway 1"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.8" rnext="//@topState/@contains.0/@contains.6" name="Exclusive Gateway 1rejected"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.9" rnext="//@topState/@contains.0/@contains.7" name="rejected"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.10" rnext="//@topState/@contains.0/@contains.8" name="rejectedEnd Event 2"/>
+      <contains xsi:type="schart:Basic" rnext="//@topState/@contains.0/@contains.9" name="End Event 2"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.12/@contains.0/@contains.0 //@topState/@contains.0/@contains.12/@contains.1/@contains.0" rnext="//@topState/@contains.0/@contains.6" name="Parallel Gateway 1"/>
       <contains xsi:type="schart:AND" name="acceptedprocessedassessedreturned">
         <contains xsi:type="schart:OR" name="accepted">
-          <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.11" rnext="//@topState/@contains.0/@contains.9" name="accepted"/>
+          <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.13" rnext="//@topState/@contains.0/@contains.11" name="accepted"/>
         </contains>
         <contains xsi:type="schart:OR" name="processedassessedreturned">
-          <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.10/@contains.1/@contains.1" rnext="//@topState/@contains.0/@contains.9" name="processed"/>
-          <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.10/@contains.1/@contains.2" rnext="//@topState/@contains.0/@contains.10/@contains.1/@contains.0" name="processedassessed"/>
-          <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.10/@contains.1/@contains.3" rnext="//@topState/@contains.0/@contains.10/@contains.1/@contains.1" name="assessed"/>
-          <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.10/@contains.1/@contains.4" rnext="//@topState/@contains.0/@contains.10/@contains.1/@contains.2" name="assessedreturned"/>
-          <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.11" rnext="//@topState/@contains.0/@contains.10/@contains.1/@contains.3" name="returned"/>
+          <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.12/@contains.1/@contains.1" rnext="//@topState/@contains.0/@contains.11" name="processed"/>
+          <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.12/@contains.1/@contains.2" rnext="//@topState/@contains.0/@contains.12/@contains.1/@contains.0" name="processedassessed"/>
+          <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.12/@contains.1/@contains.3" rnext="//@topState/@contains.0/@contains.12/@contains.1/@contains.1" name="assessed"/>
+          <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.12/@contains.1/@contains.4" rnext="//@topState/@contains.0/@contains.12/@contains.1/@contains.2" name="assessedreturned"/>
+          <contains xsi:type="schart:Basic" next="//@topState/@contains.0/@contains.13" rnext="//@topState/@contains.0/@contains.12/@contains.1/@contains.3" name="returned"/>
         </contains>
       </contains>
-      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.12" rnext="//@topState/@contains.0/@contains.10/@contains.1/@contains.4 //@topState/@contains.0/@contains.10/@contains.0/@contains.0" name="Parallel Gateway 2"/>
-      <contains xsi:type="schart:Basic" rnext="//@topState/@contains.0/@contains.11" name="EndEvent_1"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.0/@contains.14" rnext="//@topState/@contains.0/@contains.12/@contains.0/@contains.0 //@topState/@contains.0/@contains.12/@contains.1/@contains.4" name="Parallel Gateway 2"/>
+      <contains xsi:type="schart:Basic" rnext="//@topState/@contains.0/@contains.13" name="EndEvent_1"/>
     </contains>
   </topState>
 </schart:Statechart>

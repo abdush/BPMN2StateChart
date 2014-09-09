@@ -1,0 +1,78 @@
+import "equivalence.eol";
+import "petri_net_navigation.eol";
+
+operation applyRefactoring(places: Collection(PN!Place) ) {
+	places.println();
+	for(p in places) {
+		var OR_state = p.direct_equivalent(); 
+		("Performing Refactoring for p=" + OR_state.name).println();
+		OR_state.initialize();
+		OR_state.applyRule1();
+		OR_state.applyRule2();
+	}
+}
+
+operation SC!OR initialize() {
+	
+	("Performing Refactoring initialization for p=" + self.name).println();
+	
+	//for All OR nodes which have been processed by T3 (equivalent of places)
+	//create a new BASIC state (init(p.name)) and add it as a child to the OR state
+	var init_state = new SC!Basic;
+	init_state.name = "init[ ".concat(self.name).concat(" ]");
+	self.contains.add(init_state); 
+	self.~init_state = init_state;
+	//Make this BASIC state as the default state for the OR ??
+}
+
+operation SC!OR applyRule1() {
+	("Performing Refactoring R1 for p=" + self.name).println();
+	
+	//for All OR nodes which have been processed by T3 (equivalent of places)
+	//for All HyperEdges h which has traget(h) in childs(OR) and source(h) not in child(OR)
+	var transitions_to_OR = SC!HyperEdge.all.select(h | h.next.collect(s | s.rcontains).includes(self) 
+							and h.rnext.collect(s | s.rcontains).excludes(self));
+	
+	//copy h, source(copyh) = init(p.name) and target(copyh) = target(h) in OR
+	//update target h by removing childs(OR)  
+	//update h with action e_h
+	//update copyh with event e_h 
+	for(h in transitions_to_OR) {
+		("transition t=" + h.name).println();
+		var h_copy = new SC!HyperEdge;
+		self.contains.add(h_copy);
+		h_copy.rnext.add(self.~init_state);
+		h_copy.next.addAll(h.next.select(s | s.rcontains == self));
+		var excludes = h.next.excludingAll(h_copy.next);
+		h.next.clear(); h.next.addAll(excludes);
+		h.action = "e_".concat(h.name);
+		h_copy.event = h.action;
+	}
+}
+	
+operation SC!OR applyRule2() {	
+	("Performing Refactoring R2 for p=" + self.name).println();
+	
+	//for All OR nodes which have been processed by T3 (equivalent of places)
+	//for All HyperEdges h which has source(h) in {X} childs(OR) and target(h) not in child(OR)
+	var transitions_from_OR = SC!HyperEdge.all.select(h | h.rnext.collect(s | s.rcontains).includes(self) and h.next.collect(s | s.rcontains).excludes(self));
+	
+	//copy h, source(copyh) = source(h) in childs(OR) and target(copyh) = init(p.name)
+	//update source h by removing childs(OR)
+	//update h with guard guard(h) and in(childs(OR))
+	//update h with action e_h
+	//update copyh with event e_h
+	for(h in transitions_from_OR) {
+		("transition t=" + h.name).println();
+		var h_copy = new SC!HyperEdge;
+		self.contains.add(h_copy);
+		h_copy.next.add(self.~init_state);
+		h_copy.rnext.addAll(h.rnext.select(s | s.rcontains == self));
+		var excludes = h.rnext.excludingAll(h_copy.rnext);
+		h.rnext.clear(); h.rnext.addAll(excludes);
+		h.action = "e_".concat(h.name);
+		h.guard = "in[ ".concat(h_copy.rnext.first.name).concat(" ]");
+		h_copy.event = h.action;
+	}
+	
+}

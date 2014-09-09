@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_XrEVkBmWEeS4n7YXZ-K_0A">
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_93G2cCyoEeSLL6400SPdjw">
   <packagedElement xmi:type="uml:StateMachine" xmi:id="shipping">
-    <region xmi:id="_Xq9A0BmWEeS4n7YXZ-K_0A" name="StartEvent_1acceptedprocessingdoneEnd Event 2">
-      <transition xmi:id="_Xq9A0hmWEeS4n7YXZ-K_0A" name="StartEvent_1accepted" source="_Xq9A0RmWEeS4n7YXZ-K_0A" target="_Xq-O8BmWEeS4n7YXZ-K_0A"/>
-      <transition xmi:id="_Xq-O8RmWEeS4n7YXZ-K_0A" name="acceptedprocessing" source="_Xq-O8BmWEeS4n7YXZ-K_0A" target="_Xq_dEBmWEeS4n7YXZ-K_0A"/>
-      <transition xmi:id="_Xq_dERmWEeS4n7YXZ-K_0A" name="processingdone" source="_Xq_dEBmWEeS4n7YXZ-K_0A" target="_Xq_dEhmWEeS4n7YXZ-K_0A"/>
-      <transition xmi:id="_Xq_dExmWEeS4n7YXZ-K_0A" name="doneEnd Event 2" source="_Xq_dEhmWEeS4n7YXZ-K_0A" target="_XrArMBmWEeS4n7YXZ-K_0A"/>
-      <subvertex xmi:type="uml:Pseudostate" xmi:id="_Xq9A0RmWEeS4n7YXZ-K_0A" name="StartEvent_1"/>
-      <subvertex xmi:type="uml:State" xmi:id="_Xq-O8BmWEeS4n7YXZ-K_0A" name="accepted"/>
-      <subvertex xmi:type="uml:State" xmi:id="_Xq_dEBmWEeS4n7YXZ-K_0A" name="processing"/>
-      <subvertex xmi:type="uml:State" xmi:id="_Xq_dEhmWEeS4n7YXZ-K_0A" name="done"/>
-      <subvertex xmi:type="uml:FinalState" xmi:id="_XrArMBmWEeS4n7YXZ-K_0A" name="End Event 2"/>
+    <region xmi:id="_93Av0CyoEeSLL6400SPdjw" name="StartEvent_1acceptedprocessingdoneEnd Event 2">
+      <transition xmi:id="_93Av0iyoEeSLL6400SPdjw" name="StartEvent_1accepted" source="_93Av0SyoEeSLL6400SPdjw" target="_93B98CyoEeSLL6400SPdjw"/>
+      <transition xmi:id="_93B98SyoEeSLL6400SPdjw" name="acceptedprocessing" source="_93B98CyoEeSLL6400SPdjw" target="_93DMECyoEeSLL6400SPdjw"/>
+      <transition xmi:id="_93DMESyoEeSLL6400SPdjw" name="processingdone" source="_93DMECyoEeSLL6400SPdjw" target="_93DMEiyoEeSLL6400SPdjw"/>
+      <transition xmi:id="_93DMEyyoEeSLL6400SPdjw" name="doneEnd Event 2" source="_93DMEiyoEeSLL6400SPdjw" target="_93EaMCyoEeSLL6400SPdjw"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_93Av0SyoEeSLL6400SPdjw" name="StartEvent_1"/>
+      <subvertex xmi:type="uml:State" xmi:id="_93B98CyoEeSLL6400SPdjw" name="accepted"/>
+      <subvertex xmi:type="uml:State" xmi:id="_93DMECyoEeSLL6400SPdjw" name="processing"/>
+      <subvertex xmi:type="uml:State" xmi:id="_93DMEiyoEeSLL6400SPdjw" name="done"/>
+      <subvertex xmi:type="uml:FinalState" xmi:id="_93EaMCyoEeSLL6400SPdjw" name="End Event 2"/>
     </region>
   </packagedElement>
 </uml:Model>

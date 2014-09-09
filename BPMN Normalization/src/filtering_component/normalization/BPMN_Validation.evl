@@ -1,0 +1,291 @@
+import "Normalization_Helper.eol";
+
+pre validationStart {
+	"BPMN input model validation start:------".println();
+	Process.all.size().println();
+}
+
+post validationEnd {
+	"BPMN input model validation End:------".println();
+}
+
+-- The input model should be a valid BPMN2 model (how to check!!??)
+-- The bpmn model should have only the following elements:
+-- 1. There should be exactly one process element.
+-- 2. The process model should have at least one stateful data object (For each stateful dataobject, a statechart is to be generated.)
+-- 3. The process model should contain only Normal Tasks, Events, Exclusive and Parallel Gateways.
+context Process {
+	
+	constraint MustExistOneProcess {
+		check {
+			var numberOfProcesses = Process.all.size();
+			return numberOfProcesses == 1;
+		}
+		message: "There must be exactly 1 process element, but there are " + numberOfProcesses
+	}
+	
+	constraint MustHaveOneStartEvent {
+		guard: self.satisfies("MustExistOneProcess")
+		check  {
+			var numberOfStartEvents = self.flowElements.select(n|n.isTypeOf(StartEvent)).size();
+			numberOfStartEvents.println(self); 
+			return numberOfStartEvents == 1;
+		}
+		message : "There must be exactly 1 starting event, but there are " + numberOfStartEvents
+	}
+	
+	constraint MustHaveAtLeastOneEndEvent {
+		guard: self.satisfies("MustExistOneProcess")
+		check  {
+			var numberOfEndEvents = self.flowElements.select(n|n.isTypeOf(EndEvent)).size();
+			numberOfEndEvents.println(); 
+			return numberOfEndEvents >= 1;
+		}
+		message : "There must be at least 1 end event, but there are " + numberOfEndEvents
+	}
+	
+	-- What kind of Events and tasks are allowed!!??
+	constraint MustHaveOnlyAllowedNodes {
+		guard: self.satisfies("MustExistOneProcess")
+		check  {
+			var nonAllowedElements = self.flowElements.reject(n|n.isKindOf(Event) or n.isTypeOf(ExclusiveGateway)
+			or n.isTypeOf(ParallelGateway) or n.isTypeOf(Task) or n.isTypeOf(SequenceFlow) 
+			or n.isTypeOf(DataObject) or n.isTypeOf(DataObjectReference)); 
+			return nonAllowedElements.size = 0;
+		}
+		message : "There must be only elements of type [Event, Task, Exclusive Gateway, Parallel Gateway, " +
+		"SequenceFlow, Data Object, Data Object Reference] "
+		+ "but found " + nonAllowedElements
+	}
+	
+	constraint MustHaveOneStatefulDataObject {
+		guard: self.satisfies("MustExistOneProcess")
+		check {
+			var numberOfStatefulData = self.getStatefulDataObjects().size();
+			return numberOfStatefulData =1;
+		}
+		message : "There must be one stateful data object but there are " + numberOfStatefulData
+	}
+	
+	constraint MustHaveUniqueDataStates {
+		guard: self.satisfies("MustHaveOneStatefulDataObject")
+		check {
+			var DataStates = DataState.all.collect(s | s.name);
+			var DataStatesInSet = new Set();
+			DataStatesInSet.addAll(DataStates);
+			DataStates.println(DataStatesInSet);
+			return DataStates.size() = DataStatesInSet.size();
+		}
+		message : "There must be no states with same name but found " + DataStates.excludingAll(DataStatesInSet)
+	}
+}
+
+/**
+	constraint SingleDataObjectDefined {
+	
+		check: DataObject.all.size() = 1
+		
+		message: "Process Model " + self.id + " should have exactly one data object."
+	}
+
+--The process model should have at least two different data states for the data object.
+-- The state names should be checked!?
+	constraint MultipleDataStatesDefined {
+	
+		guard: self.satisfies("SingleDataObjectDefined")
+	
+		check: DataState.all.size() > 1
+		
+		message: "Process Model " + self.id + " should have at least two data object states."
+	
+	}
+}
+
+-- The data object and data object references must be referred to in the process
+-- IO specification
+context ItemAwareElement {
+	
+	constraint DataIOAssociationDefined {
+	
+		guard: self.isTypeOf(DataObject) or self.isTypeOf(DataObjectReference)
+		and Process.all.select(p|p.flowElements.includes(self)).forAll(c|c.satisfies("SingleDataObjectDefined"))
+		--Process.satisfies("SingleDataObjectDefined") and Process.satisfies("MultipleDataStatesDefined")	
+		--Add SatisfiesAll!!??
+		
+		check {
+			var dataOutputs = DataOutput.allInstances.select(o|o.outputSetRefs.isDefined());
+			var dataInputs = DataInput.allInstances.select(i|i.inputSetRefs.isDefined());
+			dataOutputs.println();
+			var	dataInputAssociations = DataInputAssociation.all.select(s|s.sourceRef.includes(self) and dataInputs.includes(s.targetRef));
+			var	dataOutputAssociations = DataOutputAssociation.all.select(s|s.targetRef = self and s.sourceRef.exists(d| dataOutputs.includes(d)));
+			--s.sourceRef.exists(d| dataOutputs.includes(d));
+			--for (d in DataInputAssociation.all)
+			--	d.sourceRef.println();
+			for (d in DataOutputAssociation.all)
+				d.targetRef.println();
+			--dataInputAssociations.size().println();
+			dataOutputAssociations.size().println();
+			return dataInputAssociations.size() >= 1 or dataOutputAssociations.size() >=1;
+		}
+		
+		message: "Data object " + self.name + " should have at least one data input or output flow."
+	}
+}
+
+*/
+-- Each Activity (task) should have exactly one incoming and outgoing sequence flow.
+--context Activity {
+
+
+/** 
+BPMN uses the term “fork” to refer to the dividing of a path into two or more parallel 
+paths (also known as an AND-Split). It is a place in the Process where activities can be 
+performed concurrently, rather than sequentially.
+There are two options: 
+•  Multiple Outgoing Sequence Flows can be used. This represents “uncontrolled” flow is the preferred method 
+for most situations.
+•  A Parallel Gateway can be used. This will be used rarely, usually in combination with other Gateways.
+**/
+/*	constraint SingleOutgoingSequenceFlow {
+			
+			check: self.outgoing.size() = 1
+			
+			message: "Activity " + self.name + " should have one outgoing sequence flow."
+			
+			fix {
+			
+				title: "Change to (fork) parallel gateway." 
+			
+				do {
+					var sequenceFlow: new SequenceFlow;
+					var fork: new ParallelGateway;
+					
+					--Set a unique id for the gateway!!?? 
+					fork.id = "fork_id123";
+					
+					fork.gatewayDirection = GatewayDirection#Diverging;
+					var seqFlows = SequenceFlow.all.select(s|s.sourceRef = self);
+					seqFlows.println();
+					self.outgoing.println();
+					fork.outgoing.addAll(self.outgoing);
+					fork.outgoing.println();
+					sequenceFlow.sourceRef = self;
+					sequenceFlow.targetRef = fork;
+					
+					--get the process which contains the task (self))!??
+					Process.all.first().flowElements.add(sequenceFlow);
+					Process.all.first().flowElements.add(fork);
+					
+				}
+			}
+	}
+
+*/
+/** BPMN uses the term “merge” to refer to the exclusive combining of two or more paths into 
+one path (also known as an OR-Join).
+A Merging Exclusive Gateway is used to show the merging of multiple Sequence Flows.
+If all the incoming flow is alternative, then a Gateway is not needed. That is, uncontrolled 
+flow provides the same behavior 
+**/
+/*	constraint SingleIncomingSequenceFlow {
+			
+			check: self.incoming.size() = 1
+			
+			message: "Activity " + self.name + " should have one incoming sequence flow."
+			
+			fix {
+			
+				title: "Change to (merge) Exclusive gateway." 
+			
+				do {
+					var sequenceFlow: new SequenceFlow;
+					var merge: new ExclusiveGateway;
+					
+					--Set a unique id for the gateway!!?? 
+					merge.id = "merge_id123";
+					
+					merge.gatewayDirection = GatewayDirection#Converging;
+					var seqFlows = SequenceFlow.all.select(s|s.targetRef = self);
+					seqFlows.println();
+					self.incoming.println();
+					merge.incoming.addAll(self.incoming);
+					merge.incoming.println();
+					sequenceFlow.sourceRef = merge;
+					sequenceFlow.targetRef = self;
+					
+					--get the process which contains the task (self))!??
+					Process.all.first().flowElements.add(sequenceFlow);
+					Process.all.first().flowElements.add(merge);
+					
+				}
+			}
+	}
+}
+*/
+/*******************************************************************************************/
+
+-- BPMN root element: Definitions
+-- UML State Machine root elemet: Model
+-- Set the attribute also!
+--rule Definitions2Model {
+--	from 
+--		d : BPMN2!Definitions
+--	to 
+--		m : UML2!Model(name <- 'State Machine Diagram')
+		
+--}
+
+--BPMN assumptions:
+	-- Input Model is a simple Process (not collaboration or Choreography)
+	-- Sub process , Call Activity , Globl Tasks , Lanes are not used.
+	-- Data items used in  the model are data Object and not data Input or data Output (Message??)
+	
+-- Transformation Logic
+	--1) Check there is at least one dataObject with a defined dataState (which one to choose if there is more than one?)
+	--2) Check there is at least one dataObjectReference to this dataObject and it has a defined dataState
+	--3) For Activities (tasks) check 
+			-- For data as Output:
+			-- if there is a dataOutputAssociation targetRef reference to these dataObject or dataObjectReference elements
+			-- & the source is a reference to a dataOutput which is referenced from a outputSet dataOutputRefs
+			
+			-- For data as Input:
+			-- if there is a dataInputAssociation SourceRef reference to these dataObject or dataObjectReference elements
+			-- & the target is a reference to a dataInput which is referenced from a InputSet dataInputRefs
+	--4) For Catch Events (ex: start or intermediate) check for data as Output (same as above)
+	--5) For Throw Events (ex: end or intermediate) check for data as Input (same as above)
+	
+	-- This means we have data that is referenced and we can create the stateMachine; 
+	
+--Mapping Rules:
+	--1) dataObject is mapped into a packagedElement with type ="stateMachine" with same name and with a (single??) region
+	--2) create an initial and final states
+	--3) dataState in dataObject & dataObjectReferences are mapped into subvertex with same name
+	--4) Gateways (Parallel converging & Diverging)
+	--			  (Inclusive converging & Diverging)
+	--			  (Exclusive converging & Diverging)
+	
+-- BPMN Process Element with a (one at a time!) dataObject element (id) with a defined dataState (id)
+-- and at least one dataObjectReference (id) with dataObjectRef = dataObject (id) and 
+-- a (different) defined dataState (id or name?)
+
+--BPMN Start Event: startEvent (outgoing child element; not required?)
+--BPMN End Event: endEvent (incoming child element)
+--BPMN Intermediate Event: ??
+--BPMN simple task: task (incoming & outgoing child elements)
+--BPMN task io spec: ioSpecification (inputSet=>dataInputRefs & outputSet=>dataOutputRefs & dataInput (id) & dataOutput (id) )
+--BPMN task data Output : dataOutputAssociation (sourceRef=> dataOutput (id) & targetRef=> dataObject (id) or dataObjectReference (id))
+--BPMN task data Input :  dataInputAssociation (sourceRef=> dataObject (id) or dataObjectReference (id) & targetRef=> dataInput(id))
+--BPMN catch event data: dataOutputAssociation (sourceRef=> dataOutput (id) & targetRef=> dataObject (id) or dataObjectReference (id))
+--BPMN throw event data:  dataInputAssociation (sourceRef=> dataObject (id) or dataObjectReference (id) & targetRef=> dataInput(id))
+--BPMN sequence flow: bpmn2:sequenceFlow (sourceRef & targetRef)
+--BPMN gateways: bpmn2:exclusiveGateway (direction="Converging/Diverging")
+--										(incoming & outgoing) (condition??)
+
+-- UML state Machine top element: packagedElement xmi:type="uml:StateMachine"
+-- UML state Machine region: xmi:type="uml:Region"                    how many regions??
+-- UML state Machine pseudostates: subvertex xmi:type="uml:Pseudostate" | kind="choice,.."
+-- UML state Machine states: subvertex xmi:type="uml:State"
+-- UML state Machine Final state: subvertex xmi:type="uml:FinalState"
+-- UML state Machine transition: transition xmi:type="uml:Transition" source="" target="" guard="" kind="local/external/internal"
+-- UML SM trigger: trigger xmi:type="uml:Trigger"
+-- UML SM guard is defined as: ownedRule xmi:type="uml:Constraint"

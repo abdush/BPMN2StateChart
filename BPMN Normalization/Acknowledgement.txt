@@ -1,0 +1,20 @@
+I would like to thank my project supervisor, Dr Liping Zhao, 
+for giving me the opportunity to delve into the model-driven development world. 
+Her continuous support and guidance throughout the project and her valuable and 
+positive feedback helped me to overcome all the difficulties.  
+
+I am indebted to Professor Rik Eshuis and Professor Pieter Van Gorp, 
+at The Eindhoven University of Technology, for sparing from their valuable time 
+to answer my queries regarding their research work used here. 
+Their invaluable explanations helped me to understand better the 
+transformation approach used for the system. 
+
+I am also grateful to Dr Dimitris Kolovos and Dr Louis Rose, at The University of York, 
+for their contributions towards my Epsilon implementation. 
+I would like to thank Dr Louis for reusing his PN2SC Epsilon implementation. 
+I would also like to thank Dr Dimitris for his prompt and helpful answers to all 
+my posted questions on the Epsilon online forum. 
+
+Last but not least, I would like to thank my family and all my friends 
+around me for their continual encouragement and support. 
+Without all these people, this thesis would have never been a reality.

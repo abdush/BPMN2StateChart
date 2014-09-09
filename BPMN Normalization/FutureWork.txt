@@ -1,0 +1,6 @@
+- refactoring and finalisation rules. adding manual user selection for node to be handled by T3 rule.
+- adding actions/events/guards for transitions.
+- considering other BPMN elements.
+- considering optional and alternative data (input/output set) and other BPMN data semantics differences.
+- add plug-in for Eclipse BPMN modeller tool.
+- usability study.

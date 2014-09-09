@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="ASCII"?>
+<bpmn2:Definitions xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI-XMI" id="Definitions_1" targetNamespace="http://org.eclipse.bpmn2/default/process">
+  <rootElements xsi:type="bpmn2:Process" id="claim_optional_data" name="Default Process">
+    <flowElements xsi:type="bpmn2:StartEvent" id="StartEvent_1" outgoing="SequenceFlow_2"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="SequenceFlow_2" sourceRef="StartEvent_1" targetRef="Task_1"/>
+    <flowElements xsi:type="bpmn2:Task" id="Task_1" name="Task 1" incoming="SequenceFlow_2" outgoing="SequenceFlow_3">
+      <ioSpecification id="InputOutputSpecification_1">
+        <dataInputs id="DataInput_1" name="input1"/>
+        <dataOutputs id="DataOutput_1" name="output1"/>
+        <inputSets id="InputSet_1" dataInputRefs="DataInput_1"/>
+        <outputSets id="OutputSet_1" dataOutputRefs="DataOutput_1"/>
+      </ioSpecification>
+      <dataInputAssociations id="DataInputAssociation_1" sourceRef="DataObject_1" targetRef="DataInput_1"/>
+      <dataOutputAssociations id="DataOutputAssociation_1" sourceRef="DataOutput_1" targetRef="_DataObjectReference_3"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="SequenceFlow_3" sourceRef="Task_1" targetRef="Task_2"/>
+    <flowElements xsi:type="bpmn2:Task" id="Task_2" name="Task 2" incoming="SequenceFlow_3" outgoing="SequenceFlow_4">
+      <ioSpecification id="InputOutputSpecification_2">
+        <dataInputs id="DataInput_2" name="input1"/>
+        <dataOutputs id="DataOutput_2" name="output1"/>
+        <dataOutputs id="DataOutput_3" name="output2"/>
+        <inputSets id="InputSet_2" dataInputRefs="DataInput_2"/>
+        <outputSets id="OutputSet_2" dataOutputRefs="DataOutput_2 DataOutput_3"/>
+      </ioSpecification>
+      <dataInputAssociations id="DataInputAssociation_2" sourceRef="_DataObjectReference_3" targetRef="DataInput_2"/>
+      <dataOutputAssociations id="DataOutputAssociation_2" sourceRef="DataOutput_2" targetRef="_DataObjectReference_5"/>
+      <dataOutputAssociations id="DataOutputAssociation_3" sourceRef="DataOutput_3" targetRef="_DataObjectReference_4"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="SequenceFlow_4" sourceRef="Task_2" targetRef="ExclusiveGateway_1"/>
+    <flowElements xsi:type="bpmn2:ExclusiveGateway" id="ExclusiveGateway_1" name="Exclusive Gateway 1" incoming="SequenceFlow_4" outgoing="SequenceFlow_5 SequenceFlow_6" gatewayDirection="Diverging"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="SequenceFlow_5" sourceRef="ExclusiveGateway_1" targetRef="Task_3"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="SequenceFlow_6" sourceRef="ExclusiveGateway_1" targetRef="Task_4"/>
+    <flowElements xsi:type="bpmn2:ParallelGateway" id="ParallelGateway_1" name="Parallel Gateway 1" incoming="SequenceFlow_8" outgoing="SequenceFlow_9 SequenceFlow_10" gatewayDirection="Diverging"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="SequenceFlow_9" sourceRef="ParallelGateway_1" targetRef="Task_5"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="SequenceFlow_10" sourceRef="ParallelGateway_1" targetRef="Task_6"/>
+    <flowElements xsi:type="bpmn2:Task" id="Task_6" name="Task 6" incoming="SequenceFlow_10" outgoing="SequenceFlow_12">
+      <ioSpecification id="InputOutputSpecification_6">
+        <dataInputs id="DataInput_6" name="input1"/>
+        <dataOutputs id="DataOutput_6" name="output1"/>
+        <inputSets id="InputSet_6" dataInputRefs="DataInput_6"/>
+        <outputSets id="OutputSet_6" dataOutputRefs="DataOutput_6"/>
+      </ioSpecification>
+      <dataInputAssociations id="DataInputAssociation_6" sourceRef="_DataObjectReference_6" targetRef="DataInput_6"/>
+      <dataOutputAssociations id="DataOutputAssociation_6" sourceRef="DataOutput_6" targetRef="_DataObjectReference_8"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn2:Task" id="Task_5" name="Task 5" incoming="SequenceFlow_9" outgoing="SequenceFlow_11">
+      <ioSpecification id="InputOutputSpecification_5">
+        <dataInputs id="DataInput_5" name="input1"/>
+        <inputSets id="InputSet_5" dataInputRefs="DataInput_5"/>
+        <outputSets id="OutputSet_5"/>
+      </ioSpecification>
+      <dataInputAssociations id="DataInputAssociation_5" sourceRef="_DataObjectReference_6" targetRef="DataInput_5"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="SequenceFlow_11" sourceRef="Task_5" targetRef="ParallelGateway_2"/>
+    <flowElements xsi:type="bpmn2:ParallelGateway" id="ParallelGateway_2" name="Parallel Gateway 2" incoming="SequenceFlow_11 SequenceFlow_12" outgoing="SequenceFlow_13" gatewayDirection="Converging"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="SequenceFlow_12" sourceRef="Task_6" targetRef="ParallelGateway_2"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="SequenceFlow_13" sourceRef="ParallelGateway_2" targetRef="ExclusiveGateway_3"/>
+    <flowElements xsi:type="bpmn2:ExclusiveGateway" id="ExclusiveGateway_3" name="Exclusive Gateway 3" incoming="SequenceFlow_13 SequenceFlow_14 SequenceFlow_15" outgoing="SequenceFlow_16" gatewayDirection="Converging"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="SequenceFlow_16" sourceRef="ExclusiveGateway_3" targetRef="Task_7"/>
+    <flowElements xsi:type="bpmn2:Task" id="Task_7" name="Task 7" incoming="SequenceFlow_16" outgoing="SequenceFlow_17">
+      <ioSpecification id="InputOutputSpecification_7">
+        <dataInputs id="DataInput_7" name="input1"/>
+        <dataInputs id="DataInput_8" name="input2"/>
+        <inputSets id="InputSet_7" dataInputRefs="DataInput_7 DataInput_8"/>
+        <outputSets id="OutputSet_7"/>
+      </ioSpecification>
+      <dataInputAssociations id="DataInputAssociation_7" sourceRef="_DataObjectReference_7" targetRef="DataInput_7"/>
+      <dataInputAssociations id="DataInputAssociation_8" sourceRef="_DataObjectReference_8" targetRef="DataInput_8"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="SequenceFlow_17" sourceRef="Task_7" targetRef="EndEvent_1"/>
+    <flowElements xsi:type="bpmn2:EndEvent" id="EndEvent_1" incoming="SequenceFlow_17"/>
+    <flowElements xsi:type="bpmn2:DataObject" id="DataObject_1" name="claim">
+      <dataState id="DataState_1" name="new"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn2:DataObjectReference" id="_DataObjectReference_3" name="Reference to claim" dataObjectRef="DataObject_1">
+      <dataState id="DataState_2" name="registered"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn2:DataObjectReference" id="_DataObjectReference_4" name="Reference to claim" dataObjectRef="DataObject_1">
+      <dataState id="DataState_3" name="notfraudulent"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn2:DataObjectReference" id="_DataObjectReference_5" name="Reference to claim" dataObjectRef="DataObject_1">
+      <dataState id="DataState_4" name="fraudulent"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn2:Task" id="Task_3" name="Task 3" incoming="SequenceFlow_5" outgoing="SequenceFlow_15">
+      <ioSpecification id="InputOutputSpecification_3">
+        <dataInputs id="DataInput_3" name="input1"/>
+        <inputSets id="InputSet_3" dataInputRefs="DataInput_3"/>
+        <outputSets id="OutputSet_3"/>
+      </ioSpecification>
+      <dataInputAssociations id="DataInputAssociation_3" sourceRef="_DataObjectReference_5" targetRef="DataInput_3"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="SequenceFlow_15" sourceRef="Task_3" targetRef="ExclusiveGateway_3"/>
+    <flowElements xsi:type="bpmn2:Task" id="Task_4" name="Task 4" incoming="SequenceFlow_6" outgoing="SequenceFlow_7">
+      <ioSpecification id="InputOutputSpecification_4">
+        <dataInputs id="DataInput_4" name="input1"/>
+        <dataOutputs id="DataOutput_4" name="output1"/>
+        <dataOutputs id="DataOutput_5" name="output2"/>
+        <inputSets id="InputSet_4" dataInputRefs="DataInput_4"/>
+        <outputSets id="OutputSet_4" dataOutputRefs="DataOutput_4 DataOutput_5"/>
+      </ioSpecification>
+      <dataInputAssociations id="DataInputAssociation_4" sourceRef="_DataObjectReference_4" targetRef="DataInput_4"/>
+      <dataOutputAssociations id="DataOutputAssociation_4" sourceRef="DataOutput_4" targetRef="_DataObjectReference_6"/>
+      <dataOutputAssociations id="DataOutputAssociation_5" sourceRef="DataOutput_5" targetRef="_DataObjectReference_7"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="SequenceFlow_7" sourceRef="Task_4" targetRef="ExclusiveGateway_2"/>
+    <flowElements xsi:type="bpmn2:ExclusiveGateway" id="ExclusiveGateway_2" name="Exclusive Gateway 2" incoming="SequenceFlow_7" outgoing="SequenceFlow_8 SequenceFlow_14" gatewayDirection="Diverging"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="SequenceFlow_8" name="claim accepted" sourceRef="ExclusiveGateway_2" targetRef="ParallelGateway_1"/>
+    <flowElements xsi:type="bpmn2:SequenceFlow" id="SequenceFlow_14" name="claim rejected" sourceRef="ExclusiveGateway_2" targetRef="ExclusiveGateway_3"/>
+    <flowElements xsi:type="bpmn2:DataObjectReference" id="_DataObjectReference_6" name="Reference to claim" dataObjectRef="DataObject_1">
+      <dataState id="DataState_6" name="accepted"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn2:DataObjectReference" id="_DataObjectReference_7" name="Reference to claim" dataObjectRef="DataObject_1">
+      <dataState id="DataState_5" name="rejected"/>
+    </flowElements>
+    <flowElements xsi:type="bpmn2:DataObjectReference" id="_DataObjectReference_8" name="Reference to claim" dataObjectRef="DataObject_1">
+      <dataState id="DataState_7" name="filled"/>
+    </flowElements>
+  </rootElements>
+  <diagrams id="BPMNDiagram_1" name="Default Process Diagram">
+    <plane id="BPMNPlane_1">
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_1">
+        <bounds height="36.0" width="36.0" x="40.0" y="230.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#StartEvent_1"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_Task_1">
+        <bounds height="50.0" width="110.0" x="110.0" y="215.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#Task_1"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_Task_2">
+        <bounds height="50.0" width="110.0" x="250.0" y="223.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#Task_2"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_ExclusiveGateway_1" isMarkerVisible="true">
+        <bounds height="50.0" width="50.0" x="390.0" y="210.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#ExclusiveGateway_1"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_ExclusiveGateway_2" isMarkerVisible="true">
+        <bounds height="50.0" width="50.0" x="587.0" y="289.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#ExclusiveGateway_2"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_ParallelGateway_1">
+        <bounds height="50.0" width="50.0" x="596.0" y="215.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#ParallelGateway_1"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_Task_6">
+        <bounds height="50.0" width="110.0" x="671.0" y="232.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#Task_6"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_Task_5">
+        <bounds height="50.0" width="110.0" x="645.0" y="124.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#Task_5"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_ParallelGateway_2">
+        <bounds height="50.0" width="50.0" x="769.0" y="174.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#ParallelGateway_2"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_ExclusiveGateway_3" isMarkerVisible="true">
+        <bounds height="50.0" width="50.0" x="851.0" y="167.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#ExclusiveGateway_3"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_Task_7">
+        <bounds height="50.0" width="110.0" x="930.0" y="167.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#Task_7"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_2">
+        <bounds height="36.0" width="36.0" x="1080.0" y="174.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#EndEvent_1"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_DataObject_1">
+        <bounds height="65.0" width="36.0" x="150.0" y="330.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#DataObject_1"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_DataObjectReference_1">
+        <bounds height="65.0" width="36.0" x="141.0" y="92.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#_DataObjectReference_3"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_DataObjectReference_2">
+        <bounds height="65.0" width="36.0" x="310.0" y="400.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#_DataObjectReference_4"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_DataObjectReference_3">
+        <bounds height="65.0" width="36.0" x="310.0" y="28.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#_DataObjectReference_5"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_Task_3">
+        <bounds height="50.0" width="110.0" x="455.0" y="66.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#Task_3"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_Task_4">
+        <bounds height="50.0" width="110.0" x="439.0" y="310.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#Task_4"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_DataObjectReference_4">
+        <bounds height="65.0" width="36.0" x="500.0" y="174.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#_DataObjectReference_6"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_DataObjectReference_5">
+        <bounds height="65.0" width="36.0" x="540.0" y="430.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#_DataObjectReference_7"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNShape" id="BPMNShape_DataObjectReference_6">
+        <bounds height="65.0" width="36.0" x="780.0" y="340.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#_DataObjectReference_8"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_SequenceFlow_2">
+        <waypoint x="76.0" y="248.0"/>
+        <waypoint x="91.0" y="248.0"/>
+        <waypoint x="91.0" y="240.0"/>
+        <waypoint x="110.0" y="240.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#SequenceFlow_2"/>
+        <sourceElement href="claim_optional_data.bpmn#BPMNShape_1"/>
+        <targetElement href="claim_optional_data.bpmn#BPMNShape_Task_1"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_SequenceFlow_3">
+        <waypoint x="220.0" y="240.0"/>
+        <waypoint x="233.0" y="240.0"/>
+        <waypoint x="233.0" y="248.0"/>
+        <waypoint x="250.0" y="248.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#SequenceFlow_3"/>
+        <sourceElement href="claim_optional_data.bpmn#BPMNShape_Task_1"/>
+        <targetElement href="claim_optional_data.bpmn#BPMNShape_Task_2"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_SequenceFlow_4">
+        <waypoint x="360.0" y="248.0"/>
+        <waypoint x="373.0" y="248.0"/>
+        <waypoint x="373.0" y="235.0"/>
+        <waypoint x="390.0" y="235.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#SequenceFlow_4"/>
+        <sourceElement href="claim_optional_data.bpmn#BPMNShape_Task_2"/>
+        <targetElement href="claim_optional_data.bpmn#BPMNShape_ExclusiveGateway_1"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_SequenceFlow_5">
+        <waypoint x="415.0" y="210.0"/>
+        <waypoint x="415.0" y="91.0"/>
+        <waypoint x="455.0" y="91.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#SequenceFlow_5"/>
+        <sourceElement href="claim_optional_data.bpmn#BPMNShape_ExclusiveGateway_1"/>
+        <targetElement href="claim_optional_data.bpmn#BPMNShape_Task_3"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_SequenceFlow_6">
+        <waypoint x="415.0" y="261.0"/>
+        <waypoint x="415.0" y="335.0"/>
+        <waypoint x="439.0" y="335.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#SequenceFlow_6"/>
+        <sourceElement href="claim_optional_data.bpmn#BPMNShape_ExclusiveGateway_1"/>
+        <targetElement href="claim_optional_data.bpmn#BPMNShape_Task_4"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_SequenceFlow_7">
+        <waypoint x="549.0" y="335.0"/>
+        <waypoint x="566.0" y="335.0"/>
+        <waypoint x="566.0" y="314.0"/>
+        <waypoint x="587.0" y="314.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#SequenceFlow_7"/>
+        <sourceElement href="claim_optional_data.bpmn#BPMNShape_Task_4"/>
+        <targetElement href="claim_optional_data.bpmn#BPMNShape_ExclusiveGateway_2"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_SequenceFlow_8">
+        <waypoint x="612.0" y="289.0"/>
+        <waypoint x="612.0" y="279.0"/>
+        <waypoint x="621.0" y="279.0"/>
+        <waypoint x="621.0" y="266.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#SequenceFlow_8"/>
+        <sourceElement href="claim_optional_data.bpmn#BPMNShape_ExclusiveGateway_2"/>
+        <targetElement href="claim_optional_data.bpmn#BPMNShape_ParallelGateway_1"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_SequenceFlow_9">
+        <waypoint x="621.0" y="215.0"/>
+        <waypoint x="621.0" y="149.0"/>
+        <waypoint x="645.0" y="149.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#SequenceFlow_9"/>
+        <sourceElement href="claim_optional_data.bpmn#BPMNShape_ParallelGateway_1"/>
+        <targetElement href="claim_optional_data.bpmn#BPMNShape_Task_5"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_SequenceFlow_10">
+        <waypoint x="647.0" y="240.0"/>
+        <waypoint x="657.0" y="240.0"/>
+        <waypoint x="657.0" y="257.0"/>
+        <waypoint x="671.0" y="257.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#SequenceFlow_10"/>
+        <sourceElement href="claim_optional_data.bpmn#BPMNShape_ParallelGateway_1"/>
+        <targetElement href="claim_optional_data.bpmn#BPMNShape_Task_6"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_SequenceFlow_11">
+        <waypoint x="755.0" y="149.0"/>
+        <waypoint x="794.0" y="149.0"/>
+        <waypoint x="794.0" y="174.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#SequenceFlow_11"/>
+        <sourceElement href="claim_optional_data.bpmn#BPMNShape_Task_5"/>
+        <targetElement href="claim_optional_data.bpmn#BPMNShape_ParallelGateway_2"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_SequenceFlow_12">
+        <waypoint x="781.0" y="257.0"/>
+        <waypoint x="794.0" y="257.0"/>
+        <waypoint x="794.0" y="225.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#SequenceFlow_12"/>
+        <sourceElement href="claim_optional_data.bpmn#BPMNShape_Task_6"/>
+        <targetElement href="claim_optional_data.bpmn#BPMNShape_ParallelGateway_2"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_SequenceFlow_13">
+        <waypoint x="820.0" y="199.0"/>
+        <waypoint x="833.0" y="199.0"/>
+        <waypoint x="833.0" y="192.0"/>
+        <waypoint x="851.0" y="192.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#SequenceFlow_13"/>
+        <sourceElement href="claim_optional_data.bpmn#BPMNShape_ParallelGateway_2"/>
+        <targetElement href="claim_optional_data.bpmn#BPMNShape_ExclusiveGateway_3"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_SequenceFlow_14">
+        <waypoint x="638.0" y="314.0"/>
+        <waypoint x="876.0" y="314.0"/>
+        <waypoint x="876.0" y="218.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#SequenceFlow_14"/>
+        <sourceElement href="claim_optional_data.bpmn#BPMNShape_ExclusiveGateway_2"/>
+        <targetElement href="claim_optional_data.bpmn#BPMNShape_ExclusiveGateway_3"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_SequenceFlow_15">
+        <waypoint x="565.0" y="91.0"/>
+        <waypoint x="876.0" y="91.0"/>
+        <waypoint x="876.0" y="167.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#SequenceFlow_15"/>
+        <sourceElement href="claim_optional_data.bpmn#BPMNShape_Task_3"/>
+        <targetElement href="claim_optional_data.bpmn#BPMNShape_ExclusiveGateway_3"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_SequenceFlow_16">
+        <waypoint x="902.0" y="192.0"/>
+        <waypoint x="914.0" y="192.0"/>
+        <waypoint x="914.0" y="192.0"/>
+        <waypoint x="930.0" y="192.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#SequenceFlow_16"/>
+        <sourceElement href="claim_optional_data.bpmn#BPMNShape_ExclusiveGateway_3"/>
+        <targetElement href="claim_optional_data.bpmn#BPMNShape_Task_7"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_SequenceFlow_17">
+        <waypoint x="1040.0" y="192.0"/>
+        <waypoint x="1058.0" y="192.0"/>
+        <waypoint x="1058.0" y="192.0"/>
+        <waypoint x="1080.0" y="192.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#SequenceFlow_17"/>
+        <sourceElement href="claim_optional_data.bpmn#BPMNShape_Task_7"/>
+        <targetElement href="claim_optional_data.bpmn#BPMNShape_2"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_DataInputAssociation_1">
+        <waypoint x="168.0" y="330.0"/>
+        <waypoint x="168.0" y="279.0"/>
+        <waypoint x="165.0" y="279.0"/>
+        <waypoint x="165.0" y="265.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#DataInputAssociation_1"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_DataOutputAssociation_1">
+        <waypoint x="165.0" y="215.0"/>
+        <waypoint x="165.0" y="177.0"/>
+        <waypoint x="159.0" y="177.0"/>
+        <waypoint x="159.0" y="157.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#DataOutputAssociation_1"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_DataInputAssociation_2">
+        <waypoint x="177.0" y="124.0"/>
+        <waypoint x="305.0" y="124.0"/>
+        <waypoint x="305.0" y="223.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#DataInputAssociation_2"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_DataOutputAssociation_2">
+        <waypoint x="305.0" y="223.0"/>
+        <waypoint x="305.0" y="60.0"/>
+        <waypoint x="310.0" y="60.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#DataOutputAssociation_2"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_DataOutputAssociation_3">
+        <waypoint x="305.0" y="273.0"/>
+        <waypoint x="305.0" y="432.0"/>
+        <waypoint x="310.0" y="432.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#DataOutputAssociation_3"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_DataInputAssociation_3">
+        <waypoint x="346.0" y="60.0"/>
+        <waypoint x="510.0" y="60.0"/>
+        <waypoint x="510.0" y="66.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#DataInputAssociation_3"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_DataInputAssociation_4">
+        <waypoint x="328.0" y="400.0"/>
+        <waypoint x="328.0" y="335.0"/>
+        <waypoint x="439.0" y="335.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#DataInputAssociation_4"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_DataOutputAssociation_4">
+        <waypoint x="494.0" y="310.0"/>
+        <waypoint x="494.0" y="206.0"/>
+        <waypoint x="500.0" y="206.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#DataOutputAssociation_4"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_DataOutputAssociation_5">
+        <waypoint x="549.0" y="335.0"/>
+        <waypoint x="558.0" y="335.0"/>
+        <waypoint x="558.0" y="430.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#DataOutputAssociation_5"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_DataInputAssociation_5">
+        <waypoint x="518.0" y="174.0"/>
+        <waypoint x="518.0" y="149.0"/>
+        <waypoint x="645.0" y="149.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#DataInputAssociation_5"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_DataInputAssociation_6">
+        <waypoint x="536.0" y="206.0"/>
+        <waypoint x="726.0" y="206.0"/>
+        <waypoint x="726.0" y="232.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#DataInputAssociation_6"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_DataInputAssociation_7">
+        <waypoint x="576.0" y="462.0"/>
+        <waypoint x="985.0" y="462.0"/>
+        <waypoint x="985.0" y="217.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#DataInputAssociation_7"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_DataOutputAssociation_6">
+        <waypoint x="781.0" y="257.0"/>
+        <waypoint x="798.0" y="257.0"/>
+        <waypoint x="798.0" y="340.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#DataOutputAssociation_6"/>
+      </planeElement>
+      <planeElement xsi:type="bpmndi:BPMNEdge" id="BPMNEdge_DataInputAssociation_8">
+        <waypoint x="816.0" y="372.0"/>
+        <waypoint x="985.0" y="372.0"/>
+        <waypoint x="985.0" y="217.0"/>
+        <bpmnElement href="claim_optional_data.bpmn#DataInputAssociation_8"/>
+      </planeElement>
+      <bpmnElement href="claim_optional_data.bpmn#claim_optional_data"/>
+    </plane>
+  </diagrams>
+</bpmn2:Definitions>

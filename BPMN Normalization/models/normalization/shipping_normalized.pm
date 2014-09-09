@@ -48,15 +48,15 @@
   <flowElements xsi:type="pm:ObjectFlow" id="DataOutputAssociation_3" sourceRef="//@flowElements.52" targetRef="_DataObjectReference_4"/>
   <flowElements xsi:type="pm:ObjectFlow" id="DataInputAssociation_3" sourceRef="_DataObjectReference_4" targetRef="//@flowElements.46"/>
   <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#42" sourceRef="//@flowElements.42" targetRef="Task_4"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#43" incoming="SequenceFlow_6 //@flowElements.36" outgoing="//@flowElements.41" gatewayDirection="Converging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#43" name="Parallel Gateway 1order [accepted]" incoming="SequenceFlow_6 //@flowElements.36" outgoing="//@flowElements.41" gatewayDirection="Converging"/>
   <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#44" sourceRef="//@flowElements.44" targetRef="Task_6"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#45" incoming="SequenceFlow_11 //@flowElements.38" outgoing="//@flowElements.43" gatewayDirection="Converging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#45" name="Parallel Gateway 3order [processing]" incoming="SequenceFlow_11 //@flowElements.38" outgoing="//@flowElements.43" gatewayDirection="Converging"/>
   <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#46" sourceRef="//@flowElements.46" targetRef="Task_10"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#47" incoming="SequenceFlow_16 //@flowElements.40" outgoing="//@flowElements.45" gatewayDirection="Converging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="join#FlowElement#47" name="get paymentorder [done]" incoming="SequenceFlow_16 //@flowElements.40" outgoing="//@flowElements.45" gatewayDirection="Converging"/>
   <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#48" sourceRef="Task_1" targetRef="//@flowElements.48"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#49" incoming="//@flowElements.47" outgoing="SequenceFlow_3 //@flowElements.35" gatewayDirection="Diverging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#49" name="get dataorder [accepted]" incoming="//@flowElements.47" outgoing="SequenceFlow_3 //@flowElements.35" gatewayDirection="Diverging"/>
   <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#50" sourceRef="Task_4" targetRef="//@flowElements.50"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#51" incoming="//@flowElements.49" outgoing="SequenceFlow_9 //@flowElements.37" gatewayDirection="Diverging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#51" name="Parallel Gateway 3order [processing]" incoming="//@flowElements.49" outgoing="SequenceFlow_9 //@flowElements.37" gatewayDirection="Diverging"/>
   <flowElements xsi:type="pm:SequenceFlow" id="sequenceFlow#FlowElement#52" sourceRef="Task_6" targetRef="//@flowElements.52"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#53" incoming="//@flowElements.51" outgoing="SequenceFlow_14 //@flowElements.39" gatewayDirection="Diverging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#53" name="get debitorder [done]" incoming="//@flowElements.51" outgoing="SequenceFlow_14 //@flowElements.39" gatewayDirection="Diverging"/>
 </pm:Process>

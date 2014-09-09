@@ -1,0 +1,98 @@
+operation validateBPMN(bpmn_model) {
+  var evl_task = createBPMNValidateTask(bpmn_model);
+  evl_task.execute();
+  return EVL!EvlUnsatisfiedConstraint.all;
+}
+
+-*
+ antProject is Ant's Project object, and is supplied by EUnit.
+*-
+operation createEmfLoadTask(modelName : String, modelFilename : String, metamodelFilename : String) {
+  var task = antProject.createTask("epsilon.emf.loadModel");
+  var basedir = antProject.getBaseDir();
+  task.setModelFile(new Native('java.io.File')(basedir, "models/eunit_tests/" + modelFilename));
+  --task.setMetamodelFile(new Native('java.io.File')(basedir, "metamodels/" + metamodelFilename));
+  task.setMetamodelUri("http://www.omg.org/spec/BPMN/20100524/MODEL-XMI");
+  task.setName(modelName);
+  task.setRead(true);
+  task.setStore(false);
+  return task;
+}
+
+operation createBPMNValidateTask(modelName : String) {
+  
+  var evl_task = antProject.createTask("epsilon.evl");
+  var basedir = antProject.getBaseDir();
+  evl_task.setSrc(new Native('java.io.File')(basedir, "src/filtering_component/normalization/BPMN_Validation.evl"));
+  evl_task.createModel().setRef(modelName);
+  evl_task.setFailOnErrors(false);
+  evl_task.setFailOnWarnings(false);
+  evl_task.setExportAsModel("EVL");
+  return evl_task;
+}
+
+
+@model
+operation loadModels() {
+  
+  var load_valid_input  = createEmfLoadTask("valid_input", "validation_valid_input.bpmn", "BPMN20.ecore");
+  var load_invalid_input_1 = createEmfLoadTask("invalid_input_1", "validation_error_invalid_elements.bpmn", "BPMN20.ecore");
+  var load_invalid_input_2 = createEmfLoadTask("invalid_input_2", "validation_error_data_no_states.bpmn", "BPMN20.ecore");
+  var load_invalid_input_3 = createEmfLoadTask("invalid_input_3", "validation_error_multiple_data_objects.bpmn", "BPMN20.ecore");
+  var load_invalid_input_4 = createEmfLoadTask("invalid_input_4", "validation_invalid_uninque_states.bpmn", "BPMN20.ecore");
+  
+  load_valid_input.execute();
+  load_invalid_input_1.execute();
+  load_invalid_input_2.execute();
+  load_invalid_input_3.execute();
+  load_invalid_input_4.execute();
+}
+
+
+@test
+operation valid() {
+  var errors = validateBPMN("valid_input");
+  assertEquals(0, errors.size);
+}
+
+
+@test
+operation error_invalid_elements_and_no_data() {
+  var errors = validateBPMN("invalid_input_1");
+  assertEquals(2, errors.size);
+  
+  var error = errors.first;
+  --assertEquals(false, error.constraint.isCritique);
+  assertEquals("MustHaveOnlyAllowedNodes", error.constraint.name);
+  error = errors.second;
+  assertEquals("MustHaveOneStatefulDataObject", error.constraint.name);
+}
+
+@test
+operation error_invalid_multiple_start_and no_datastates() {
+  var errors = validateBPMN("invalid_input_2");
+  assertEquals(2, errors.size);
+  var error = errors.first;
+  assertEquals("MustHaveOneStartEvent", error.constraint.name);
+  error = errors.second;
+  assertEquals("MustHaveOneStatefulDataObject", error.constraint.name);
+}
+
+@test
+operation error_invalid_multiple_data() {
+  var errors = validateBPMN("invalid_input_3");
+  assertEquals(2, errors.size);
+  var error = errors.first;
+  assertEquals("MustHaveOnlyAllowedNodes", error.constraint.name);
+  var error = errors.second;
+  assertEquals("MustHaveOneStatefulDataObject", error.constraint.name);
+}
+
+
+@test
+operation error_invalid_nonunique_data() {
+  var errors = validateBPMN("invalid_input_4");
+  assertEquals(1, errors.size);
+  var error = errors.first;
+  assertEquals("MustHaveUniqueDataStates", error.constraint.name);
+}

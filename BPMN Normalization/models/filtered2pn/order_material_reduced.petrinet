@@ -1,12 +1,4 @@
 <?xml version="1.0" encoding="ASCII"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:pnet="http://uam.es/PetriNets">
-  <pnet:Net xmi:id="order_material">
-    <places name="StartEvent_1Not preparedPreparedApprovedNeeds Authorization?AuthorizedMerge 1SubmittedOrderedEndEvent_1"/>
-  </pnet:Net>
-  <ecore:EStringToStringMapEntry key="xsi" value="http://www.w3.org/2001/XMLSchema-instance"/>
-  <ecore:EStringToStringMapEntry key="" value="http://org.eclipse.bpmn2/default/order_material_process"/>
-  <ecore:EStringToStringMapEntry key="bpmn2" value="http://www.omg.org/spec/BPMN/20100524/MODEL"/>
-  <ecore:EStringToStringMapEntry key="bpmndi" value="http://www.omg.org/spec/BPMN/20100524/DI"/>
-  <ecore:EStringToStringMapEntry key="dc" value="http://www.omg.org/spec/DD/20100524/DC"/>
-  <ecore:EStringToStringMapEntry key="di" value="http://www.omg.org/spec/DD/20100524/DI"/>
-</xmi:XMI>
+<pnet:Net xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pnet="http://uam.es/PetriNets" xmi:id="order_material">
+  <places name="StartEvent_1Not preparedPreparedApprovedNeeds Authorization?AuthorizedMerge 1SubmittedOrderedEndEvent_1"/>
+</pnet:Net>

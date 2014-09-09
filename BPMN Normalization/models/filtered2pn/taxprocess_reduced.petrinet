@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="ASCII"?>
 <pnet:Net xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pnet="http://uam.es/PetriNets" xmi:id="taxprocess">
-  <places name="StartEvent_1submittedExclusive Gateway 1rejectedEnd Event 2acceptedprocessedassessedreturnedEndEvent_1"/>
+  <places name="StartEvent_1not submittedsubmittedExclusive Gateway 1rejectedEnd Event 2acceptedprocessedassessedreturnedEndEvent_1"/>
 </pnet:Net>

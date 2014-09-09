@@ -1,35 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML">
-  <ecore:EStringToStringMapEntry xmi:id="_Zg17YQKgEeSt5NjqwT8-GQ" key="xsi" value="http://www.w3.org/2001/XMLSchema-instance"/>
-  <ecore:EStringToStringMapEntry xmi:id="_Zg17YgKgEeSt5NjqwT8-GQ" key="" value="http://org.eclipse.bpmn2/default/order_material_process"/>
-  <ecore:EStringToStringMapEntry xmi:id="_Zg2icAKgEeSt5NjqwT8-GQ" key="bpmn2" value="http://www.omg.org/spec/BPMN/20100524/MODEL"/>
-  <ecore:EStringToStringMapEntry xmi:id="_Zg2icQKgEeSt5NjqwT8-GQ" key="bpmndi" value="http://www.omg.org/spec/BPMN/20100524/DI"/>
-  <ecore:EStringToStringMapEntry xmi:id="_Zg2icgKgEeSt5NjqwT8-GQ" key="dc" value="http://www.omg.org/spec/DD/20100524/DC"/>
-  <ecore:EStringToStringMapEntry xmi:id="_Zg2icwKgEeSt5NjqwT8-GQ" key="di" value="http://www.omg.org/spec/DD/20100524/DI"/>
-  <uml:Model xmi:id="_Zg9QIAKgEeSt5NjqwT8-GQ">
-    <packagedElement xmi:type="uml:StateMachine" xmi:id="order_material">
-      <region xmi:id="_ZgkOkAKgEeSt5NjqwT8-GQ" name="StartEvent_1Not preparedOreparedApprovedNeeds Authorization?AuthorizedMerge 1SubmittedOrderedEndEvent_1">
-        <transition xmi:id="_Zgmq0AKgEeSt5NjqwT8-GQ" name="StartEvent_1Not prepared" source="_ZgmDwAKgEeSt5NjqwT8-GQ" target="_ZgogAAKgEeSt5NjqwT8-GQ"/>
-        <transition xmi:id="_ZgpHEAKgEeSt5NjqwT8-GQ" name="Not preparedPrepared" source="_ZgogAAKgEeSt5NjqwT8-GQ" target="_Zgq8QAKgEeSt5NjqwT8-GQ"/>
-        <transition xmi:id="_ZgrjUAKgEeSt5NjqwT8-GQ" name="PreparedApproved" source="_Zgq8QAKgEeSt5NjqwT8-GQ" target="_ZgtYgAKgEeSt5NjqwT8-GQ"/>
-        <transition xmi:id="_ZgtYgQKgEeSt5NjqwT8-GQ" name="ApprovedNeeds Authorization?" source="_ZgtYgAKgEeSt5NjqwT8-GQ" target="_ZgvNsAKgEeSt5NjqwT8-GQ"/>
-        <transition xmi:id="_Zgv0wAKgEeSt5NjqwT8-GQ" name="Needs Authorization?Authorized" source="_ZgvNsAKgEeSt5NjqwT8-GQ" target="_ZgxC4AKgEeSt5NjqwT8-GQ"/>
-        <transition xmi:id="_ZgxC4QKgEeSt5NjqwT8-GQ" name="Needs Authorization?Merge 1" source="_ZgvNsAKgEeSt5NjqwT8-GQ" target="_ZgyRAAKgEeSt5NjqwT8-GQ"/>
-        <transition xmi:id="_ZgyRAQKgEeSt5NjqwT8-GQ" name="Merge 1Submitted" source="_ZgyRAAKgEeSt5NjqwT8-GQ" target="_ZgzfIAKgEeSt5NjqwT8-GQ"/>
-        <transition xmi:id="_Zg0GMAKgEeSt5NjqwT8-GQ" name="SubmittedOrdered" source="_ZgzfIAKgEeSt5NjqwT8-GQ" target="_Zg0tQAKgEeSt5NjqwT8-GQ"/>
-        <transition xmi:id="_Zg1UUAKgEeSt5NjqwT8-GQ" name="AuthorizedMerge 1" source="_ZgxC4AKgEeSt5NjqwT8-GQ" target="_ZgyRAAKgEeSt5NjqwT8-GQ"/>
-        <transition xmi:id="_Zg1UUQKgEeSt5NjqwT8-GQ" name="OrderedEndEvent_1" source="_Zg0tQAKgEeSt5NjqwT8-GQ" target="_Zg17YAKgEeSt5NjqwT8-GQ"/>
-        <subvertex xmi:type="uml:Pseudostate" xmi:id="_ZgmDwAKgEeSt5NjqwT8-GQ" name="StartEvent_1"/>
-        <subvertex xmi:type="uml:State" xmi:id="_ZgogAAKgEeSt5NjqwT8-GQ" name="Not prepared"/>
-        <subvertex xmi:type="uml:State" xmi:id="_Zgq8QAKgEeSt5NjqwT8-GQ" name="Prepared"/>
-        <subvertex xmi:type="uml:State" xmi:id="_ZgtYgAKgEeSt5NjqwT8-GQ" name="Approved"/>
-        <subvertex xmi:type="uml:Pseudostate" xmi:id="_ZgvNsAKgEeSt5NjqwT8-GQ" name="Needs Authorization?" kind="choice"/>
-        <subvertex xmi:type="uml:State" xmi:id="_ZgxC4AKgEeSt5NjqwT8-GQ" name="Authorized"/>
-        <subvertex xmi:type="uml:Pseudostate" xmi:id="_ZgyRAAKgEeSt5NjqwT8-GQ" name="Merge 1" kind="choice"/>
-        <subvertex xmi:type="uml:State" xmi:id="_ZgzfIAKgEeSt5NjqwT8-GQ" name="Submitted"/>
-        <subvertex xmi:type="uml:State" xmi:id="_Zg0tQAKgEeSt5NjqwT8-GQ" name="Ordered"/>
-        <subvertex xmi:type="uml:FinalState" xmi:id="_Zg17YAKgEeSt5NjqwT8-GQ" name="EndEvent_1"/>
-      </region>
-    </packagedElement>
-  </uml:Model>
-</xmi:XMI>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_yUYaICyoEeSLL6400SPdjw">
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="order_material">
+    <region xmi:id="_yUHUYSyoEeSLL6400SPdjw" name="StartEvent_1Not preparedOreparedApprovedNeeds Authorization?AuthorizedMerge 1SubmittedOrderedEndEvent_1">
+      <transition xmi:id="_yUIigSyoEeSLL6400SPdjw" name="StartEvent_1Not prepared" source="_yUIigCyoEeSLL6400SPdjw" target="_yUJwoCyoEeSLL6400SPdjw"/>
+      <transition xmi:id="_yUJwoSyoEeSLL6400SPdjw" name="Not preparedPrepared" source="_yUJwoCyoEeSLL6400SPdjw" target="_yUK-wCyoEeSLL6400SPdjw"/>
+      <transition xmi:id="_yUK-wSyoEeSLL6400SPdjw" name="PreparedApproved" source="_yUK-wCyoEeSLL6400SPdjw" target="_yUMM4CyoEeSLL6400SPdjw"/>
+      <transition xmi:id="_yUMM4SyoEeSLL6400SPdjw" name="ApprovedNeeds Authorization?" source="_yUMM4CyoEeSLL6400SPdjw" target="_yUMM4iyoEeSLL6400SPdjw"/>
+      <transition xmi:id="_yUMM4yyoEeSLL6400SPdjw" name="Needs Authorization?Authorized" source="_yUMM4iyoEeSLL6400SPdjw" target="_yUNbACyoEeSLL6400SPdjw"/>
+      <transition xmi:id="_yUNbASyoEeSLL6400SPdjw" name="Needs Authorization?Merge 1" source="_yUMM4iyoEeSLL6400SPdjw" target="_yUOpICyoEeSLL6400SPdjw"/>
+      <transition xmi:id="_yUOpISyoEeSLL6400SPdjw" name="Merge 1Submitted" source="_yUOpICyoEeSLL6400SPdjw" target="_yUP3QCyoEeSLL6400SPdjw"/>
+      <transition xmi:id="_yUP3QSyoEeSLL6400SPdjw" name="SubmittedOrdered" source="_yUP3QCyoEeSLL6400SPdjw" target="_yURFYCyoEeSLL6400SPdjw"/>
+      <transition xmi:id="_yURFYSyoEeSLL6400SPdjw" name="AuthorizedMerge 1" source="_yUNbACyoEeSLL6400SPdjw" target="_yUOpICyoEeSLL6400SPdjw"/>
+      <transition xmi:id="_yURFYiyoEeSLL6400SPdjw" name="OrderedEndEvent_1" source="_yURFYCyoEeSLL6400SPdjw" target="_yUSTgCyoEeSLL6400SPdjw"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_yUIigCyoEeSLL6400SPdjw" name="StartEvent_1"/>
+      <subvertex xmi:type="uml:State" xmi:id="_yUJwoCyoEeSLL6400SPdjw" name="Not prepared"/>
+      <subvertex xmi:type="uml:State" xmi:id="_yUK-wCyoEeSLL6400SPdjw" name="Prepared"/>
+      <subvertex xmi:type="uml:State" xmi:id="_yUMM4CyoEeSLL6400SPdjw" name="Approved"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_yUMM4iyoEeSLL6400SPdjw" name="Needs Authorization?" kind="choice"/>
+      <subvertex xmi:type="uml:State" xmi:id="_yUNbACyoEeSLL6400SPdjw" name="Authorized"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_yUOpICyoEeSLL6400SPdjw" name="Merge 1" kind="choice"/>
+      <subvertex xmi:type="uml:State" xmi:id="_yUP3QCyoEeSLL6400SPdjw" name="Submitted"/>
+      <subvertex xmi:type="uml:State" xmi:id="_yURFYCyoEeSLL6400SPdjw" name="Ordered"/>
+      <subvertex xmi:type="uml:FinalState" xmi:id="_yUSTgCyoEeSLL6400SPdjw" name="EndEvent_1"/>
+    </region>
+  </packagedElement>
+</uml:Model>

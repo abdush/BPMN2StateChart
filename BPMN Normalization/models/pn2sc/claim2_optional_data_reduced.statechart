@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ASCII"?>
+<schart:Statechart xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:schart="http://uam.es/StateCharts" xmi:id="claim_optional_data">
+  <topState>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.9/@contains.4" rnext="//@topState/@contains.12/@contains.0 //@topState/@contains.10/@contains.0" name="Parallel Gateway 2"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.12/@contains.0" rnext="//@topState/@contains.9/@contains.2 //@topState/@contains.10/@contains.0" name="Parallel Gateway 1Reference to claim"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.7/@contains.0" rnext="//@topState/@contains.9/@contains.4 //@topState/@contains.11/@contains.0" name="Exclusive Gateway 3Reference to claim"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.9/@contains.0 //@topState/@contains.8/@contains.0" rnext="//@topState/@contains.5/@contains.4" name="Exclusive Gateway 1Reference to claimReference to claim" action="e_Exclusive Gateway 1Reference to claimReference to claim"/>
+    <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.9/@contains.2 //@topState/@contains.10/@contains.0 //@topState/@contains.11/@contains.0" rnext="//@topState/@contains.8/@contains.2" name="Exclusive Gateway 2Reference to claimReference to claim"/>
+    <contains xsi:type="schart:OR" name="StartEvent_1newregistered">
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.5/@contains.1" name="StartEvent_1"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.5/@contains.2" rnext="//@topState/@contains.5/@contains.0" name="StartEvent_1new"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.5/@contains.3" rnext="//@topState/@contains.5/@contains.1" name="new"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.5/@contains.4" rnext="//@topState/@contains.5/@contains.2" name="newregistered"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.3" rnext="//@topState/@contains.5/@contains.3" name="registered"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="Exclusive Gateway 1">
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.6/@contains.3 //@topState/@contains.6/@contains.4" rnext="//@topState/@contains.6/@contains.2" name="Exclusive Gateway 1"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.6/@contains.2" rnext="//@topState/@contains.6/@contains.3 //@topState/@contains.6/@contains.4" name="init[ Exclusive Gateway 1 ]"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.6/@contains.0" rnext="//@topState/@contains.6/@contains.1" event="e_Exclusive Gateway 1Reference to claimReference to claim"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.6/@contains.1" rnext="//@topState/@contains.6/@contains.0" event="e_Exclusive Gateway 1Reference to claim"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.6/@contains.1" rnext="//@topState/@contains.6/@contains.0" event="e_Exclusive Gateway 1Reference to claim"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="EndEvent_1">
+      <contains xsi:type="schart:Basic" rnext="//@topState/@contains.2" name="EndEvent_1"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="notfraudulentExclusive Gateway 1Reference to claimExclusive Gateway 2Reference to claimReference to claim">
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.8/@contains.1" rnext="//@topState/@contains.3" name="notfraudulent"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.8/@contains.2" rnext="//@topState/@contains.8/@contains.0" name="Exclusive Gateway 1Reference to claim" action="e_Exclusive Gateway 1Reference to claim" guard="in[ Exclusive Gateway 1 ]"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.4" rnext="//@topState/@contains.8/@contains.1" name="Exclusive Gateway 1Reference to claimExclusive Gateway 2Reference to claimReference to claim"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="fraudulentExclusive Gateway 2Exclusive Gateway 3">
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.9/@contains.1" rnext="//@topState/@contains.3" name="fraudulent"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.9/@contains.4" rnext="//@topState/@contains.9/@contains.0" name="Exclusive Gateway 1Reference to claim" action="e_Exclusive Gateway 1Reference to claim" guard="in[ Exclusive Gateway 1 ]"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.1 //@topState/@contains.9/@contains.3" rnext="//@topState/@contains.4" name="Exclusive Gateway 2"/>
+      <contains xsi:type="schart:HyperEdge" next="//@topState/@contains.9/@contains.4" rnext="//@topState/@contains.9/@contains.2" name="Exclusive Gateway 2Exclusive Gateway 3"/>
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.2" rnext="//@topState/@contains.0 //@topState/@contains.9/@contains.1 //@topState/@contains.9/@contains.3" name="Exclusive Gateway 3"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="accepted">
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0 //@topState/@contains.1" rnext="//@topState/@contains.4" name="accepted"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="rejected">
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.2" rnext="//@topState/@contains.4" name="rejected"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="filled">
+      <contains xsi:type="schart:Basic" next="//@topState/@contains.0" rnext="//@topState/@contains.1" name="filled"/>
+    </contains>
+  </topState>
+</schart:Statechart>

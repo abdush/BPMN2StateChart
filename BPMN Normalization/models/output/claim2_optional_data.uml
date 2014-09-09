@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML">
+  <uml:Pseudostate xmi:id="_v1FncDEtEeS9tLdjsp_fZQ" name="Parallel Gateway 2" kind="join"/>
+  <uml:Pseudostate xmi:id="_v1JR0DEtEeS9tLdjsp_fZQ" name="Parallel Gateway 1Reference to claim" kind="join"/>
+  <uml:Pseudostate xmi:id="_v1Kf8DEtEeS9tLdjsp_fZQ" name="Exclusive Gateway 3Reference to claim" kind="join"/>
+  <uml:Pseudostate xmi:id="_v1LuEDEtEeS9tLdjsp_fZQ" name="Exclusive Gateway 1Reference to claimReference to claim" kind="fork"/>
+  <uml:Pseudostate xmi:id="_v1NjQDEtEeS9tLdjsp_fZQ" name="Exclusive Gateway 2Reference to claimReference to claim" kind="fork"/>
+  <uml:Model xmi:id="_v1yyEDEtEeS9tLdjsp_fZQ">
+    <packagedElement xmi:type="uml:StateMachine" xmi:id="claim_optional_data">
+      <region xmi:id="_v1NjQTEtEeS9tLdjsp_fZQ" name="StartEvent_1newregistered">
+        <transition xmi:id="_v1OxYDEtEeS9tLdjsp_fZQ" name="StartEvent_1new" source="_v1OKUDEtEeS9tLdjsp_fZQ" target="_v1QmkDEtEeS9tLdjsp_fZQ"/>
+        <transition xmi:id="_v1QmkTEtEeS9tLdjsp_fZQ" name="newregistered" source="_v1QmkDEtEeS9tLdjsp_fZQ" target="_v1TC0DEtEeS9tLdjsp_fZQ"/>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_v1OKUDEtEeS9tLdjsp_fZQ" name="StartEvent_1"/>
+        <subvertex xmi:type="uml:State" xmi:id="_v1QmkDEtEeS9tLdjsp_fZQ" name="new"/>
+        <subvertex xmi:type="uml:State" xmi:id="_v1TC0DEtEeS9tLdjsp_fZQ" name="registered"/>
+      </region>
+      <region xmi:id="_v1TC0TEtEeS9tLdjsp_fZQ" name="Exclusive Gateway 1">
+        <transition xmi:id="_v1VfETEtEeS9tLdjsp_fZQ" source="_v1VfEDEtEeS9tLdjsp_fZQ" target="_v1Tp4DEtEeS9tLdjsp_fZQ"/>
+        <transition xmi:id="_v1VfEjEtEeS9tLdjsp_fZQ" source="_v1Tp4DEtEeS9tLdjsp_fZQ" target="_v1VfEDEtEeS9tLdjsp_fZQ"/>
+        <transition xmi:id="_v1VfEzEtEeS9tLdjsp_fZQ" source="_v1Tp4DEtEeS9tLdjsp_fZQ" target="_v1VfEDEtEeS9tLdjsp_fZQ"/>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_v1Tp4DEtEeS9tLdjsp_fZQ" name="Exclusive Gateway 1" kind="choice"/>
+        <subvertex xmi:type="uml:State" xmi:id="_v1VfEDEtEeS9tLdjsp_fZQ" name="init[ Exclusive Gateway 1 ]"/>
+      </region>
+      <region xmi:id="_v1VfFDEtEeS9tLdjsp_fZQ" name="EndEvent_1">
+        <subvertex xmi:type="uml:FinalState" xmi:id="_v1WtMDEtEeS9tLdjsp_fZQ" name="EndEvent_1"/>
+      </region>
+      <region xmi:id="_v1WtMTEtEeS9tLdjsp_fZQ" name="notfraudulentExclusive Gateway 1Reference to claimExclusive Gateway 2Reference to claimReference to claim">
+        <transition xmi:id="_v1XUQTEtEeS9tLdjsp_fZQ" name="Exclusive Gateway 1Reference to claim" source="_v1XUQDEtEeS9tLdjsp_fZQ" target="_v1YiYDEtEeS9tLdjsp_fZQ"/>
+        <subvertex xmi:type="uml:State" xmi:id="_v1XUQDEtEeS9tLdjsp_fZQ" name="notfraudulent"/>
+        <subvertex xmi:type="uml:State" xmi:id="_v1YiYDEtEeS9tLdjsp_fZQ" name="Exclusive Gateway 1Reference to claimExclusive Gateway 2Reference to claimReference to claim"/>
+      </region>
+      <region xmi:id="_v1YiYTEtEeS9tLdjsp_fZQ" name="fraudulentExclusive Gateway 2Exclusive Gateway 3">
+        <transition xmi:id="_v1ZwgTEtEeS9tLdjsp_fZQ" name="Exclusive Gateway 1Reference to claim" source="_v1ZwgDEtEeS9tLdjsp_fZQ" target="_v1blsDEtEeS9tLdjsp_fZQ"/>
+        <transition xmi:id="_v1aXkTEtEeS9tLdjsp_fZQ" name="Exclusive Gateway 2Exclusive Gateway 3" source="_v1aXkDEtEeS9tLdjsp_fZQ" target="_v1blsDEtEeS9tLdjsp_fZQ"/>
+        <subvertex xmi:type="uml:State" xmi:id="_v1ZwgDEtEeS9tLdjsp_fZQ" name="fraudulent"/>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_v1aXkDEtEeS9tLdjsp_fZQ" name="Exclusive Gateway 2" kind="choice"/>
+        <subvertex xmi:type="uml:Pseudostate" xmi:id="_v1blsDEtEeS9tLdjsp_fZQ" name="Exclusive Gateway 3" kind="choice"/>
+      </region>
+      <region xmi:id="_v1blsTEtEeS9tLdjsp_fZQ" name="accepted">
+        <subvertex xmi:type="uml:State" xmi:id="_v1cz0DEtEeS9tLdjsp_fZQ" name="accepted"/>
+      </region>
+      <region xmi:id="_v1cz0TEtEeS9tLdjsp_fZQ" name="rejected">
+        <subvertex xmi:type="uml:State" xmi:id="_v1eB8DEtEeS9tLdjsp_fZQ" name="rejected"/>
+      </region>
+      <region xmi:id="_v1eB8TEtEeS9tLdjsp_fZQ" name="filled">
+        <subvertex xmi:type="uml:State" xmi:id="_v1fQEDEtEeS9tLdjsp_fZQ" name="filled"/>
+      </region>
+    </packagedElement>
+  </uml:Model>
+  <uml:Transition xmi:id="_v1zZIDEtEeS9tLdjsp_fZQ" source="_v1FncDEtEeS9tLdjsp_fZQ" target="_v1blsDEtEeS9tLdjsp_fZQ"/>
+  <uml:Transition xmi:id="_v1zZITEtEeS9tLdjsp_fZQ" source="_v1fQEDEtEeS9tLdjsp_fZQ" target="_v1FncDEtEeS9tLdjsp_fZQ"/>
+  <uml:Transition xmi:id="_v10AMDEtEeS9tLdjsp_fZQ" source="_v1cz0DEtEeS9tLdjsp_fZQ" target="_v1FncDEtEeS9tLdjsp_fZQ"/>
+  <uml:Transition xmi:id="_v10AMTEtEeS9tLdjsp_fZQ" source="_v1JR0DEtEeS9tLdjsp_fZQ" target="_v1fQEDEtEeS9tLdjsp_fZQ"/>
+  <uml:Transition xmi:id="_v10AMjEtEeS9tLdjsp_fZQ" source="_v1aXkDEtEeS9tLdjsp_fZQ" target="_v1JR0DEtEeS9tLdjsp_fZQ"/>
+  <uml:Transition xmi:id="_v10AMzEtEeS9tLdjsp_fZQ" source="_v1cz0DEtEeS9tLdjsp_fZQ" target="_v1JR0DEtEeS9tLdjsp_fZQ"/>
+  <uml:Transition xmi:id="_v10nQDEtEeS9tLdjsp_fZQ" source="_v1Kf8DEtEeS9tLdjsp_fZQ" target="_v1WtMDEtEeS9tLdjsp_fZQ"/>
+  <uml:Transition xmi:id="_v10nQTEtEeS9tLdjsp_fZQ" source="_v1blsDEtEeS9tLdjsp_fZQ" target="_v1Kf8DEtEeS9tLdjsp_fZQ"/>
+  <uml:Transition xmi:id="_v10nQjEtEeS9tLdjsp_fZQ" source="_v1eB8DEtEeS9tLdjsp_fZQ" target="_v1Kf8DEtEeS9tLdjsp_fZQ"/>
+  <uml:Transition xmi:id="_v11OUDEtEeS9tLdjsp_fZQ" source="_v1LuEDEtEeS9tLdjsp_fZQ" target="_v1ZwgDEtEeS9tLdjsp_fZQ"/>
+  <uml:Transition xmi:id="_v11OUTEtEeS9tLdjsp_fZQ" source="_v1LuEDEtEeS9tLdjsp_fZQ" target="_v1XUQDEtEeS9tLdjsp_fZQ"/>
+  <uml:Transition xmi:id="_v11OUjEtEeS9tLdjsp_fZQ" source="_v1TC0DEtEeS9tLdjsp_fZQ" target="_v1LuEDEtEeS9tLdjsp_fZQ"/>
+  <uml:Transition xmi:id="_v111YDEtEeS9tLdjsp_fZQ" source="_v1NjQDEtEeS9tLdjsp_fZQ" target="_v1aXkDEtEeS9tLdjsp_fZQ"/>
+  <uml:Transition xmi:id="_v111YTEtEeS9tLdjsp_fZQ" source="_v1NjQDEtEeS9tLdjsp_fZQ" target="_v1cz0DEtEeS9tLdjsp_fZQ"/>
+  <uml:Transition xmi:id="_v111YjEtEeS9tLdjsp_fZQ" source="_v1NjQDEtEeS9tLdjsp_fZQ" target="_v1eB8DEtEeS9tLdjsp_fZQ"/>
+  <uml:Transition xmi:id="_v111YzEtEeS9tLdjsp_fZQ" source="_v1YiYDEtEeS9tLdjsp_fZQ" target="_v1NjQDEtEeS9tLdjsp_fZQ"/>
+</xmi:XMI>

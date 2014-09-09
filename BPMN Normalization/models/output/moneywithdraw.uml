@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_UJOOIBzFEeS4n7YXZ-K_0A">
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_oFhZcCyoEeSLL6400SPdjw">
   <packagedElement xmi:type="uml:StateMachine" xmi:id="moneywithdraw">
-    <region xmi:id="_UJG5YRzFEeS4n7YXZ-K_0A" name="StartEvent_1uncredittedcheckedcredittedEnd Event 2">
-      <transition xmi:id="_UJIHgRzFEeS4n7YXZ-K_0A" name="StartEvent_1uncreditted" source="_UJIHgBzFEeS4n7YXZ-K_0A" target="_UJJVoBzFEeS4n7YXZ-K_0A"/>
-      <transition xmi:id="_UJJVoRzFEeS4n7YXZ-K_0A" name="uncredittedchecked" source="_UJJVoBzFEeS4n7YXZ-K_0A" target="_UJJVohzFEeS4n7YXZ-K_0A"/>
-      <transition xmi:id="_UJJVoxzFEeS4n7YXZ-K_0A" name="checkedcreditted" source="_UJJVohzFEeS4n7YXZ-K_0A" target="_UJKjwBzFEeS4n7YXZ-K_0A"/>
-      <transition xmi:id="_UJKjwRzFEeS4n7YXZ-K_0A" name="credittedEnd Event 2" source="_UJKjwBzFEeS4n7YXZ-K_0A" target="_UJKjwhzFEeS4n7YXZ-K_0A"/>
-      <subvertex xmi:type="uml:Pseudostate" xmi:id="_UJIHgBzFEeS4n7YXZ-K_0A" name="StartEvent_1"/>
-      <subvertex xmi:type="uml:State" xmi:id="_UJJVoBzFEeS4n7YXZ-K_0A" name="uncreditted"/>
-      <subvertex xmi:type="uml:State" xmi:id="_UJJVohzFEeS4n7YXZ-K_0A" name="checked"/>
-      <subvertex xmi:type="uml:State" xmi:id="_UJKjwBzFEeS4n7YXZ-K_0A" name="creditted"/>
-      <subvertex xmi:type="uml:FinalState" xmi:id="_UJKjwhzFEeS4n7YXZ-K_0A" name="End Event 2"/>
+    <region xmi:id="_oFaEsCyoEeSLL6400SPdjw" name="StartEvent_1uncredittedcheckedcredittedEnd Event 2">
+      <transition xmi:id="_oFbS0SyoEeSLL6400SPdjw" name="StartEvent_1uncreditted" source="_oFbS0CyoEeSLL6400SPdjw" target="_oFbS0iyoEeSLL6400SPdjw"/>
+      <transition xmi:id="_oFbS0yyoEeSLL6400SPdjw" name="uncredittedchecked" source="_oFbS0iyoEeSLL6400SPdjw" target="_oFcg8CyoEeSLL6400SPdjw"/>
+      <transition xmi:id="_oFcg8SyoEeSLL6400SPdjw" name="checkedcreditted" source="_oFcg8CyoEeSLL6400SPdjw" target="_oFdvECyoEeSLL6400SPdjw"/>
+      <transition xmi:id="_oFdvESyoEeSLL6400SPdjw" name="credittedEnd Event 2" source="_oFdvECyoEeSLL6400SPdjw" target="_oFdvEiyoEeSLL6400SPdjw"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_oFbS0CyoEeSLL6400SPdjw" name="StartEvent_1"/>
+      <subvertex xmi:type="uml:State" xmi:id="_oFbS0iyoEeSLL6400SPdjw" name="uncreditted"/>
+      <subvertex xmi:type="uml:State" xmi:id="_oFcg8CyoEeSLL6400SPdjw" name="checked"/>
+      <subvertex xmi:type="uml:State" xmi:id="_oFdvECyoEeSLL6400SPdjw" name="creditted"/>
+      <subvertex xmi:type="uml:FinalState" xmi:id="_oFdvEiyoEeSLL6400SPdjw" name="End Event 2"/>
     </region>
   </packagedElement>
 </uml:Model>

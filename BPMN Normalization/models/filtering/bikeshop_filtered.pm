@@ -60,7 +60,7 @@
     <dataState xmi:id="DataState_10" id="DataState_10" name="accessories ready"/>
   </flowElements>
   <flowElements xsi:type="pm:ObjectNode" xmi:id="_DataObjectReference_12" id="_DataObjectReference_12" name="Order [bike ready]" incoming="SequenceFlow_21" outgoing="SequenceFlow_23">
-    <dataState xmi:id="DataState_11" id="DataState_11" name="bike ready"/>
+    <dataState xmi:id="DataState_11" id="DataState_11" name="bike ready [2]"/>
   </flowElements>
   <flowElements xsi:type="pm:ObjectNode" xmi:id="_DataObjectReference_13" id="_DataObjectReference_13" name="Order [closed]" incoming="SequenceFlow_25" outgoing="SequenceFlow_32">
     <dataState xmi:id="DataState_12" id="DataState_12" name="closed"/>
@@ -73,5 +73,5 @@
   <flowElements xsi:type="pm:ObjectFlow" id="DataInputAssociation_3" sourceRef="_DataObjectReference_3" targetRef="_DataObjectReference_5"/>
   <flowElements xsi:type="pm:ObjectFlow" id="DataInputAssociation_2" sourceRef="DataObject_1" targetRef="ExclusiveGateway_1"/>
   <flowElements xsi:type="pm:ObjectFlow" id="DataInputAssociation_1" sourceRef="_DataObjectReference_4" targetRef="_DataObjectReference_6"/>
-  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#96" incoming="SequenceFlow_2" outgoing="//@flowElements.43 //@flowElements.44 //@flowElements.45" gatewayDirection="Diverging"/>
+  <flowElements xsi:type="pm:ParallelGateway" id="fork#FlowElement#96" name="Parallel Gateway 1Order [no trade-in]Order [not ordered at supplier]Order [accessories unknown]" incoming="SequenceFlow_2" outgoing="//@flowElements.43 //@flowElements.44 //@flowElements.45" gatewayDirection="Diverging"/>
 </pm:Process>

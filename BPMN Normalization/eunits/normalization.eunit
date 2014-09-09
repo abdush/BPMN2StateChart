@@ -1,0 +1,61 @@
+operation createEmfLoadTask(modelName : String, modelFilename : String, metamodelFilename : String) {
+  var task = antProject.createTask("epsilon.emf.loadModel");
+  var basedir = antProject.getBaseDir();
+  task.setModelFile(new Native('java.io.File')(basedir, "models/eunit_tests/" + modelFilename));
+  --task.setMetamodelFile(new Native('java.io.File')(basedir, "metamodels/" + metamodelFilename));
+  task.setMetamodelUri(metamodelFilename);
+  task.setName(modelName);
+  task.setRead(true);
+  task.setStore(true);
+  return task;
+}
+
+operation createNormalizationTask(originalModelName : String, migratedModelName : String) {
+  
+  var flock_task = antProject.createTask("epsilon.flock");
+  var basedir = antProject.getBaseDir();
+  flock_task.setSrc(new Native('java.io.File')(basedir, "src/filtering_component/normalization/Preprocessing.mig"));
+  flock_task.setOriginalModel("Original");
+  flock_task.setMigratedModel("Migrated");
+  var model_original = flock_task.createModel();
+  model_original.setRef(originalModelName);
+  model_original.setAs("Original");
+  var model_migrated = flock_task.createModel();
+  model_migrated.setRef(migratedModelName);
+  model_migrated.setAs("Migrated");
+  return flock_task;
+}
+
+operation applyNormalizationRules(original, migrated) {
+  var flock_task = createNormalizationTask(original, migrated);
+  flock_task.execute();
+}
+
+@model
+operation loadModels() {
+  
+  var loadR1  = createEmfLoadTask("R1", "normalization_R1.bpmn2xmi", "http://www.omg.org/spec/BPMN/20100524/MODEL-XMI");
+  var loadR1_migrated  = createEmfLoadTask("R1_migrated", "normalization_R1_migrated.pm", "http://BPMN/Simplified");
+  var loadR1_expected  = createEmfLoadTask("R1_expected", "normalization_R1_expected.pm", "http://BPMN/Simplified");
+  --var loadR2  = createEmfLoadTask("R2", "normalization_R2.bpmn2", "BPMN20.ecore");
+  --var loadR2_expected  = createEmfLoadTask("R2_expected", "normalization_R2_expected.bpmn2", "BPMN20.ecore");
+  --var loadR3  = createEmfLoadTask("R3", "normalization_R3.bpmn2", "BPMN20.ecore");
+  --var loadR3_expected  = createEmfLoadTask("R3_expected", "normalization_R3_expected.bpmn2", "BPMN20.ecore");
+    
+  loadR1_migrated.setRead(false);
+  
+  loadR1.execute();
+  loadR1_expected.execute();
+  loadR1_migrated.execute();
+  --loadR2.execute();
+  --loadR2_expected.execute();
+  --loadR3.execute();
+  --loadR3_expected.execute();
+}
+
+@test
+operation normalization_R1() {
+  applyNormalizationRules("R1", "R1_migrated");
+  assertEqualModels("R1_migrated","R1_expected");
+}
+

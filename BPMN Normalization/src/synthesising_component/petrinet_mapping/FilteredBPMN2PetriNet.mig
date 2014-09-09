@@ -1,0 +1,128 @@
+--import "src_tgt_traceability.eol";
+
+/**
+	The original process model is the filtered BPMN model generated after applying the filtering rules.
+	Therefore, it should only contain object nodes, gateways and start & end events.
+**/
+
+pre PM2PNStart {
+	"Mapping Filtered BPMN to Petri Net phase start:-------".println();
+	Process.all.size().println();
+}
+
+pre filtered2PN_Map {
+	var pm_pn_map = new Map;
+}
+
+post PM2PNEnd {
+	"Mapping Filtered BPMN to Petri Net phase End:-------".println();
+	PN!Place.all.select(p | p.~kind.isDefined()).println();
+}
+
+retype Process to Net
+
+retype ObjectNode to Place
+migrate ObjectNode {
+	--migrated.~kind = "object";
+	migrated.name = original.dataState.name;
+	original.getContainingProcess().equivalent().places.add(migrated);
+	original.println("Org ON: ");
+	migrated.println("Mig ON: ");
+}
+
+retype StartEvent to Place
+migrate StartEvent {
+	migrated.~kind = "Start";
+	if (original.name.isUndefined())
+		migrated.name = original.id;
+	original.getContainingProcess().equivalent().places.add(migrated);
+	original.println("Org Start: ");
+	migrated.println("Mig Place: ");
+}
+
+retype EndEvent to Place
+migrate EndEvent {
+	migrated.~kind = "End";
+	if (original.name.isUndefined())
+		migrated.name = original.id;
+	original.getContainingProcess().equivalent().places.add(migrated);
+	original.println("Org End: ");
+	migrated.println("Mig Place: ");
+}
+
+--retype Activity to Transition
+
+retype ExclusiveGateway to Place
+migrate ExclusiveGateway {
+	migrated.~kind = "choice";
+	if (original.name.isUndefined())
+		migrated.name = original.id;
+	original.getContainingProcess().equivalent().places.add(migrated);
+	original.println("Org XOR: ");
+	migrated.println("Mig Place: ");
+}
+
+retype ParallelGateway to Transition
+migrate ParallelGateway {
+	if (original.name.isUndefined())
+		migrated.name = original.id;
+	original.getContainingProcess().equivalent().transitions.add(migrated);
+	original.println("Org AND: ");
+	migrated.println("Mig Trans: ");
+}
+
+--retype Edge to Place
+-- migrate Edge {
+post Edge {
+	for (original in PM!Edge.all)	{
+		var srcNode = original.sourceRef.equivalent();
+		var tgtNode = original.targetRef.equivalent(); 
+			if (srcNode.isTypeOf(PN!Place)) {
+				if (tgtNode.isTypeOf(PN!Place)) {
+					-- add Dummy Transition
+					var postt = new PN!Transition;
+					postt.name = srcNode.name.concat(tgtNode.name);
+					original.getContainingProcess().equivalent().transitions.add(postt);
+					postt.postp.add(tgtNode);
+					srcNode.postt.add(postt);
+				} else {
+					srcNode.postt.add(tgtNode);
+				}
+			} else {
+				if (tgtNode.isTypeOf(PN!Transition)) {
+					-- add Dummy Place (This should never happen!!)
+					var postp = new PN!Place;
+					postp.name = srcNode.name.concat(tgtNode.name);
+					original.getContainingProcess().equivalent().places.add(postp);
+					postp.postt.add(tgtNode);
+					srcNode.postp.add(postp);
+				} else {
+					srcNode.postp.add(tgtNode);
+				}		
+			}
+		original.println("Org Seq: ");
+		--migrated.println("Mig Seq: ");
+	}
+}
+
+post map_equivalent {
+	pm_link_pn();
+}
+
+
+/*************************************** helper functions ******************************************/
+operation pm_link_pn() : Map {
+	for (node in PM!FlowNode.all) {
+		pm_pn_map.put(node, node.equivalent());
+	}
+	return pm_pn_map;
+}
+
+@cached	
+operation getEquivalenceMap() : Map {
+	return pm_pn_map;
+}
+
+operation PM!FlowElement getContainingProcess() : PM!Process {
+	return PM!Process.all.select(p| p.flowElements.includes(self)).first();
+} 
